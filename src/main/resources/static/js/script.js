@@ -50,7 +50,7 @@ function login() {
 function checkuser(email) {
     var i = 0;
     while (i < dataBase.length) {
-        if (inlognaam == dataBase[i].email) {
+        if (email == dataBase[i].email) {
             return true;
         }
         i = i + 1;
@@ -61,7 +61,7 @@ function checkuser(email) {
 function checkpassword(password) {
     var i = 0;
     while (i < dataBase.length) {
-        if (wachtwoord == dataBase[i].password) {
+        if (password == dataBase[i].password) {
             return true;
         }
         i = i + 1;
@@ -70,7 +70,7 @@ function checkpassword(password) {
 }
 
 function forgetpassword() {
-    var z = document.forms["forgetpassword"]["forgetemail"].value;
+    var z = document.forms["forgetpassword1"]["forgetemail"].value;
     if (checkuser(z)) {
         var password = getpassword();
         document.getElementById('login').innerHTML = "Hello: " + z + ", your password is: " + password;
@@ -79,15 +79,15 @@ function forgetpassword() {
     }
 }
 
-function findPassword(gebruikersnaam) {
-    return gebruikersnaam.inlognaam == document.forms["forgetpassword"]["forgetemail"].value;
+function findPassword(username) {
+    return username.email == document.forms["forgetpassword1"]["forgetemail"].value;
 }
 function getpassword() {
     var a = dataBase.find(findPassword);
-    return a.wachtwoord;
+    return a.password;
 }
-function findLevel(gebruikersnaam) {
-    return gebruikersnaam.inlognaam == document.forms["loginform"]["email"].value;
+function findLevel(username) {
+    return username.email == document.forms["loginform"]["email"].value;
 }
 function getlevel() {
     var a = dataBase.find(findLevel);
