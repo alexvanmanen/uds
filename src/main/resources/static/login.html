@@ -7,18 +7,18 @@
     <script src=js/script.js></script>
 </head>
 <body>
-<div id="inlog">
+<div id="login">
     <h2 style="color:purple;">Inloggen:</h2>
-    <form action="landing.html" name="inlogformulier" onsubmit="return inlog()">
+    <form action="landing.html" name="loginform" onsubmit="return inlog()">
         Inlognaam: <input id="email" type="text" name="email"><br>
-        Wachtwoord: <input id="wachtwoord" type="password" name="wachtwoord"><br>
+        Wachtwoord: <input id="password" type="password" name="password"><br>
         <input type="submit" value="Submit">
     </form>
     <br>
     <br>
     <h2 style="color:purple;">Wachtwoord vergeten?</h2>
-    <form name="wachtwoordvergetenformulier" onsubmit="return wachtwoordvergeten()">
-        Inlognaam: <input id="vergetenwachtwoordgebruiker" type="text" name="email"><br>
+    <form name="forgetpassword" onsubmit="return forgetpassword()">
+        Inlognaam: <input id="forgetpassword" type="text" name="email"><br>
         <input type="submit" value="Submit">
     </form>
 </div>
