@@ -22,5 +22,25 @@ public class MainController {
         return employees;
     }
 
+    public boolean checkPassword (String emailAdress, String password){
+        boolean b = true;
+        List <User> users = getUsers();
+        for (User a : users) {
+            b = emailAdress.equals(a.getEmailAdress()) && password.equals(a.getPassword());
+
+        }
+        return b;
+    }
+
+    private List<User> getUsers() {
+        List <User> users = new ArrayList<>();
+        users.add( new User ("hallo@hallo.com", "hallo"));
+        users.add( new User( "kalim@hallo.com", "hoi"));
+        return users;
+
+
+
+    }
+
 
 }
