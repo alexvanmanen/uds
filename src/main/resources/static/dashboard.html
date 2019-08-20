@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Qien admin</title>
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+    <script src=js/script.js></script>
+</head>
+<body>
+<script>document.write("Welkom: " + sessionStorage.username)</script>
+<ul class="topnav">
+    <li><a class="active" href="#home">Home</a></li>
+    <li><a class="active" href="#home">Taken</a></li>
+    <li class="dropdown">
+        <a href="javascript:void(0)" class="dropbtn">Profiel</a>
+        <div class="dropdown-content">
+            <a href="#">Profiel aanpassen</a>
+            <a href="#">Profiel bekijken</a>
+    <li class="dropdown">
+        <a href="javascript:void(0)" class="dropbtn">Personeel</a>
+        <div class="dropdown-content">
+            <a href="#">Personeel toevoegen</a>
+            <a href="#">Personeel beheren</a>
+    <li class="dropdown">
+        <a href="javascript:void(0)" class="dropbtn">Bedrijven</a>
+        <div class="dropdown-content">
+            <a href="#">Bedrijf toevoegen</a>
+            <a href="#">Bedrijf beheren</a>
+    <li style="float:right"><a class="active" href="#about">Uitloggen</a></li>
+
+</ul>
+<h2>Taken</h2>
+<table>
+    <tr>
+        <th>Taak datum</th>
+        <th>Instuurder</th>
+        <th>Taak</th>
+        <th>Actie</th>
+    </tr>
+    <tr>
+        <td>19-08-2019</td>
+        <td>Bart Zwaagstra</td>
+        <td>Onkosten declaratie</td>
+        <td><a href="https://bunq.me/bartzw">Uitbetalen</a></td>
+    </tr>
+    <tr>
+        <td>18-08-2019</td>
+        <td>Bart Zwaagstra</td>
+        <td>Uren week 33</td>
+        <td><a href="https://bunq.me/bartzw">Nakijken</a></td>
+    </tr>
+    <tr>
+        <td>17-08-2019</td>
+        <td>Bart Zwaagstra</td>
+        <td>Vakantie aanvraag</td>
+        <td><a href="https://bunq.me/bartzw">Reageren</a></td>
+    </tr>
+</table>
+</body>
+</html>
