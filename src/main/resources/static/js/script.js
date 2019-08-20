@@ -32,7 +32,7 @@ function setSessie(a,b) {
         document.getElementById("result").innerHTML = "Sorry, your browser does not support web storage...";
     }
 }
-function inlog() {
+function login() {
     var a = document.forms["loginform"]["email"].value;
     var b = document.forms["loginform"]["password"].value;
     if (checkuser(a)) {
@@ -70,7 +70,7 @@ function checkpassword(password) {
 }
 
 function forgetpassword() {
-    var z = document.forms["forgetpassword"]["email"].value;
+    var z = document.forms["forgetpassword"]["forgetemail"].value;
     if (checkuser(z)) {
         var password = getpassword();
         document.getElementById('login').innerHTML = "Hello: " + z + ", your password is: " + password;
@@ -80,7 +80,7 @@ function forgetpassword() {
 }
 
 function findPassword(gebruikersnaam) {
-    return gebruikersnaam.inlognaam == document.forms["forgetpassword"]["email"].value;
+    return gebruikersnaam.inlognaam == document.forms["forgetpassword"]["forgetemail"].value;
 }
 function getpassword() {
     var a = dataBase.find(findPassword);
