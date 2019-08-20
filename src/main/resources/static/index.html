@@ -22,6 +22,19 @@
                 xmlhttp.send();
             }
 
+            function getEmployees() {
+                //ajax_get('http://localhost:8080/uren/api/v1/employees', function(data) { alert(data[0]['firstName']);});
+                ajax_get('/uren/api/v1/employees', function(data) {
+                    alert(data[0]['firstName']);
+                    var tableContent = "<tr><th>First name</th><th>Last name</th></tr>";
+                    for(i=0;i<data.length; i++){
+                        tableContent = tableContent + "<tr><td>"+ data[i]['firstName'] + "</td><td>"+ data[i]['lastName'] + "</td>";
+                    }
+                    document.getElementById("ajax").innerHTML = tableContent;
+
+                });
+            }
+
 
             function sendData() {
                 $.ajax({
@@ -39,3 +52,8 @@
 
         </script>
     </head>
+<body>
+<button onclick="getEmployees()">get Employee via ajax-call</button>
+<table id="ajax">
+</table>
+</body>
