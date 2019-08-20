@@ -1,1 +1,41 @@
 <html>
+
+    <head>
+        <script>
+
+            function ajax_get(url, callback) {
+                var xmlhttp = new XMLHttpRequest();
+                xmlhttp.onreadystatechange = function() {
+                    if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+                        console.log('responseText:' + xmlhttp.responseText);
+                        try {
+                            var data = JSON.parse(xmlhttp.responseText);
+                        } catch(err) {
+                            console.log(err.message + " in " + xmlhttp.responseText);
+                            return;
+                        }
+                        callback(data);
+                    }
+                };
+
+                xmlhttp.open("GET", url, true);
+                xmlhttp.send();
+            }
+
+
+            function sendData() {
+                $.ajax({
+                    url: 'http://localhost:8080/uren/api/v1/employees',
+                    type: 'POST',
+                    contentType: 'application/json',
+                    data: JSON.stringify({
+                        firstName:"Bob",
+                        lastName:"Martin",
+                        emailId:"test@test.nl"
+                    }),
+                    dataType: 'json'
+                });
+            }
+
+        </script>
+    </head>
