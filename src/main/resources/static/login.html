@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Qien inlog</title>
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+    <script src=js/script.js></script>
+</head>
+<body>
+<div id="inlog">
+    <h2 style="color:purple;">Inloggen:</h2>
+    <form action="landing.html" name="inlogformulier" onsubmit="return inlog()">
+        Inlognaam: <input id="inlognaam" type="text" name="inlognaam"><br>
+        Wachtwoord: <input id="wachtwoord" type="password" name="wachtwoord"><br>
+        <input type="submit" value="Submit">
+    </form>
+    <br>
+    <br>
+    <h2 style="color:purple;">Wachtwoord vergeten?</h2>
+    <form name="wachtwoordvergetenformulier" onsubmit="return wachtwoordvergeten()">
+        Inlognaam: <input id="vergetenwachtwoordgebruiker" type="text" name="inlognaam"><br>
+        <input type="submit" value="Submit">
+    </form>
+</div>
+</body>
+</html>
