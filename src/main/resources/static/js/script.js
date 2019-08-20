@@ -4,9 +4,9 @@ function myTestFunction(id){
 }
 var dataBase = [];
 
-function Gebruikers(inlognaam, wachtwoord, level) {
-    this.inlognaam = inlognaam;
-    this.wachtwoord = wachtwoord;
+function Gebruikers(email, password, level) {
+    this.email = email;
+    this.password = password;
     this.level = level
 }
 
@@ -33,24 +33,24 @@ function setSessie(a,b) {
     }
 }
 function inlog() {
-    var a = document.forms["inlogformulier"]["inlognaam"].value;
-    var b = document.forms["inlogformulier"]["wachtwoord"].value;
-    if (checkgebruiker(a)) {
-        if (checkwachtwoord(b)) {
+    var a = document.forms["loginform"]["email"].value;
+    var b = document.forms["loginform"]["password"].value;
+    if (checkuser(a)) {
+        if (checkpassword(b)) {
             setSessie(a,b);
             window.location.href = "./admin.html";
         } else {
-            alert("Wachtwoord is fout!");
+            alert("Wrong password!");
         }
     } else {
-        alert("Onbekende gebruikersnaam");
+        alert("Unknown username!");
     }
 }
 
-function checkgebruiker(inlognaam) {
+function checkuser(email) {
     var i = 0;
     while (i < dataBase.length) {
-        if (inlognaam == dataBase[i].inlognaam) {
+        if (inlognaam == dataBase[i].email) {
             return true;
         }
         i = i + 1;
@@ -58,10 +58,10 @@ function checkgebruiker(inlognaam) {
     return false;
 }
 
-function checkwachtwoord(wachtwoord) {
+function checkpassword(password) {
     var i = 0;
     while (i < dataBase.length) {
-        if (wachtwoord == dataBase[i].wachtwoord) {
+        if (wachtwoord == dataBase[i].password) {
             return true;
         }
         i = i + 1;
@@ -69,27 +69,27 @@ function checkwachtwoord(wachtwoord) {
     return false;
 }
 
-function wachtwoordvergeten() {
-    var z = document.forms["wachtwoordvergetenformulier"]["inlognaam"].value;
-    if (checkgebruiker(z)) {
-        var wachtwoord = getwachtwoord();
-        document.getElementById('inlog').innerHTML = "Hoi: " + z + ", je wachtwoord is: " + wachtwoord;
+function forgetpassword() {
+    var z = document.forms["forgetpassword"]["email"].value;
+    if (checkuser(z)) {
+        var password = getpassword();
+        document.getElementById('login').innerHTML = "Hello: " + z + ", your password is: " + password;
     } else {
-        document.getElementById('inlog').innerHTML = "Deze gebruikersnaam is niet bekend.";
+        document.getElementById('login').innerHTML = "Username unknown!";
     }
 }
 
-function zoekWachtwoord(gebruikersnaam) {
-    return gebruikersnaam.inlognaam == document.forms["wachtwoordvergetenformulier"]["inlognaam"].value;
+function findPassword(gebruikersnaam) {
+    return gebruikersnaam.inlognaam == document.forms["forgetpassword"]["email"].value;
 }
-function getwachtwoord() {
-    var a = dataBase.find(zoekWachtwoord);
+function getpassword() {
+    var a = dataBase.find(findPassword);
     return a.wachtwoord;
 }
-function zoekLevel(gebruikersnaam) {
-    return gebruikersnaam.inlognaam == document.forms["inlogformulier"]["inlognaam"].value;
+function findLevel(gebruikersnaam) {
+    return gebruikersnaam.inlognaam == document.forms["loginform"]["email"].value;
 }
 function getlevel() {
-    var a = dataBase.find(zoekLevel);
+    var a = dataBase.find(findLevel);
     return a.level;
 }
