@@ -19,8 +19,8 @@
     <li class="dropdown">
         <a href="javascript:void(0)" class="dropbtn">Personeel</a>
         <div class="dropdown-content">
-            <a href="#">Personeel toevoegen</a>
-            <a href="#">Personeel beheren</a>
+            <a href="createuser.html">Personeel toevoegen</a>
+            <a onclick="getUsers();">Personeel beheren</a>
     <li class="dropdown">
         <a href="javascript:void(0)" class="dropbtn">Bedrijven</a>
         <div class="dropdown-content">
@@ -30,7 +30,7 @@
 
 </ul>
 <h2>Taken</h2>
-<table>
+<div id="test"></div><table id="ajax">
     <tr>
         <th>Taak datum</th>
         <th>Instuurder</th>
@@ -55,6 +55,7 @@
         <td>Vakantie aanvraag</td>
         <td><a href="https://bunq.me/bartzw">Reageren</a></td>
     </tr>
-</table>
+</table></div>
+<!--<table id="ajax">-->
 </body>
 </html>
