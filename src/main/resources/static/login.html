@@ -7,19 +7,30 @@
     <script src=js/script.js></script>
 </head>
 <body>
-    <h2 style="color:purple;">Inloggen:</h2>
-    <div id="login"></div>
-    <form action="" name="loginform" onsubmit="return getPassword()">
-        Inlognaam: <input id="email" type="text" name="email"><br>
-        Wachtwoord: <input id="password" type="password" name="password"><br>
+<div id="inlog">
+    <img src="Qien_logo_networkgraphics.png" alt="Qien_logo" style="border:0;width:153px;height:213px;display:block;margin-left:auto;margin-right:auto">
+    <br>
+    <p style="color:purple;text-align:center;"> Welkom bij de Urenregistratiepagina van Qien!</p>
+    <p style="color:purple;text-align:center;"> Gebruik uw e-mailadres en wachtwoord om in te loggen.</p>
+    <br>
+    <br>
+    <h2 style="color:#A34AFE;text-align:center;font-size:200%;">Inloggen</h2>
+    <br>
+    <form style= "text-align:center;" action="landing.html" name="inlogformulier" onsubmit=" checkPassword(); return false;">
+        E-mailadres: <input id="inlognaam" type="text" name="inlognaam"><br>
+        Wachtwoord: <input id="wachtwoord" type="password" name="wachtwoord"><br>
+        <br>
         <input type="submit" value="Submit">
     </form>
     <br>
     <br>
-    <h2 style="color:purple;">Wachtwoord vergeten?</h2>
-    <form name="forgetpassword1" onsubmit="return forgetpassword()">
-        Inlognaam: <input id="forgetemail" type="text" name="forgetemail"><br>
+    <br>
+    <h2 style="color:#A34AFE;text-align:center;font-size:200%;">Wachtwoord opvragen</h2>
+    <form style="text-align:center;" name="wachtwoordvergetenformulier" onsubmit="return wachtwoordvergeten()">
+        E-mailadres: <input id="vergetenwachtwoordgebruiker" type="text" name="inlognaam"><br>
+        <br>
         <input type="submit" value="Submit">
     </form>
+</div>
 </body>
 </html>
