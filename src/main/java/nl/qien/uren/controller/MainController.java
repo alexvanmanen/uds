@@ -44,10 +44,11 @@ public class MainController {
 
 
     }
-//    @GetMapping("/register/{email}/{password}")
+//    @GetMapping("/createuser/{email}/{password}")
 //    @ResponseBody
-//    public User register(String email, String pass){
-//        User user = new User(email,pass);
+//    public User register(String email, String password){
+//        User user = new User(email,password);
+//
 //        return user;
 //    }
 
