@@ -2,8 +2,9 @@ package nl.qien.uren.controller;
 
 public class User {
     private String emailAdress;
+    final int level = 2;
 
-    public String getEmailAdress() {
+    String getEmailAdress() {
         return emailAdress;
     }
 
@@ -11,7 +12,7 @@ public class User {
         this.emailAdress = emailAdress;
     }
 
-    public String getPassword() {
+    String getPassword() {
         return password;
     }
 
@@ -21,8 +22,9 @@ public class User {
 
     private String password;
 
-    public User(String emailAdress, String password){
+    User(String emailAdress, String password){
         this.emailAdress = emailAdress;
         this.password = password;
     }
+    User(){}
 }
