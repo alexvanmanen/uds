@@ -4,6 +4,7 @@ public class Employee {
 
     private String firstName;
     private String lastName;
+    final int level = 2;
 
     public Employee(String firstName, String lastName){
         this.firstName = firstName;
