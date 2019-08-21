@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Qien admin</title>
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+    <script src=js/script.js></script>
+</head>
+<body>
+<script>document.write("Welkom: " + sessionStorage.username)</script>
+<ul class="topnav">
+    <li><a class="active" href="#home">Home</a></li>
+    <li><a class="active" href="#home">Taken</a></li>
+    <li class="dropdown">
+        <a href="javascript:void(0)" class="dropbtn">Profiel</a>
+        <div class="dropdown-content">
+            <a href="#">Profiel aanpassen</a>
+            <a href="#">Profiel bekijken</a>
+    <li class="dropdown">
+        <a href="javascript:void(0)" class="dropbtn">Personeel</a>
+        <div class="dropdown-content">
+            <a href="#">Personeel toevoegen</a>
+            <a onclick="getUsers();">Personeel beheren</a>
+    <li class="dropdown">
+        <a href="javascript:void(0)" class="dropbtn">Bedrijven</a>
+        <div class="dropdown-content">
+            <a href="#">Bedrijf toevoegen</a>
+            <a href="#">Bedrijf beheren</a>
+    <li style="float:right"><a class="active" href="#about">Uitloggen</a></li>
+
+</ul>
+<h2>Personeel toevoegen</h2>
+<div id="test"></div><table id="ajax"></table><form action="" name="createuserform">
+    Email: <input id="email" type="text" name="email"><br>
+    Password: <input id="password" type="password" name="password"><br>
+    <input type="submit" onclick="addUser();" value="Submit">
+</form>
+</body>
+</html>
