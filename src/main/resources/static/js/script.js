@@ -1,95 +1,47 @@
-function myTestFunction(id){
-    console.log(id);
-
-}
-var dataBase = [];
-
-function Gebruikers(email, password, level) {
-    this.email = email;
-    this.password = password;
-    this.level = level
-}
-
-dataBase.push(new Gebruikers("Bart", "Bart01", 3));
-dataBase.push(new Gebruikers("Robin", "Robin01",1));
-dataBase.push(new Gebruikers("Kalim", "Kalim01",1));
-dataBase.push(new Gebruikers("Maartje", "Maartje01",1));
-dataBase.push(new Gebruikers("Dwight", "Dwight01",1));
-dataBase.push(new Gebruikers("Alex", "Alex01",1));
-
-function setSessie(a,b) {
-    if(typeof(Storage) !== "undefined") {
-        if (!sessionStorage.username) {
-            sessionStorage.username = a;
+function ajax_get(url, callback) {
+    var xmlhttp = new XMLHttpRequest();
+    xmlhttp.onreadystatechange = function() {
+        if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+            console.log('responseText:' + xmlhttp.responseText);
+            try {
+                var data = JSON.parse(xmlhttp.responseText);
+            } catch(err) {
+                console.log(err.message + " in " + xmlhttp.responseText);
+                return;
+            }
+            callback(data);
         }
-        if(!sessionStorage.wachtwoord) {
-            sessionStorage.wachtwoord = b;
-        }
-        if(!sessionStorage.level) {
-            sessionStorage.level = getlevel();
-        }
-    } else {
-        document.getElementById("result").innerHTML = "Sorry, your browser does not support web storage...";
-    }
+    };
+    xmlhttp.open("GET", url, true);
+    xmlhttp.send();
 }
-function login() {
+
+function getPassword() {
     var a = document.forms["loginform"]["email"].value;
     var b = document.forms["loginform"]["password"].value;
-    if (checkuser(a)) {
-        if (checkpassword(b)) {
-            setSessie(a,b);
-            window.location.href = "./admin.html";
-        } else {
-            alert("Wrong password!");
+    ajax_get("/uren/api/v1/checkPassword/" + a + "/" + b , function(data) {
+        if(data === false) {
+            document.getElementById("login").innerHTML = "<font color='red'>Password and/or Email incorrect</font>";
         }
-    } else {
-        alert("Unknown username!");
-    }
-}
-
-function checkuser(email) {
-    var i = 0;
-    while (i < dataBase.length) {
-        if (email == dataBase[i].email) {
-            return true;
+        else if(data === true) {
+            window.location.assign("./dashboard.html");
         }
-        i = i + 1;
-    }
-    return false;
-}
-
-function checkpassword(password) {
-    var i = 0;
-    while (i < dataBase.length) {
-        if (password == dataBase[i].password) {
-            return true;
+        else {
+            document.getElementById("login").innerHTML = "<font color='red'>Unexpected response from server.</font>";
         }
-        i = i + 1;
-    }
-    return false;
+    });
 }
 
-function forgetpassword() {
-    var z = document.forms["forgetpassword1"]["forgetemail"].value;
-    if (checkuser(z)) {
-        var password = getpassword();
-        document.getElementById('login').innerHTML = "Hello: " + z + ", your password is: " + password;
-    } else {
-        document.getElementById('login').innerHTML = "Username unknown!";
-    }
-}
-
-function findPassword(username) {
-    return username.email == document.forms["forgetpassword1"]["forgetemail"].value;
-}
-function getpassword() {
-    var a = dataBase.find(findPassword);
-    return a.password;
-}
-function findLevel(username) {
-    return username.email == document.forms["loginform"]["email"].value;
-}
-function getlevel() {
-    var a = dataBase.find(findLevel);
-    return a.level;
+function sendData() {
+    $.ajax({
+        url: 'http://localhost:8080/uren/api/v1/employees',
+        type: 'POST',
+        contentType: 'application/json',
+        data: JSON.stringify({
+            firstName:"Bob",
+            lastName:"Martin",
+            emailId:"test@test.nl"
+        }),
+        dataType: 'json'
+    });
 }
