@@ -2,13 +2,23 @@ package nl.qien.uren.controller;
 
 public class Employee {
 
+    private Long id;
     private String firstName;
     private String lastName;
     final int level = 2;
 
-    public Employee(String firstName, String lastName){
+    public Employee(Long id, String firstName, String lastName){
+        this.id = id;
         this.firstName = firstName;
         this.lastName = lastName;
+    }
+
+    public Long getId(){
+        return id;
+    }
+
+    public void setId(Long id){
+        this.id = id;
     }
 
     public String getFirstName() {

@@ -1,15 +1,27 @@
 package nl.qien.uren.controller;
 
+import nl.qien.uren.repository.EmployeeRepository;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
+
 
 @CrossOrigin(origins = "http://localhost:4200")
 @RestController
 @RequestMapping("/api/v1")
 public class MainController {
 
+    @Autowired
+    JdbcTemplate jdbcTemplate;
+
+    @Autowired
+    @Qualifier("JDBCEmployeeRepository")
+    private EmployeeRepository employeeRepository;
 
     @GetMapping("/rulezz/{name}")
     public String kalim(@PathVariable String name){
@@ -18,7 +30,7 @@ public class MainController {
 
     @GetMapping("/employees")
     public List<Employee> getAllEmployees() {
-        Employee employee = new Employee("Alex", "van Manen");
+        Employee employee = new Employee(new Long(1),"Alex", "van Manen");
         List<Employee> employees = new ArrayList<>();
         employees.add(employee);
         return employees;
@@ -44,6 +56,22 @@ public class MainController {
 
 
     }
+    @GetMapping("/count")
+    public int getNumberOfEmployees(){
+        return employeeRepository.count();
+    }
+
+    @GetMapping("/addEmployee/{id}/{firstName}/{lastName}")
+    public int addEmployee(@PathVariable Long id, @PathVariable String firstName, @PathVariable String lastName){
+        return employeeRepository.save(new Employee(id, firstName,lastName));
+
+    }
+
+    @GetMapping("/employee/{id}")
+    public Optional<Employee> getEmployee(@PathVariable Long id){
+        return employeeRepository.findById(id);
+    }
+
 //    @GetMapping("/createuser/{email}/{password}")
 //    @ResponseBody
 //    public User register(String email, String password){
