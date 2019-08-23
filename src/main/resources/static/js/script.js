@@ -34,9 +34,8 @@ function setSessie(email) {
             sessionStorage.email = email;
         }
         if (!sessionStorage.id) {
-            if(id != 0) {
                 sessionStorage.id = id;
-            }
+
         }
     } else {
         document.getElementById("result").innerHTML = "Sorry, your browser does not support web storage...";
