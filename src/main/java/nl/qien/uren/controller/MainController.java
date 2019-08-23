@@ -65,7 +65,7 @@ public class MainController {
 //    }
     @GetMapping("/count")
     public int getNumberOfEmployees(){
-        return employeeRepository.count();
+        return employeeRepository.count()+1;
     }
 
     @GetMapping("/addEmployee/{id}/{firstName}/{lastName}")
