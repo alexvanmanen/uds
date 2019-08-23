@@ -33,18 +33,27 @@ public class JDBCEmployeeRepository implements EmployeeRepository {
     }
 
     @Override
-    public Optional<Employee> findById(Long id) {
+    public Integer findById(Long id) {
         return jdbcTemplate.queryForObject(
-                "select * from Employee where ID = ?",
-                new Object[]{id},
+                "select count(*) from Employee where ID = ? and first_Name=?",
+                new Object[]{id,"dd"},
+                Integer.class
+        );
+    }
+    @Override
+    public List<Employee> findAll() {
+        return jdbcTemplate.query(
+                "select * from Employee",
                 (rs, rowNum) ->
-                        Optional.of(new Employee(
+                        new Employee(
                                 rs.getLong("ID"),
                                 rs.getString("FIRST_NAME"),
                                 rs.getString("LAST_NAME")
-                        ))
+                        )
         );
     }
+
+
 
     /*
     @Override
