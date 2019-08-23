@@ -41,6 +41,10 @@ public class MainController {
 //        employees.add(employee);
 //        return employees;
     }
+    @GetMapping("/users")
+    public List<User> findAlluser() {
+        return userRepository.findAll();
+    }
 
     @GetMapping("/checkPassword/{email}/{password}")
     @ResponseBody

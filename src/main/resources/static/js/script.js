@@ -15,6 +15,36 @@ function ajax_get(url, callback) {
     xmlhttp.open("GET", url, true);
     xmlhttp.send();
 }
+function setSessie(email) {
+    var id = 0;
+    if(typeof(Storage) !== "undefined") {
+        alert(id);
+        ajax_get('/uren/api/v1/users', function(data) {
+            alert(data.length);
+            for (var i = 0; i < data.length; i++) {
+                alert(data[i]['emailAdress']);
+                alert(email);
+                if(data[i]['emailAdress'] === email) {
+                    alert("Match");
+                    id = data[i]['id'];
+                }
+            }
+        });
+        if (!sessionStorage.email) {
+            sessionStorage.email = email;
+        }
+        if (!sessionStorage.id) {
+            if(id != 0) {
+                sessionStorage.id = id;
+            }
+        }
+    } else {
+        document.getElementById("result").innerHTML = "Sorry, your browser does not support web storage...";
+    }
+}
+function getWelcome(){
+        document.getElementById("welcome").innerHTML = "Welkom " + sessionStorage.email + " " + sessionStorage.id;
+}
 
 function getPassword() {
     var a = document.forms["loginform"]["email"].value;
@@ -24,6 +54,7 @@ function getPassword() {
             document.getElementById("login").innerHTML = "<font color='red'>Password and/or Email incorrect</font>";
         }
         else if(data === true) {
+            setSessie(a);
             window.location.assign("./dashboard.html");
         }
         else {

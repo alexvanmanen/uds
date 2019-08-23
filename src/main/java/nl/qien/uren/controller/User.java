@@ -20,9 +20,9 @@ public class User {
         this.workedHours = workedHours;
     }
 
-    public double getWorkedHours(){
+/*    public double getWorkedHours(){
         return workedHours;
-    }
+    }*/
 
     public String getEmailAdress() {
         return emailAdress;

@@ -27,13 +27,12 @@ public class JDBCUserRepository implements UserRepository {
 
     @Override
     public List<User> findAll(){
-
         return jdbcTemplate.query(
                 "select * from User",
                 (rs, rowNum) ->
                         new User(
                                 rs.getLong("id"),
-                                rs.getString("emailAdress"),
+                                rs.getString("email"),
                                 rs.getString("password")
                         )
         );
