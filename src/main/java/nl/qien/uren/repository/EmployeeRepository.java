@@ -12,7 +12,9 @@ public interface EmployeeRepository {
 
     int save(Employee employee);
 
-    Optional<Employee> findById(Long id);
+    List<Employee> findAll();
+
+    Integer findById(Long id);
 
 
 /*
