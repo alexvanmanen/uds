@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.web.bind.annotation.*;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
@@ -72,6 +73,11 @@ public class MainController {
     public int addEmployee(@PathVariable Long id, @PathVariable String firstName, @PathVariable String lastName){
         return employeeRepository.save(new Employee(id, firstName,lastName));
 
+    }
+    @GetMapping("/urenRegistratie/{employeeId}/{projectId}/{aantalUren}")
+    public int urenRegistratie(@PathVariable Long employeeId, @PathVariable Long projectId, @PathVariable Long aantalUren){
+        UrenRegistratie uren = new UrenRegistratie(); //argumenten meegeven
+        return employeeRepository.saveUren(uren);
     }
 
 //    @GetMapping("/employee/{id}")

@@ -1,6 +1,7 @@
 package nl.qien.uren.repository;
 
 import nl.qien.uren.controller.Employee;
+import nl.qien.uren.controller.UrenRegistratie;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
@@ -51,6 +52,14 @@ public class JDBCEmployeeRepository implements EmployeeRepository {
                                 rs.getString("LAST_NAME")
                         )
         );
+    }
+
+    @Override
+    public int saveUren(UrenRegistratie uren) {
+        return jdbcTemplate.update(
+                "insert into UrenRegistratie (employeeId, projectId, aantalUren, datum) values(?,?,?,?)",
+                uren.getEmployeeId(),uren.getProjectId(),uren.getAantalUur(),uren.getDatum());
+
     }
 
 

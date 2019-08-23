@@ -1,6 +1,7 @@
 package nl.qien.uren.repository;
 
 import nl.qien.uren.controller.Employee;
+import nl.qien.uren.controller.UrenRegistratie;
 
 import java.math.BigDecimal;
 import java.util.List;
@@ -15,6 +16,8 @@ public interface EmployeeRepository {
     List<Employee> findAll();
 
     Integer findById(Long id);
+
+    int saveUren(UrenRegistratie uren);
 
 
 /*
