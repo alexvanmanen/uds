@@ -7,8 +7,8 @@ public class Admin extends User{
     public ArrayList <User> allUsers;
 
 
-    public User register(String email, String pass){
-        User user = new User(email,pass);
+    public User register(Long id,String email, String pass){
+        User user = new User(id,email,pass);
         allUsers.add(user);
         return user;
     }

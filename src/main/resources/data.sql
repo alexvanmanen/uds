@@ -12,7 +12,9 @@ INSERT INTO billionaires (first_name, last_name, career) VALUES
   ('Bill', 'Gates', 'Billionaire Tech Entrepreneur'),
   ('Folrunsho', 'Alakija', 'Billionaire Oil Magnate');
 
-
-INSERT INTO EMPLOYEE (ID, FIRST_NAME, LAST_NAME) VALUES ( 1, 'Alex', 'van Manen' );
-INSERT INTO EMPLOYEE (ID, FIRST_NAME, LAST_NAME) VALUES ( 2, 'Paul', 'Veen' );
-INSERT INTO EMPLOYEE (ID, FIRST_NAME, LAST_NAME) VALUES ( 3, 'Jan', 'KLaassen' );
+-- INSERT INTO EMPLOYEE (ID, FIRST_NAME, LAST_NAME) VALUES ( 1, 'Alex', 'van Manen' );
+-- INSERT INTO EMPLOYEE (ID, FIRST_NAME, LAST_NAME) VALUES ( 2, 'Paul', 'Veen' );
+-- INSERT INTO EMPLOYEE (ID, FIRST_NAME, LAST_NAME) VALUES ( 3, 'Jan', 'KLaassen' );
+INSERT INTO USER(ID, email, password) VALUES
+                                             (1,'hallo@hallo.com', 'hallo');
+--INSERT INTO USER(ID, email, password) VALUES ( 2,'bart@bartsmit.nl','sinterklaas');
