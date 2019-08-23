@@ -8,6 +8,13 @@ public class User {
     private String password;
     private Double workedHours;
     List<Double> totalHours;
+    private Long id;
+
+    public void setId(Long id){
+        this.id = id;
+    }
+
+    public Long getId(){return id;}
 
     public void setWorkedHours(double workedHours){
         this.workedHours = workedHours;
@@ -43,9 +50,10 @@ public class User {
     }
 
 
-    public User(String emailAdress, String password) {
+    public User(Long id,String emailAdress, String password) {
         this.emailAdress = emailAdress;
         this.password = password;
+        this.id = id;
     }
 
     User() {
