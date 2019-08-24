@@ -3,6 +3,7 @@ package nl.qien.uren.controller;
 import nl.qien.uren.repository.EmployeeRepository;
 import nl.qien.uren.repository.JDBCUserRepository;
 import nl.qien.uren.repository.UserRepository;
+import nl.qien.uren.repository.UrenRegistratieRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.jdbc.core.JdbcTemplate;
@@ -27,6 +28,10 @@ public class MainController {
 
     @Autowired
     private UserRepository userRepository;
+
+    @Autowired
+    @Qualifier("JDBCUrenRegistratieRepository")
+    private UrenRegistratieRepository urenRegistratieRepository;
 
     @GetMapping("/rulezz/{name}")
     public String kalim(@PathVariable String name){
@@ -75,6 +80,12 @@ public class MainController {
     @GetMapping("/addEmployee/{id}/{firstName}/{lastName}")
     public int addEmployee(@PathVariable Long id, @PathVariable String firstName, @PathVariable String lastName){
         return employeeRepository.save(new Employee(id, firstName,lastName));
+
+    }
+
+    @GetMapping("/urenRegistratie/{employeeId}/{projectId}/{aantalUren}")
+    public int registerHours(@PathVariable Long employeeId, @PathVariable Long projectId, @PathVariable Long aantalUren){
+        return urenRegistratieRepository.save(new UrenRegistratie(employeeId, projectId,aantalUren));
 
     }
 
