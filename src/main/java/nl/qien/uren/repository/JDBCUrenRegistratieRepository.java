@@ -15,7 +15,7 @@ public class JDBCUrenRegistratieRepository implements UrenRegistratieRepository 
 
     @Override
     public int count(){
-        return jdbcTemplate.queryForObject("select count(*) from UrenRegistratie", Integer.class);
+        return jdbcTemplate.queryForObject("select count(*) from Uren_Registratie", Integer.class);
     }
 
     @Override

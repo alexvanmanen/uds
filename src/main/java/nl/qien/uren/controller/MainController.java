@@ -89,6 +89,13 @@ public class MainController {
 
     }
 
+    @GetMapping("/urenRegistratie/count")
+    public int registerHours() {
+        return urenRegistratieRepository.count();
+    }
+
+
+
 //    @GetMapping("/employee/{id}")
 //    public Optional<Employee> getEmployee(@PathVariable Long id){
 //        return employeeRepository.findById(id);
