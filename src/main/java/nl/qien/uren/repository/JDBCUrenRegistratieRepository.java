@@ -21,8 +21,8 @@ public class JDBCUrenRegistratieRepository implements UrenRegistratieRepository 
     @Override
     public int save(UrenRegistratie urenRegistratie) {
         return jdbcTemplate.update(
-                "insert into Uren_Registratie (EMPLOYEE_ID, PROJECT_ID, AANTAL_UREN) values(?,?,?)",
-                urenRegistratie.getEmployeeId(),urenRegistratie.getProjectId(),urenRegistratie.getAantalUren());
+                "insert into Uren_Registratie (EMPLOYEE_ID, PROJECT_ID, AANTAL_UREN, DATUM) values(?,?,?,?)",
+                urenRegistratie.getEmployeeId(),urenRegistratie.getProjectId(),urenRegistratie.getAantalUren(),urenRegistratie.getDatum());
     }
 
 }

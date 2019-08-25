@@ -83,9 +83,9 @@ public class MainController {
 
     }
 
-    @GetMapping("/urenRegistratie/{employeeId}/{projectId}/{aantalUren}")
-    public int registerHours(@PathVariable Long employeeId, @PathVariable Long projectId, @PathVariable Long aantalUren){
-        return urenRegistratieRepository.save(new UrenRegistratie(employeeId, projectId,aantalUren));
+    @GetMapping("/urenRegistratie/{employeeId}/{projectId}/{aantalUren}/{datum}")
+    public int registerHours(@PathVariable Long employeeId, @PathVariable Long projectId, @PathVariable Long aantalUren, @PathVariable String datum){
+        return urenRegistratieRepository.save(new UrenRegistratie(employeeId, projectId,aantalUren,datum));
 
     }
 
