@@ -1,11 +1,11 @@
 function ajax_get(url, callback) {
     var xmlhttp = new XMLHttpRequest();
-    xmlhttp.onreadystatechange = function() {
+    xmlhttp.onreadystatechange = function () {
         if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
             console.log('responseText:' + xmlhttp.responseText);
             try {
                 var data = JSON.parse(xmlhttp.responseText);
-            } catch(err) {
+            } catch (err) {
                 console.log(err.message + " in " + xmlhttp.responseText);
                 return;
             }
@@ -15,17 +15,13 @@ function ajax_get(url, callback) {
     xmlhttp.open("GET", url, true);
     xmlhttp.send();
 }
+
 function setSessie(email) {
     var id = 0;
     if(typeof(Storage) !== "undefined") {
-        alert(id);
         ajax_get('/uren/api/v1/users', function(data) {
-            alert(data.length);
             for (var i = 0; i < data.length; i++) {
-                alert(data[i]['emailAdress']);
-                alert(email);
                 if(data[i]['emailAdress'] === email) {
-                    alert("Match");
                     id = data[i]['id'];
                 }
             }
@@ -41,54 +37,52 @@ function setSessie(email) {
         document.getElementById("result").innerHTML = "Sorry, your browser does not support web storage...";
     }
 }
-function getWelcome(){
-        document.getElementById("welcome").innerHTML = "Welkom " + sessionStorage.email + " " + sessionStorage.id;
+
+function getWelcome() {
+    document.getElementById("welcome").innerHTML = "Welkom " + sessionStorage.email + " " + sessionStorage.id;
 }
 
 function getPassword() {
     var a = document.forms["loginform"]["email"].value;
     var b = document.forms["loginform"]["password"].value;
-    ajax_get("/uren/api/v1/checkPassword/" + a + "/" + b , function(data) {
-        if(data === false) {
+    ajax_get("/uren/api/v1/checkPassword/" + a + "/" + b, function (data) {
+        if (data === false) {
             document.getElementById("login").innerHTML = "<font color='red'>Password and/or Email incorrect</font>";
-        }
-        else if(data === true) {
+        } else if (data === true) {
             setSessie(a);
             window.location.assign("./dashboard.html");
-        }
-        else {
+        } else {
             document.getElementById("login").innerHTML = "<font color='red'>Unexpected response from server.</font>";
         }
     });
 }
+
 function showAddUserForm() {
-    document.getElementById("ajax").innerHTML='<form action="" id="createuserform" name="createuserform">'+
-        'Email: <input id="email" type="text" name="email"><br>'+
-        'Password: <input id="password" type="password" name="password"><br>'+
+    document.getElementById("ajax").innerHTML = '<form action="" id="createuserform" name="createuserform">' +
+        'Email: <input id="email" type="text" name="email"><br>' +
+        'Password: <input id="password" type="password" name="password"><br>' +
         '<input type="submit" onclick="addUser(); return false;" value="Submit"></form>';
 }
 
 function addUser() {
     var a = document.forms["createuserform"]["email"].value;
     var b = document.forms["createuserform"]["password"].value;
-    ajax_get("/uren/api/v1/register/" + a + "/" + b , function(data) {
-        if(data === false) {
+    ajax_get("/uren/api/v1/register/" + a + "/" + b, function (data) {
+        if (data === false) {
             document.getElementById("test").innerHTML = "<font color='red'>Error adding user.</font>";
-        }
-        else if(data === true) {
+        } else if (data === true) {
             document.getElementById("test").innerHTML = "<font>User added.</font>";
-        }
-        else {
+        } else {
             document.getElementById("test").innerHTML = "<font color='red'>Unexpected response from server.</font>";
         }
     });
 }
 
 function getUsers() {
-    ajax_get('/uren/api/v1/users', function(data) {
+    ajax_get('/uren/api/v1/users', function (data) {
         var tableContent = "<tr><th>Email</th><th>Password</th></tr>";
-        for(i=0;i<data.length; i++){
-            tableContent = tableContent + "<tr><td>"+ data[i]['emailAdress'] + "</td><td>"+ data[i]['password'] + "</td></tr>";
+        for (i = 0; i < data.length; i++) {
+            tableContent = tableContent + "<tr><td>" + data[i]['emailAdress'] + "</td><td>" + data[i]['password'] + "</td></tr>";
         }
         document.getElementById("ajax").innerHTML = tableContent;
 
@@ -101,9 +95,9 @@ function sendData() {
         type: 'POST',
         contentType: 'application/json',
         data: JSON.stringify({
-            firstName:"Bob",
-            lastName:"Martin",
-            emailId:"test@test.nl"
+            firstName: "Bob",
+            lastName: "Martin",
+            emailId: "test@test.nl"
         }),
         dataType: 'json'
     });
