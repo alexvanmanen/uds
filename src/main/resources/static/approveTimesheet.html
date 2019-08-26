@@ -3,18 +3,25 @@
 <head>
     <meta charset="UTF-8">
     <title>Accordering urenformulier</title>
+    <script> function makeTimesheetVisible(){
+        document.getElementById("timesheet").hidden=false;} </script>
+
 </head>
 <body>
 <h1> Welkom {gebruikersnaam} </h1>
 
 <h2>openstaande taken die nog geaccordeerd moeten worden </h2>
-      <list>
-          <ul>-uren maand werknemer</ul>
-          <ul>-uren maand werknemer</ul>
-  </list>
+<ul>
+          <li onclick= " makeTimesheetVisible()" style = "text-decoration: underline"> uren maand Ben  </li>
+          <li onclick= " makeTimesheetVisible()" style = "text-decoration: underline"> uren maand Kalim  </li>
+  </ul>
 
-    <p hidden>wanneer er op een taak gedrukt is dan wordt deze (het werkbriefje)  op dezelfde pagina getoond (openklappen)<br>
-        mogelijke opties: Akkoord / Niet Akkoord</p>
+Akkoord / Niet Akkoord
+
+    <p id = "timesheet" hidden = "true">
+        wanneer er op een taak gedrukt is dan wordt deze (het werkbriefje)  op dezelfde pagina getoond (openklappen)<br>
+
+    </p>
 
 </body>
 </html>
