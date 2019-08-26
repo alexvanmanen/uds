@@ -3,8 +3,18 @@
 <head>
     <meta charset="UTF-8">
     <title>Accordering urenformulier</title>
-    <script> function makeTimesheetVisible(){
-        document.getElementById("timesheet").hidden=false;} </script>
+    <script> function makeTimesheetVisible(user) {
+        var timesheet = document.getElementById("timesheet")
+        timesheet.hidden = false;
+        if (user == "kalim") {
+            timesheet.innerHTML = " Kalim heeft op 8 en 9 juli 4 uur gewerkt"
+        }
+        if (user == "ben") {
+            timesheet.innerHTML = " Ben heeft op 8 en 9 juli 8 uur gewerkt"
+        }
+    }
+
+    </script>
 
 </head>
 <body>
@@ -12,14 +22,18 @@
 
 <h2>openstaande taken die nog geaccordeerd moeten worden </h2>
 <ul>
-          <li onclick= " makeTimesheetVisible()" style = "text-decoration: underline"> uren maand Ben  </li>
-          <li onclick= " makeTimesheetVisible()" style = "text-decoration: underline"> uren maand Kalim  </li>
+          <li onclick= " makeTimesheetVisible('ben')" style = "text-decoration: underline"> uren maand Ben  </li>
+          <li onclick= " makeTimesheetVisible('kalim')" style = "text-decoration: underline"> uren maand Kalim  </li>
   </ul>
 
 Akkoord / Niet Akkoord
 
     <p id = "timesheet" hidden = "true">
         wanneer er op een taak gedrukt is dan wordt deze (het werkbriefje)  op dezelfde pagina getoond (openklappen)<br>
+
+
+
+
 
     </p>
 
