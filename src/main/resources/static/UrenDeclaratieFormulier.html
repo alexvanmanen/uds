@@ -20,7 +20,7 @@
 <div class="dropdown">
     <button class="dropbtn">Selecteer Maand</button>
     <div class="dropdown-content">
-        <a href="#" onclick=document.getElementById("tabel").innerHTML="hoi">Januari</a>
+        <a href="#" onclick=buildTable("januari")>Januari</a>
         <a href="#" onclick=document.getElementById("tabel").innerHTML="hoi">Febuari</a>
         <a href="#" onclick=document.getElementById("tabel").innerHTML="hoi">Maart</a>
         <a href="#"onclick=document.getElementById("tabel").innerHTML="hoi">April</a>
@@ -44,12 +44,12 @@
         <th>Uren overgewerkt</th>
     </tr>
     <tr>
-        <td>1 januari</td>
+        <td class="kolom">1 januari</td>
         <td> <input id="dag1" CLASS="MAAND" type="number"></td></td
 
     </tr>
     <tr>
-        <td>2 januari</td>
+        <td class="kolom">2 januari</td>
         <td> <input id="dag2" CLASS="MAAND" type="number"></td></td>
     </tr>
     <tr>
