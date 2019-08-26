@@ -78,3 +78,29 @@ function sendData() {
         dataType: 'json'
     });
 }
+
+
+function getTable(data){
+    var keys = [];
+    var html
+    html ="<table border==\"1\"><tr>";
+    for (key in data[0]) {
+        html += '<td>' + key + '</td>';
+    }
+    html += "</tr>";
+    for (var i = 0; i < data.length; i++) {
+        html += '<tr>';
+        for (key in data[i]) {
+            html += '<td>' + data[i][key] + '</td>';
+        }
+        html += '</tr>';
+    }
+    html += "</table>";
+    return html;
+}
+
+function generateTableIn(id, url){
+    var json = ajax_get(url);
+    var htmlTable = getTable(json);
+    document.getElementById(id).innerHTML = htmlTable;
+}

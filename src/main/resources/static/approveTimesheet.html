@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Accordering urenformulier</title>
+    <script src="js/script.js"></script>
     <script>
 
 
@@ -19,7 +20,10 @@
                     {"date":new Date("2019-07-14"),"hours":8}
                 ];
             } else if(user == "maartje"){
-
+                json = [
+                    {"id":1,"firstName":"Alex","lastName":"van Manen"},
+                    {"id":2,"firstName":"Ben","lastName":"Vosse"}
+                    ];
             }
 
             var html = "";
@@ -27,9 +31,14 @@
                 html = html + json[i].date + " - " + json[i].hours + " uren</br>";
             }
 
+
             timesheet.innerHTML = html;
+
+            generateTableIn("timesheet", "http://localhost:8080/uren/api/v1/employees");
         }
+
     </script>
+
 </head>
 <body>
 <h1>Welkom {gebruikersnaam}</h1>
@@ -37,7 +46,7 @@
 <ul>
     <li onclick="makeTimesheetVisible()" style="text-decoration: underline">uren juli Ben Vosse</li>
     <li onclick="makeTimesheetVisible('kalim')">uren juli Kalim Sa...</li>
-    <li>uren juli Maartje Schutte</li>
+    <li onclick="makeTimesheetVisible('maartje')">uren juli Maartje Schutte</li>
 </ul>
 <p id="timesheet" hidden="true">wanneer er op een knop gedrukt is, dan wordt dit werkbriefje hier getoond.
 <br> - Ben heeft op 8 en 9 juli 8 uur gewerkt
