@@ -4,10 +4,12 @@ public class Employee {
 
     private String firstName;
     private String lastName;
+    private String emailAdress;
 
-    public Employee(String firstName, String lastName){
+    public Employee(String firstName, String lastName, String emailAdress){
         this.firstName = firstName;
         this.lastName = lastName;
+        this.emailAdress = emailAdress;
     }
 
     public String getFirstName() {
@@ -25,6 +27,10 @@ public class Employee {
     public void setLastName(String lastName) {
         this.lastName = lastName;
     }
+
+    public String getEmailAdress(){return emailAdress;}
+
+    public void setEmailAdress(String emailAdress){ this.emailAdress = emailAdress;}
 
 
 }

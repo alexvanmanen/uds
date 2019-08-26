@@ -16,7 +16,7 @@ public class MainController {
 
     @GetMapping("/employees")
     public List<Employee> getAllEmployees() {
-        Employee employee = new Employee("Alex", "van Manen");
+        Employee employee = new Employee("Alex", "van Manen", "alexvanmanen@hotmail.com");
         List<Employee> employees = new ArrayList<>();
         employees.add(employee);
         return employees;
