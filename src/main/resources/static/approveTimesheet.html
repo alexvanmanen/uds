@@ -18,18 +18,33 @@
         }
 
 
-        if (user == "ben") {
-            timesheet.innerHTML = " Ben heeft op 8 en 9 juli 8 uur gewerkt"
+        else if (user == "ben") {
+
             dataTimesheet = [
                 {"date":new Date("2019-07-8"),"hours":8},
-                {"date":new Date("2019-07-9"),"hours":9}
+                {"date":new Date("2019-07-9"),"hours":8},
+
             ];
         }
 
-        if (user == "maartje") {
-            timesheet.innerHTML = " Maartje heeft op 8 en 9 juli 8 uur gewerkt"
+        else if (user == "maartje") {
+            dataTimesheet = [
+                {"date":new Date("2019-07-8"),"hours":6},
+                {"date":new Date("2019-07-9"),"hours":6},
+                {"date":new Date("2019-08-13"),"hours":8},
+                {"date":new Date("2019-08-14"),"hours":8}
+            ];
         }
-        timesheet.innerHTML = dataTimesheet[0].date + " - " + dataTimesheet[0].hours;
+
+            var html =  "";
+             for ( var i = 0; i< dataTimesheet.length; i++){
+            html = html + dataTimesheet[i].date + " - " + dataTimesheet[i].hours;
+
+        }
+
+             timesheet.innerHTML= html;
+
+
     }
 
     </script>
