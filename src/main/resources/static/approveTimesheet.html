@@ -3,6 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <title>Accordering urenformulier</title>
+    <script>
+        function makeTimesheetVisible(){
+            document.getElementById("timesheet").hidden = false;
+        }
+    </script>
 </head>
 <body>
 <h1>Welkom {gebruikersnaam}</h1>
@@ -12,7 +17,7 @@
     <li>uren juli Kalim Sa...</li>
     <li>uren juli Maartje Schutte</li>
 </ul>
-<p>wanneer er op een knop gedrukt is, dan wordt dit werkbriefje hier getoond.</p>
+<p id="timesheet" hidden="true">wanneer er op een knop gedrukt is, dan wordt dit werkbriefje hier getoond.</p>
 <p>akkoord/niet akkoord</p>
 </body>
 </html>
