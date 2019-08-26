@@ -49,3 +49,6 @@ function doorverwijzen(){
 function doorverwijzenHTML(){
     window.location.assign("./legePagina.html");
 }
+function methode(){
+    window.location.assign("./UrenDeclaratieFormulier.html");
+}
