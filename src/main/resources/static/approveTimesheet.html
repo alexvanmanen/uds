@@ -4,8 +4,39 @@
     <meta charset="UTF-8">
     <title>Accordering urenformulier</title>
     <script>
-        function makeTimesheetVisible(){
-            document.getElementById("timesheet").hidden = false;
+        function makeTimesheetVisible(user){
+            var timesheet = document.getElementById("timesheet");
+            timesheet.hidden = false;
+            var dataTimesheet = [];
+            if(user == "kalim"){
+                dataTimesheet = [
+                    {"date":new Date("2019-07-8"),"hours":4},
+                    {"date":new Date("2019-07-9"),"hours":4},
+                    {"date":new Date("2019-07-13"),"hours":8},
+                    {"date":new Date("2019-07-14"),"hours":8}
+                ];
+            } else if(user == "ben"){
+                dataTimesheet = [
+                    {"date": new Date("2019-07-08"), "hours": 8},
+                    {"date": new Date("2019-07-09"), "hours": 8},
+
+
+                ];
+            } else if(user == "maartje"){
+                dataTimesheet = [
+                    {"date": new Date("2019-07-08"), "hours": 6},
+                    {"date": new Date("2019-07-09"), "hours": 6},
+
+                    {"date": new Date("2019-08-13"), "hours": 7}
+                    ];
+
+            }
+            var html="";
+            for( var i = 0; i<dataTimesheet.length; i++){
+                html = html + dataTimesheet[i].date + " - " +  dataTimesheet[i].hours;
+            }
+
+            timesheet.innerHTML=html;
         }
     </script>
 </head>
@@ -13,11 +44,15 @@
 <h1>Welkom {gebruikersnaam}</h1>
 <h2>Taken om te accorderen:</h2>
 <ul>
-    <li>uren juli Ben Vosse</li>
-    <li>uren juli Kalim Sa...</li>
-    <li>uren juli Maartje Schutte</li>
+    <li onclick="makeTimesheetVisible('ben')" style="text-decoration: underline">uren juli Ben Vosse</li>
+    <li onclick="makeTimesheetVisible('kalim')">uren juli Kalim Sa...</li>
+    <li onclick="makeTimesheetVisible('maartje')">uren juli Maartje Schutte</li>
 </ul>
-<p id="timesheet" hidden="true">wanneer er op een knop gedrukt is, dan wordt dit werkbriefje hier getoond.</p>
+<p id="timesheet" hidden="true">wanneer er op een knop gedrukt is, dan wordt dit werkbriefje hier getoond.
+    <br> - Ben heeft op 8 en 9 juli 8 uur gewerkt
+    <br> - Kalim heeft op 8 en 9 juli allebei 4 uur gewerkt en op 13 en 14 augustus 8 uur.
+    <br> - Maartje heeft op 8 en 9 juli allebei 6 uur gewerkt en op 13 augustus 7 uur.
+</p>
 <p>akkoord/niet akkoord</p>
 </body>
 </html>
