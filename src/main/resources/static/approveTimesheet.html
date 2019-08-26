@@ -4,11 +4,20 @@
     <meta charset="UTF-8">
     <title>Accordering urenformulier</title>
     <script> function makeTimesheetVisible(user) {
-        var timesheet = document.getElementById("timesheet")
+        var timesheet = document.getElementById("timesheet");
         timesheet.hidden = false;
-        if (user == "kalim") {
-            timesheet.innerHTML = " Kalim heeft op 8 en 9 juli 4 uur gewerkt"
+        var dataTimesheet = [];
+
+        if(user == "kalim"){
+            dataTimesheet = [
+                {"date":new Date("2019-07-8"),"hours":4},
+                {"date":new Date("2019-07-9"),"hours":4},
+                {"date":new Date("2019-07-13"),"hours":8},
+                {"date":new Date("2019-07-14"),"hours":8}
+            ];
         }
+        timesheet.innerHTML = dataTimesheet[0].date + " - " + dataTimesheet[0].hours;
+    
         if (user == "ben") {
             timesheet.innerHTML = " Ben heeft op 8 en 9 juli 8 uur gewerkt"
         }
@@ -17,13 +26,13 @@
     </script>
 
 </head>
-<body>
+<body style="background-color:powderblue;">
 <h1> Welkom {gebruikersnaam} </h1>
 
 <h2>openstaande taken die nog geaccordeerd moeten worden </h2>
 <ul>
-          <li onclick= " makeTimesheetVisible('ben')" style = "text-decoration: underline"> uren maand Ben  </li>
-          <li onclick= " makeTimesheetVisible('kalim')" style = "text-decoration: underline"> uren maand Kalim  </li>
+          <li onclick= " makeTimesheetVisible('ben')" onMouseOver="this.style.color='#4afaff'"onMouseOut="this.style.color='rgba(0,0,7,0.98)'"  style = "text-decoration: underline"> uren maand Ben  </li>
+          <li onclick= " makeTimesheetVisible('kalim')" onMouseOver="this.style.color='#4afaff'"onMouseOut="this.style.color='rgba(0,0,7,0.98)'" style = "text-decoration: underline"> uren maand Kalim  </li>
   </ul>
 
 Akkoord / Niet Akkoord
