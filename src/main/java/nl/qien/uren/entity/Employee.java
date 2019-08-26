@@ -3,7 +3,7 @@ package nl.qien.uren.entity;
 import javax.persistence.*;
 
 @Entity
-public class EmployeeEEE {
+public class Employee {
     @Id
     @GeneratedValue(strategy=GenerationType.AUTO)
     private Long id;
