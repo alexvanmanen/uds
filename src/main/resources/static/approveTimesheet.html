@@ -16,11 +16,20 @@
                 {"date":new Date("2019-07-14"),"hours":8}
             ];
         }
-        timesheet.innerHTML = dataTimesheet[0].date + " - " + dataTimesheet[0].hours;
-    
+
+
         if (user == "ben") {
             timesheet.innerHTML = " Ben heeft op 8 en 9 juli 8 uur gewerkt"
+            dataTimesheet = [
+                {"date":new Date("2019-07-8"),"hours":8},
+                {"date":new Date("2019-07-9"),"hours":9}
+            ];
         }
+
+        if (user == "maartje") {
+            timesheet.innerHTML = " Maartje heeft op 8 en 9 juli 8 uur gewerkt"
+        }
+        timesheet.innerHTML = dataTimesheet[0].date + " - " + dataTimesheet[0].hours;
     }
 
     </script>
@@ -33,6 +42,7 @@
 <ul>
           <li onclick= " makeTimesheetVisible('ben')" onMouseOver="this.style.color='#4afaff'"onMouseOut="this.style.color='rgba(0,0,7,0.98)'"  style = "text-decoration: underline"> uren maand Ben  </li>
           <li onclick= " makeTimesheetVisible('kalim')" onMouseOver="this.style.color='#4afaff'"onMouseOut="this.style.color='rgba(0,0,7,0.98)'" style = "text-decoration: underline"> uren maand Kalim  </li>
+          <li onclick= " makeTimesheetVisible('maartje')" onMouseOver="this.style.color='#4afaff'"onMouseOut="this.style.color='rgba(0,0,7,0.98)'" style = "text-decoration: underline"> uren maand Maartje  </li>
   </ul>
 
 Akkoord / Niet Akkoord
