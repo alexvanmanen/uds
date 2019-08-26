@@ -9,19 +9,25 @@
         function makeTimesheetVisible(user){
             var timesheet = document.getElementById("timesheet");
             timesheet.hidden = false;
-            var dataTimesheet = [];
+            var json = [];
 
             if(user == "kalim"){
-                dataTimesheet = [
+                json = [
                     {"date":new Date("2019-07-8"),"hours":4},
                     {"date":new Date("2019-07-9"),"hours":4},
                     {"date":new Date("2019-07-13"),"hours":8},
                     {"date":new Date("2019-07-14"),"hours":8}
                 ];
+            } else if(user == "maartje"){
+
             }
 
+            var html = "";
+            for(var i=0; i < json.length; i++){
+                html = html + json[i].date + " - " + json[i].hours + " uren</br>";
+            }
 
-            timesheet.innerHTML = dataTimesheet[0].date + " - " + dataTimesheet[0].hours;
+            timesheet.innerHTML = html;
         }
     </script>
 </head>
