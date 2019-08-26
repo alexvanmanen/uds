@@ -1,6 +1,7 @@
 package nl.qien.uren.entity;
 
 import javax.persistence.*;
+import java.time.LocalDate;
 
 @Entity
 public class UrenRegistratie {
@@ -9,4 +10,5 @@ public class UrenRegistratie {
     private Long employeeId;
     private Long projectId;
     private Long aantalUren;
+    private LocalDate datum;
 }
