@@ -1,6 +1,7 @@
 package nl.qien.uren.controller;
 
 import java.time.LocalDate;
+import java.time.Month;
 
 public class UrenRegistratie {
     private Long employeeId;
@@ -14,6 +15,11 @@ public class UrenRegistratie {
         this.aantalUren = aantalUren;
         this.datum = LocalDate.parse(datum);
 
+    }
+    public static int daysInMonth(int year, int month ) {
+        LocalDate date = LocalDate.of(year, month, 01);
+        int a = date.lengthOfMonth();
+        return a;
     }
 
     public Long getEmployeeId(){

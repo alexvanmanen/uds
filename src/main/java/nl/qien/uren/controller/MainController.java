@@ -50,7 +50,11 @@ public class MainController {
     public List<User> findAlluser() {
         return userRepository.findAll();
     }
-
+    @GetMapping("/getmonthdays/{year}/{month}")
+    public int getDaysInMonth(@PathVariable int year, @PathVariable int month) {
+        int uren = UrenRegistratie.daysInMonth(year, month);
+        return uren;
+    }
     @GetMapping("/checkPassword/{email}/{password}")
     @ResponseBody
     public boolean checkPassword(@PathVariable String email, @PathVariable String password) {
