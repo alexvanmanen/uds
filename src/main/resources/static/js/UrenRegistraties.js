@@ -54,12 +54,15 @@ function methode(){
 }
 
 function buildTable(maand){
-    var tabel= "<th>maand</th>";
+    var tabel= "<th>" + maand + "</th>";
     if(maand == "januari"){
         //alert("hoi");
         for( var i = 1 ; i < 32 ; i++){
-        tabel += "<tr><td>" + i + " " + maand + "</td><td><input type='number'></td></tr>"
+        tabel += "<tr><td>" + i + " " + maand + "</td><td><input class='MAAND' type='number'></td></tr>"
         }
+        tabel+="<tr><td><input id='TOTAAL'>totaal</td></tr>";
         document.getElementById("tabel").innerHTML = tabel;
     }
+
+
 }
