@@ -3,17 +3,55 @@
 <head>
     <meta charset="UTF-8">
     <title>Accodering urenformulier</title>
+    <script>
+        var timeSheetData = { dates: {
+
+            }}
+        function makeTimesheetVisible(){
+            document.getElementById("timesheet").hidden=false
+        }
+
+        function makeTimesheetVisible(user){
+            if (user=="ben"){
+                document.getElementById("ben").hidden= false;
+                dataTimesheet = [
+                    {"date":new Date("2019-07-8"),"hours":4},
+                    {"date":new Date("2019-07-9"),"hours":4},
+                    {"date":new Date("2019-07-13"),"hours":8},
+                    {"date":new Date("2019-07-14"),"hours":8}
+                ];
+                for(i = 0 ; i < dataTimesheet.length; i++){
+                    document.getElementById("ben").innerHTML+=dataTimesheet[i]['date'] + dataTimesheet[i].hours +"<br>";
+                }
+
+
+            }
+            if (user=="kalim"){
+                document.getElementById("kalim").hidden= false;
+
+            }
+            if (user=="maartje"){
+                document.getElementById("maartje").hidden= false;
+
+            }
+
+        }
+    </script>
 </head>
 <body>
     <h1>Welkom {gebruikersnaam}</h1><br>
+<ul>
+    <h2>taken om te accoderen</h2>
+    <li style="text-decoration:underline"><a onclick="makeTimesheetVisible('ben')">- Ben heeft op 8 en 9 juli 8 uur gewerkt</a></li>
+    <li style="text-decoration:underline"><a onclick="makeTimesheetVisible('kalim')">- Kalim heeft op 8 en 9 juli allebei 4 uur gewerkt en op 13 en 14 augustus 8 uur.</a></li>
+    <li style="text-decoration:underline"><a onclick="makeTimesheetVisible('maartje')"> - Maartje heeft op 8 en 9 juli allebei 6 uur gewerkt en op 13 augustus 7 uur. </a></li>
+</ul>
 
-    taken om te accoderen<br>
-        - uren juli Ben Vosse<br>
-        - uren juli Kalim Sa<br>
-        - uren Maartje Schutte<br>
+    <p id="timesheet" hidden="true">wanneer er op een taak gedrukt is, dan wordt dit werkbriefje hier getoond.</p>
+    <p id="ben" hidden="true"> Ben heeft gewerkt.</p>
+    <p id="kalim" hidden="true"> Kalim heeft gewerkt.</p>
+    <p id="maartje" hidden="true"> Maartje heeft gewerkt.</p>
 
-    wanneer er op een taak gedrukt is, dan wordt dit werkbriefje hier getoond.<br>
-
-    Akkoord / niet Akkoord<br>
+    <p>Akkoord / niet Akkoord</p>
 </body>
 </html>
