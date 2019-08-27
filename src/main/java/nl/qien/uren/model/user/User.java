@@ -1,38 +1,40 @@
 package nl.qien.uren.model.user;
 
-import java.util.*;
-
 public class User {
     private Long id;
-    private String firstName;
-    private String lastName;
+    private String firstname;
+    private String lastname;
     private boolean active;
-    private String emailAdress;
+    private String emailadress;
     private String password;
     private String adress;
 
-    public User(Long id, String firstName, String lastName, boolean active, String emailAdress, String password, String adress) {
-        this.emailAdress = emailAdress;
+    public User(Long id, String firstname, String lastname, boolean active, String emailadress, String password, String adress) {
+        this.emailadress = emailadress;
         this.password = password;
         this.id = id;
+        this.active = active;
+        this.firstname = firstname;
+        this.lastname = lastname;
+        this.adress = adress;
     }
 
     User() { }
 
-    public String getFirstName() {
-        return firstName;
+    public String getFirstname() {
+        return firstname;
     }
 
-    public void setFirstName(String firstName) {
-        this.firstName = firstName;
+    public void setFirstname(String firstname) {
+        this.firstname = firstname;
     }
 
-    public String getLastName() {
-        return lastName;
+    public String getLastname() {
+        return lastname;
     }
 
-    public void setLastName(String lastName) {
-        this.lastName = lastName;
+    public void setLastname(String lastname) {
+        this.lastname = lastname;
     }
 
     public boolean getActive() {
@@ -49,12 +51,12 @@ public class User {
 
     public Long getId(){return id;}
 
-    public String getEmailAdress() {
-        return emailAdress;
+    public String getEmailadress() {
+        return emailadress;
     }
 
-    public void setEmailAdress(String emailAdress) {
-        this.emailAdress = emailAdress;
+    public void setEmailadress(String emailadress) {
+        this.emailadress = emailadress;
     }
 
     public String getPassword() {

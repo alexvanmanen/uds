@@ -80,7 +80,8 @@ public class MainController {
     @ResponseBody
     public User register(@RequestBody User user){
         long id = userRepository.getMaxId();
-        User newUser = new User(id, user.getFirstName(), user.getLastName(), true, user.getEmailAdress(),"Welkom01", null);
+        System.out.println("firstname = " + user.getFirstname());
+        User newUser = new User(id, user.getFirstname(), user.getLastname(), true, user.getEmailadress(),"Welkom01", null);
         userRepository.save(newUser);
         return newUser;
     }

@@ -21,7 +21,7 @@ public class JDBCUserRepository implements UserRepository {
 
     @Override
     public int save(User user){
-        return jdbcTemplate.update("insert into User(ID, emailadress, password) values(?,?,?)", user.getId(), user.getEmailAdress(), user.getPassword());
+        return jdbcTemplate.update("insert into User(ID, emailadress, password, active, firstname, lastname, adress) values(?,?,?,?,?,?,?)", user.getId(), user.getEmailadress(), user.getPassword(), user.getActive(),user.getFirstname(), user.getLastname(), user.getAdress());
 
     }
 
@@ -32,11 +32,11 @@ public class JDBCUserRepository implements UserRepository {
                 (rs, rowNum) ->
                         new User(
                                 rs.getLong("id"),
-                                rs.getString("firstName"),
-                                rs.getString("lastName"),
+                                rs.getString("firstname"),
+                                rs.getString("lastname"),
                                 rs.getBoolean("active"),
                                 rs.getString("password"),
-                                rs.getString("email"),
+                                rs.getString("emailadress"),
                                 rs.getString("adress")
                         )
         );
