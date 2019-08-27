@@ -77,12 +77,6 @@ public class MainController {
     public int registerHours() {
         return urenRegistratieRepository.count();
     }
-    @GetMapping("/sendmail")
-    public boolean SendMail() {
-        SendMail sendmail = new SendMail();
-        sendmail.sendMail();
-        return true;
-    }
 
     @PostMapping("/createuser")
     @ResponseBody
@@ -91,6 +85,13 @@ public class MainController {
         User newUser = new User(id, user.getFirstname(), user.getLastname(), true, user.getEmailadress(), RandomStringUtils.randomNumeric(8), null, null, null, null, 0000000000, null, true);
         userRepository.save(newUser);
         return newUser;
+    }
+    @PostMapping("/sendmail")
+    @ResponseBody
+    public boolean sendMail(@RequestBody SendMail email){
+        SendMail newEmail = new SendMail(email.getReceiver(), email.getSubject(), email.getMessage());
+        newEmail.sendMail(email.getReceiver(), email.getSubject(), email.getMessage());
+        return true;
     }
 
 
