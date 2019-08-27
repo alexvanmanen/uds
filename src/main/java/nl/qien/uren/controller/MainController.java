@@ -33,18 +33,9 @@ public class MainController {
     @Qualifier("JDBCUrenRegistratieRepository")
     private UrenRegistratieRepository urenRegistratieRepository;
 
-    @GetMapping("/rulezz/{name}")
-    public String kalim(@PathVariable String name){
-        return "<H1>DIT IS ECHT TOP</H1> <font color='red'>"+name +" rulezzz</font>";
-    }
-
     @GetMapping("/employees")
     public List<Employee> findAll() {
         return employeeRepository.findAll();
-//        Employee employee = new Employee(new Long(1),"Alex", "van Manen");
-//        List<Employee> employees = new ArrayList<>();
-//        employees.add(employee);
-//        return employees;
     }
     @GetMapping("/users")
     public List<User> findAlluser() {
@@ -59,23 +50,8 @@ public class MainController {
     @ResponseBody
     public boolean checkPassword(@PathVariable String email, @PathVariable String password) {
         return userRepository.validateUser(email, password);
-//        List<User> users = getUsers();
-//        for (User a : users) {
-//            if(email.equals(a.getEmailAdress()) && password.equals(a.getPassword())){
-//                return true;
-//            }
-//        }
-//        return false;
     }
-//
-//    private List<User> getUsers() {
-//        List<User> users = new ArrayList<>();
-//        users.add(new User(1,"hallo@hallo.com", "hallo"));
-//        users.add(new User(2, "kalim@hallo.com", "hoi"));
-//        return users;
-//
-//
-//    }
+
     @GetMapping("/count")
     public int getNumberOfEmployees(){
         return employeeRepository.count()+1;
@@ -99,18 +75,12 @@ public class MainController {
     }
 
 
-
-//    @GetMapping("/employee/{id}")
-//    public Optional<Employee> getEmployee(@PathVariable Long id){
-//        return employeeRepository.findById(id);
-//    }
-
-//    @GetMapping("/createuser/{email}/{password}")
-//    @ResponseBody
-//    public User register(String email, String password){
-//        User user = new User(email,password);
-//
-//        return user;
-//    }
-
+    @GetMapping("/createuser/{email}/{password}")
+    @ResponseBody
+    public User register(String email, String password){
+        long id = userRepository.getMaxId();
+        User user = new User(id, email,password);
+        userRepository.save(user);
+        return user;
+    }
 }

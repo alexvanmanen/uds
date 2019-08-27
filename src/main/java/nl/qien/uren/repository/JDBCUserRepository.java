@@ -45,4 +45,10 @@ public class JDBCUserRepository implements UserRepository {
         int count = jdbcTemplate.queryForObject(sqlQuery, arrayWithParameters, Integer.class);
         return count == 1 ? true: false;
     }
+
+    @Override
+    public Long getMaxId(){
+        return jdbcTemplate
+                .queryForObject("select max(id) from User", Long.class);
+    }
 }
