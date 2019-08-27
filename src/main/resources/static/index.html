@@ -3,75 +3,41 @@
     <head>
         <script>
 
-            function ajax_get(url, callback) {
-                var xmlhttp = new XMLHttpRequest();
-                xmlhttp.onreadystatechange = function() {
-                    if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
-                        console.log('responseText:' + xmlhttp.responseText);
-                        try {
-                            var data = JSON.parse(xmlhttp.responseText);
-                        } catch(err) {
-                            console.log(err.message + " in " + xmlhttp.responseText);
-                            return;
-                        }
-                        callback(data);
-                    }
-                };
-
-                xmlhttp.open("GET", url, true);
-                xmlhttp.send();
-            }
-
-            function getEmployees() {
-                ajax_get('/uren/api/v1/employees', function(data) {
-
-                    var tableContent = "<tr><th>First name</th><th>Last name</th></tr>";
-                    for(i=0;i<data.length; i++){
-                        tableContent = tableContent + "<tr><td>"+ data[i]['firstName'] + "</td><td>"+ data[i]['lastName'] + "</td>";
-                    }
-                    document.getElementById("ajax").innerHTML = tableContent;
-
-                });
-            }
-
-            function createUser() {
-                var xmlhttp = new XMLHttpRequest();
-                xmlhttp.open("POST","/uren/api/v1/createuser");
-                var xmlDoc;
-                xmlhttp.onreadystatechange = function() {
-                    if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
-                        xmlDoc = xmlhttp.responseXML;
-                        console.log(xmlDoc);
-                    }
-                };
-                xmlhttp.setRequestHeader('Content-Type', 'application/json');
-                var xml = JSON.stringify({
-                    "emailAdress": "test3@test.nl",
-                    "password": "test3",
-                    "id": null
-                    });
-                xmlhttp.send(xml);
-            }
-
-
-            function sendData() {
-                $.ajax({
-                    url: '/uren/api/v1/createuser',
-                    type: 'POST',
-                    contentType: 'application/json',
-                    data: JSON.stringify({
-                        "emailAdress": "test2@test.nl",
-                        "password": "test2",
-                        "id": null
-                    }),
-                    dataType: 'json'
-                });
-            }
-
-
+//            function ajax_get(url, callback) {
+//                var xmlhttp = new XMLHttpRequest();
+//                xmlhttp.onreadystatechange = function() {
+//                    if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+//                        console.log('responseText:' + xmlhttp.responseText);
+//                        try {
+//                            var data = JSON.parse(xmlhttp.responseText);
+//                        } catch(err) {
+//                            console.log(err.message + " in " + xmlhttp.responseText);
+//                            return;
+//                        }
+//                        callback(data);
+//                    }
+//                };
+//
+//                xmlhttp.open("GET", url, true);
+//                xmlhttp.send();
+//            }
+//
+//            function getEmployees() {
+//                ajax_get('/uren/api/v1/employees', function(data) {
+//
+//                    var tableContent = "<tr><th>First name</th><th>Last name</th></tr>";
+//                    for(i=0;i<data.length; i++){
+//                        tableContent = tableContent + "<tr><td>"+ data[i]['firstName'] + "</td><td>"+ data[i]['lastName'] + "</td>";
+//                    }
+//                    document.getElementById("ajax").innerHTML = tableContent;
+//
+//                });
+//            }
+//
 
 
         </script>
+        <script src=js/script.js></script>
     </head>
 <body>
 <button onclick="getEmployees()">get Employee via ajax-call</button>

@@ -89,16 +89,31 @@ function getUsers() {
     });
 }
 
-function sendData() {
-    $.ajax({
-        url: 'http://localhost:8080/uren/api/v1/employees',
-        type: 'POST',
-        contentType: 'application/json',
-        data: JSON.stringify({
-            firstName: "Bob",
-            lastName: "Martin",
-            emailId: "test@test.nl"
-        }),
-        dataType: 'json'
-    });
+function createUserExample(){
+
+    createUser("test3@test.nl", "test3");
+}
+
+function createUser(email, password){
+    var object = {
+        "emailAdress": email,
+        "password": password,
+        "id": null
+    };
+    var json = JSON.stringify(object);
+    apiPostRequest("/uren/api/v1/createuser", json);
+}
+
+function apiPostRequest(url, json) {
+    var xmlhttp = new XMLHttpRequest();
+    xmlhttp.open("POST",url);
+    var xmlDoc;
+    xmlhttp.onreadystatechange = function() {
+        if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+            xmlDoc = xmlhttp.responseXML;
+            console.log(xmlDoc);
+        }
+    };
+    xmlhttp.setRequestHeader('Content-Type', 'application/json');
+    xmlhttp.send(json);
 }
