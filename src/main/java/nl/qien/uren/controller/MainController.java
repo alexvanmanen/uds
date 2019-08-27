@@ -83,4 +83,13 @@ public class MainController {
         userRepository.save(user);
         return user;
     }
+
+    @PostMapping("/createuser")
+    @ResponseBody
+    public User register(@RequestBody User user){
+        long id = userRepository.getMaxId();
+        User newUser = new User(id, user.getEmailAdress(),user.getPassword());
+        userRepository.save(newUser);
+        return user;
+    }
 }
