@@ -77,7 +77,7 @@ public class MainController {
 
     @GetMapping("/createuser/{email}/{password}")
     @ResponseBody
-    public User register(String email, String password){
+    public User register(@PathVariable String email, @PathVariable String password){
         long id = userRepository.getMaxId();
         User user = new User(id, email,password);
         userRepository.save(user);
