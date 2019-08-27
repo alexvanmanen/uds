@@ -20,7 +20,7 @@ public class SendMail {
         this.subject = subject;
         this.message = message;
     }
-    public void sendMail(String receiver, String subject, String message) {
+    public boolean sendMail(String receiver, String subject, String message) {
         //Setting up configurations for the email connection to the Google SMTP server using TLS
         Properties props = new Properties();
         props.put("mail.smtp.host", "true");
@@ -51,9 +51,9 @@ public class SendMail {
             msg.setText(message);
             msg.setHeader("XPriority", "1");
             Transport.send(msg);
-            System.out.println("Mail has been sent successfully");
+            return true;
         } catch (MessagingException mex) {
-            System.out.println("Unable to send an email" + mex);
+            return false;
         }
     }
 

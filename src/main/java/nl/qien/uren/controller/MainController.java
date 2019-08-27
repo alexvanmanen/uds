@@ -90,8 +90,8 @@ public class MainController {
     @ResponseBody
     public boolean sendMail(@RequestBody SendMail email){
         SendMail newEmail = new SendMail(email.getReceiver(), email.getSubject(), email.getMessage());
-        newEmail.sendMail(email.getReceiver(), email.getSubject(), email.getMessage());
-        return true;
+        boolean verstuurd = newEmail.sendMail(email.getReceiver(), email.getSubject(), email.getMessage());
+        return verstuurd;
     }
 
 
