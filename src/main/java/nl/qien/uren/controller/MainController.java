@@ -1,7 +1,6 @@
 package nl.qien.uren.controller;
 
 import nl.qien.uren.repository.EmployeeRepository;
-import nl.qien.uren.repository.JDBCUserRepository;
 import nl.qien.uren.repository.UserRepository;
 import nl.qien.uren.repository.UrenRegistratieRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,9 +8,7 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
 
 
 @CrossOrigin(origins = "http://localhost:4200")
@@ -37,10 +34,12 @@ public class MainController {
     public List<Employee> findAll() {
         return employeeRepository.findAll();
     }
+
     @GetMapping("/users")
     public List<User> findAlluser() {
         return userRepository.findAll();
     }
+
     @GetMapping("/getmonthdays/{year}/{month}")
     public int getDaysInMonth(@PathVariable int year, @PathVariable int month) {
         int uren = UrenRegistratie.daysInMonth(year, month);
@@ -65,7 +64,7 @@ public class MainController {
 
     @GetMapping("/urenRegistratie/{employeeId}/{projectId}/{aantalUren}/{datum}")
     public int registerHours(@PathVariable Long employeeId, @PathVariable Long projectId, @PathVariable Long aantalUren, @PathVariable String datum){
-        return urenRegistratieRepository.save(new UrenRegistratie(employeeId, projectId,aantalUren,datum));
+        return urenRegistratieRepository.save(new UrenRegistratie(employeeId, projectId,aantalUren,datum, new WerkType("gewerkt")));
 
     }
 
@@ -90,6 +89,14 @@ public class MainController {
         long id = userRepository.getMaxId();
         User newUser = new User(id, user.getEmailAdress(),user.getPassword());
         userRepository.save(newUser);
-        return user;
+        return newUser;
+    }
+
+
+    @GetMapping("getTimeSheet/{employeeId}")
+    public UrenRegistratie getTimesheet(@PathVariable Integer employeeId){
+        UrenRegistratie urenRegistratie = new UrenRegistratie(1,3,0, "1928-01-01", new WerkType("verlof"));
+        return urenRegistratie;
+
     }
 }
