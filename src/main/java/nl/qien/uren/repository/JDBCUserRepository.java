@@ -21,7 +21,7 @@ public class JDBCUserRepository implements UserRepository {
 
     @Override
     public int save(User user){
-        return jdbcTemplate.update("insert into User(ID, email, password) values(?,?,?)", user.getId(), user.getEmailAdress(), user.getPassword());
+        return jdbcTemplate.update("insert into User(ID, emailadress, password, active, firstname, lastname, adress) values(?,?,?,?,?,?,?)", user.getId(), user.getEmailadress(), user.getPassword(), user.getActive(),user.getFirstname(), user.getLastname(), user.getAdress());
 
     }
 
@@ -32,15 +32,19 @@ public class JDBCUserRepository implements UserRepository {
                 (rs, rowNum) ->
                         new User(
                                 rs.getLong("id"),
-                                rs.getString("email"),
-                                rs.getString("password")
+                                rs.getString("firstname"),
+                                rs.getString("lastname"),
+                                rs.getBoolean("active"),
+                                rs.getString("password"),
+                                rs.getString("emailadress"),
+                                rs.getString("adress")
                         )
         );
     }
 
     @Override
     public Boolean validateUser(String email, String password) {
-        String sqlQuery = "select count(*) from User where email=? and password=?";
+        String sqlQuery = "select count(*) from User where emailadress=? and password=?";
         Object[] arrayWithParameters = {email, password};
         int count = jdbcTemplate.queryForObject(sqlQuery, arrayWithParameters, Integer.class);
         return count == 1 ? true: false;

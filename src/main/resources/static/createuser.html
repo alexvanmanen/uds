@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="nl">
 <head>
     <meta charset="UTF-8">
     <title>Qien admin</title>
@@ -32,9 +32,11 @@
 </ul>
 <h2>Personeel toevoegen</h2>
 <div id="test"></div><table id="ajax"></table><form action="" name="createuserform">
-    Email: <input id="email" type="text" name="email"><br>
-    Password: <input id="password" type="password" name="password"><br>
-    <input type="submit" onclick="addUser();" value="Submit">
+    Voornaam: <input id="firstname" type="text" name="firstname"required><br>
+    Achternaam: <input id="lastname" type="text" name="lastname"required><br>
+    Email: <input id="email" type="text" name="email"required><br>
+    Email bevestigen: <input id="email1" type="text" name="email1" required><br>
+    <input type="submit" onclick="createUserExample();" value="Submit">
 </form>
 </body>
 </html>

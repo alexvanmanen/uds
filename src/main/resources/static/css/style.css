@@ -64,3 +64,17 @@ th, td {
 }
 
 tr:hover {background-color:#f5f5f5;}
+
+h2{ color:#A34AFE;
+    text-align:center;
+    font-size:200%
+}
+
+form {
+    text-align:center;
+}
+
+p {
+    color:purple;
+    text-align:center
+}

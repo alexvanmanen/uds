@@ -6,6 +6,7 @@ import nl.qien.uren.model.user.User;
 import nl.qien.uren.repository.EmployeeRepository;
 import nl.qien.uren.repository.UserRepository;
 import nl.qien.uren.repository.UrenRegistratieRepository;
+import org.apache.commons.lang3.RandomStringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.jdbc.core.JdbcTemplate;
@@ -76,21 +77,11 @@ public class MainController {
         return urenRegistratieRepository.count();
     }
 
-
-    @GetMapping("/createuser/{email}/{password}")
-    @ResponseBody
-    public User register(@PathVariable String email, @PathVariable String password){
-        long id = userRepository.getMaxId();
-        User user = new User(id, email,password);
-        userRepository.save(user);
-        return user;
-    }
-
     @PostMapping("/createuser")
     @ResponseBody
     public User register(@RequestBody User user){
         long id = userRepository.getMaxId();
-        User newUser = new User(id, user.getEmailAdress(),user.getPassword());
+        User newUser = new User(id, user.getFirstname(), user.getLastname(), true, user.getEmailadress(), RandomStringUtils.randomNumeric(8), null);
         userRepository.save(newUser);
         return newUser;
     }
