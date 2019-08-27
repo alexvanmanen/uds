@@ -14,7 +14,6 @@ public interface EmployeeRepository {
 
     List<Employee> findAll();
 
-    Integer findById(Long id);
 
 
 /*

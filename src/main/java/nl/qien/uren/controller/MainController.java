@@ -1,7 +1,6 @@
 package nl.qien.uren.controller;
 
 import nl.qien.uren.repository.EmployeeRepository;
-import nl.qien.uren.repository.JDBCUserRepository;
 import nl.qien.uren.repository.UserRepository;
 import nl.qien.uren.repository.UrenRegistratieRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,9 +8,7 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
 
 
 @CrossOrigin(origins = "http://localhost:4200")
@@ -33,45 +30,27 @@ public class MainController {
     @Qualifier("JDBCUrenRegistratieRepository")
     private UrenRegistratieRepository urenRegistratieRepository;
 
-    @GetMapping("/rulezz/{name}")
-    public String kalim(@PathVariable String name){
-        return "<H1>DIT IS ECHT TOP</H1> <font color='red'>"+name +" rulezzz</font>";
-    }
-
     @GetMapping("/employees")
     public List<Employee> findAll() {
         return employeeRepository.findAll();
-//        Employee employee = new Employee(new Long(1),"Alex", "van Manen");
-//        List<Employee> employees = new ArrayList<>();
-//        employees.add(employee);
-//        return employees;
     }
+
     @GetMapping("/users")
     public List<User> findAlluser() {
         return userRepository.findAll();
     }
 
+    @GetMapping("/getmonthdays/{year}/{month}")
+    public int getDaysInMonth(@PathVariable int year, @PathVariable int month) {
+        int uren = UrenRegistratie.daysInMonth(year, month);
+        return uren;
+    }
     @GetMapping("/checkPassword/{email}/{password}")
     @ResponseBody
     public boolean checkPassword(@PathVariable String email, @PathVariable String password) {
         return userRepository.validateUser(email, password);
-//        List<User> users = getUsers();
-//        for (User a : users) {
-//            if(email.equals(a.getEmailAdress()) && password.equals(a.getPassword())){
-//                return true;
-//            }
-//        }
-//        return false;
     }
-//
-//    private List<User> getUsers() {
-//        List<User> users = new ArrayList<>();
-//        users.add(new User(1,"hallo@hallo.com", "hallo"));
-//        users.add(new User(2, "kalim@hallo.com", "hoi"));
-//        return users;
-//
-//
-//    }
+
     @GetMapping("/count")
     public int getNumberOfEmployees(){
         return employeeRepository.count()+1;
@@ -85,7 +64,7 @@ public class MainController {
 
     @GetMapping("/urenRegistratie/{employeeId}/{projectId}/{aantalUren}/{datum}")
     public int registerHours(@PathVariable Long employeeId, @PathVariable Long projectId, @PathVariable Long aantalUren, @PathVariable String datum){
-        return urenRegistratieRepository.save(new UrenRegistratie(employeeId, projectId,aantalUren,datum));
+        return urenRegistratieRepository.save(new UrenRegistratie(employeeId, projectId,aantalUren,datum, new WerkType("gewerkt")));
 
     }
 
@@ -95,18 +74,29 @@ public class MainController {
     }
 
 
+    @GetMapping("/createuser/{email}/{password}")
+    @ResponseBody
+    public User register(@PathVariable String email, @PathVariable String password){
+        long id = userRepository.getMaxId();
+        User user = new User(id, email,password);
+        userRepository.save(user);
+        return user;
+    }
 
-//    @GetMapping("/employee/{id}")
-//    public Optional<Employee> getEmployee(@PathVariable Long id){
-//        return employeeRepository.findById(id);
-//    }
+    @PostMapping("/createuser")
+    @ResponseBody
+    public User register(@RequestBody User user){
+        long id = userRepository.getMaxId();
+        User newUser = new User(id, user.getEmailAdress(),user.getPassword());
+        userRepository.save(newUser);
+        return newUser;
+    }
 
-//    @GetMapping("/createuser/{email}/{password}")
-//    @ResponseBody
-//    public User register(String email, String password){
-//        User user = new User(email,password);
-//
-//        return user;
-//    }
 
+    @GetMapping("getTimeSheet/{employeeId}")
+    public UrenRegistratie getTimesheet(@PathVariable Integer employeeId){
+        UrenRegistratie urenRegistratie = new UrenRegistratie(1,3,0, "1928-01-01", new WerkType("verlof"));
+        return urenRegistratie;
+
+    }
 }

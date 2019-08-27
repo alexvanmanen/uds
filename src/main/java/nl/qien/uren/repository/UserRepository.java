@@ -12,4 +12,6 @@ public interface UserRepository {
     Boolean validateUser(String email, String password);
 
     List<User> findAll();
+
+    Long getMaxId();
 }
