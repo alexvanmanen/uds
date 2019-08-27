@@ -7,16 +7,31 @@ public class User {
     private boolean active;
     private String emailadress;
     private String password;
-    private String adress;
+    private String straat;
+    private String huisnummer;
+    private String postcode;
+    private String woonplaats;
+    private int telefoonnummer;
+    private String bankrekeningnr;
+    private boolean firstlogin;
 
-    public User(Long id, String firstname, String lastname, boolean active, String emailadress, String password, String adress) {
+
+    public User(Long id, String firstname, String lastname, boolean active, String emailadress, String password,
+                String straat, String huisnummer, String postcode, String woonplaats, int telefoonnummer, String bankrekeningnr, boolean firstlogin) {
         this.emailadress = emailadress;
         this.password = password;
         this.id = id;
         this.active = active;
         this.firstname = firstname;
         this.lastname = lastname;
-        this.adress = adress;
+        this.straat = straat;
+        this.huisnummer = huisnummer;
+        this.postcode = postcode;
+        this.woonplaats = woonplaats;
+        this.telefoonnummer = telefoonnummer;
+        this.bankrekeningnr = bankrekeningnr;
+        this.firstlogin = firstlogin;
+
     }
 
     User() { }
@@ -44,7 +59,6 @@ public class User {
     public void setActive(boolean active) {
         this.active = active;
     }
-
     public void setId(Long id){
         this.id = id;
     }
@@ -67,11 +81,52 @@ public class User {
         this.password = password;
     }
 
-    public String getAdress() {
-        return adress;
+    public String getStraat() { return straat; }
+
+    public void setStraat(String straat) {
+        this.straat = straat;
+    }
+    public String getHuisnummer() { return huisnummer; }
+
+    public void setHuisnummer(String huisnummer) {
+        this.huisnummer = huisnummer;
+    }
+    public String getPostcode() {
+        return postcode;
     }
 
-    public void setAdress(String adress) {
-        this.adress = adress;
+    public void setPostcode(String postcode) {
+        this.postcode = postcode;
+    }
+    public String getWoonplaats() {
+        return woonplaats;
+    }
+
+    public void setWoonplaats(String woonplaats) {
+        this.woonplaats = woonplaats;
+    }
+
+    public int getTelefoonnummer() {
+        return telefoonnummer;
+    }
+
+    public void setTelefoonnummer(int telefoonnummer) {
+        this.telefoonnummer = telefoonnummer;
+    }
+
+    public String getBankrekeningnr() {
+        return bankrekeningnr;
+    }
+
+    public void setBankrekeningnr(String bankrekeningnr) {
+        this.bankrekeningnr = bankrekeningnr;
+    }
+
+    public boolean getFirstlogin() {
+        return firstlogin;
+    }
+
+    public void setFirstlogin(boolean firstlogin) {
+        this.firstlogin = firstlogin;
     }
 }

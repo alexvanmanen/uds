@@ -13,5 +13,11 @@ public class User {
     private boolean active;
     private String emailadress;
     private String password;
-    private String adress;
+    private String straat;
+    private String huisnummer;
+    private String postcode;
+    private String woonplaats;
+    private int telefoonnummer;
+    private String bankrekeningnr;
+    private Boolean firstlogin;
 }

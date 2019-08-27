@@ -82,7 +82,7 @@ function getUsers() {
     ajax_get('/uren/api/v1/users', function (data) {
         var tableContent = "<tr><th>Email</th><th>Password</th></tr>";
         for (i = 0; i < data.length; i++) {
-            tableContent = tableContent + "<tr><td>" + data[i]['emailAdress'] + "</td><td>" + data[i]['password'] + "</td></tr>";
+            tableContent = tableContent + "<tr><td>" + data[i]['emailadress'] + "</td><td>" + data[i]['password'] + "</td></tr>";
         }
         document.getElementById("ajax").innerHTML = tableContent;
 
