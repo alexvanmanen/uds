@@ -32,8 +32,12 @@ public class JDBCUserRepository implements UserRepository {
                 (rs, rowNum) ->
                         new User(
                                 rs.getLong("id"),
+                                rs.getString("firstName"),
+                                rs.getString("lastName"),
+                                rs.getBoolean("active"),
+                                rs.getString("password"),
                                 rs.getString("email"),
-                                rs.getString("password")
+                                rs.getString("adress")
                         )
         );
     }
