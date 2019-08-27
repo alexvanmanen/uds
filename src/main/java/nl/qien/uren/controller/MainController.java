@@ -76,21 +76,11 @@ public class MainController {
         return urenRegistratieRepository.count();
     }
 
-
-    @GetMapping("/createuser/{email}/{password}")
-    @ResponseBody
-    public User register(@PathVariable String email, @PathVariable String password){
-        long id = userRepository.getMaxId();
-        User user = new User(id, email,password);
-        userRepository.save(user);
-        return user;
-    }
-
     @PostMapping("/createuser")
     @ResponseBody
     public User register(@RequestBody User user){
         long id = userRepository.getMaxId();
-        User newUser = new User(id, user.getEmailAdress(),user.getPassword());
+        User newUser = new User(id, user.getFirstName(), user.getLastName(), true, user.getEmailAdress(),"Welkom01", null);
         userRepository.save(newUser);
         return newUser;
     }

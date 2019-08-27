@@ -6,12 +6,12 @@ public class User {
     private Long id;
     private String firstName;
     private String lastName;
-    private String active;
+    private boolean active;
     private String emailAdress;
     private String password;
-    private String adres;
+    private String adress;
 
-    public User(Long id,String emailAdress, String password) {
+    public User(Long id, String firstName, String lastName, boolean active, String emailAdress, String password, String adress) {
         this.emailAdress = emailAdress;
         this.password = password;
         this.id = id;
@@ -35,11 +35,11 @@ public class User {
         this.lastName = lastName;
     }
 
-    public String getActive() {
+    public boolean getActive() {
         return active;
     }
 
-    public void setActive(String active) {
+    public void setActive(boolean active) {
         this.active = active;
     }
 
@@ -65,7 +65,11 @@ public class User {
         this.password = password;
     }
 
+    public String getAdress() {
+        return adress;
+    }
 
-
-
+    public void setAdress(String adress) {
+        this.adress = adress;
+    }
 }
