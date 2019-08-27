@@ -185,7 +185,10 @@
     </tr>
 </table>
 <br>
-<button id="btn" onclick="registreer()">Registreer Uren</button>
+<button id="btn" onclick="registreer()">Registreer Uren</button><br>
+<button id="knopper" onclick="ajax_get('http://localhost:8080/uren/api/v1//urenRegistratie/1/2/8/1993-09-19', function(data){ console.log(data); } )">knop</button>
+<button id="knopper2" onclick="postAjax('http://localhost:8080/uren/api/v1//urenRegistratie/1/2/8/1993-09-19', function(data){ console.log(data); } )">knop2</button>
+<button id="knopper3" onclick="sendData()">knop3</button>
 
 </body>
 </html>
