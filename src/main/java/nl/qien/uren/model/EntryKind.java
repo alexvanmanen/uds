@@ -1,4 +1,4 @@
-package nl.qien.uren.controller;
+package nl.qien.uren.model;
 
 public enum EntryKind {
     WORK,               //Werk

@@ -1,5 +1,6 @@
 package nl.qien.uren.controller;
 
+import nl.qien.uren.model.EntryKind;
 import nl.qien.uren.model.Project;
 import nl.qien.uren.model.Timesheet;
 import nl.qien.uren.model.user.Employee;

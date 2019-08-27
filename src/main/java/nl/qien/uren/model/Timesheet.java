@@ -1,6 +1,5 @@
 package nl.qien.uren.model;
 
-import nl.qien.uren.controller.EntryKind;
 import nl.qien.uren.model.user.Employee;
 
 import java.time.LocalDate;

@@ -1,7 +1,5 @@
 package nl.qien.uren.model;
 
-import nl.qien.uren.controller.EntryKind;
-
 import java.time.LocalDate;
 
 public class TimesheetEntry {
