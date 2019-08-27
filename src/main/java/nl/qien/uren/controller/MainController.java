@@ -65,7 +65,12 @@ public class MainController {
 
     }
 
-    @GetMapping("/urenRegistratie")
+    @GetMapping("/urencount")
+    public int getUrenCount() {
+        return urenRegistratieRepository.count();
+    }
+
+    @PostMapping("/urenRegistratie")
     @ResponseBody
     public int registerHours( @RequestBody UrenRegistratie urenregistratie) {
         return urenRegistratieRepository.save(urenregistratie);

@@ -9,18 +9,13 @@ function buildTable(maand){
         tabel+="<tr><td><input id='totaal'>totaal</td></tr>";
         document.getElementById("tabel").innerHTML = tabel;
     }
-
-
 }
-
-
-
 
 function Uren(){
     Registreer(1,1,8,"2019-09-19");
 }
 
-function Registreer(id, projectid, aantalUren,datum){
+function Registreer(id, projectid, aantalUren, datum){
     var object = {
         "id": id,
         "projectid": projectid,
@@ -43,4 +38,30 @@ function apiPostRequest(url, json) {
     };
     xmlhttp.setRequestHeader('Content-Type', 'application/json');
     xmlhttp.send(json);
+}
+
+function ajax_get(url, callback) {
+    var xmlhttp = new XMLHttpRequest();
+    xmlhttp.onreadystatechange = function () {
+        if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+            console.log('responseText:' + xmlhttp.responseText);
+            try {
+                var data = JSON.parse(xmlhttp.responseText);
+            } catch (err) {
+                console.log(err.message + " in " + xmlhttp.responseText);
+                return;
+            }
+            callback(data);
+        }
+    };
+    xmlhttp.open("GET", url, true);
+    xmlhttp.send();
+}
+
+function getUren(){
+    ajax_get("/uren/api/v1/urencount",function(data){
+        if (data == 0) {
+            alert("dit is mijn data: " + data);
+        }
+    });
 }
