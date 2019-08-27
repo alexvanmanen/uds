@@ -13,5 +13,5 @@ public interface UserRepository {
 
     List<User> findAll();
 
-    Long getMaxId();
+    int getMaxId();
 }

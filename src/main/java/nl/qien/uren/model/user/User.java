@@ -1,7 +1,7 @@
 package nl.qien.uren.model.user;
 
 public class User {
-    private Long id;
+    private int id;
     private String firstname;
     private String lastname;
     private boolean active;
@@ -9,7 +9,7 @@ public class User {
     private String password;
     private String adress;
 
-    public User(Long id, String firstname, String lastname, boolean active, String emailadress, String password, String adress) {
+    public User(int id, String firstname, String lastname, boolean active, String emailadress, String password, String adress) {
         this.emailadress = emailadress;
         this.password = password;
         this.id = id;
@@ -45,11 +45,11 @@ public class User {
         this.active = active;
     }
 
-    public void setId(Long id){
+    public void setId(int id){
         this.id = id;
     }
 
-    public Long getId(){return id;}
+    public int getId(){return id;}
 
     public String getEmailadress() {
         return emailadress;
