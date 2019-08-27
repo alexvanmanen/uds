@@ -1,6 +1,6 @@
 package nl.qien.uren.repository;
 
-import nl.qien.uren.controller.User;
+import nl.qien.uren.model.user.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;

@@ -1,6 +1,6 @@
 package nl.qien.uren.repository;
 
-import nl.qien.uren.controller.User;
+import nl.qien.uren.model.user.User;
 
 import java.util.List;
 

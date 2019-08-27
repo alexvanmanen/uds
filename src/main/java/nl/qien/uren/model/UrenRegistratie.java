@@ -1,4 +1,6 @@
-package nl.qien.uren.controller;
+package nl.qien.uren.model;
+
+import nl.qien.uren.controller.WerkType;
 
 import java.time.LocalDate;
 
