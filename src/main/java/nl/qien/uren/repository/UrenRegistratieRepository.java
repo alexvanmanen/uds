@@ -1,6 +1,6 @@
 package nl.qien.uren.repository;
 
-import nl.qien.uren.controller.UrenRegistratie;
+import nl.qien.uren.model.UrenRegistratie;
 
 public interface UrenRegistratieRepository {
 

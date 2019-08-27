@@ -1,10 +1,9 @@
 package nl.qien.uren.repository;
 
 
-import nl.qien.uren.controller.UrenRegistratie;
+import nl.qien.uren.model.UrenRegistratie;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
-import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
 import org.springframework.stereotype.Repository;
 
 @Repository

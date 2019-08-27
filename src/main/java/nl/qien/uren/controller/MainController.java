@@ -1,5 +1,8 @@
 package nl.qien.uren.controller;
 
+import nl.qien.uren.model.UrenRegistratie;
+import nl.qien.uren.model.user.Employee;
+import nl.qien.uren.model.user.User;
 import nl.qien.uren.repository.EmployeeRepository;
 import nl.qien.uren.repository.UserRepository;
 import nl.qien.uren.repository.UrenRegistratieRepository;
