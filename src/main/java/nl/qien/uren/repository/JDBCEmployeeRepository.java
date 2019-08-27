@@ -13,8 +13,6 @@ import java.util.Optional;
 @Repository
 public class JDBCEmployeeRepository implements EmployeeRepository {
 
-    // Spring Boot will create and configure DataSource and JdbcTemplate
-    // To use it, just @Autowired
     @Autowired
     private JdbcTemplate jdbcTemplate;
 
@@ -32,14 +30,6 @@ public class JDBCEmployeeRepository implements EmployeeRepository {
                 employee.getId(), employee.getFirstName(), employee.getLastName());
     }
 
-    @Override
-    public Integer findById(Long id) {
-        return jdbcTemplate.queryForObject(
-                "select count(*) from Employee where ID = ? and first_Name=?",
-                new Object[]{id,"dd"},
-                Integer.class
-        );
-    }
     @Override
     public List<Employee> findAll() {
         return jdbcTemplate.query(

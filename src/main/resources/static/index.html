@@ -23,7 +23,6 @@
             }
 
             function getEmployees() {
-                //ajax_get('http://localhost:8080/uren/api/v1/employees', function(data) { alert(data[0]['firstName']);});
                 ajax_get('/uren/api/v1/employees', function(data) {
 
                     var tableContent = "<tr><th>First name</th><th>Last name</th></tr>";
@@ -35,20 +34,42 @@
                 });
             }
 
+            function createUser() {
+                var xmlhttp = new XMLHttpRequest();
+                xmlhttp.open("POST","/uren/api/v1/createuser");
+                var xmlDoc;
+                xmlhttp.onreadystatechange = function() {
+                    if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+                        xmlDoc = xmlhttp.responseXML;
+                        console.log(xmlDoc);
+                    }
+                };
+                xmlhttp.setRequestHeader('Content-Type', 'application/json');
+                var xml = JSON.stringify({
+                    "emailAdress": "test3@test.nl",
+                    "password": "test3",
+                    "id": null
+                    });
+                xmlhttp.send(xml);
+            }
+
 
             function sendData() {
                 $.ajax({
-                    url: 'http://localhost:8080/uren/api/v1/employees',
+                    url: '/uren/api/v1/createuser',
                     type: 'POST',
                     contentType: 'application/json',
                     data: JSON.stringify({
-                        firstName:"Bob",
-                        lastName:"Martin",
-                        emailId:"test@test.nl"
+                        "emailAdress": "test2@test.nl",
+                        "password": "test2",
+                        "id": null
                     }),
                     dataType: 'json'
                 });
             }
+
+
+
 
         </script>
     </head>
