@@ -1,5 +1,6 @@
 package nl.qien.uren.controller;
 
+import nl.qien.uren.model.SendMail;
 import nl.qien.uren.model.UrenRegistratie;
 import nl.qien.uren.model.user.Employee;
 import nl.qien.uren.model.user.User;
@@ -75,6 +76,12 @@ public class MainController {
     @GetMapping("/urenRegistratie/count")
     public int registerHours() {
         return urenRegistratieRepository.count();
+    }
+    @GetMapping("/sendmail")
+    public boolean SendMail() {
+        SendMail sendmail = new SendMail();
+        sendmail.sendMail();
+        return true;
     }
 
     @PostMapping("/createuser")
