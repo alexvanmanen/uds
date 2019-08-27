@@ -17,7 +17,7 @@ public class JDBCTimesheetRepository implements TimesheetRepository {
 
     @Override
     public int count(){
-        return jdbcTemplate.queryForObject("select count(*) from Uren_Registratie", Integer.class);
+        return jdbcTemplate.queryForObject("select count(*) from Timesheet", Integer.class);
     }
 
     @Override
