@@ -11,6 +11,9 @@ public class UrenRegistratie {
     private LocalDate datum;
     private WerkType werkType;
 
+    public UrenRegistratie(){
+    }
+
     public UrenRegistratie(long employeeId, long projectId, long aantalUren, String datum, WerkType werkType){
         this.employeeId = employeeId;
         this.projectId = projectId;
