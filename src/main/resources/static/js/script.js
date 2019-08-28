@@ -94,11 +94,11 @@ function createUserExample(){
     var email1 = document.forms["createuserform"]["email1"].value;
     var firstname = document.forms["createuserform"]["firstname"].value;
     var lastname = document.forms["createuserform"]["lastname"].value;
-    if(email === email1) {
+    if(email === email1 && email !="" && email1 != "" && firstname != "" && lastname != "") {
         createUser(email, firstname, lastname);
         return alert("Personeel toegevoegd")
-    } else {
-        return alert("email komen niet overeen");
+    } else{
+        return alert("ongeldige invoer");
     }
 }
 
