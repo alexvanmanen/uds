@@ -108,9 +108,6 @@ function createUser(email, firstname, lastname){
         "lastname": lastname,
         "emailadress": email,
         "active" : true,
-        "password": null,
-        "id": null,
-        "adress" : null
     };
     var json = JSON.stringify(object);
     apiPostRequest("/uren/api/v1/createuser", json);

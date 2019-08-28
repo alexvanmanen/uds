@@ -15,6 +15,6 @@ INSERT INTO billionaires (first_name, last_name, career) VALUES
 -- INSERT INTO EMPLOYEE (ID, FIRST_NAME, LAST_NAME) VALUES ( 1, 'Alex', 'van Manen' );
 -- INSERT INTO EMPLOYEE (ID, FIRST_NAME, LAST_NAME) VALUES ( 2, 'Paul', 'Veen' );
 -- INSERT INTO EMPLOYEE (ID, FIRST_NAME, LAST_NAME) VALUES ( 3, 'Jan', 'KLaassen' );
-INSERT INTO USER(ID, firstname, lastname, active, emailadress, password, straat, huisnummer, postcode, woonplaats, telefoonnummer, bankrekeningnr, firstlogin) VALUES(1, 'test', 'test', true,'hallo@hallo.com', 'hallo', null, null, null, null, 0000000000, null, true);
-INSERT INTO USER(ID, firstname, lastname, active, emailadress, password, straat, huisnummer, postcode, woonplaats, telefoonnummer, bankrekeningnr, firstlogin) VALUES(2, 'Admin', 'Qien', true,'admin@qien.nl', 'Admin01', null, null, null, null, 0000000000, null, true);
+INSERT INTO USER(ID, firstname, lastname, active, emailadress, password, street, housenumber, zipcode, city, phonenumber, accountnumber, firstlogin) VALUES(1, 'test', 'test', true,'hallo@hallo.com', 'hallo', null, null, null, null, 0000000000, null, true);
+INSERT INTO USER(ID, firstname, lastname, active, emailadress, password, street, housenumber, zipcode, city, phonenumber, accountnumber, firstlogin) VALUES(2, 'Admin', 'Qien', true,'admin@qien.nl', 'Admin01', null, null, null, null, 0000000000, null, true);
 --INSERT INTO USER(ID, email, password) VALUES ( 2,'bart@bartsmit.nl','sinterklaas');
