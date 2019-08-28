@@ -78,3 +78,18 @@ p {
     color:purple;
     text-align:center
 }
+
+.registerbtn {
+    background-color: #8c1aff;
+    color: white;
+    padding: 16px 20px;
+    margin: 8px 0;
+    border: none;
+    cursor: pointer;
+    width: 10%;
+    opacity: 0.9;
+}
+
+.registerbtn:hover {
+    opacity: 1;
+}

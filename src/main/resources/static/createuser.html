@@ -6,12 +6,12 @@
     <link rel="stylesheet" type="text/css" href="css/style.css">
     <script src=js/script.js></script>
 </head>
-<body>
+
 <div id="welcome"></div>
 <script>getWelcome()</script>
 <ul class="topnav">
-    <li><a class="active" href="#home">Home </a></li>
-    <li><a class="active" href="#home">Taken</a></li>
+    <li><a class="active" href="dashboard.html">Home </a></li>
+    <li><a class="active" href="dashboard.html">Taken</a></li>
     <li class="dropdown">
         <a href="javascript:void(0)" class="dropbtn">Profiel</a>
         <div class="dropdown-content">
@@ -20,23 +20,23 @@
     <li class="dropdown">
         <a href="javascript:void(0)" class="dropbtn">Personeel</a>
         <div class="dropdown-content">
-            <a href="#">Personeel toevoegen</a>
-            <a onclick="getUsers();">Personeel beheren</a>
+            <a href="createuser.html">Personeel toevoegen</a>
+            <a href="manageuser.html">Personeel beheren</a>
     <li class="dropdown">
         <a href="javascript:void(0)" class="dropbtn">Bedrijven</a>
         <div class="dropdown-content">
             <a href="#">Bedrijf toevoegen</a>
             <a href="#">Bedrijf beheren</a>
-    <li style="float:right"><a class="active" href="#about">Uitloggen</a></li>
-
+    <li style="float:right"><a class="active" href="login.html" >Uitloggen</a></li>
 </ul>
+
 <h2>Personeel toevoegen</h2>
 <div id="test"></div><table id="ajax"></table><form action="" name="createuserform" onsubmit="return false">
     Voornaam: <input id="firstname" type="text" name="firstname"required ><br>
     Achternaam: <input id="lastname" type="text" name="lastname"required ><br>
     Email: <input id="email" type="text" name="email"required ><br>
     Email bevestigen: <input id="email1" type="text" name="email1" required ><br>
-    <input type="submit" onclick="createUserExample();" value="Submit">
+    <input type="submit" class = registerbtn onclick="createUserExample();" value="Submit">
 </form>
 </body>
 </html>
