@@ -32,21 +32,23 @@ public class UrenApplication  implements CommandLineRunner {
     @Override
     @Transactional
     public void run(String... strings) throws Exception {
-        // save a couple of categories
-        Customer customer1 = new Customer("Customer A");
+        Customer customerA = new Customer("Customer A");
+        Customer customerB = new Customer("Customer B");
+
+        Set<Project> projectsA = new HashSet<>();
+        projectsA.add(new Project("Project A1", customerA));
+        customerA.setProjects(projectsA);
 
 
-//        Set<Project> projects = new HashSet<>();
-//        customer1.addProject();
-//        customer1.addProject(new Project("Project A2", customer1));
-//        customer1.addProject(new Project("Project A3", customer1));
+        Set<Project> projectsB = new HashSet<>();
+        projectsB.add(new Project("Project B3", customerB));
+        projectsB.add(new Project("Project B4", customerB));
+        customerB.setProjects(projectsB);
 
 
-        customerRepository.saveAll(Arrays.asList(customer1));
-
-        List<Project> projects = Arrays.asList(new Project("Project A1", customer1), new Project("Project A2", customer1));
-        projectRepository.saveAll(projects);
-
+        customerRepository.saveAll(Arrays.asList(customerA, customerB));
+        projectRepository.saveAll(projectsA);
+        projectRepository.saveAll(projectsB);
 
 
         // fetch all categories
