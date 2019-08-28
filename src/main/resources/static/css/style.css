@@ -47,6 +47,7 @@ li.dropdown {
 }
 #btn {
     color: #666;
+    padding: 14px 16px;
 }
 #btn:hover {
     color: #ffffff;
