@@ -7,29 +7,29 @@ public class User {
     private boolean active;
     private String emailadress;
     private String password;
-    private String straat;
-    private String huisnummer;
-    private String postcode;
-    private String woonplaats;
-    private int telefoonnummer;
-    private String bankrekeningnr;
+    private String street;
+    private String housenumber;
+    private String zipcode;
+    private String city;
+    private int phonenumber;
+    private String accountnumber;
     private boolean firstlogin;
 
 
     public User(Long id, String firstname, String lastname, boolean active, String emailadress, String password,
-                String straat, String huisnummer, String postcode, String woonplaats, int telefoonnummer, String bankrekeningnr, boolean firstlogin) {
+                String street, String housenumber, String zipcode, String city, int phonenumber, String accountnumber, boolean firstlogin) {
         this.emailadress = emailadress;
         this.password = password;
         this.id = id;
         this.active = active;
         this.firstname = firstname;
         this.lastname = lastname;
-        this.straat = straat;
-        this.huisnummer = huisnummer;
-        this.postcode = postcode;
-        this.woonplaats = woonplaats;
-        this.telefoonnummer = telefoonnummer;
-        this.bankrekeningnr = bankrekeningnr;
+        this.street = street;
+        this.housenumber = housenumber;
+        this.zipcode = zipcode;
+        this.city = city;
+        this.phonenumber = phonenumber;
+        this.accountnumber = accountnumber;
         this.firstlogin = firstlogin;
 
     }
@@ -81,45 +81,45 @@ public class User {
         this.password = password;
     }
 
-    public String getStraat() { return straat; }
+    public String getStreet() { return street; }
 
-    public void setStraat(String straat) {
-        this.straat = straat;
+    public void setStreet(String street) {
+        this.street = street;
     }
-    public String getHuisnummer() { return huisnummer; }
+    public String getHousenumber() { return housenumber; }
 
-    public void setHuisnummer(String huisnummer) {
-        this.huisnummer = huisnummer;
+    public void setHousenumber(String housenumber) {
+        this.housenumber = housenumber;
     }
-    public String getPostcode() {
-        return postcode;
-    }
-
-    public void setPostcode(String postcode) {
-        this.postcode = postcode;
-    }
-    public String getWoonplaats() {
-        return woonplaats;
+    public String getZipcode() {
+        return zipcode;
     }
 
-    public void setWoonplaats(String woonplaats) {
-        this.woonplaats = woonplaats;
+    public void setZipcode(String zipcode) {
+        this.zipcode = zipcode;
+    }
+    public String getCity() {
+        return city;
     }
 
-    public int getTelefoonnummer() {
-        return telefoonnummer;
+    public void setCity(String city) {
+        this.city = city;
     }
 
-    public void setTelefoonnummer(int telefoonnummer) {
-        this.telefoonnummer = telefoonnummer;
+    public int getPhonenumber() {
+        return phonenumber;
     }
 
-    public String getBankrekeningnr() {
-        return bankrekeningnr;
+    public void setPhonenumber(int phonenumber) {
+        this.phonenumber = phonenumber;
     }
 
-    public void setBankrekeningnr(String bankrekeningnr) {
-        this.bankrekeningnr = bankrekeningnr;
+    public String getAccountnumber() {
+        return accountnumber;
+    }
+
+    public void setAccountnumber(String accountnumber) {
+        this.accountnumber = accountnumber;
     }
 
     public boolean getFirstlogin() {

@@ -21,9 +21,9 @@ public class JDBCUserRepository implements UserRepository {
 
     @Override
     public int save(User user){
-        return jdbcTemplate.update("insert into User(ID, emailadress, password, active, firstname, lastname, straat, huisnummer, postcode, woonplaats, telefoonnummer, bankrekeningnr, firstlogin) values(?,?,?,?,?,?,?,?,?,?,?,?,?)",
-                user.getId(), user.getEmailadress(), user.getPassword(), user.getActive(),user.getFirstname(), user.getLastname(), user.getStraat(), user.getHuisnummer(), user.getPostcode(), user.getWoonplaats(),
-                user.getTelefoonnummer(), user.getBankrekeningnr(), user.getFirstlogin());
+        return jdbcTemplate.update("insert into User(ID, emailadress, password, active, firstname, lastname, street, housenumber, zipcode, city, phonenumber, accountnumber, firstlogin) values(?,?,?,?,?,?,?,?,?,?,?,?,?)",
+                user.getId(), user.getEmailadress(), user.getPassword(), user.getActive(),user.getFirstname(), user.getLastname(), user.getStreet(), user.getHousenumber(), user.getZipcode(), user.getCity(),
+                user.getPhonenumber(), user.getAccountnumber(), user.getFirstlogin());
 
     }
 
@@ -39,12 +39,12 @@ public class JDBCUserRepository implements UserRepository {
                                 rs.getBoolean("active"),
                                 rs.getString("emailadress"),
                                 rs.getString("password"),
-                                rs.getString("straat"),
-                                rs.getString("huisnummer"),
-                                rs.getString("postcode"),
-                                rs.getString("woonplaats"),
-                                rs.getInt("telefoonnummer"),
-                                rs.getString("bankrekeningnr"),
+                                rs.getString("street"),
+                                rs.getString("housenumber"),
+                                rs.getString("zipcode"),
+                                rs.getString("city"),
+                                rs.getInt("phonenumber"),
+                                rs.getString("accountnumber"),
                                 rs.getBoolean("firstlogin")
                         )
         );
