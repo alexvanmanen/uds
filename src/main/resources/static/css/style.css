@@ -93,3 +93,15 @@ p {
 .registerbtn:hover {
     opacity: 1;
 }
+input[type=text]:focus {
+    background-color: lightblue;
+}
+input[type=password]:focus {
+    background-color: lightblue;
+}
+#useradd{
+    padding: 20px;
+    border-radius: 5px;
+    text-align: left;
+
+}
