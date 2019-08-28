@@ -72,8 +72,9 @@ public class MainController {
 
     @PostMapping("/urenRegistratie")
     @ResponseBody
-    public int registerHours( @RequestBody UrenRegistratie urenregistratie) {
-        return urenRegistratieRepository.save(urenregistratie);
+    public UrenRegistratie registerHours( @RequestBody UrenRegistratie urenregistratie) {
+        urenRegistratieRepository.save(urenregistratie);
+        return urenregistratie;
     }
 
     @GetMapping("/createuser/{email}/{password}")

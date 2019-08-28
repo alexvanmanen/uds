@@ -6,105 +6,81 @@ function buildTable(maand) {
         for (var i = 1; i < 32; i++) {
             tabel += "<tr><td>" + i + " " + maand + "</td><td><input class='MAAND' type='number'></td><td><input class='MAAND' type='number'></td><td><input class='MAAND' type='number'></td><td><input class='MAAND' type='number'></td></tr>"
         }
-        tabel += "<tr><td>TOTAAL</td><td></td><input></tr>";
-        document.getElementById("tabel").innerHTML = tabel;
     }
     if (maand == "februari") {
         //alert("hoi");
         for (var i = 1; i < 29; i++) {
             tabel += "<tr><td>" + i + " " + maand + "</td><td><input class='MAAND' type='number'></td><td><input class='MAAND' type='number'></td><td><input class='MAAND' type='number'></td><td><input class='MAAND' type='number'></td></tr>"
         }
-        tabel += "<tr><td>TOTAAL</td><td></td><input></tr>";
-        document.getElementById("tabel").innerHTML = tabel;
     }
     if (maand == "maart") {
         //alert("hoi");
         for (var i = 1; i < 32; i++) {
             tabel += "<tr><td>" + i + " " + maand + "</td><td><input class='MAAND' type='number'></td><td><input class='MAAND' type='number'></td><td><input class='MAAND' type='number'></td><td><input class='MAAND' type='number'></td></tr>"
         }
-        tabel += "<tr><td>TOTAAL</td><td></td><input></tr>";
-        document.getElementById("tabel").innerHTML = tabel;
     }
     if (maand == "april") {
         //alert("hoi");
         for (var i = 1; i < 31; i++) {
             tabel += "<tr><td>" + i + " " + maand + "</td><td><input class='MAAND' type='number'></td><td><input class='MAAND' type='number'></td><td><input class='MAAND' type='number'></td><td><input class='MAAND' type='number'></td></tr>"
         }
-        tabel += "<tr><td>TOTAAL</td><td></td><input></tr>";
-        document.getElementById("tabel").innerHTML = tabel;
     }
     if (maand == "mei") {
         //alert("hoi");
         for (var i = 1; i < 32; i++) {
             tabel += "<tr><td>" + i + " " + maand + "</td><td><input class='MAAND' type='number'></td><td><input class='MAAND' type='number'></td><td><input class='MAAND' type='number'></td><td><input class='MAAND' type='number'></td></tr>"
         }
-        tabel += "<tr><td>TOTAAL</td><td></td><input></tr>";
-        document.getElementById("tabel").innerHTML = tabel;
     }
     if (maand == "juni") {
         //alert("hoi");
         for (var i = 1; i < 31; i++) {
             tabel += "<tr><td>" + i + " " + maand + "</td><td><input class='MAAND' type='number'></td><td><input class='MAAND' type='number'></td><td><input class='MAAND' type='number'></td><td><input class='MAAND' type='number'></td></tr>"
         }
-        tabel += "<tr><td>TOTAAL</td><td></td><input></tr>";
-        document.getElementById("tabel").innerHTML = tabel;
     }
     if (maand == "juli") {
         //alert("hoi");
         for (var i = 1; i < 32; i++) {
             tabel += "<tr><td>" + i + " " + maand + "</td><td><input class='MAAND' type='number'></td><td><input class='MAAND' type='number'></td><td><input class='MAAND' type='number'></td><td><input class='MAAND' type='number'></td></tr>"
         }
-        tabel += "<tr><td>TOTAAL</td><td></td><input></tr>";
-        document.getElementById("tabel").innerHTML = tabel;
     }
     if (maand == "augustus") {
         //alert("hoi");
         for (var i = 1; i < 32; i++) {
             tabel += "<tr><td>" + i + " " + maand + "</td><td><input class='MAAND' type='number'></td><td><input class='MAAND' type='number'></td><td><input class='MAAND' type='number'></td><td><input class='MAAND' type='number'></td></tr>"
         }
-        tabel += "<tr><td>TOTAAL</td><td></td><input></tr>";
-        document.getElementById("tabel").innerHTML = tabel;
     }
     if (maand == "september") {
         //alert("hoi");
         for (var i = 1; i < 31; i++) {
             tabel += "<tr><td>" + i + " " + maand + "</td><td><input class='MAAND' type='number'></td><td><input class='MAAND' type='number'></td><td><input class='MAAND' type='number'></td><td><input class='MAAND' type='number'></td></tr>"
         }
-        tabel += "<tr><td>TOTAAL</td><td></td><input></tr>";
-        document.getElementById("tabel").innerHTML = tabel;
     }
     if (maand == "oktober") {
         //alert("hoi");
         for (var i = 1; i < 32; i++) {
             tabel += "<tr><td>" + i + " " + maand + "</td><td><input class='MAAND' type='number'></td><td><input class='MAAND' type='number'></td><td><input class='MAAND' type='number'></td><td><input class='MAAND' type='number'></td></tr>"
         }
-        tabel += "<tr><td>TOTAAL</td><td></td><input></tr>";
-        document.getElementById("tabel").innerHTML = tabel;
     }
     if (maand == "november") {
         //alert("hoi");
         for (var i = 1; i < 31; i++) {
             tabel += "<tr><td>" + i + " " + maand + "</td><td><input class='MAAND' type='number'></td><td><input class='MAAND' type='number'></td><td><input class='MAAND' type='number'></td><td><input class='MAAND' type='number'></td></tr>"
         }
-        tabel += "<tr><td>TOTAAL</td><td></td><input></tr>";
-        document.getElementById("tabel").innerHTML = tabel;
     }
     if (maand == "december") {
         //alert("hoi");
         for (var i = 1; i < 32; i++) {
             tabel += "<tr><td>" + i + " " + maand + "</td><td><input class='MAAND' type='number'></td><td><input class='MAAND' type='number'></td><td><input class='MAAND' type='number'></td><td><input class='MAAND' type='number'></td></tr>"
         }
-        tabel += "<tr><td>TOTAAL</td><td></td><input></tr>";
-        document.getElementById("tabel").innerHTML = tabel;
     }
+    tabel+="<tr><br><tr\>";
+    tabel += "<tr><td>TOTAAL</td><td><input></td><td><input></td><td><input></td><td><input></td></tr>";
+    document.getElementById("tabel").innerHTML = tabel;
 }
 
-function Registreer(id, projectid, aantalUren, datum){
+function Registreer(){
     var object = {
-        "id": id,
-        "projectid": projectid,
-        "aantalUren": aantalUren,
-        "datum" : datum
+        "employeeId": 500
     };
     var json = JSON.stringify(object);
     apiPostRequest("/uren/api/v1/urenRegistratie", json);
