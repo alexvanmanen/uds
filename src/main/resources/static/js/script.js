@@ -96,6 +96,7 @@ function createUserExample(){
     var lastname = document.forms["createuserform"]["lastname"].value;
     if(email === email1) {
         createUser(email, firstname, lastname);
+        return alert("Personeel toegevoegd")
     } else {
         return alert("email komen niet overeen");
     }
