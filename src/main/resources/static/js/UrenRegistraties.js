@@ -1,15 +1,15 @@
 
 function buildTable(maand) {
-    var tabel = "<tr><td>" + maand + "</td><td>uren</td><td>overwerk</td><td>ziekteverlof</td><td>vakantie</td></tr>";
-    if (maand == "januari") {
+    var tabel = "<tr><td>" + maand + "</td><td>Opdracht</td><td>Overwerk</td><td>Verlof</td><td>Ziek</td></tr><td>Training</td><td>Overig</td><td>Verklaring overig</td></tr>";
+    if (maand == "Januari") {
         //alert("hoi");
         for (var i = 1; i < 32; i++) {
-            tabel += "<tr><td>" + i + " " + maand + "</td><td><input class='MAAND' type='number'></td><td><input class='MAAND' type='number'></td><td><input class='MAAND' type='number'></td><td><input class='MAAND' type='number'></td></tr>"
+            tabel += "<tr><td>" + i + " " + maand + "</td><td><input class='opdracht' type='number'></td><td><input class='overwerk' type='number'></td><td><input class='verlof' type='number'></td><td><input class='ziek' type='number'></td><td><input class='training' type='number'></td><td><input class='overig' type='number'></td><td><input id='verklaring' class='verklaring' type='String'></td></tr>"
         }
         tabel += "<tr><td>TOTAAL</td><td></td><input></tr>";
         document.getElementById("tabel").innerHTML = tabel;
     }
-    if (maand == "februari") {
+    if (maand == "Februari") {
         //alert("hoi");
         for (var i = 1; i < 29; i++) {
             tabel += "<tr><td>" + i + " " + maand + "</td><td><input class='MAAND' type='number'></td><td><input class='MAAND' type='number'></td><td><input class='MAAND' type='number'></td><td><input class='MAAND' type='number'></td></tr>"
@@ -17,7 +17,7 @@ function buildTable(maand) {
         tabel += "<tr><td>TOTAAL</td><td></td><input></tr>";
         document.getElementById("tabel").innerHTML = tabel;
     }
-    if (maand == "maart") {
+    if (maand == "Maart") {
         //alert("hoi");
         for (var i = 1; i < 32; i++) {
             tabel += "<tr><td>" + i + " " + maand + "</td><td><input class='MAAND' type='number'></td><td><input class='MAAND' type='number'></td><td><input class='MAAND' type='number'></td><td><input class='MAAND' type='number'></td></tr>"
@@ -25,7 +25,7 @@ function buildTable(maand) {
         tabel += "<tr><td>TOTAAL</td><td></td><input></tr>";
         document.getElementById("tabel").innerHTML = tabel;
     }
-    if (maand == "april") {
+    if (maand == "April") {
         //alert("hoi");
         for (var i = 1; i < 31; i++) {
             tabel += "<tr><td>" + i + " " + maand + "</td><td><input class='MAAND' type='number'></td><td><input class='MAAND' type='number'></td><td><input class='MAAND' type='number'></td><td><input class='MAAND' type='number'></td></tr>"
@@ -33,7 +33,7 @@ function buildTable(maand) {
         tabel += "<tr><td>TOTAAL</td><td></td><input></tr>";
         document.getElementById("tabel").innerHTML = tabel;
     }
-    if (maand == "mei") {
+    if (maand == "Mei") {
         //alert("hoi");
         for (var i = 1; i < 32; i++) {
             tabel += "<tr><td>" + i + " " + maand + "</td><td><input class='MAAND' type='number'></td><td><input class='MAAND' type='number'></td><td><input class='MAAND' type='number'></td><td><input class='MAAND' type='number'></td></tr>"
@@ -41,7 +41,7 @@ function buildTable(maand) {
         tabel += "<tr><td>TOTAAL</td><td></td><input></tr>";
         document.getElementById("tabel").innerHTML = tabel;
     }
-    if (maand == "juni") {
+    if (maand == "Juni") {
         //alert("hoi");
         for (var i = 1; i < 31; i++) {
             tabel += "<tr><td>" + i + " " + maand + "</td><td><input class='MAAND' type='number'></td><td><input class='MAAND' type='number'></td><td><input class='MAAND' type='number'></td><td><input class='MAAND' type='number'></td></tr>"
@@ -49,7 +49,7 @@ function buildTable(maand) {
         tabel += "<tr><td>TOTAAL</td><td></td><input></tr>";
         document.getElementById("tabel").innerHTML = tabel;
     }
-    if (maand == "juli") {
+    if (maand == "Juli") {
         //alert("hoi");
         for (var i = 1; i < 32; i++) {
             tabel += "<tr><td>" + i + " " + maand + "</td><td><input class='MAAND' type='number'></td><td><input class='MAAND' type='number'></td><td><input class='MAAND' type='number'></td><td><input class='MAAND' type='number'></td></tr>"
@@ -57,7 +57,7 @@ function buildTable(maand) {
         tabel += "<tr><td>TOTAAL</td><td></td><input></tr>";
         document.getElementById("tabel").innerHTML = tabel;
     }
-    if (maand == "augustus") {
+    if (maand == "Augustus") {
         //alert("hoi");
         for (var i = 1; i < 32; i++) {
             tabel += "<tr><td>" + i + " " + maand + "</td><td><input class='MAAND' type='number'></td><td><input class='MAAND' type='number'></td><td><input class='MAAND' type='number'></td><td><input class='MAAND' type='number'></td></tr>"
@@ -65,7 +65,7 @@ function buildTable(maand) {
         tabel += "<tr><td>TOTAAL</td><td></td><input></tr>";
         document.getElementById("tabel").innerHTML = tabel;
     }
-    if (maand == "september") {
+    if (maand == "September") {
         //alert("hoi");
         for (var i = 1; i < 31; i++) {
             tabel += "<tr><td>" + i + " " + maand + "</td><td><input class='MAAND' type='number'></td><td><input class='MAAND' type='number'></td><td><input class='MAAND' type='number'></td><td><input class='MAAND' type='number'></td></tr>"
@@ -73,7 +73,7 @@ function buildTable(maand) {
         tabel += "<tr><td>TOTAAL</td><td></td><input></tr>";
         document.getElementById("tabel").innerHTML = tabel;
     }
-    if (maand == "oktober") {
+    if (maand == "Oktober") {
         //alert("hoi");
         for (var i = 1; i < 32; i++) {
             tabel += "<tr><td>" + i + " " + maand + "</td><td><input class='MAAND' type='number'></td><td><input class='MAAND' type='number'></td><td><input class='MAAND' type='number'></td><td><input class='MAAND' type='number'></td></tr>"
@@ -81,7 +81,7 @@ function buildTable(maand) {
         tabel += "<tr><td>TOTAAL</td><td></td><input></tr>";
         document.getElementById("tabel").innerHTML = tabel;
     }
-    if (maand == "november") {
+    if (maand == "November") {
         //alert("hoi");
         for (var i = 1; i < 31; i++) {
             tabel += "<tr><td>" + i + " " + maand + "</td><td><input class='MAAND' type='number'></td><td><input class='MAAND' type='number'></td><td><input class='MAAND' type='number'></td><td><input class='MAAND' type='number'></td></tr>"
@@ -89,7 +89,7 @@ function buildTable(maand) {
         tabel += "<tr><td>TOTAAL</td><td></td><input></tr>";
         document.getElementById("tabel").innerHTML = tabel;
     }
-    if (maand == "december") {
+    if (maand == "December") {
         //alert("hoi");
         for (var i = 1; i < 32; i++) {
             tabel += "<tr><td>" + i + " " + maand + "</td><td><input class='MAAND' type='number'></td><td><input class='MAAND' type='number'></td><td><input class='MAAND' type='number'></td><td><input class='MAAND' type='number'></td></tr>"

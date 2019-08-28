@@ -7,41 +7,35 @@
 <link rel="stylesheet" type="text/css" href="css/style.css">
 <script src=js/UrenRegistraties.js></script>
 <body>
-
-
+<br>
+<img src="Qien_logo_networkgraphics.png" alt="Qien_logo" style="border:0;width:153px;height:213px;margin-left:auto;margin-right:auto;display:block">
 <br>
 <ul id="lijst">
     <li>Medewerker&nbsp<input id="NaamMedewerker" type="String"></li><br><br>
     <li>Opdracht&nbsp<input id="NaamOpdracht" type="String"></li><br><br>
 </ul>
-
-<img src="Qien_logo_networkgraphics.png" alt="Qien_logo" style="border:0;width:153px;height:213px;margin-left:auto;margin-right:auto;display:block">
-<br>
 <div class="dropdown">
     <button class="dropbtn">Selecteer Maand</button>
     <div class="dropdown-content">
-        <a href="#" onclick=buildTable("januari")>januari</a>
-        <a href="#" onclick=buildTable("februari")>februari</a>
-        <a href="#" onclick=buildTable("maart")>maart</a>
-        <a href="#" onclick=buildTable("april")>april</a>
-        <a href="#" onclick=buildTable("mei")>mei</a>
-        <a href="#" onclick=buildTable("juni")>juni</a>
-        <a href="#" onclick=buildTable("juli")>juli</a>
-        <a href="#" onclick=buildTable("augustus")>augustus</a>
-        <a href="#" onclick=buildTable("september")>september</a>
-        <a href="#" onclick=buildTable("oktober")>oktober</a>
-        <a href="#" onclick=buildTable("november")>november</a>
-        <a href="#" onclick=buildTable("december")>december</a>
-
+        <a href="#" onclick=buildTable("Januari")>Januari</a>
+        <a href="#" onclick=buildTable("Februari")>Februari</a>
+        <a href="#" onclick=buildTable("Maart")>Maart</a>
+        <a href="#" onclick=buildTable("April")>April</a>
+        <a href="#" onclick=buildTable("Mei")>Mei</a>
+        <a href="#" onclick=buildTable("Juni")>Juni</a>
+        <a href="#" onclick=buildTable("Juli")>Juli</a>
+        <a href="#" onclick=buildTable("Augustus")>Augustus</a>
+        <a href="#" onclick=buildTable("September")>September</a>
+        <a href="#" onclick=buildTable("Oktober")>Oktober</a>
+        <a href="#" onclick=buildTable("November")>November</a>
+        <a href="#" onclick=buildTable("December")>December</a>
     </div>
 </div>
 <br>
-
-<table id="tabel">
-</table>
+<table id="tabel"></table>
 <br>
-<button id="btn" onclick="Registreer()>DeclareerUren</button>
 
+<button id="btn" onclick="Registreer()">Declareer Uren</button>
 
 </body>
 </html>
