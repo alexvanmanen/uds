@@ -45,6 +45,13 @@ li.dropdown {
     display: block;
     text-align: left;
 }
+#btn {
+    color: #666;
+}
+#btn:hover {
+    color: #ffffff;
+    background-color: #8c1aff;
+}
 
 .dropdown-content a:hover {
     background-color: #8c1aff;
@@ -56,13 +63,9 @@ li.dropdown {
 }
 
 table {
-    table-layout: fixed;
+    table-layout: auto;
     border-collapse: collapse;
     width: 100%;
-}
-
-th, tr {
-    page-break-inside: avoid;
 }
 
 th, td {
