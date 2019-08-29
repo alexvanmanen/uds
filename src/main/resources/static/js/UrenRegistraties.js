@@ -63,7 +63,6 @@ function buildTable(maand) {
             tabel += "<tr class='dagdec'><td>" + i + " " + maand + "</td><td><input id='opdracht' type='number'></td><td><input id='overwerk' type='number'></td><td><input id='verlof' type='number'></td><td><input id='ziek' type='number'></td><td><input id='training' type='number'></td><td><input id='overig' type='number'></td><td><input id='verklaring' type='String'></td></tr>"        }
     }
     tabel+="<tr><br><tr\>";
-    tabel += "<tr><td>TOTAAL</td><td><input></td><td><input></td><td><input></td><td><input></td></tr>";
     tabel += "<button id='btn' onclick='Registreer()'>Declareer Uren</button>"
     document.getElementById("tabel").innerHTML = tabel;
 }
