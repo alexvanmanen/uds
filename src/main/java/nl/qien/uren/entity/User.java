@@ -15,9 +15,9 @@ import javax.persistence.*;
 public class User {
     @Id
     @GeneratedValue(strategy= GenerationType.AUTO)
-    private int id;
-    private String firstname;
-    private String lastname;
+    public int id;
+    public String firstname;
+    public String lastname;
     private boolean active;
     private String emailadress;
     private String password;

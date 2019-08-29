@@ -5,7 +5,7 @@ import nl.qien.uren.model.EntryKind;
 import nl.qien.uren.model.Project;
 import nl.qien.uren.model.SendMail;
 import nl.qien.uren.model.Timesheet;
-import nl.qien.uren.model.user.Employee;
+import nl.qien.uren.entity.Employee;
 import nl.qien.uren.entity.User;
 import nl.qien.uren.repository.CustomerRepository;
 import nl.qien.uren.repository.EmployeeRepository;
@@ -31,7 +31,6 @@ public class MainController {
     JdbcTemplate jdbcTemplate;
 
     @Autowired
-    @Qualifier("JDBCEmployeeRepository")
     private EmployeeRepository employeeRepository;
 
     @Autowired
@@ -70,15 +69,15 @@ public class MainController {
     }
 
     @GetMapping("/count")
-    public int getNumberOfEmployees() {
+    public long getNumberOfEmployees() {
         return employeeRepository.count() + 1;
     }
 
-    @GetMapping("/addEmployee/{id}/{firstName}/{lastName}")
+/*    @GetMapping("/addEmployee/{id}/{firstName}/{lastName}")
     public int addEmployee(@PathVariable Integer id, @PathVariable String firstName, @PathVariable String lastName) {
         return employeeRepository.save(new Employee(id, firstName, lastName));
 
-    }
+    }*/
 
     @GetMapping("/urenRegistratie/{employeeId}/{projectId}/{numberOfHours}/{datum}")
     public int registerHours(@PathVariable Integer employeeId, @PathVariable Integer projectId, @PathVariable Integer numberOfHours, @PathVariable String datum) {
@@ -108,15 +107,14 @@ public class MainController {
         return verstuurd;
     }
 
-
-    @GetMapping("getTimeSheet/{employeeId}")
+/*    @GetMapping("getTimeSheet/{employeeId}")
     public Timesheet getTimesheet(@PathVariable Integer employeeId) {
         Employee employee = new Employee(1, "alex", "van Manen");
         Timesheet timesheet = new Timesheet(new Project(), employee, YearMonth.of(2019, 8));
         timesheet.addHourEntry(8, 14, EntryKind.LEAVE_OF_ABSENCE);
         timesheet.addHourEntry(8, 15, EntryKind.WORK);
         return timesheet;
-    }
+    }*/
 
     @PostMapping("/createCustomer")
     public boolean createCustomer(@RequestBody Customer customer) {
