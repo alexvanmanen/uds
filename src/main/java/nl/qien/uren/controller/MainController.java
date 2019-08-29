@@ -96,10 +96,10 @@ public class MainController {
     }
 
 
-    @GetMapping("getTimeSheet/{employeeId}")
-    public UrenRegistratie getTimesheet(@PathVariable Integer employeeId){
-        UrenRegistratie urenRegistratie = new UrenRegistratie(1,3,0, "1928-01-01", new WerkType("verlof"));
-        return urenRegistratie;
-
-    }
+//    @GetMapping("getTimeSheet/{employeeId}")
+//    public UrenRegistratie getTimesheet(@PathVariable Integer employeeId){
+//       UrenRegistratie urenRegistratie = new UrenRegistratie(1,3,0, "1928-01-01", new WerkType("verlof"));
+//       return urenRegistratie;
+//
+//    }
 }

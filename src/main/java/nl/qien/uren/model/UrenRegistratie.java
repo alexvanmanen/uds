@@ -5,8 +5,8 @@ import nl.qien.uren.controller.WerkType;
 import java.time.LocalDate;
 
 public class UrenRegistratie {
-    private Long employeeId;
-    private Long projectId;
+    private String employeeId;
+    private String projectId;
     private Long aantalUren;
     private LocalDate datum;
     private WerkType werkType;
@@ -14,7 +14,7 @@ public class UrenRegistratie {
     public UrenRegistratie(){
     }
 
-    public UrenRegistratie(long employeeId, long projectId, long aantalUren, String datum, WerkType werkType){
+    public UrenRegistratie(String employeeId, String projectId, long aantalUren, String datum, WerkType werkType){
         this.employeeId = employeeId;
         this.projectId = projectId;
         this.aantalUren = aantalUren;
@@ -28,11 +28,11 @@ public class UrenRegistratie {
         return a;
     }
 
-    public Long getEmployeeId(){
+    public String getEmployeeId(){
         return employeeId;
     }
 
-    public Long getProjectId(){
+    public String getProjectId(){
         return projectId;
     }
 

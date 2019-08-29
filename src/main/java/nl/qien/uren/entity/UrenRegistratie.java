@@ -7,8 +7,8 @@ import java.time.LocalDate;
 public class UrenRegistratie {
     @Id
     @GeneratedValue(strategy=GenerationType.AUTO)
-    private Long employeeId;
-    private Long projectId;
+    private String employeeId;
+    private String projectId;
     private Long aantalUren;
     private LocalDate datum;
 }

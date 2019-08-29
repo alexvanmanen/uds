@@ -7,6 +7,9 @@ CREATE TABLE billionaires (
   career VARCHAR(250) DEFAULT NULL
 );
 
+ALTER TABLE UREN_REGISTRATIE
+    DROP PRIMARY KEY;
+
 INSERT INTO billionaires (first_name, last_name, career) VALUES
   ('Aliko', 'Dangote', 'Billionaire Industrialist'),
   ('Bill', 'Gates', 'Billionaire Tech Entrepreneur'),
