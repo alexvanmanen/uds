@@ -33,7 +33,7 @@ public class JDBCUserRepository implements UserRepository {
                 "select * from User",
                 (rs, rowNum) ->
                         new User(
-                                rs.getLong("id"),
+                                rs.getInt("id"),
                                 rs.getString("firstname"),
                                 rs.getString("lastname"),
                                 rs.getBoolean("active"),
@@ -59,8 +59,8 @@ public class JDBCUserRepository implements UserRepository {
     }
 
     @Override
-    public Long getMaxId(){
+    public int getMaxId(){
         return jdbcTemplate
-                .queryForObject("select max(id) from User", Long.class) +1;
+                .queryForObject("select max(id) from User", Integer.class) +1;
     }
 }
