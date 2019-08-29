@@ -102,13 +102,18 @@ public class MainController {
     }
 
 
-    @GetMapping("getTimeSheet/{employeeId}")
+    @GetMapping("/getTimeSheet/{employeeId}")
     public Timesheet getTimesheet(@PathVariable Integer employeeId){
         Employee employee = new Employee(1,"alex", "van Manen");
         Timesheet timesheet = new Timesheet(new Project(), employee, YearMonth.of(2019,8));
         timesheet.addHourEntry(8,14, EntryKind.LEAVE_OF_ABSENCE);
         timesheet.addHourEntry(8,15, EntryKind.WORK);
         return timesheet;
-
     }
+
+    @PostMapping("/createTimeSheet")
+    public void createTimesheet(@RequestBody Timesheet timesheet){
+        timesheetRepository.save(timesheet);
+    }
+
 }
