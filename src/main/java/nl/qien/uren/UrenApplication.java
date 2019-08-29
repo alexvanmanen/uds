@@ -1,7 +1,9 @@
 package nl.qien.uren;
 
+import nl.qien.uren.entity.Admin;
 import nl.qien.uren.entity.Customer;
 import nl.qien.uren.entity.Project;
+import nl.qien.uren.repository.AdminRepository;
 import nl.qien.uren.repository.CustomerRepository;
 import nl.qien.uren.repository.ProjectRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,6 +26,9 @@ public class UrenApplication  implements CommandLineRunner {
 
     @Autowired
     ProjectRepository projectRepository;
+
+    @Autowired
+    AdminRepository adminRepository;
 
     public static void main(String[] args) {
         SpringApplication.run(UrenApplication.class, args);
@@ -55,7 +60,13 @@ public class UrenApplication  implements CommandLineRunner {
         for (Customer customer : customerRepository.findAll()) {
             System.out.println(customer);
         }
+
+        Admin cora = new Admin();
+        adminRepository.save(cora);
+
     }
+
+
 
 
 }
