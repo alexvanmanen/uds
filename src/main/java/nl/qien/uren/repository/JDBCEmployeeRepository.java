@@ -24,7 +24,7 @@ public class JDBCEmployeeRepository implements EmployeeRepository {
     public int save(Employee employee) {
         return jdbcTemplate.update(
                 "insert into Employee (ID, FIRST_NAME, LAST_NAME) values(?,?,?)",
-                employee.getId(), employee.getFirstName(), employee.getLastName());
+                employee.getId(), employee.getFirstname(), employee.getLastname());
     }
 
     @Override
@@ -33,7 +33,7 @@ public class JDBCEmployeeRepository implements EmployeeRepository {
                 "select * from Employee",
                 (rs, rowNum) ->
                         new Employee(
-                                rs.getLong("ID"),
+                                rs.getInt("ID"),
                                 rs.getString("FIRST_NAME"),
                                 rs.getString("LAST_NAME")
                         )

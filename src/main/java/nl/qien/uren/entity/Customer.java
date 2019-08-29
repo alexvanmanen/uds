@@ -1,50 +1,49 @@
 package nl.qien.uren.entity;
 
-import com.fasterxml.jackson.annotation.JsonManagedReference;
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.HashSet;
 import java.util.Set;
 
-
 @Entity
-//@Getter
-//@Setter
-//@ToString
-//@NoArgsConstructor
-//@AllArgsConstructor
-@Table(name="customer")
+@Table(name="Customer")
 public class Customer implements Serializable {
-
-    @OneToMany(fetch = FetchType.LAZY, mappedBy = "customer")
-    @JsonManagedReference
-    private Set<Project> projects = new HashSet<>();
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
-    private String naam;
-    private String adres;
+    private String name;
 
-    public void setNaam(String naam){
-        this.naam = naam;
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "customer")
+    private Set<Project> projects = new HashSet<>();
 
+    public Customer(){ }
+
+    public Customer(String name){
+        this.name = name;
     }
 
-    public String getNaam(){
-        return naam;
+    public void setName(String name){
+        this.name = name;
     }
 
-    public void setId(int id){
-        this.id = id;
-    }
-    public int getId(){
-        return id;
+    public String getName(){return name;}
+    public void setProjects(Set<Project> projects){
+        this.projects = projects;
     }
 
+    public Set<Project> getProjects(){
+        return projects;
+    }
+
+    public String toString(){
+        StringBuffer result = new StringBuffer();
+        result.append(name + "\r\n");
+        for (Project project: projects){
+            result.append("  "+ project.getId() + " - " + project.getName() + "\r\n") ;
+        }
+        return result.toString();
+    }
 }
-
-
-
-
-

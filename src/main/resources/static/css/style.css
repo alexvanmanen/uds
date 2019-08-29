@@ -5,7 +5,7 @@ ul {
     margin: 0;
     padding: 0;
     overflow: hidden;
-    background-color: #ffffff;
+    background-color: #f3f3f3;
 }
 
 li {
@@ -45,28 +45,16 @@ li.dropdown {
     display: block;
     text-align: left;
 }
-#btn {
-    color: #666;
-    padding: 14px 16px;
-}
-#btn:hover {
-    color: #ffffff;
-    background-color: #8c1aff;
-}
 
-.dropdown-content a:hover {
-    background-color: #8c1aff;
-    color: #ffffff
-}
+.dropdown-content a:hover {background-color: #8c1aff;}
 
 .dropdown:hover .dropdown-content {
     display: block;
 }
 
 table {
-    table-layout: auto;
     border-collapse: collapse;
-    width: 100%;
+    width: 60%;
 }
 
 th, td {
@@ -77,20 +65,16 @@ th, td {
 
 tr:hover {background-color:#f5f5f5;}
 
-input {
-    width: 50px;
+h2{ color:#A34AFE;
+    text-align:center;
+    font-size:200%
 }
 
-#NaamMedewerker {
-    width: 150px;
+form {
+    text-align:center;
 }
 
-#NaamOpdracht {
-    width: 150px;
+p {
+    color:purple;
+    text-align:center
 }
-
-#verklaring {
-    width: 300px;
-}
-
-

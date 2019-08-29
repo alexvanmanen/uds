@@ -1,44 +1,41 @@
 package nl.qien.uren.entity;
 
-
-import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import javax.persistence.*;
 import java.io.Serializable;
-import java.time.LocalDate;
+import java.util.Set;
 
 @Entity
-//@Getter
-//@Setter
-//@ToString
-//@NoArgsConstructor
-//@AllArgsConstructor
-@Table(name="project")
+@Table(name="Project")
 public class Project implements Serializable {
-
-    @ManyToOne
-    @JoinColumn(name="Customer_ID")
-    @JsonBackReference
-    private Customer customer;
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
-    private String projectName;
-    //private LocalDate startDate;
+
+    @ManyToOne
+    @JoinColumn(name = "CUSTOMER_ID")
+    private Customer customer;
+
+    private String name;
+
+    public Project(){}
 
     public Project(String name, Customer customer){
-    }
-    public Project(){}
-    public void setCustomer(Customer customer){
+        this.name = name;
         this.customer = customer;
     }
 
-    public void setProjectName(String projectName){
-        this.projectName = projectName;
+    public String getName(){
+        return name;
     }
 
-    public String getProjectName(){
-        return projectName;
+    public int getId(){
+        return id;
     }
+
+    public void setId(int id){
+        this.id = id;
+    }
+
 }
