@@ -1,3 +1,4 @@
+/*
 package nl.qien.uren.model.user;
 
 public class User {
@@ -129,4 +130,4 @@ public class User {
     public void setFirstlogin(boolean firstlogin) {
         this.firstlogin = firstlogin;
     }
-}
+}*/

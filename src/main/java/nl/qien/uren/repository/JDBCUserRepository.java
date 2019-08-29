@@ -7,9 +7,9 @@ import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
-@Repository
-public class JDBCUserRepository implements UserRepository {
-
+//@Repository
+//public class JDBCUserRepository implements UserRepository { }
+/*
     @Autowired
     private JdbcTemplate jdbcTemplate;
 
@@ -63,4 +63,4 @@ public class JDBCUserRepository implements UserRepository {
         return jdbcTemplate
                 .queryForObject("select max(id) from User", Integer.class) +1;
     }
-}
+}*/

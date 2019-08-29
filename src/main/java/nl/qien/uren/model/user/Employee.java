@@ -1,5 +1,7 @@
 package nl.qien.uren.model.user;
 
+import nl.qien.uren.entity.User;
+
 public class Employee extends User {
 
     public Employee(Integer id, String firstName, String lastName){

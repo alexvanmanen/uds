@@ -1,6 +1,8 @@
 package nl.qien.uren.model.user;
 
-public class Admin extends User{
+import nl.qien.uren.entity.User;
+
+public class Admin extends User {
 
 
 }
