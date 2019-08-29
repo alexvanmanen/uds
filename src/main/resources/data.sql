@@ -31,6 +31,5 @@ INSERT INTO ENTRY_KIND(DESCRIPTION) VALUES('TRAINING');
 INSERT INTO ENTRY_KIND(DESCRIPTION) VALUES('OVERTIME');
 INSERT INTO ENTRY_KIND(DESCRIPTION) VALUES('OTHERS');
 
-
-INSERT INTO USER(ID, firstname, lastname, active, emailadress, password, adress) VALUES(1, 'test', 'test', true,'hallo@hallo.com', 'hallo', null);
-INSERT INTO USER(ID, firstname, lastname, active, emailadress, password, adress) VALUES(2, 'Admin', 'Qien', true,'admin@qien.nl', 'Admin01', null);
+INSERT INTO USER(ID, firstname, lastname, active, emailadress, password, street, housenumber, zipcode, city, phonenumber, accountnumber, firstlogin) VALUES(1, 'test', 'test', true,'hallo@hallo.com', 'hallo', null, null, null, null, 0000000000, null, true);
+INSERT INTO USER(ID, firstname, lastname, active, emailadress, password, street, housenumber, zipcode, city, phonenumber, accountnumber, firstlogin) VALUES(2, 'Admin', 'Qien', true,'admin@qien.nl', 'Admin01', null, null, null, null, 0000000000, null, true);
