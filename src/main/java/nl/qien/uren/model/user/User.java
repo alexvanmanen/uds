@@ -1,60 +1,62 @@
 package nl.qien.uren.model.user;
 
-import java.util.*;
-
 public class User {
-    private Long id;
-    private String firstName;
-    private String lastName;
-    private String active;
-    private String emailAdress;
+    private int id;
+    private String firstname;
+    private String lastname;
+    private boolean active;
+    private String emailadress;
     private String password;
-    private String adres;
+    private String adress;
 
-    public User(Long id,String emailAdress, String password) {
-        this.emailAdress = emailAdress;
+    public User(int id, String firstname, String lastname, boolean active, String emailadress, String password, String adress) {
+        this.emailadress = emailadress;
         this.password = password;
         this.id = id;
+        this.active = active;
+        this.firstname = firstname;
+        this.lastname = lastname;
+        this.adress = adress;
     }
 
     User() { }
 
-    public String getFirstName() {
-        return firstName;
+    public String getFirstname() {
+        return firstname;
     }
 
-    public void setFirstName(String firstName) {
-        this.firstName = firstName;
+    public void setFirstname(String firstname) {
+        this.firstname = firstname;
     }
 
-    public String getLastName() {
-        return lastName;
+    public String getLastname() {
+        return lastname;
     }
 
-    public void setLastName(String lastName) {
-        this.lastName = lastName;
+    public void setLastname(String lastname) {
+        this.lastname = lastname;
     }
 
-    public String getActive() {
+    public boolean getActive() {
         return active;
     }
 
-    public void setActive(String active) {
+    public void setActive(boolean active) {
         this.active = active;
     }
 
-    public void setId(Long id){
+    public void setId(int id){
         this.id = id;
     }
 
-    public Long getId(){return id;}
+    public int getId(){return id;}
 
-    public String getEmailAdress() {
-        return emailAdress;
+    public String getEmailadress() {
+        return emailadress;
     }
 
-    public void setEmailAdress(String emailAdress) {
-        this.emailAdress = emailAdress;
+    public void setEmailadress(String emailadress) {
+        this.emailadress = emailadress;
     }
 
     public String getPassword() {
@@ -65,7 +67,11 @@ public class User {
         this.password = password;
     }
 
+    public String getAdress() {
+        return adress;
+    }
 
-
-
+    public void setAdress(String adress) {
+        this.adress = adress;
+    }
 }

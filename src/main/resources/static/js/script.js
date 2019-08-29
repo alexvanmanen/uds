@@ -90,15 +90,26 @@ function getUsers() {
 }
 
 function createUserExample(){
-
-    createUser("test3@test.nl", "test3");
+    var email = document.forms["createuserform"]["email"].value;
+    var email1 = document.forms["createuserform"]["email1"].value;
+    var firstname = document.forms["createuserform"]["firstname"].value;
+    var lastname = document.forms["createuserform"]["lastname"].value;
+    if(email === email1) {
+        createUser(email, firstname, lastname);
+    } else {
+        return alert("email komen niet overeen");
+    }
 }
 
-function createUser(email, password){
+function createUser(email, firstname, lastname){
     var object = {
-        "emailAdress": email,
-        "password": password,
-        "id": null
+        "firstname" : firstname,
+        "lastname": lastname,
+        "emailadress": email,
+        "active" : true,
+        "password": null,
+        "id": null,
+        "adress" : null
     };
     var json = JSON.stringify(object);
     apiPostRequest("/uren/api/v1/createuser", json);
