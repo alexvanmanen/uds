@@ -78,3 +78,50 @@ p {
     color:purple;
     text-align:center
 }
+
+.registerbtn {
+    background-color: #8c1aff;
+    color: white;
+    padding: 16px 20px;
+    margin: 8px 0;
+    border: none;
+    cursor: pointer;
+    width: 10%;
+    opacity: 0.9;
+}
+
+.registerbtn:hover {
+    opacity: 1;
+}
+input[type=text]:focus {
+    background-color: lightblue;
+}
+input[type=password]:focus {
+    background-color: lightblue;
+}
+#useradd{
+    padding: 20px;
+    border-radius: 5px;
+    text-align: left;
+
+}
+
+input[type=text], select {
+    width: 50%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+input[type=password], select {
+    width: 50%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}

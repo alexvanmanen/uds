@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Sendmail admin</title>
+    <script src=js/script.js></script>
+    <script src=js/email.js></script>
+</head>
+<body>
+<div id="dididogood"></div><form action="" name="mailform" onsubmit="return false">
+    Naar (email): <input id="receiver" type="text" name="receiver"required ><br>
+    Onderwerp: <input id="subject" type="text" name="subject"required ><br>
+    Bericht: <textarea id="message" name="message" rows="10" cols="60"></textarea><br>
+    <input type="submit" onclick="sendEmail();" value="Submit">
+</form>
+</body>
+</html>

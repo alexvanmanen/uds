@@ -3,6 +3,7 @@ package nl.qien.uren.controller;
 import nl.qien.uren.entity.Customer;
 import nl.qien.uren.model.EntryKind;
 import nl.qien.uren.model.Project;
+import nl.qien.uren.model.SendMail;
 import nl.qien.uren.model.Timesheet;
 import nl.qien.uren.model.user.Employee;
 import nl.qien.uren.model.user.User;
@@ -101,9 +102,16 @@ public class MainController {
     @ResponseBody
     public User register(@RequestBody User user){
         int id = userRepository.getMaxId();
-        User newUser = new User(id, user.getFirstname(), user.getLastname(), true, user.getEmailadress(), RandomStringUtils.randomNumeric(8), null);
+        User newUser = new User(id, user.getFirstname(), user.getLastname(), true, user.getEmailadress(), RandomStringUtils.randomNumeric(8), null, null, null, null, 1, null, true);
         userRepository.save(newUser);
         return newUser;
+    }
+    @PostMapping("/sendmail")
+    @ResponseBody
+    public boolean sendMail(@RequestBody SendMail email){
+        SendMail newEmail = new SendMail(email.getReceiver(), email.getSubject(), email.getMessage());
+        boolean verstuurd = newEmail.sendMail(email.getReceiver(), email.getSubject(), email.getMessage());
+        return verstuurd;
     }
 
 
