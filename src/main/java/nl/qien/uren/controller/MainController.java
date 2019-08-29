@@ -1,8 +1,10 @@
 package nl.qien.uren.controller;
 
+import nl.qien.uren.entity.Customer;
 import nl.qien.uren.model.UrenRegistratie;
 import nl.qien.uren.model.user.Employee;
 import nl.qien.uren.model.user.User;
+import nl.qien.uren.repository.CustomerRepository;
 import nl.qien.uren.repository.EmployeeRepository;
 import nl.qien.uren.repository.UserRepository;
 import nl.qien.uren.repository.UrenRegistratieRepository;
@@ -21,6 +23,9 @@ public class MainController {
 
     @Autowired
     JdbcTemplate jdbcTemplate;
+
+    @Autowired
+    CustomerRepository customerRepository;
 
     @Autowired
     @Qualifier("JDBCEmployeeRepository")
@@ -75,6 +80,21 @@ public class MainController {
     public UrenRegistratie registerHours( @RequestBody UrenRegistratie urenregistratie) {
         urenRegistratieRepository.save(urenregistratie);
         return urenregistratie;
+    }
+
+    @GetMapping("/getCustomers")
+    public List<Customer> getCustomers(){
+        return customerRepository.findAll();
+    }
+
+    @PostMapping("/addCustomer")
+    public Customer addCustomer(@RequestBody Customer customer){
+        return customerRepository.save(customer);
+    }
+
+    @DeleteMapping("/deleteCustomer")
+    public void deleteCustomer(@RequestBody Customer customer){
+        customerRepository.delete(customer);
     }
 
     @GetMapping("/createuser/{email}/{password}")

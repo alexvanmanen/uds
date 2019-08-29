@@ -1,6 +1,11 @@
 package nl.qien.uren.model.user;
 
+
 public class Customer {
 
-    String companyName;
+    private int id;
+    private String naam;
+    private String adres;
 }
+
+
