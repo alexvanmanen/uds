@@ -121,4 +121,10 @@ public class MainController {
         customerRepository.save(customer);
         return false;
     }
+
+    @GetMapping("/getcustomers")
+    public List<Customer> getCustomers(){
+        return customerRepository.findAll();
+    }
+
 }

@@ -1,5 +1,7 @@
 package nl.qien.uren.entity;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.HashSet;
@@ -27,6 +29,7 @@ public class Customer implements Serializable {
         this.name = name;
     }
 
+    public String getName(){return name;}
     public void setProjects(Set<Project> projects){
         this.projects = projects;
     }

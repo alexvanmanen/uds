@@ -1,5 +1,7 @@
 package nl.qien.uren.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Set;
@@ -16,6 +18,8 @@ public class Project implements Serializable {
     private Customer customer;
 
     private String name;
+
+    public Project(){}
 
     public Project(String name, Customer customer){
         this.name = name;
