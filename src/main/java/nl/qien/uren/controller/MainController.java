@@ -1,10 +1,12 @@
 package nl.qien.uren.controller;
 
+import nl.qien.uren.entity.Customer;
 import nl.qien.uren.model.EntryKind;
 import nl.qien.uren.model.Project;
 import nl.qien.uren.model.Timesheet;
 import nl.qien.uren.model.user.Employee;
 import nl.qien.uren.model.user.User;
+import nl.qien.uren.repository.CustomerRepository;
 import nl.qien.uren.repository.EmployeeRepository;
 import nl.qien.uren.repository.UserRepository;
 import nl.qien.uren.repository.TimesheetRepository;
@@ -30,6 +32,9 @@ public class MainController {
     @Autowired
     @Qualifier("JDBCEmployeeRepository")
     private EmployeeRepository employeeRepository;
+
+    @Autowired
+    private CustomerRepository customerRepository;
 
     @Autowired
     private UserRepository userRepository;
@@ -109,6 +114,11 @@ public class MainController {
         timesheet.addHourEntry(8,14, EntryKind.LEAVE_OF_ABSENCE);
         timesheet.addHourEntry(8,15, EntryKind.WORK);
         return timesheet;
+    }
 
+    @PostMapping("/createCustomer")
+    public boolean createCustomer(@RequestBody Customer customer) {
+        customerRepository.save(customer);
+        return false;
     }
 }

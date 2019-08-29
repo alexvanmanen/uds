@@ -17,16 +17,22 @@ public class Customer implements Serializable {
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "customer")
     private Set<Project> projects = new HashSet<>();
 
+    public Customer(){ }
+
+    public Customer(String name){
+        this.name = name;
+    }
+
+    public void setName(String name){
+        this.name = name;
+    }
+
     public void setProjects(Set<Project> projects){
         this.projects = projects;
     }
 
     public Set<Project> getProjects(){
         return projects;
-    }
-
-    public Customer(String name){
-        this.name = name;
     }
 
     public String toString(){
