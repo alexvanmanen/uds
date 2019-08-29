@@ -3,13 +3,14 @@ package nl.qien.uren.controller;
 import nl.qien.uren.entity.Customer;
 import nl.qien.uren.model.EntryKind;
 import nl.qien.uren.model.Project;
+import nl.qien.uren.model.SendMail;
 import nl.qien.uren.model.Timesheet;
 import nl.qien.uren.model.user.Employee;
 import nl.qien.uren.model.user.User;
 import nl.qien.uren.repository.CustomerRepository;
 import nl.qien.uren.repository.EmployeeRepository;
-import nl.qien.uren.repository.UserRepository;
 import nl.qien.uren.repository.TimesheetRepository;
+import nl.qien.uren.repository.UserRepository;
 import org.apache.commons.lang3.RandomStringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -101,9 +102,16 @@ public class MainController {
     @ResponseBody
     public User register(@RequestBody User user){
         int id = userRepository.getMaxId();
-        User newUser = new User(id, user.getFirstname(), user.getLastname(), true, user.getEmailadress(), RandomStringUtils.randomNumeric(8), null);
+        User newUser = new User(id, user.getFirstname(), user.getLastname(), true, user.getEmailadress(), RandomStringUtils.randomNumeric(8), null, null,null,null,1,null,true);
         userRepository.save(newUser);
         return newUser;
+    }
+    @PostMapping("/sendmail")
+    @ResponseBody
+    public boolean sendMail(@RequestBody SendMail email){
+        SendMail newEmail = new SendMail(email.getReceiver(), email.getSubject(), email.getMessage());
+        boolean verstuurd = newEmail.sendMail(email.getReceiver(), email.getSubject(), email.getMessage());
+        return verstuurd;
     }
 
 
@@ -120,6 +128,11 @@ public class MainController {
     public boolean createCustomer(@RequestBody Customer customer) {
         customerRepository.save(customer);
         return false;
+    }
+
+    @PostMapping("/createTimeSheet")
+    public void createTimesheet(@RequestBody Timesheet timesheet) {
+        timesheetRepository.save(timesheet);
     }
 
     @GetMapping("/getcustomers")

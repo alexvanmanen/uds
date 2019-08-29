@@ -2,21 +2,27 @@ package nl.qien.uren.model;
 
 import nl.qien.uren.model.user.Employee;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
 import java.time.LocalDate;
 import java.time.YearMonth;
 import java.util.ArrayList;
 import java.util.List;
 
+@Entity
 public class Timesheet {
 
+    @Id
+    @GeneratedValue
     List<TimesheetEntry> entries = new ArrayList<>();
-    Project project;
-    Employee employee;
+//    Project project;
+//    Employee employee;
     YearMonth yearMonth;
 
     public Timesheet(Project project, Employee employee, YearMonth yearMonth){
-        this.project = project;
-        this.employee = employee;
+//        this.project = project;
+//        this.employee = employee;
         this.yearMonth = yearMonth;
     }
 
@@ -43,11 +49,11 @@ public class Timesheet {
     }
 
     public Project getProject(){
-        return project;
+        return null;
     }
 
     public Employee getEmployee(){
-        return employee;
+        return null;
     }
 
 }

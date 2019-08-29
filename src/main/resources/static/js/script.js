@@ -57,32 +57,13 @@ function getPassword() {
     });
 }
 
-function showAddUserForm() {
-    document.getElementById("ajax").innerHTML = '<form action="" id="createuserform" name="createuserform">' +
-        'Email: <input id="email" type="text" name="email"><br>' +
-        'Password: <input id="password" type="password" name="password"><br>' +
-        '<input type="submit" onclick="addUser(); return false;" value="Submit"></form>';
-}
-
-function addUser() {
-    var a = document.forms["createuserform"]["email"].value;
-    var b = document.forms["createuserform"]["password"].value;
-    ajax_get("/uren/api/v1/register/" + a + "/" + b, function (data) {
-        if (data === false) {
-            document.getElementById("test").innerHTML = "<font color='red'>Error adding user.</font>";
-        } else if (data === true) {
-            document.getElementById("test").innerHTML = "<font>User added.</font>";
-        } else {
-            document.getElementById("test").innerHTML = "<font color='red'>Unexpected response from server.</font>";
-        }
-    });
-}
-
 function getUsers() {
     ajax_get('/uren/api/v1/users', function (data) {
         var tableContent = "<tr><th>Email</th><th>Password</th></tr>";
         for (i = 0; i < data.length; i++) {
-            tableContent = tableContent + "<tr><td>" + data[i]['emailAdress'] + "</td><td>" + data[i]['password'] + "</td></tr>";
+            var email = data[i]['emailadress'];
+            var password = data[i]['password'];
+            tableContent = tableContent + '<tr><td><a onclick="showEmailForm()">' + email + '</a></td><td> ' + password + ' </td></tr>';
         }
         document.getElementById("ajax").innerHTML = tableContent;
 
@@ -94,10 +75,11 @@ function createUserExample(){
     var email1 = document.forms["createuserform"]["email1"].value;
     var firstname = document.forms["createuserform"]["firstname"].value;
     var lastname = document.forms["createuserform"]["lastname"].value;
-    if(email === email1) {
+    if(email === email1 && email !="" && email1 != "" && firstname != "" && lastname != "") {
         createUser(email, firstname, lastname);
-    } else {
-        return alert("email komen niet overeen");
+        return alert("Personeel toegevoegd")
+    } else{
+        return alert("ongeldige invoer");
     }
 }
 
@@ -107,9 +89,6 @@ function createUser(email, firstname, lastname){
         "lastname": lastname,
         "emailadress": email,
         "active" : true,
-        "password": null,
-        "id": null,
-        "adress" : null
     };
     var json = JSON.stringify(object);
     apiPostRequest("/uren/api/v1/createuser", json);
