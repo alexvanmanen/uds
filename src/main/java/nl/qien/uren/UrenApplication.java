@@ -51,7 +51,7 @@ public class UrenApplication  implements CommandLineRunner {
         projectRepository.saveAll(projectsB);
 
 
-        // fetch all categories
+        //show the info
         for (Customer customer : customerRepository.findAll()) {
             System.out.println(customer);
         }
