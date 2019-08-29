@@ -1,9 +1,12 @@
 package nl.qien.uren;
 
 import nl.qien.uren.entity.Customer;
+import nl.qien.uren.entity.NonTeachingStaff;
 import nl.qien.uren.entity.Project;
+import nl.qien.uren.entity.TeachingStaff;
 import nl.qien.uren.repository.CustomerRepository;
 import nl.qien.uren.repository.ProjectRepository;
+import nl.qien.uren.repository.StaffRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
@@ -18,6 +21,9 @@ import java.util.Set;
 
 @SpringBootApplication
 public class UrenApplication  implements CommandLineRunner {
+
+    @Autowired
+    StaffRepository staffRepository;
 
     @Autowired
     CustomerRepository customerRepository;
@@ -50,6 +56,14 @@ public class UrenApplication  implements CommandLineRunner {
         projectRepository.saveAll(projectsA);
         projectRepository.saveAll(projectsB);
 
+
+        TeachingStaff ts1=new TeachingStaff(1,"Gopal","MSc MEd","Maths");
+        TeachingStaff ts2=new TeachingStaff(2, "Manisha", "BSc BEd", "English");
+
+        //Non-Teaching Staff entity
+        NonTeachingStaff nts1=new NonTeachingStaff(3, "Satish", "Accounts");
+        NonTeachingStaff nts2=new NonTeachingStaff(4, "Krishna", "Office Admin");
+        staffRepository.saveAll(Arrays.asList(ts1,ts2,nts1,nts2));
 
         //show the info
         for (Customer customer : customerRepository.findAll()) {
