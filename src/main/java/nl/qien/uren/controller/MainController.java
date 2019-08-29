@@ -117,9 +117,8 @@ public class MainController {
     }
 
     @PostMapping("/createCustomer")
-    public boolean createCustomer(@RequestBody Customer customer) {
-        customerRepository.save(customer);
-        return false;
+    public Customer createCustomer(@RequestBody Customer customer) {
+        return customerRepository.save(customer);
     }
 
 

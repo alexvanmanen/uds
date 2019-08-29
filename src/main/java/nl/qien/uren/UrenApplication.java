@@ -34,59 +34,45 @@ public class UrenApplication  implements CommandLineRunner {
     public void run(String... strings) throws Exception {
 
 
-        Customer customer = new Customer();
-        customer.setName("Ajax");
+        Customer customerA = new Customer();
+        customerA.setName("Customer A");
 
-        Project project = new Project();
-        project.setName("project van Ajax");
+        Customer customerB = new Customer();
+        customerB.setName("Customer B");
 
-        //HIER ZET IK DE CUSTOMER OP HET PROJECT
-        project.setCustomer(customer);
+        Project projectA1 = new Project();
+        projectA1.setName("Project A1");
 
-        //HIER KOPPEL IK DE LIJST MET PROJECTEN AAN DE CUSTOMER
-        Set<Project> projects = new HashSet<>();
-        projects.add(project);
-        customer.setProjects(projects);
-
-        customerRepository.save(customer);
-        projectRepository.save(project);
+        Project projectA2 = new Project();
+        projectA2.setName("Project A2");
 
 
-        //        Customer customer3 = new Customer();
-//        customer3.setName("Ajax Amsterdam");
-//        customer3.setAddress("hhahl");
-//        customerRepository.save(customer3);
-//
-//
-//
-//
-//        Customer customerA = new Customer();
-//        Customer customerB = new Customer();
-//        customerA.setName("Customer A");
-//        customerB.setName("Customer B");
-//
-//
-//        Set<Project> projectsA = new HashSet<>();
-//        Project projectA1 = new Project("Project A1", customerA);
-//        projectsA.add(projectA1);
-//        customerA.setProjects(projectsA);
-//
-//
-//        Set<Project> projectsB = new HashSet<>();
-//        projectsB.add(new Project("Project B3", customerB));
-//        projectsB.add(new Project("Project B4", customerB));
-//        customerB.setProjects(projectsB);
-//
-//
-//        customerRepository.saveAll(Arrays.asList(customerA, customerB));
-//        projectRepository.saveAll(projectsA);
-//        projectRepository.saveAll(projectsB);
+        Project projectB1 = new Project();
+        projectB1.setName("Project B1");
+
+        Project projectB2 = new Project();
+        projectB2.setName("Project B2");
+
+        Set<Project> projectsA = new HashSet<>();
+        projectsA.add(projectA1);
+        projectsA.add(projectA2);
+
+
+        Set<Project> projectsB = new HashSet<>();
+        projectsB.add(projectB1);
+        projectsB.add(projectB2);
+
+        customerA.setProjects(projectsA);
+        customerB.setProjects(projectsB);
+
+        customerRepository.saveAll(Arrays.asList(customerA,customerB));
+        projectRepository.saveAll(Arrays.asList(projectA1,projectA2,projectB1,projectB2));
 
 
         //show the info
-//        for (Customer customer : customerRepository.findAll()) {
-//            System.out.println(customer);
-//        }
+        for (Customer customer : customerRepository.findAll()) {
+            System.out.println(customer);
+        }
     }
 
 

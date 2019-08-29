@@ -8,8 +8,6 @@ import java.util.Set;
 
 @Entity
 @Table(name="Project")
-@Getter
-@Setter
 public class Project implements Serializable {
 
     @Id
@@ -22,7 +20,9 @@ public class Project implements Serializable {
 
     private String name;
 
-
+    public void setName(String name){
+        this.name = name;
+    }
 
     public String getName(){
         return name;
