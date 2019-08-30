@@ -46,13 +46,15 @@ function getPassword() {
     var a = document.forms["loginform"]["email"].value;
     var b = document.forms["loginform"]["password"].value;
     var object = {
-        "password": password,
-        "emailadress": email
+        "password": b,
+        "emailadress": a
     };
     var json = JSON.stringify(object);
-    apiPostRequest("/uren/api/v1/passwordcheck", json);
-    return true;
+    apiPostRequest("/uren/api/v1/checkPassword", json, function (x) {});
+    alert(x.target.response);
+    //window.location.assign("./dashboard.html");
 }
+
 
 function getUsers() {
     ajax_get('/uren/api/v1/users', function (data) {
@@ -91,14 +93,16 @@ function createUser(email, firstname, lastname){
     apiPostRequest("/uren/api/v1/createUser", json);
 }
 
-function apiPostRequest(url, json) {
+function apiPostRequest(url, json, callback) {
     var xmlhttp = new XMLHttpRequest();
     xmlhttp.open("POST",url);
     var xmlDoc;
-    xmlhttp.onreadystatechange = function() {
+    xmlhttp.onreadystatechange = function(data) {
         if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
             xmlDoc = xmlhttp.responseXML;
             console.log(xmlDoc);
+            callback(data);
+            return data;
         }
     };
     xmlhttp.setRequestHeader('Content-Type', 'application/json');

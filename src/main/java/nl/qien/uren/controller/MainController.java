@@ -27,6 +27,8 @@ import java.util.List;
 @RequestMapping("/api/v1")
 public class MainController {
 
+    private boolean b;
+
     @Autowired
     JdbcTemplate jdbcTemplate;
 
@@ -149,10 +151,12 @@ public class MainController {
 
     }
     @PostMapping("/checkPassword")
-    public Boolean checkPassword(@RequestBody User user) {
+    public String checkPassword(@RequestBody User user) {
         System.out.println("user.getEmailadress() = " + user.getPassword());
         System.out.println("user.getEmailadress() = " + user.getEmailadress());
-        return true;
+        System.out.println("userRepository.findAll() = " + userRepository.findAll());
+        b = !b;
+        return "alex en bart";
     }
 }
 
