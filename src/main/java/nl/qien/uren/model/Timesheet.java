@@ -25,12 +25,12 @@ public class Timesheet {
     public Timesheet(Project project, Employee employee, YearMonth yearMonth){
 //        this.project = project;
 //        this.employee = employee;
-        this.yearMonth = yearMonth;
+       // this.yearMonth = yearMonth;
     }
 
     public void addHourEntry(int numberOfHours, int dayOfTheMonth, EntryKind entryKind){
-        LocalDate entryDate = LocalDate.of(yearMonth.getYear(), yearMonth.getMonth(), dayOfTheMonth);
-        Timesheet_Entry TSENTRY = new Timesheet_Entry(numberOfHours, entryDate, entryKind);
+       LocalDate entryDate = LocalDate.of(yearMonth.getYear(), yearMonth.getMonth(), dayOfTheMonth);
+       // Timesheet_Entry TSENTRY = new Timesheet_Entry(numberOfHours, entryDate, entryKind);
         //entries.add(TSENTRY);
     }
 //
