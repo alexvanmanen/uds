@@ -53,13 +53,6 @@ public class MainController {
         return userRepository.findAll();
     }
 
-    @GetMapping("/getmonthdays/{year}/{month}")
-    public int getDaysInMonth(@PathVariable int year, @PathVariable int month) {
-        Timesheet timesheet = new Timesheet(new Project(), new Employee(), YearMonth.of(year,month));
-        timesheet.addHourEntry(8,8, EntryKind.WORK);
-        timesheet.addHourEntry(8,9, EntryKind.WORK);
-        return timesheet.getTotalHours();
-    }
     @GetMapping("/checkPassword/{email}/{password}")
     @ResponseBody
     public boolean checkPassword(@PathVariable String email, @PathVariable String password) {

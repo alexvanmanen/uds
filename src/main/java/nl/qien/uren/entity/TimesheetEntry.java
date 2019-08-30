@@ -23,6 +23,8 @@ public class TimesheetEntry implements Serializable {
     @Enumerated(EnumType.STRING)
     private EntryKind entryKind;
 
+    public TimesheetEntry(){}
+
     public TimesheetEntry(Date dag, int uren, EntryKind entryKind, Timesheet timesheet) {
         this.timesheet = timesheet;
         this.dag = dag;

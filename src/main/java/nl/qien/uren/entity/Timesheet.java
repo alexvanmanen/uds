@@ -23,41 +23,18 @@ public class Timesheet {
 
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "timesheet")
     private List<TimesheetEntry> entries = new ArrayList<>();
-   private TimesheetState state;
-//    Project project;
-//    Employee employee;
+    private TimesheetState state;
     private YearMonth yearMonth;
 
+    public Timesheet(){ }
+
     public Timesheet(nl.qien.uren.model.Project project, Employee employee, YearMonth yearMonth){
-//        this.project = project;
         this.user = employee;
         this.yearMonth = yearMonth;
     }
 
-    public void addHourEntry(int numberOfHours, int dayOfTheMonth, EntryKind entryKind){
-       LocalDate entryDate = LocalDate.of(yearMonth.getYear(), yearMonth.getMonth(), dayOfTheMonth);
-       // Timesheet_Entry TSENTRY = new Timesheet_Entry(numberOfHours, entryDate, entryKind);
-        //entries.add(TSENTRY);
-    }
-//
-//    public List<TS_ENTRY> getEntries(){
-//        return entries;
-//    }
-
     public YearMonth getYearMonth(){
         return yearMonth;
-    }
-
-    public int getTotalHours(){
-        int total = 0;
-//        for(TS_ENTRY TSENTRY : entries){
-//            total = TSENTRY.getNumberOfHours();
-//        }
-        return total;
-    }
-
-    public Project getProject(){
-        return null;
     }
 
     public User getEmployee(){
