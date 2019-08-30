@@ -2,14 +2,13 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Personeel Beheren</title>
+    <title>Profiel</title>
     <link rel="stylesheet" type="text/css" href="css/style.css">
     <script src=js/script.js></script>
-    <script src=js/email.js></script>
     <script src="js/UrenRegistraties.js"></script>
 </head>
-<body>
 
+<body>
 <div id="welcome"></div>
 <script>getWelcome()</script>
 <ul class="topnav">
@@ -29,22 +28,11 @@
         <div class="dropdown-content">
             <a href="#">Bedrijf toevoegen</a>
             <a href="#">Bedrijf beheren</a>
-    <li style="float:right"><a class="active" href="login.html">Uitloggen</a></li>
+    <li style="float:right"><a class="active" href="login.html" >Uitloggen</a></li>
 </ul>
 
+<h2>Profiel</h2>
 
-<p>
-<h2> Personeel Beheren </h2>
-<button onclick="getUsers()" class=registerbtn>Personeelsoverzicht</button>
-<table id="ajax"></table>
-<div id="verzonden"></div>
-<form style="display:none" action="" id="mailform" name="mailform" onsubmit="return false">
-    Naar (email): <br> <input id="receiver" type="text" name="receiver" required><br>
-    Onderwerp: <br> <input id="subject" type="text" name="subject" required value="Urenkaart Augustus" required><br>
-    Bericht: <br> <textarea id="message" name="message" rows="10" cols="60"></textarea><br>
-    <input type="submit" onclick="sendEmail();" class=registerbtn value="Submit">
-</form>
-</p>
 
 </body>
 </html>
