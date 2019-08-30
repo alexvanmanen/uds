@@ -78,7 +78,7 @@ public class UrenApplication  implements CommandLineRunner {
         Admin cora = new Admin();
         adminRepository.save(cora);
 
-        TimesheetEntry timesheetEntry = new TimesheetEntry(new Date(), 8, EntryKind.WORK);
-        timeSheetEntryRepository.save(timesheetEntry);
+        //TimesheetEntry timesheetEntry = new TimesheetEntry(new Date(), 8, EntryKind.WORK);
+        //timeSheetEntryRepository.save(timesheetEntry);
     }
 }

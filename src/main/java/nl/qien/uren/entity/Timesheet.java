@@ -19,6 +19,8 @@ public class Timesheet {
     @GeneratedValue
     private int id;
 
+    private TimesheetState state;
+
     //List<TS_ENTRY> entries = new ArrayList<>();
 //    Project project;
 //    Employee employee;
