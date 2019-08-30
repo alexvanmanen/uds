@@ -1,5 +1,7 @@
 package nl.qien.uren.entity;
 
+import nl.qien.uren.util.YearMonthDateAttributeConverter;
+
 import javax.persistence.*;
 import java.time.YearMonth;
 import java.util.ArrayList;
@@ -26,6 +28,10 @@ public class Timesheet {
 
     @Enumerated(EnumType.STRING)
     private TimesheetState state;
+
+    @Convert(
+            converter = YearMonthDateAttributeConverter.class
+    )
     private YearMonth yearMonth;
 
     public Timesheet(){ }
