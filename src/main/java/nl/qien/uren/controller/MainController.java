@@ -40,7 +40,7 @@ public class MainController {
     private UserRepository userRepository;
 
     @Autowired
-    @Qualifier("JDBCTSRepository")
+//    @Qualifier("JDBCTimesheetRepository")
     private TimesheetRepository timesheetRepository;
 
     @GetMapping("/employees")
@@ -75,22 +75,12 @@ public class MainController {
 
     @GetMapping("/urenRegistratie/{employeeId}/{projectId}/{numberOfHours}/{datum}")
     public int registerHours(@PathVariable Integer employeeId, @PathVariable Integer projectId, @PathVariable Integer numberOfHours, @PathVariable String datum){
-        LocalDate date = LocalDate.parse(datum);
-        YearMonth yearMonth = YearMonth.of(date.getYear(),date.getMonth());
-        Project project = new Project();
-        project.setId(projectId);
-        Employee employee = new Employee();
-        employee.setId(employeeId);
-        Timesheet timesheet = new Timesheet(project, employee, yearMonth);
-        timesheet.addHourEntry(numberOfHours,date.getDayOfMonth(), EntryKind.WORK);
-
-        return timesheetRepository.save(timesheet);
-
+        return 0;
     }
 
     @GetMapping("/urenRegistratie/count")
     public int registerHours() {
-        return timesheetRepository.count();
+        return 0;
     }
 
 

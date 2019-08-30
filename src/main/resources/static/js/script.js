@@ -59,11 +59,15 @@ function getPassword() {
 
 function getUsers() {
     ajax_get('/uren/api/v1/users', function (data) {
-        var tableContent = "<tr><th>Email</th><th>Password</th></tr>";
+        var tableContent = "<tr><th>Email</th><th>Wijzigen/ De-activeren</th><th>Contact</th></tr>";
         for (i = 0; i < data.length; i++) {
             var email = data[i]['emailadress'];
             var password = data[i]['password'];
-            tableContent = tableContent + '<tr><td><a onclick="showEmailForm()">' + email + '</a></td><td> ' + password + ' </td></tr>';
+
+            tableContent = tableContent +
+                '<tr><td>' + email + '</a></td>' +
+                '<td> <button onclick="updateUser() " class="registerbtn">Wijzig/ De-activeer</button> </td>' +
+                '<td><button onclick="showEmailForm()" class=registerbtn> Stuur email </button></td></tr>';
         }
         document.getElementById("ajax").innerHTML = tableContent;
 
