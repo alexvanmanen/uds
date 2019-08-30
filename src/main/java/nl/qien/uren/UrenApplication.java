@@ -49,7 +49,8 @@ public class UrenApplication  implements CommandLineRunner {
         Employee employeeB = new Employee();
 
         Set<Project> projectsA = new HashSet<>();
-        projectsA.add(new Project("Project A1", customerA));
+        Project projectA1 = new Project("Project A1", customerA);
+        projectsA.add(projectA1);
         customerA.setProjects(projectsA);
 
 
@@ -74,6 +75,7 @@ public class UrenApplication  implements CommandLineRunner {
         Admin cora = new Admin();
         adminRepository.save(cora);
 
+
         Employee alex = new Employee();
         alex.setFirstname("Alex");
         Employee bart = new Employee();
@@ -81,8 +83,9 @@ public class UrenApplication  implements CommandLineRunner {
 
         employeeRepository.saveAll(Arrays.asList(alex,bart));
 
-        Timesheet timesheetAlex = new Timesheet(new nl.qien.uren.model.Project(), alex, YearMonth.of(2019,8));
-        Timesheet timesheetBart = new Timesheet(new nl.qien.uren.model.Project(), bart, YearMonth.of(2019,1));
+
+        Timesheet timesheetAlex = new Timesheet(projectA1, alex, YearMonth.of(2019,8), TimesheetState.OPEN);
+        Timesheet timesheetBart = new Timesheet(projectA1, bart, YearMonth.of(2019,1), TimesheetState.APPROVED);
 
         timesheetRepository.save(timesheetAlex);
         timesheetRepository.save(timesheetBart);
@@ -101,7 +104,5 @@ public class UrenApplication  implements CommandLineRunner {
 
 
         timeSheetEntryRepository.saveAll(Arrays.asList(timesheetEntry1,timesheetEntry2, timesheetEntry3));
-
-
     }
 }

@@ -1,8 +1,6 @@
 package nl.qien.uren.controller;
 
 import nl.qien.uren.entity.Customer;
-import nl.qien.uren.model.EntryKind;
-import nl.qien.uren.model.Project;
 import nl.qien.uren.model.SendMail;
 import nl.qien.uren.entity.Timesheet;
 import nl.qien.uren.entity.Employee;
@@ -13,12 +11,9 @@ import nl.qien.uren.repository.TimesheetRepository;
 import nl.qien.uren.repository.UserRepository;
 import org.apache.commons.lang3.RandomStringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.web.bind.annotation.*;
 
-import java.time.LocalDate;
-import java.time.YearMonth;
 import java.util.List;
 
 
@@ -53,13 +48,6 @@ public class MainController {
         return userRepository.findAll();
     }
 
-    @GetMapping("/getmonthdays/{year}/{month}")
-    public int getDaysInMonth(@PathVariable int year, @PathVariable int month) {
-        Timesheet timesheet = new Timesheet(new Project(), new Employee(), YearMonth.of(year,month));
-        timesheet.addHourEntry(8,8, EntryKind.WORK);
-        timesheet.addHourEntry(8,9, EntryKind.WORK);
-        return timesheet.getTotalHours();
-    }
     @GetMapping("/checkPassword/{email}/{password}")
     @ResponseBody
     public boolean checkPassword(@PathVariable String email, @PathVariable String password) {
