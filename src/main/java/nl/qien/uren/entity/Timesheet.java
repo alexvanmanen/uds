@@ -4,12 +4,11 @@ import nl.qien.uren.entity.Employee;
 import nl.qien.uren.model.EntryKind;
 import nl.qien.uren.model.Project;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 import java.time.LocalDate;
 import java.time.YearMonth;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Table(name="TS")
@@ -19,7 +18,8 @@ public class Timesheet {
     @GeneratedValue
     private int id;
 
-    //List<TS_ENTRY> entries = new ArrayList<>();
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "timesheet")
+    private List<TimesheetEntry> entries = new ArrayList<>();
 //    Project project;
 //    Employee employee;
     YearMonth yearMonth;

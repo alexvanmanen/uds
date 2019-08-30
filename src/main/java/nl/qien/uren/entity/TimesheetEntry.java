@@ -10,6 +10,10 @@ import java.util.Date;
 @Table(name = "TSEntry")
 public class TimesheetEntry implements Serializable {
 
+    @ManyToOne
+    @JoinColumn(name = "ROBIN")
+    private Timesheet timesheet;
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
