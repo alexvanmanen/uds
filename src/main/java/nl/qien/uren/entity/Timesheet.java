@@ -23,12 +23,15 @@ public class Timesheet {
 
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "timesheet")
     private List<TimesheetEntry> entries = new ArrayList<>();
+
+    @Enumerated(EnumType.STRING)
     private TimesheetState state;
     private YearMonth yearMonth;
 
     public Timesheet(){ }
 
-    public Timesheet(Project project, Employee employee, YearMonth yearMonth){
+    public Timesheet(Project project, Employee employee, YearMonth yearMonth, TimesheetState state){
+        this.state = state;
         this.project = project;
         this.user = employee;
         this.yearMonth = yearMonth;

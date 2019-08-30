@@ -84,8 +84,8 @@ public class UrenApplication  implements CommandLineRunner {
         employeeRepository.saveAll(Arrays.asList(alex,bart));
 
 
-        Timesheet timesheetAlex = new Timesheet(projectA1, alex, YearMonth.of(2019,8));
-        Timesheet timesheetBart = new Timesheet(projectA1, bart, YearMonth.of(2019,1));
+        Timesheet timesheetAlex = new Timesheet(projectA1, alex, YearMonth.of(2019,8), TimesheetState.OPEN);
+        Timesheet timesheetBart = new Timesheet(projectA1, bart, YearMonth.of(2019,1), TimesheetState.APPROVED);
 
         timesheetRepository.save(timesheetAlex);
         timesheetRepository.save(timesheetBart);
