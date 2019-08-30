@@ -1,6 +1,5 @@
 package nl.qien.uren.entity;
 
-import nl.qien.uren.entity.Employee;
 import nl.qien.uren.model.EntryKind;
 import nl.qien.uren.model.Project;
 
@@ -13,6 +12,10 @@ import java.util.List;
 @Entity
 @Table(name="TS")
 public class Timesheet {
+
+    @ManyToOne
+    @JoinColumn(name = "USER")
+    private User user;
 
     @Id
     @GeneratedValue
