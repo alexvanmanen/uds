@@ -11,7 +11,7 @@ import java.util.Date;
 public class TimesheetEntry implements Serializable {
 
     @ManyToOne
-    @JoinColumn(name = "ROBIN")
+    @JoinColumn(name = "TIMESHEET_ID")
     private Timesheet timesheet;
 
     @Id
