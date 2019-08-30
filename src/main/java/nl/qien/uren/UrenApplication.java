@@ -5,12 +5,11 @@ import nl.qien.uren.entity.Customer;
 import nl.qien.uren.entity.Employee;
 import nl.qien.uren.entity.Project;
 import nl.qien.uren.entity.TimesheetEntry;
-import nl.qien.uren.model.EntryKind;
 import nl.qien.uren.repository.AdminRepository;
 import nl.qien.uren.repository.CustomerRepository;
 import nl.qien.uren.repository.EmployeeRepository;
 import nl.qien.uren.repository.ProjectRepository;
-import nl.qien.uren.repository.TimeSheetEntryRepository;
+import nl.qien.uren.repository.TimesheetEntryRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
@@ -18,7 +17,6 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.Arrays;
-import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -26,7 +24,7 @@ import java.util.Set;
 public class UrenApplication  implements CommandLineRunner {
 
     @Autowired
-    TimeSheetEntryRepository timeSheetEntryRepository;
+    TimesheetEntryRepository timeSheetEntryRepository;
 
     @Autowired
     CustomerRepository customerRepository;
@@ -78,7 +76,9 @@ public class UrenApplication  implements CommandLineRunner {
         Admin cora = new Admin();
         adminRepository.save(cora);
 
-        TimesheetEntry timesheetEntry = new TimesheetEntry(new Date(), 8, EntryKind.WORK);
+        TimesheetEntry timesheetEntry = new TimesheetEntry(8);
+        TimesheetEntry timesheetEntry2 = new TimesheetEntry(100);
         timeSheetEntryRepository.save(timesheetEntry);
+        timeSheetEntryRepository.save(timesheetEntry2);
     }
 }

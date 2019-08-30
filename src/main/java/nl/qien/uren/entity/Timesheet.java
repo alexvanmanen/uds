@@ -21,8 +21,8 @@ public class Timesheet {
     @GeneratedValue
     private int id;
 
-    @OneToMany(fetch = FetchType.LAZY, mappedBy = "timesheet")
-    private List<TimesheetEntry> entries = new ArrayList<>();
+//    @OneToMany(fetch = FetchType.LAZY, mappedBy = "timesheet")
+//    private List<TimesheetEntry> entries = new ArrayList<>();
 //    Project project;
 //    Employee employee;
     YearMonth yearMonth;
@@ -32,6 +32,8 @@ public class Timesheet {
 //        this.employee = employee;
        // this.yearMonth = yearMonth;
     }
+
+    public Timesheet(){}
 
     public void addHourEntry(int numberOfHours, int dayOfTheMonth, EntryKind entryKind){
        LocalDate entryDate = LocalDate.of(yearMonth.getYear(), yearMonth.getMonth(), dayOfTheMonth);

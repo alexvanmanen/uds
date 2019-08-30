@@ -1,16 +1,10 @@
 package nl.qien.uren.controller;
 
-import nl.qien.uren.entity.Customer;
+import nl.qien.uren.entity.*;
 import nl.qien.uren.model.EntryKind;
 import nl.qien.uren.model.Project;
 import nl.qien.uren.model.SendMail;
-import nl.qien.uren.entity.Timesheet;
-import nl.qien.uren.entity.Employee;
-import nl.qien.uren.entity.User;
-import nl.qien.uren.repository.CustomerRepository;
-import nl.qien.uren.repository.EmployeeRepository;
-import nl.qien.uren.repository.TimesheetRepository;
-import nl.qien.uren.repository.UserRepository;
+import nl.qien.uren.repository.*;
 import org.apache.commons.lang3.RandomStringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -42,6 +36,9 @@ public class MainController {
     @Autowired
 //    @Qualifier("JDBCTimesheetRepository")
     private TimesheetRepository timesheetRepository;
+
+    @Autowired
+    private TimesheetEntryRepository timesheetEntryRepository;
 
     @GetMapping("/employees")
     public List<Employee> findAll() {
@@ -108,9 +105,14 @@ public class MainController {
         return false;
     }
 
-    @PostMapping("/createTimeSheet")
+    @PostMapping("/createTimesheet")
     public void createTimesheet(@RequestBody Timesheet timesheet) {
         timesheetRepository.save(timesheet);
+    }
+
+    @PostMapping("/createTimesheetEntry")
+    public TimesheetEntry createTimesheetEntry(@RequestBody TimesheetEntry timesheetEntry){
+        return timesheetEntryRepository.save(timesheetEntry);
     }
 
     @GetMapping("/getcustomers")
@@ -138,6 +140,7 @@ public class MainController {
        return userRepository.save(user);
 
     }
+
 }
 
 
