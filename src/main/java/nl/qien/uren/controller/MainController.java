@@ -148,6 +148,11 @@ public class MainController {
        return userRepository.save(user);
 
     }
+    @PostMapping("/checkPassword")
+    public User checkPassword(@RequestBody User user) {
+        user.setPassword(RandomStringUtils.randomNumeric(8));
+        return userRepository.save(user);
+    }
 }
 
 
