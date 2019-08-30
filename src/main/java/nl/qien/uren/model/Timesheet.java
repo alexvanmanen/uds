@@ -5,22 +5,24 @@ import nl.qien.uren.model.user.Employee;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.Table;
 import java.time.LocalDate;
 import java.time.YearMonth;
-import java.util.ArrayList;
-import java.util.List;
 
 @Entity
-public class Timeshit {
+@Table(name="TS")
+public class Timesheet {
 
     @Id
     @GeneratedValue
-    List<TimesheetEntry> entries = new ArrayList<>();
+    private int id;
+
+    //List<TS_ENTRY> entries = new ArrayList<>();
 //    Project project;
 //    Employee employee;
     YearMonth yearMonth;
 
-    public Timeshit(Project project, Employee employee, YearMonth yearMonth){
+    public Timesheet(Project project, Employee employee, YearMonth yearMonth){
 //        this.project = project;
 //        this.employee = employee;
         this.yearMonth = yearMonth;
@@ -28,13 +30,13 @@ public class Timeshit {
 
     public void addHourEntry(int numberOfHours, int dayOfTheMonth, EntryKind entryKind){
         LocalDate entryDate = LocalDate.of(yearMonth.getYear(), yearMonth.getMonth(), dayOfTheMonth);
-        TimesheetEntry timesheetEntry = new TimesheetEntry(numberOfHours, entryDate, entryKind);
-        entries.add(timesheetEntry);
+        Timesheet_Entry TSENTRY = new Timesheet_Entry(numberOfHours, entryDate, entryKind);
+        //entries.add(TSENTRY);
     }
-
-    public List<TimesheetEntry> getEntries(){
-        return entries;
-    }
+//
+//    public List<TS_ENTRY> getEntries(){
+//        return entries;
+//    }
 
     public YearMonth getYearMonth(){
         return yearMonth;
@@ -42,9 +44,9 @@ public class Timeshit {
 
     public int getTotalHours(){
         int total = 0;
-        for(TimesheetEntry timesheetEntry: entries){
-            total = timesheetEntry.getNumberOfHours();
-        }
+//        for(TS_ENTRY TSENTRY : entries){
+//            total = TSENTRY.getNumberOfHours();
+//        }
         return total;
     }
 

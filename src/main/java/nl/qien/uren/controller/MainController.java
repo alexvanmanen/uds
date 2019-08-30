@@ -4,7 +4,7 @@ import nl.qien.uren.entity.Customer;
 import nl.qien.uren.model.EntryKind;
 import nl.qien.uren.model.Project;
 import nl.qien.uren.model.SendMail;
-import nl.qien.uren.model.Timeshit;
+import nl.qien.uren.model.Timesheet;
 import nl.qien.uren.model.user.Employee;
 import nl.qien.uren.model.user.User;
 import nl.qien.uren.repository.CustomerRepository;
@@ -41,8 +41,8 @@ public class MainController {
     private UserRepository userRepository;
 
     @Autowired
-    @Qualifier("JDBCTimesheetRepository")
-    private TimesheetRepository timesheetRepository;
+    @Qualifier("JDBCTSRepository")
+    private TimesheetRepository TimesheetRepository;
 
     @GetMapping("/employees")
     public List<Employee> findAll() {
@@ -56,10 +56,10 @@ public class MainController {
 
     @GetMapping("/getmonthdays/{year}/{month}")
     public int getDaysInMonth(@PathVariable int year, @PathVariable int month) {
-        Timeshit timeshit = new Timeshit(new Project(), new Employee(), YearMonth.of(year,month));
-        timeshit.addHourEntry(8,8, EntryKind.WORK);
-        timeshit.addHourEntry(8,9, EntryKind.WORK);
-        return timeshit.getTotalHours();
+        Timesheet TS = new Timesheet(new Project(), new Employee(), YearMonth.of(year,month));
+        TS.addHourEntry(8,8, EntryKind.WORK);
+        TS.addHourEntry(8,9, EntryKind.WORK);
+        return TS.getTotalHours();
     }
     @GetMapping("/checkPassword/{email}/{password}")
     @ResponseBody
@@ -86,16 +86,16 @@ public class MainController {
         project.setId(projectId);
         Employee employee = new Employee();
         employee.setId(employeeId);
-        Timeshit timeshit = new Timeshit(project, employee, yearMonth);
-        timeshit.addHourEntry(numberOfHours,date.getDayOfMonth(), EntryKind.WORK);
+        Timesheet TS = new Timesheet(project, employee, yearMonth);
+        TS.addHourEntry(numberOfHours,date.getDayOfMonth(), EntryKind.WORK);
 
-        return timesheetRepository.save(timeshit);
+        return TimesheetRepository.save(TS);
 
     }
 
     @GetMapping("/urenRegistratie/count")
     public int registerHours() {
-        return timesheetRepository.count();
+        return TimesheetRepository.count();
     }
 
     @PostMapping("/createuser")
@@ -116,12 +116,12 @@ public class MainController {
 
 
     @GetMapping("getTimeSheet/{employeeId}")
-    public Timeshit getTimesheet(@PathVariable Integer employeeId){
+    public Timesheet getTimesheet(@PathVariable Integer employeeId){
         Employee employee = new Employee(1,"alex", "van Manen");
-        Timeshit timeshit = new Timeshit(new Project(), employee, YearMonth.of(2019,8));
-        timeshit.addHourEntry(8,14, EntryKind.LEAVE_OF_ABSENCE);
-        timeshit.addHourEntry(8,15, EntryKind.WORK);
-        return timeshit;
+        Timesheet TS = new Timesheet(new Project(), employee, YearMonth.of(2019,8));
+        TS.addHourEntry(8,14, EntryKind.LEAVE_OF_ABSENCE);
+        TS.addHourEntry(8,15, EntryKind.WORK);
+        return TS;
     }
 
     @PostMapping("/createCustomer")
@@ -131,8 +131,8 @@ public class MainController {
     }
 
     @PostMapping("/createTimeSheet")
-    public void createTimesheet(@RequestBody Timeshit timeshit) {
-        timesheetRepository.save(timeshit);
+    public void createTimesheet(@RequestBody Timesheet TS) {
+        TimesheetRepository.save(TS);
     }
 
     @GetMapping("/getcustomers")

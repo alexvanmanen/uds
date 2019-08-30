@@ -70,13 +70,13 @@ function buildTable(maand) {
 
 function Registreer(){
     var object = {
-        "employeeId": document.getElementById("NaamMedewerker").value,
-        "projectId": document.getElementById("NaamOpdracht").value,
-        "aantalUren": document.getElementById("opdracht").value
-
+    "PROJECT_ID": 1,
+        "EMPLOYEE_ID": 1,
+        "YEAR" : 2009,
+        "MONTH": 9,
     };
     var json = JSON.stringify(object);
-    apiPostRequest("/uren/api/v1/urenRegistratie", json);
+    apiPostRequest("/uren/api/v1/createTimeSheet", json);
 }
 
 function apiPostRequest(url, json) {
