@@ -4,7 +4,7 @@ import nl.qien.uren.entity.Admin;
 import nl.qien.uren.entity.Customer;
 import nl.qien.uren.entity.Employee;
 import nl.qien.uren.entity.Project;
-import nl.qien.uren.entity.TimeSheetEntry;
+import nl.qien.uren.entity.TimesheetEntry;
 import nl.qien.uren.model.EntryKind;
 import nl.qien.uren.repository.AdminRepository;
 import nl.qien.uren.repository.CustomerRepository;
@@ -78,7 +78,7 @@ public class UrenApplication  implements CommandLineRunner {
         Admin cora = new Admin();
         adminRepository.save(cora);
 
-        TimeSheetEntry timesheetEntry = new TimeSheetEntry(new Date(), 8, EntryKind.WORK);
+        TimesheetEntry timesheetEntry = new TimesheetEntry(new Date(), 8, EntryKind.WORK);
         timeSheetEntryRepository.save(timesheetEntry);
     }
 }

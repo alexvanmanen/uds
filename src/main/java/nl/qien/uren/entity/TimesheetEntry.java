@@ -8,7 +8,7 @@ import java.util.Date;
 
 @Entity
 @Table(name = "TSEntry")
-public class TimeSheetEntry implements Serializable {
+public class TimesheetEntry implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -19,7 +19,7 @@ public class TimeSheetEntry implements Serializable {
     @Enumerated(EnumType.STRING)
     private EntryKind entryKind;
 
-    public TimeSheetEntry(Date dag, int uren, EntryKind entryKind) {
+    public TimesheetEntry(Date dag, int uren, EntryKind entryKind) {
         this.dag = dag;
         this.uren = uren;
         this.entryKind = entryKind;
