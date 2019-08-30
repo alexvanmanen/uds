@@ -1,35 +1,37 @@
 package nl.qien.uren.entity;
 
-import nl.qien.uren.entity.Employee;
 import nl.qien.uren.model.EntryKind;
 import nl.qien.uren.model.Project;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 import java.time.LocalDate;
 import java.time.YearMonth;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Table(name="TS")
 public class Timesheet {
 
+    @ManyToOne
+    @JoinColumn(name = "USER")
+    private Employee user;
+
     @Id
     @GeneratedValue
     private int id;
 
-    private TimesheetState state;
-
-    //List<TS_ENTRY> entries = new ArrayList<>();
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "timesheet")
+    private List<TimesheetEntry> entries = new ArrayList<>();
+   private TimesheetState state;
 //    Project project;
 //    Employee employee;
-    YearMonth yearMonth;
+    private YearMonth yearMonth;
 
     public Timesheet(nl.qien.uren.model.Project project, Employee employee, YearMonth yearMonth){
 //        this.project = project;
-//        this.employee = employee;
-       // this.yearMonth = yearMonth;
+        this.user = employee;
+        this.yearMonth = yearMonth;
     }
 
     public void addHourEntry(int numberOfHours, int dayOfTheMonth, EntryKind entryKind){
@@ -58,8 +60,8 @@ public class Timesheet {
         return null;
     }
 
-    public Employee getEmployee(){
-        return null;
+    public User getEmployee(){
+        return user;
     }
 
 }
