@@ -6,6 +6,8 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.*;
+import java.util.HashSet;
+import java.util.Set;
 
 @Getter
 @Setter
@@ -28,4 +30,8 @@ public class User {
     private int phonenumber;
     private String accountnumber;
     private Boolean firstlogin;
+
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "user")
+    private Set<Timesheet> timesheets = new HashSet<>();
+
 }

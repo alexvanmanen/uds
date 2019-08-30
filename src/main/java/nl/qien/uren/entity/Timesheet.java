@@ -1,19 +1,19 @@
 package nl.qien.uren.entity;
 
-import nl.qien.uren.entity.Employee;
 import nl.qien.uren.model.EntryKind;
 import nl.qien.uren.model.Project;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 import java.time.LocalDate;
 import java.time.YearMonth;
 
 @Entity
 @Table(name="TS")
 public class Timesheet {
+
+    @ManyToOne
+    @JoinColumn(name = "USER")
+    private User user;
 
     @Id
     @GeneratedValue
