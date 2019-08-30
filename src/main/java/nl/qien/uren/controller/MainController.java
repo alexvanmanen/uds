@@ -9,8 +9,8 @@ import nl.qien.uren.entity.Employee;
 import nl.qien.uren.entity.User;
 import nl.qien.uren.repository.CustomerRepository;
 import nl.qien.uren.repository.EmployeeRepository;
-import nl.qien.uren.repository.UserRepository;
 import nl.qien.uren.repository.TimesheetRepository;
+import nl.qien.uren.repository.UserRepository;
 import org.apache.commons.lang3.RandomStringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -55,12 +55,11 @@ public class MainController {
 
     @GetMapping("/getmonthdays/{year}/{month}")
     public int getDaysInMonth(@PathVariable int year, @PathVariable int month) {
-        Timesheet timesheet = new Timesheet(new Project(), new Employee(), YearMonth.of(year, month));
-        timesheet.addHourEntry(8, 8, EntryKind.WORK);
-        timesheet.addHourEntry(8, 9, EntryKind.WORK);
+        Timesheet timesheet = new Timesheet(new Project(), new Employee(), YearMonth.of(year,month));
+        timesheet.addHourEntry(8,8, EntryKind.WORK);
+        timesheet.addHourEntry(8,9, EntryKind.WORK);
         return timesheet.getTotalHours();
     }
-
     @GetMapping("/checkPassword/{email}/{password}")
     @ResponseBody
     public boolean checkPassword(@PathVariable String email, @PathVariable String password) {
@@ -73,22 +72,17 @@ public class MainController {
         return employeeRepository.count() + 1;
     }
 
-/*    @GetMapping("/addEmployee/{id}/{firstName}/{lastName}")
-    public int addEmployee(@PathVariable Integer id, @PathVariable String firstName, @PathVariable String lastName) {
-        return employeeRepository.save(new Employee(id, firstName, lastName));
-
-    }*/
 
     @GetMapping("/urenRegistratie/{employeeId}/{projectId}/{numberOfHours}/{datum}")
-    public int registerHours(@PathVariable Integer employeeId, @PathVariable Integer projectId, @PathVariable Integer numberOfHours, @PathVariable String datum) {
+    public int registerHours(@PathVariable Integer employeeId, @PathVariable Integer projectId, @PathVariable Integer numberOfHours, @PathVariable String datum){
         LocalDate date = LocalDate.parse(datum);
-        YearMonth yearMonth = YearMonth.of(date.getYear(), date.getMonth());
+        YearMonth yearMonth = YearMonth.of(date.getYear(),date.getMonth());
         Project project = new Project();
         project.setId(projectId);
         Employee employee = new Employee();
         employee.setId(employeeId);
         Timesheet timesheet = new Timesheet(project, employee, yearMonth);
-        timesheet.addHourEntry(numberOfHours, date.getDayOfMonth(), EntryKind.WORK);
+        timesheet.addHourEntry(numberOfHours,date.getDayOfMonth(), EntryKind.WORK);
 
         return timesheetRepository.save(timesheet);
 
@@ -99,6 +93,7 @@ public class MainController {
         return timesheetRepository.count();
     }
 
+
     @PostMapping("/sendmail")
     @ResponseBody
     public boolean sendMail(@RequestBody SendMail email) {
@@ -107,19 +102,25 @@ public class MainController {
         return verstuurd;
     }
 
-/*    @GetMapping("getTimeSheet/{employeeId}")
-    public Timesheet getTimesheet(@PathVariable Integer employeeId) {
-        Employee employee = new Employee(1, "alex", "van Manen");
-        Timesheet timesheet = new Timesheet(new Project(), employee, YearMonth.of(2019, 8));
-        timesheet.addHourEntry(8, 14, EntryKind.LEAVE_OF_ABSENCE);
-        timesheet.addHourEntry(8, 15, EntryKind.WORK);
-        return timesheet;
-    }*/
+
+//    @GetMapping("getTimeSheet/{employeeId}")
+//    public Timesheet getTimesheet(@PathVariable Integer employeeId){
+//        Employee employee = new Employee(1,"alex", "van Manen");
+//        Timesheet timesheet = new Timesheet(new Project(), employee, YearMonth.of(2019,8));
+//        timesheet.addHourEntry(8,14, EntryKind.LEAVE_OF_ABSENCE);
+//        timesheet.addHourEntry(8,15, EntryKind.WORK);
+//        return timesheet;
+//    }
 
     @PostMapping("/createCustomer")
     public boolean createCustomer(@RequestBody Customer customer) {
         customerRepository.save(customer);
         return false;
+    }
+
+    @PostMapping("/createTimeSheet")
+    public void createTimesheet(@RequestBody Timesheet timesheet) {
+        timesheetRepository.save(timesheet);
     }
 
     @GetMapping("/getcustomers")
