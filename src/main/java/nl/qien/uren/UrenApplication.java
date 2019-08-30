@@ -74,11 +74,33 @@ public class UrenApplication  implements CommandLineRunner {
         Admin cora = new Admin();
         adminRepository.save(cora);
 
-        Timesheet timesheet = new Timesheet(new nl.qien.uren.model.Project(), new Employee(), YearMonth.of(2019,8));
-        timesheetRepository.save(timesheet);
+        Employee alex = new Employee();
+        alex.setFirstname("Alex");
+        Employee bart = new Employee();
+        bart.setFirstname("bart");
 
-        TimesheetEntry timesheetEntry = new TimesheetEntry(new Date(), 8, EntryKind.WORK, timesheet);
-        timeSheetEntryRepository.save(timesheetEntry);
+        employeeRepository.saveAll(Arrays.asList(alex,bart));
+
+        Timesheet timesheetAlex = new Timesheet(new nl.qien.uren.model.Project(), alex, YearMonth.of(2019,8));
+        Timesheet timesheetBart = new Timesheet(new nl.qien.uren.model.Project(), bart, YearMonth.of(2019,1));
+
+        timesheetRepository.save(timesheetAlex);
+        timesheetRepository.save(timesheetBart);
+
+
+        TimesheetEntry timesheetEntry1 = new TimesheetEntry(new Date(), 8, EntryKind.WORK, timesheetAlex);
+        TimesheetEntry timesheetEntry2 = new TimesheetEntry(new Date(), 4, EntryKind.LEAVE_OF_ABSENCE, timesheetAlex);
+
+        TimesheetEntry timesheetEntry3 = new TimesheetEntry(new Date(), 4, EntryKind.LEAVE_OF_ABSENCE, timesheetBart);
+
+
+        //SELECT UREN, ENTRY_KIND FROM USER
+        //INNER JOIN TS ON(USER.ID=TS.USER)
+        //INNER JOIN TSENTRY ON (TS.ID=TSENTRY.TIMESHEET_ID)
+        //WHERE FIRSTNAME='Alex'
+
+
+        timeSheetEntryRepository.saveAll(Arrays.asList(timesheetEntry1,timesheetEntry2, timesheetEntry3));
 
 
     }

@@ -15,7 +15,7 @@ public class Timesheet {
 
     @ManyToOne
     @JoinColumn(name = "USER")
-    private User user;
+    private Employee user;
 
     @Id
     @GeneratedValue
@@ -29,7 +29,7 @@ public class Timesheet {
 
     public Timesheet(nl.qien.uren.model.Project project, Employee employee, YearMonth yearMonth){
 //        this.project = project;
-//        this.employee = employee;
+        this.user = employee;
         this.yearMonth = yearMonth;
     }
 
@@ -59,8 +59,8 @@ public class Timesheet {
         return null;
     }
 
-    public Employee getEmployee(){
-        return null;
+    public User getEmployee(){
+        return user;
     }
 
 }
