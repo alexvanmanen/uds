@@ -23,6 +23,7 @@ public class Timesheet {
 
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "timesheet")
     private List<TimesheetEntry> entries = new ArrayList<>();
+   private TimesheetState state;
 //    Project project;
 //    Employee employee;
     private YearMonth yearMonth;

@@ -74,6 +74,7 @@ public class UrenApplication  implements CommandLineRunner {
         Admin cora = new Admin();
         adminRepository.save(cora);
 
+
         Employee alex = new Employee();
         alex.setFirstname("Alex");
         Employee bart = new Employee();
@@ -101,7 +102,5 @@ public class UrenApplication  implements CommandLineRunner {
 
 
         timeSheetEntryRepository.saveAll(Arrays.asList(timesheetEntry1,timesheetEntry2, timesheetEntry3));
-
-
     }
 }
