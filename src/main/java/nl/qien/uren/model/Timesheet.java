@@ -1,6 +1,6 @@
 package nl.qien.uren.model;
 
-import nl.qien.uren.model.user.Employee;
+import nl.qien.uren.entity.Employee;
 
 import java.time.LocalDate;
 import java.time.YearMonth;
