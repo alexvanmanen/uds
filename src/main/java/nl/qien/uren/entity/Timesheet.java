@@ -1,10 +1,6 @@
 package nl.qien.uren.entity;
 
-import nl.qien.uren.model.EntryKind;
-import nl.qien.uren.model.Project;
-
 import javax.persistence.*;
-import java.time.LocalDate;
 import java.time.YearMonth;
 import java.util.ArrayList;
 import java.util.List;
@@ -17,6 +13,10 @@ public class Timesheet {
     @JoinColumn(name = "USER")
     private Employee user;
 
+    @ManyToOne
+    @JoinColumn(name = "PROJECT_ID")
+    private Project project;
+
     @Id
     @GeneratedValue
     private int id;
@@ -28,7 +28,8 @@ public class Timesheet {
 
     public Timesheet(){ }
 
-    public Timesheet(nl.qien.uren.model.Project project, Employee employee, YearMonth yearMonth){
+    public Timesheet(Project project, Employee employee, YearMonth yearMonth){
+        this.project = project;
         this.user = employee;
         this.yearMonth = yearMonth;
     }
