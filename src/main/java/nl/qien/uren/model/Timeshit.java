@@ -11,7 +11,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Entity
-public class Timesheet {
+public class Timeshit {
 
     @Id
     @GeneratedValue
@@ -20,7 +20,7 @@ public class Timesheet {
 //    Employee employee;
     YearMonth yearMonth;
 
-    public Timesheet(Project project, Employee employee, YearMonth yearMonth){
+    public Timeshit(Project project, Employee employee, YearMonth yearMonth){
 //        this.project = project;
 //        this.employee = employee;
         this.yearMonth = yearMonth;

@@ -4,7 +4,7 @@ import nl.qien.uren.entity.Customer;
 import nl.qien.uren.model.EntryKind;
 import nl.qien.uren.model.Project;
 import nl.qien.uren.model.SendMail;
-import nl.qien.uren.model.Timesheet;
+import nl.qien.uren.model.Timeshit;
 import nl.qien.uren.model.user.Employee;
 import nl.qien.uren.model.user.User;
 import nl.qien.uren.repository.CustomerRepository;
@@ -56,10 +56,10 @@ public class MainController {
 
     @GetMapping("/getmonthdays/{year}/{month}")
     public int getDaysInMonth(@PathVariable int year, @PathVariable int month) {
-        Timesheet timesheet = new Timesheet(new Project(), new Employee(), YearMonth.of(year,month));
-        timesheet.addHourEntry(8,8, EntryKind.WORK);
-        timesheet.addHourEntry(8,9, EntryKind.WORK);
-        return timesheet.getTotalHours();
+        Timeshit timeshit = new Timeshit(new Project(), new Employee(), YearMonth.of(year,month));
+        timeshit.addHourEntry(8,8, EntryKind.WORK);
+        timeshit.addHourEntry(8,9, EntryKind.WORK);
+        return timeshit.getTotalHours();
     }
     @GetMapping("/checkPassword/{email}/{password}")
     @ResponseBody
@@ -86,10 +86,10 @@ public class MainController {
         project.setId(projectId);
         Employee employee = new Employee();
         employee.setId(employeeId);
-        Timesheet timesheet = new Timesheet(project, employee, yearMonth);
-        timesheet.addHourEntry(numberOfHours,date.getDayOfMonth(), EntryKind.WORK);
+        Timeshit timeshit = new Timeshit(project, employee, yearMonth);
+        timeshit.addHourEntry(numberOfHours,date.getDayOfMonth(), EntryKind.WORK);
 
-        return timesheetRepository.save(timesheet);
+        return timesheetRepository.save(timeshit);
 
     }
 
@@ -116,12 +116,12 @@ public class MainController {
 
 
     @GetMapping("getTimeSheet/{employeeId}")
-    public Timesheet getTimesheet(@PathVariable Integer employeeId){
+    public Timeshit getTimesheet(@PathVariable Integer employeeId){
         Employee employee = new Employee(1,"alex", "van Manen");
-        Timesheet timesheet = new Timesheet(new Project(), employee, YearMonth.of(2019,8));
-        timesheet.addHourEntry(8,14, EntryKind.LEAVE_OF_ABSENCE);
-        timesheet.addHourEntry(8,15, EntryKind.WORK);
-        return timesheet;
+        Timeshit timeshit = new Timeshit(new Project(), employee, YearMonth.of(2019,8));
+        timeshit.addHourEntry(8,14, EntryKind.LEAVE_OF_ABSENCE);
+        timeshit.addHourEntry(8,15, EntryKind.WORK);
+        return timeshit;
     }
 
     @PostMapping("/createCustomer")
@@ -131,8 +131,8 @@ public class MainController {
     }
 
     @PostMapping("/createTimeSheet")
-    public void createTimesheet(@RequestBody Timesheet timesheet) {
-        timesheetRepository.save(timesheet);
+    public void createTimesheet(@RequestBody Timeshit timeshit) {
+        timesheetRepository.save(timeshit);
     }
 
     @GetMapping("/getcustomers")
