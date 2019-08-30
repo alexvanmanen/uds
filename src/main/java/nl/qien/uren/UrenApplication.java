@@ -4,24 +4,29 @@ import nl.qien.uren.entity.Admin;
 import nl.qien.uren.entity.Customer;
 import nl.qien.uren.entity.Employee;
 import nl.qien.uren.entity.Project;
+import nl.qien.uren.entity.TimeSheetEntry;
+import nl.qien.uren.model.EntryKind;
 import nl.qien.uren.repository.AdminRepository;
 import nl.qien.uren.repository.CustomerRepository;
 import nl.qien.uren.repository.EmployeeRepository;
 import nl.qien.uren.repository.ProjectRepository;
+import nl.qien.uren.repository.TimeSheetEntryRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.awt.print.Book;
 import java.util.Arrays;
+import java.util.Date;
 import java.util.HashSet;
-import java.util.List;
 import java.util.Set;
 
 @SpringBootApplication
 public class UrenApplication  implements CommandLineRunner {
+
+    @Autowired
+    TimeSheetEntryRepository timeSheetEntryRepository;
 
     @Autowired
     CustomerRepository customerRepository;
@@ -73,9 +78,7 @@ public class UrenApplication  implements CommandLineRunner {
         Admin cora = new Admin();
         adminRepository.save(cora);
 
+        TimeSheetEntry timesheetEntry = new TimeSheetEntry(new Date(), 8, EntryKind.WORK);
+        timeSheetEntryRepository.save(timesheetEntry);
     }
-
-
-
-
 }
