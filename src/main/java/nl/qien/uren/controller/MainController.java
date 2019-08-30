@@ -40,7 +40,7 @@ public class MainController {
     private UserRepository userRepository;
 
     @Autowired
-    @Qualifier("JDBCTimesheetRepository")
+//    @Qualifier("JDBCTimesheetRepository")
     private TimesheetRepository timesheetRepository;
 
     @GetMapping("/employees")
