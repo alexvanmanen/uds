@@ -4,9 +4,9 @@ import nl.qien.uren.entity.Customer;
 import nl.qien.uren.model.EntryKind;
 import nl.qien.uren.model.Project;
 import nl.qien.uren.model.SendMail;
-import nl.qien.uren.model.Timesheet;
-import nl.qien.uren.model.user.Employee;
-import nl.qien.uren.model.user.User;
+import nl.qien.uren.entity.Timesheet;
+import nl.qien.uren.entity.Employee;
+import nl.qien.uren.entity.User;
 import nl.qien.uren.repository.CustomerRepository;
 import nl.qien.uren.repository.EmployeeRepository;
 import nl.qien.uren.repository.TimesheetRepository;
@@ -31,7 +31,6 @@ public class MainController {
     JdbcTemplate jdbcTemplate;
 
     @Autowired
-    @Qualifier("JDBCEmployeeRepository")
     private EmployeeRepository employeeRepository;
 
     @Autowired
@@ -41,8 +40,8 @@ public class MainController {
     private UserRepository userRepository;
 
     @Autowired
-    @Qualifier("JDBCTSRepository")
-    private TimesheetRepository TimesheetRepository;
+    @Qualifier("JDBCTimesheetRepository")
+    private TimesheetRepository timesheetRepository;
 
     @GetMapping("/employees")
     public List<Employee> findAll() {
@@ -56,27 +55,23 @@ public class MainController {
 
     @GetMapping("/getmonthdays/{year}/{month}")
     public int getDaysInMonth(@PathVariable int year, @PathVariable int month) {
-        Timesheet TS = new Timesheet(new Project(), new Employee(), YearMonth.of(year,month));
-        TS.addHourEntry(8,8, EntryKind.WORK);
-        TS.addHourEntry(8,9, EntryKind.WORK);
-        return TS.getTotalHours();
+        Timesheet timesheet = new Timesheet(new Project(), new Employee(), YearMonth.of(year,month));
+        timesheet.addHourEntry(8,8, EntryKind.WORK);
+        timesheet.addHourEntry(8,9, EntryKind.WORK);
+        return timesheet.getTotalHours();
     }
     @GetMapping("/checkPassword/{email}/{password}")
     @ResponseBody
     public boolean checkPassword(@PathVariable String email, @PathVariable String password) {
-        return userRepository.validateUser(email, password);
+        //return userRepository.validateUser(email, password);
+        return true;
     }
 
     @GetMapping("/count")
-    public int getNumberOfEmployees(){
-        return employeeRepository.count()+1;
+    public long getNumberOfEmployees() {
+        return employeeRepository.count() + 1;
     }
 
-    @GetMapping("/addEmployee/{id}/{firstName}/{lastName}")
-    public int addEmployee(@PathVariable Integer id, @PathVariable String firstName, @PathVariable String lastName){
-        return employeeRepository.save(new Employee(id, firstName,lastName));
-
-    }
 
     @GetMapping("/urenRegistratie/{employeeId}/{projectId}/{numberOfHours}/{datum}")
     public int registerHours(@PathVariable Integer employeeId, @PathVariable Integer projectId, @PathVariable Integer numberOfHours, @PathVariable String datum){
@@ -86,43 +81,36 @@ public class MainController {
         project.setId(projectId);
         Employee employee = new Employee();
         employee.setId(employeeId);
-        Timesheet TS = new Timesheet(project, employee, yearMonth);
-        TS.addHourEntry(numberOfHours,date.getDayOfMonth(), EntryKind.WORK);
+        Timesheet timesheet = new Timesheet(project, employee, yearMonth);
+        timesheet.addHourEntry(numberOfHours,date.getDayOfMonth(), EntryKind.WORK);
 
-        return TimesheetRepository.save(TS);
+        return timesheetRepository.save(timesheet);
 
     }
 
     @GetMapping("/urenRegistratie/count")
     public int registerHours() {
-        return TimesheetRepository.count();
+        return timesheetRepository.count();
     }
 
-    @PostMapping("/createuser")
-    @ResponseBody
-    public User register(@RequestBody User user){
-        int id = userRepository.getMaxId();
-        User newUser = new User(id, user.getFirstname(), user.getLastname(), true, user.getEmailadress(), RandomStringUtils.randomNumeric(8), null, null,null,null,1,null,true);
-        userRepository.save(newUser);
-        return newUser;
-    }
+
     @PostMapping("/sendmail")
     @ResponseBody
-    public boolean sendMail(@RequestBody SendMail email){
+    public boolean sendMail(@RequestBody SendMail email) {
         SendMail newEmail = new SendMail(email.getReceiver(), email.getSubject(), email.getMessage());
         boolean verstuurd = newEmail.sendMail(email.getReceiver(), email.getSubject(), email.getMessage());
         return verstuurd;
     }
 
 
-    @GetMapping("getTimeSheet/{employeeId}")
-    public Timesheet getTimesheet(@PathVariable Integer employeeId){
-        Employee employee = new Employee(1,"alex", "van Manen");
-        Timesheet TS = new Timesheet(new Project(), employee, YearMonth.of(2019,8));
-        TS.addHourEntry(8,14, EntryKind.LEAVE_OF_ABSENCE);
-        TS.addHourEntry(8,15, EntryKind.WORK);
-        return TS;
-    }
+//    @GetMapping("getTimeSheet/{employeeId}")
+//    public Timesheet getTimesheet(@PathVariable Integer employeeId){
+//        Employee employee = new Employee(1,"alex", "van Manen");
+//        Timesheet timesheet = new Timesheet(new Project(), employee, YearMonth.of(2019,8));
+//        timesheet.addHourEntry(8,14, EntryKind.LEAVE_OF_ABSENCE);
+//        timesheet.addHourEntry(8,15, EntryKind.WORK);
+//        return timesheet;
+//    }
 
     @PostMapping("/createCustomer")
     public boolean createCustomer(@RequestBody Customer customer) {
@@ -131,13 +119,35 @@ public class MainController {
     }
 
     @PostMapping("/createTimeSheet")
-    public void createTimesheet(@RequestBody Timesheet TS) {
-        TimesheetRepository.save(TS);
+    public void createTimesheet(@RequestBody Timesheet timesheet) {
+        timesheetRepository.save(timesheet);
     }
 
     @GetMapping("/getcustomers")
-    public List<Customer> getCustomers(){
+    public List<Customer> getCustomers() {
         return customerRepository.findAll();
     }
 
+    @PostMapping("/createUser")
+    public User createUser(@RequestBody User user) {
+        user.setPassword(RandomStringUtils.randomNumeric(8));
+        return userRepository.save(user);
+    }
+
+    @GetMapping("/getUsers")
+    public List<User> getUsers() {
+        return userRepository.findAll();
+    }
+    @DeleteMapping("/deleteUser")
+    public void deleteUser(@RequestBody User user) {
+        userRepository.delete(user);
+
+    }
+    @PutMapping("/updateUser")
+    public User updateUser(@RequestBody User user) {
+       return userRepository.save(user);
+
+    }
 }
+
+

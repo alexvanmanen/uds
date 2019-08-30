@@ -5,7 +5,7 @@ ul {
     margin: 0;
     padding: 0;
     overflow: hidden;
-    background-color: #ffffff;
+    background-color: white;
 }
 
 li {
@@ -21,12 +21,16 @@ li a, .dropbtn {
 }
 
 li a:hover, .dropdown:hover .dropbtn {
-    color: #ffffff;
-    background-color: #8c1aff;
+    color: white;
+    background-color: #A34AFE;
 }
 
 li.dropdown {
     display: inline-block;
+}
+
+h1, h2 {
+     color: #A34AFE;
 }
 
 .dropdown-content {
@@ -50,12 +54,12 @@ li.dropdown {
     padding: 14px 16px;
 }
 #btn:hover {
-    color: #ffffff;
-    background-color: #8c1aff;
+    color: white;
+    background-color: #A34AFE;
 }
 
 .dropdown-content a:hover {
-    background-color: #8c1aff;
+    background-color: #A34AFE;
     color: #ffffff
 }
 
@@ -64,7 +68,6 @@ li.dropdown {
 }
 
 table {
-    table-layout: auto;
     border-collapse: collapse;
     width: 100%;
 }
@@ -77,47 +80,91 @@ th, td {
 
 tr:hover {background-color:#f5f5f5;}
 
-/*input {
-    width: 50px;
-}*/
-
-#NaamMedewerker {
-    width: 40%;
+.medewerkervak {
+    width: 80%;
+    padding: 6px 10px;
+    margin: 4px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+.medewerkervak:focus {
+    background-color: lightblue;
 }
 
-#NaamOpdracht {
-    width: 40%;
+.opdrachtvak {
+    width: 80%;
+    padding: 6px 10px;
+    margin: 4px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+.opdrachtvak:focus {
+    background-color: lightblue;
 }
 
 #verklaring {
-    width: 160%;
+    width: 100%;
+    padding: 6px 10px;
+    margin: 4px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+#verklaring:focus {
+    background-color: lightblue;
 }
 
 .registerbtn {
-    background-color: #8c1aff;
-    color: white;
-    padding: 16px 20px;
+  /*  color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
     margin: 8px 0;
     border: none;
     cursor: pointer;
     width: 10%;
-    opacity: 0.9;
+    opacity: 0.9;*/
+    color: #666;
+    padding: 14px 16px;
+    min-width: 10%;
 }
 
 .registerbtn:hover {
     opacity: 1;
+    background-color: #A34AFE;
+    color: white;
 }
+
 input[type=text]:focus {
     background-color: lightblue;
 }
+
 input[type=password]:focus {
     background-color: lightblue;
 }
+ textarea {
+     width: 50%;
+     padding: 12px 20px;
+     margin: 8px 0;
+     display: block;
+     border: 1px solid #ccc;
+     border-radius: 4px;
+     box-sizing: border-box;
+
+
+ }
+
+
+
 #useradd{
     padding: 20px;
     border-radius: 5px;
     text-align: left;
-
 }
 
 input[type=text], select {
@@ -139,7 +186,23 @@ input[type=password], select {
     border-radius: 4px;
     box-sizing: border-box;
 }
-input[type=number], select {
-    width: 30%;
-    border-sizing: border-box;
+
+
+
+input[type=number] {
+    height: 20px;
+    width: 25%;
+    padding: 2px 2px;
+    margin: 5px 5px;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+input[type=number]:focus {
+    background-color: lightblue;
+}
+
+#inlog {
+    text-align: center;
 }

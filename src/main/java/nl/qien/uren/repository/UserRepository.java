@@ -1,17 +1,7 @@
 package nl.qien.uren.repository;
 
-import nl.qien.uren.model.user.User;
+import nl.qien.uren.entity.User;
+import org.springframework.data.jpa.repository.JpaRepository;
 
-import java.util.List;
-
-public interface UserRepository {
-    int count();
-
-    int save(User user);
-
-    Boolean validateUser(String email, String password);
-
-    List<User> findAll();
-
-    int getMaxId();
+public interface UserRepository extends JpaRepository<User, Integer> {
 }

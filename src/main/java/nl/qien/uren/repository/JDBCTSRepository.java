@@ -1,7 +1,7 @@
 package nl.qien.uren.repository;
 
 
-import nl.qien.uren.model.Timesheet;
+import nl.qien.uren.entity.Timesheet;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;

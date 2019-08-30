@@ -1,6 +1,8 @@
-package nl.qien.uren.model;
+package nl.qien.uren.entity;
 
-import nl.qien.uren.model.user.Employee;
+import nl.qien.uren.entity.Employee;
+import nl.qien.uren.model.EntryKind;
+import nl.qien.uren.model.Project;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -22,7 +24,7 @@ public class Timesheet {
 //    Employee employee;
     YearMonth yearMonth;
 
-    public Timesheet(Project project, Employee employee, YearMonth yearMonth){
+    public Timesheet(nl.qien.uren.model.Project project, Employee employee, YearMonth yearMonth){
 //        this.project = project;
 //        this.employee = employee;
        // this.yearMonth = yearMonth;

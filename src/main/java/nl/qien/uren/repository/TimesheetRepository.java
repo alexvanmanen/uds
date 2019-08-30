@@ -1,6 +1,6 @@
 package nl.qien.uren.repository;
 
-import nl.qien.uren.model.Timesheet;
+import nl.qien.uren.entity.Timesheet;
 
 import java.time.YearMonth;
 
