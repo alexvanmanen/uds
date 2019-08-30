@@ -60,12 +60,12 @@ public class MainController {
         timesheet.addHourEntry(8,9, EntryKind.WORK);
         return timesheet.getTotalHours();
     }
-    @GetMapping("/checkPassword/{email}/{password}")
+/*    @GetMapping("/checkPassword/{email}/{password}")
     @ResponseBody
     public boolean checkPassword(@PathVariable String email, @PathVariable String password) {
         //return userRepository.validateUser(email, password);
         return true;
-    }
+    }*/
 
     @GetMapping("/count")
     public long getNumberOfEmployees() {
@@ -149,9 +149,10 @@ public class MainController {
 
     }
     @PostMapping("/checkPassword")
-    public User checkPassword(@RequestBody User user) {
-        user.setPassword(RandomStringUtils.randomNumeric(8));
-        return userRepository.save(user);
+    public Boolean checkPassword(@RequestBody User user) {
+        System.out.println("user.getEmailadress() = " + user.getPassword());
+        System.out.println("user.getEmailadress() = " + user.getEmailadress());
+        return true;
     }
 }
 

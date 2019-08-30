@@ -45,16 +45,13 @@ function getWelcome() {
 function getPassword() {
     var a = document.forms["loginform"]["email"].value;
     var b = document.forms["loginform"]["password"].value;
-    ajax_get("/uren/api/v1/checkPassword/" + a + "/" + b, function (data) {
-        if (data === false) {
-            document.getElementById("login").innerHTML = "<font color='red'>Password and/or Email incorrect</font>";
-        } else if (data === true) {
-            setSessie(a);
-            window.location.assign("./dashboard.html");
-        } else {
-            document.getElementById("login").innerHTML = "<font color='red'>Unexpected response from server.</font>";
-        }
-    });
+    var object = {
+        "password": password,
+        "emailadress": email
+    };
+    var json = JSON.stringify(object);
+    apiPostRequest("/uren/api/v1/passwordcheck", json);
+    return true;
 }
 
 function getUsers() {
