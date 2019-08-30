@@ -4,7 +4,7 @@ import nl.qien.uren.entity.Customer;
 import nl.qien.uren.model.EntryKind;
 import nl.qien.uren.model.Project;
 import nl.qien.uren.model.SendMail;
-import nl.qien.uren.model.Timesheet;
+import nl.qien.uren.entity.Timesheet;
 import nl.qien.uren.entity.Employee;
 import nl.qien.uren.entity.User;
 import nl.qien.uren.repository.CustomerRepository;

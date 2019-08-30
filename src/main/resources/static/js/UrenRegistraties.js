@@ -62,7 +62,7 @@ function buildTable(maand) {
         for (var i = 1; i < 32; i++) {
             tabel += "<tr class='dagdec'><td>" + i + " " + maand + "</td><td><input id='opdracht' type='number'></td><td><input id='overwerk' type='number'></td><td><input id='verlof' type='number'></td><td><input id='ziek' type='number'></td><td><input id='training' type='number'></td><td><input id='overig' type='number'></td><td><input id='verklaring' type='String'></td></tr>"        }
     }
-    tabel+="<tr><br><tr\>"
+    tabel+="<tr><br><tr\>";
     tabel += "<button id='btn' onclick='Registreer()'>Declareer Uren</button>"
     document.getElementById("tabel").innerHTML = tabel;
 }
@@ -75,7 +75,7 @@ function Registreer(){
 
     };
     var json = JSON.stringify(object);
-    apiPostRequest("/uren/api/v1/urenRegistratie", json);
+    apiPostRequest("/uren/api/v1/createTimeSheet", json);
 }
 
 function apiPostRequest(url, json) {
