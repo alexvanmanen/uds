@@ -1,3 +1,4 @@
+/*
 package nl.qien.uren.repository;
 
 import nl.qien.uren.model.user.Employee;
@@ -42,7 +43,8 @@ public class JDBCEmployeeRepository implements EmployeeRepository {
 
 
 
-    /*
+    */
+/*
     @Override
     public int update(Employee Employee) {
         return jdbcTemplate.update(
@@ -93,6 +95,8 @@ public class JDBCEmployeeRepository implements EmployeeRepository {
                 String.class
         );
     }
-    */
+    *//*
+
 }
 
+*/
