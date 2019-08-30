@@ -25,12 +25,12 @@ public class Timesheet {
     private List<TimesheetEntry> entries = new ArrayList<>();
 //    Project project;
 //    Employee employee;
-    YearMonth yearMonth;
+    private YearMonth yearMonth;
 
     public Timesheet(nl.qien.uren.model.Project project, Employee employee, YearMonth yearMonth){
 //        this.project = project;
 //        this.employee = employee;
-       // this.yearMonth = yearMonth;
+        this.yearMonth = yearMonth;
     }
 
     public void addHourEntry(int numberOfHours, int dayOfTheMonth, EntryKind entryKind){
