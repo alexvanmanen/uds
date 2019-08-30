@@ -3,6 +3,7 @@ package nl.qien.uren;
 import nl.qien.uren.entity.Customer;
 import nl.qien.uren.entity.Project;
 import nl.qien.uren.entity.TimeSheetEntry;
+import nl.qien.uren.model.EntryKind;
 import nl.qien.uren.repository.CustomerRepository;
 import nl.qien.uren.repository.ProjectRepository;
 import nl.qien.uren.repository.TimeSheetEntryRepository;
@@ -57,7 +58,7 @@ public class UrenApplication  implements CommandLineRunner {
             System.out.println(customer);
         }
 
-        TimeSheetEntry timesheetEntry = new TimeSheetEntry(new Date(), 8,null);
+        TimeSheetEntry timesheetEntry = new TimeSheetEntry(new Date(), 8, EntryKind.WORK);
 
         timeSheetEntryRepository.save(timesheetEntry);
     }
