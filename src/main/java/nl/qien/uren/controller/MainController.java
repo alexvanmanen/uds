@@ -87,6 +87,16 @@ public class MainController {
         return timesheetRepository.findById(id);
     }
 
+    @GetMapping("getAllTimeSheetsByProject/{projectId}")
+    public List<Timesheet> getAllTimeSheetsByProject(@PathVariable Integer projectId){
+        return timesheetRepository.findAllByProjectId(projectId);
+    }
+
+    @GetMapping("getAllTimeSheetsByEmployee/{employeeId}")
+    public List<Timesheet> getAllTimeSheetsByEmployee(@PathVariable Integer employeeId){
+        return timesheetRepository.findAllByUserId(employeeId);
+    }
+
     @PostMapping("/createCustomer")
     public boolean createCustomer(@RequestBody Customer customer) {
         customerRepository.save(customer);
