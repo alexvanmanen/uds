@@ -4,9 +4,6 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import javax.persistence.*;
 import java.io.Serializable;
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.List;
 import java.util.Set;
 
 @Entity
@@ -19,9 +16,6 @@ public class Project implements Serializable {
     @ManyToOne
     @JoinColumn(name = "CUSTOMER_ID")
     private Customer customer;
-
-    @OneToMany(fetch = FetchType.LAZY, mappedBy = "project")
-    private Set<Timesheet> timesheets = new HashSet<>();
 
     private String name;
 
