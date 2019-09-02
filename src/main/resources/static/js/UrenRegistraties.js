@@ -12,13 +12,6 @@ function buildTable(month) {
     document.getElementById("tabel").innerHTML = tabel;
 }
 
-function calculateNumberOfDaysInMonth(month){
-    if(month == "Februari"){
-        return 28;
-    }
-    return 31;
-}
-
 function Registreer(){
     var object = {
         "uren": document.getElementById("opdracht").value,
