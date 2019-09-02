@@ -50,4 +50,7 @@ public class TimesheetEntry implements Serializable {
     }
 
 
+    public void setTimesheet(Timesheet timesheet) {
+        this.timesheet = timesheet;
+    }
 }

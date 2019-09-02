@@ -108,6 +108,11 @@ public class MainController {
     @PostMapping("/createTimesheet")
     public void createTimesheet(@RequestBody Timesheet timesheet) {
         timesheetRepository.save(timesheet);
+        for(TimesheetEntry timesheetEntry: timesheet.getEntries()){
+            timesheetEntry.setTimesheet(timesheet);
+            timesheetEntryRepository.save(timesheetEntry);
+        }
+
     }
 
     @PostMapping("/createTimesheetEntry")
