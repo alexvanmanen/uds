@@ -1,86 +1,43 @@
+function buildTable(month) {
+    var tabel = "<tr><td>" + getMonthName(month) + "</td><td>Opdracht</td><td>Overwerk</td><td>Verlof</td><td>Ziek</td><td>Training</td><td>Overig</td><td>Verklaring overig</td></tr>";
+    for (var i = 1; i < calculateNumberOfDaysInMonth(month) + 1; i++) {
+        tabel += "<tr 'month'><td>" + i + " " + getMonthName(month) + "</><td><input id='WORK" + i + "' type='number'></td><td><input id='OVERTIME" + i + "' type='number'></td><td><input id='LEAVE_OF_ABSENCE" + i + "' type='number'></td><td><input id='ILL" + i + "' type='number'></td><td><input id='TRAINING" + i + "' type='number'></td><td><input id='OTHERS" + i + "' type='number'></td><td><input id='verklaring' type='String'></td></tr>"
+    }
 
-function buildTable(maand) {
-    var tabel = "<tr><td>" + maand + "</td><td>Opdracht</td><td>Overwerk</td><td>Verlof</td><td>Ziek</td><td>Training</td><td>Overig</td><td>Verklaring overig</td></tr>";
-    if (maand == "Januari") {
-        //alert("hoi");
-        for (var i = 1; i < 32; i++) {
-            tabel += "<tr class='dagjan'><td>" + i + " " + maand + "</><td><input id='opdracht' type='number'></td><td><input id='overwerk' type='number'></td><td><input id='verlof' type='number'></td><td><input id='ziek' type='number'></td><td><input id='training' type='number'></td><td><input id='overig' type='number'></td><td><input id='verklaring' type='String'></td></tr>"
-        }
-    }
-    if (maand == "Februari") {
-        //alert("hoi");
-        for (var i = 1; i < 29; i++) {
-            tabel += "<tr class='dagfeb'><td>" + i + " " + maand + "</td><td><input id='opdracht' type='number'></td><td><input id='overwerk' type='number'></td><td><input id='verlof' type='number'></td><td><input id='ziek' type='number'></td><td><input id='training' type='number'></td><td><input id='overig' type='number'></td><td><input id='verklaring' type='String'></td></tr>"        }
-    }
-    if (maand == "Maart") {
-        //alert("hoi");
-        for (var i = 1; i < 32; i++) {
-            tabel += "<tr class='dagmrt'><td>" + i + " " + maand + "</td><td><input id='opdracht' type='number'></td><td><input id='overwerk' type='number'></td><td><input id='verlof' type='number'></td><td><input id='ziek' type='number'></td><td><input id='training' type='number'></td><td><input id='overig' type='number'></td><td><input id='verklaring' type='String'></td></tr>"        }
-    }
-    if (maand == "April") {
-        //alert("hoi");
-        for (var i = 1; i < 31; i++) {
-            tabel += "<tr class='dagapr'><td>" + i + " " + maand + "</td><td><input id='opdracht' type='number'></td><td><input id='overwerk' type='number'></td><td><input id='verlof' type='number'></td><td><input id='ziek' type='number'></td><td><input id='training' type='number'></td><td><input id='overig' type='number'></td><td><input id='verklaring' type='String'></td></tr>"        }
-    }
-    if (maand == "Mei") {
-        //alert("hoi");
-        for (var i = 1; i < 32; i++) {
-            tabel += "<tr class='dagmei'><td>" + i + " " + maand + "</td><td><input id='opdracht' type='number'></td><td><input id='overwerk' type='number'></td><td><input id='verlof' type='number'></td><td><input id='ziek' type='number'></td><td><input id='training' type='number'></td><td><input id='overig' type='number'></td><td><input id='verklaring' type='String'></td></tr>"        }
-    }
-    if (maand == "Juni") {
-        //alert("hoi");
-        for (var i = 1; i < 31; i++) {
-            tabel += "<tr class='dagjun'><td>" + i + " " + maand + "</td><td><input id='opdracht' type='number'></td><td><input id='overwerk' type='number'></td><td><input id='verlof' type='number'></td><td><input id='ziek' type='number'></td><td><input id='training' type='number'></td><td><input id='overig' type='number'></td><td><input id='verklaring' type='String'></td></tr>"        }
-    }
-    if (maand == "Juli") {
-        //alert("hoi");
-        for (var i = 1; i < 32; i++) {
-            tabel += "<tr class='dagjul'><td>" + i + " " + maand + "</td><td><input id='opdracht' type='number'></td><td><input id='overwerk' type='number'></td><td><input id='verlof' type='number'></td><td><input id='ziek' type='number'></td><td><input id='training' type='number'></td><td><input id='overig' type='number'></td><td><input id='verklaring' type='String'></td></tr>"        }
-    }
-    if (maand == "Augustus") {
-        //alert("hoi");
-        for (var i = 1; i < 32; i++) {
-            tabel += "<tr class='dagaug'><td>" + i + " " + maand + "</td><td><input id='opdracht' type='number'></td><td><input id='overwerk' type='number'></td><td><input id='verlof' type='number'></td><td><input id='ziek' type='number'></td><td><input id='training' type='number'></td><td><input id='overig' type='number'></td><td><input id='verklaring' type='String'></td></tr>"        }
-    }
-    if (maand == "September") {
-        //alert("hoi");
-        for (var i = 1; i < 31; i++) {
-            tabel += "<tr class='dagsep'><td>" + i + " " + maand + "</td><td><input id='opdracht' type='number'></td><td><input id='overwerk' type='number'></td><td><input id='verlof' type='number'></td><td><input id='ziek' type='number'></td><td><input id='training' type='number'></td><td><input id='overig' type='number'></td><td><input id='verklaring' type='String'></td></tr>"        }
-    }
-    if (maand == "Oktober") {
-        //alert("hoi");
-        for (var i = 1; i < 32; i++) {
-            tabel += "<tr class='dagokt'><td>" + i + " " + maand + "</td><td><input id='opdracht' type='number'></td><td><input id='overwerk' type='number'></td><td><input id='verlof' type='number'></td><td><input id='ziek' type='number'></td><td><input id='training' type='number'></td><td><input id='overig' type='number'></td><td><input id='verklaring' type='String'></td></tr>"        }
-    }
-    if (maand == "November") {
-        //alert("hoi");
-        for (var i = 1; i < 31; i++) {
-            tabel += "<tr class='dagnov'><td>" + i + " " + maand + "</td><td><input id='opdracht' type='number'></td><td><input id='overwerk' type='number'></td><td><input id='verlof' type='number'></td><td><input id='ziek' type='number'></td><td><input id='training' type='number'></td><td><input id='overig' type='number'></td><td><input id='verklaring' type='String'></td></tr>"        }
-    }
-    if (maand == "December") {
-        //alert("hoi");
-        for (var i = 1; i < 32; i++) {
-            tabel += "<tr class='dagdec'><td>" + i + " " + maand + "</td><td><input id='opdracht' type='number'></td><td><input id='overwerk' type='number'></td><td><input id='verlof' type='number'></td><td><input id='ziek' type='number'></td><td><input id='training' type='number'></td><td><input id='overig' type='number'></td><td><input id='verklaring' type='String'></td></tr>"        }
-    }
-    tabel+="<tr><br><tr\>";
-    tabel += "<button id='btn' onclick='Registreer()'>Declareer Uren</button>"
+    tabel += "<tr><br><tr\>";
+    tabel += "<button id='btn' onclick='Registreer("+month+")'>Declareer Uren</button>"
     document.getElementById("tabel").innerHTML = tabel;
 }
 
-function Registreer(){
-    var object = {
-        "uren": document.getElementById("opdracht").value,
-        "dag" : "1993-09-19"
+function timesheet(yearMonth, state, entries) {
+    var timesheet = {
+        yearMonth: yearMonth,
+        state: state,
+        entries: entries
     };
-    var json = JSON.stringify(object);
-    apiPostRequest("/uren/api/v1/createTimesheetEntry", json);
+    return timesheet;
+}
+
+function Registreer(month) {
+    var categories = ["WORK", "LEAVE_OF_ABSENCE", "ILL", "TRAINING", "OVERTIME", "OTHERS"];
+    var entries = [];
+    for (var dayOfTheMonth = 1; dayOfTheMonth <= calculateNumberOfDaysInMonth(month); dayOfTheMonth++) {
+        for (var category = 0; category < categories.length; category++) {
+            if (document.getElementById(categories[category] + dayOfTheMonth).value != "") {
+                entries.push(timesheetEntry(document.getElementById(categories[category] + dayOfTheMonth).value, dayOfTheMonth, categories[category]));
+            }
+        }
+    }
+    var ts1 = timesheet("2018-02", "OPEN", entries);
+    var jsonTimesheet = JSON.stringify(ts1);
+    apiPostRequest("/uren/api/v1/createTimesheet", jsonTimesheet);
 }
 
 function apiPostRequest(url, json) {
     var xmlhttp = new XMLHttpRequest();
-    xmlhttp.open("POST",url);
+    xmlhttp.open("POST", url);
     var xmlDoc;
-    xmlhttp.onreadystatechange = function() {
+    xmlhttp.onreadystatechange = function () {
         if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
             xmlDoc = xmlhttp.responseXML;
             console.log(xmlDoc);
@@ -108,8 +65,8 @@ function ajax_get(url, callback) {
     xmlhttp.send();
 }
 
-function getUren(){
-    ajax_get("/uren/api/v1/urencount",function(data){
+function getUren() {
+    ajax_get("/uren/api/v1/urencount", function (data) {
         if (data == 0) {
             alert("dit is mijn data: " + data);
         }
