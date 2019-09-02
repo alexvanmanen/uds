@@ -1,32 +1,30 @@
-
 function buildTable(month) {
     var tabel = "<tr><td>" + getMonthName(month) + "</td><td>Opdracht</td><td>Overwerk</td><td>Verlof</td><td>Ziek</td><td>Training</td><td>Overig</td><td>Verklaring overig</td></tr>";
-    for (var i = 1; i < calculateNumberOfDaysInMonth(month)+1; i++) {
-        tabel += "<tr 'month'><td>" + i + " " + getMonthName(month) + "</><td><input id='opdracht" + i + "' type='number'></td><td><input id='overwerk" + i + "' type='number'></td><td><input id='verlof" + i + "' type='number'></td><td><input id='ziekte" + i + "' type='number'></td><td><input id='training" + i + "' type='number'></td><td><input id='overig" + i + "' type='number'></td><td><input id='verklaring' type='String'></td></tr>"
+    for (var i = 1; i < calculateNumberOfDaysInMonth(month) + 1; i++) {
+        tabel += "<tr 'month'><td>" + i + " " + getMonthName(month) + "</><td><input id='WORK" + i + "' type='number'></td><td><input id='OVERTIME" + i + "' type='number'></td><td><input id='LEAVE_OF_ABSENCE" + i + "' type='number'></td><td><input id='ILL" + i + "' type='number'></td><td><input id='TRAINING" + i + "' type='number'></td><td><input id='OTHERS" + i + "' type='number'></td><td><input id='verklaring' type='String'></td></tr>"
     }
 
-    tabel+="<tr><br><tr\>";
-    tabel += "<button id='btn' onclick='Registreer()'>Declareer Uren</button>"
+    tabel += "<tr><br><tr\>";
+    tabel += "<button id='btn' onclick='Registreer("+month+")'>Declareer Uren</button>"
     document.getElementById("tabel").innerHTML = tabel;
 }
 
-function timesheet(yearMonth, state, entries){
+function timesheet(yearMonth, state, entries) {
     var timesheet = {
-        yearMonth : yearMonth,
-        state  : state,
+        yearMonth: yearMonth,
+        state: state,
         entries: entries
     };
     return timesheet;
 }
 
-function Registreer() {
+function Registreer(month) {
+    var categories = ["WORK", "LEAVE_OF_ABSENCE", "ILL", "TRAINING", "OVERTIME", "OTHERS"];
     var entries = [];
-    for (var dayOfTheMonth = 1; dayOfTheMonth < 32; dayOfTheMonth++) {
-        entries.push(timesheetEntry(document.getElementById("opdracht" + dayOfTheMonth).value, dayOfTheMonth, "WORK"));
-        entries.push(timesheetEntry(document.getElementById("verlof" + dayOfTheMonth).value, dayOfTheMonth, "LEAVE_OF_ABSENCE"));
-        entries.push(timesheetEntry(document.getElementById("ziekte" + dayOfTheMonth).value, dayOfTheMonth, "ILL"));
-        entries.push(timesheetEntry(document.getElementById("training" + dayOfTheMonth).value, dayOfTheMonth, "TRAINING"));
-        entries.push(timesheetEntry(document.getElementById("overwerk" + dayOfTheMonth).value, dayOfTheMonth, "OVERTIME"));
+    for (var dayOfTheMonth = 1; dayOfTheMonth <= calculateNumberOfDaysInMonth(month); dayOfTheMonth++) {
+        for (var category = 0; category < categories.length; category++) {
+            entries.push(timesheetEntry(document.getElementById(categories[category] + dayOfTheMonth).value, dayOfTheMonth, categories[category]));
+        }
     }
     var ts1 = timesheet("2018-02", "OPEN", entries);
     var jsonTimesheet = JSON.stringify(ts1);
@@ -35,9 +33,9 @@ function Registreer() {
 
 function apiPostRequest(url, json) {
     var xmlhttp = new XMLHttpRequest();
-    xmlhttp.open("POST",url);
+    xmlhttp.open("POST", url);
     var xmlDoc;
-    xmlhttp.onreadystatechange = function() {
+    xmlhttp.onreadystatechange = function () {
         if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
             xmlDoc = xmlhttp.responseXML;
             console.log(xmlDoc);
@@ -65,8 +63,8 @@ function ajax_get(url, callback) {
     xmlhttp.send();
 }
 
-function getUren(){
-    ajax_get("/uren/api/v1/urencount",function(data){
+function getUren() {
+    ajax_get("/uren/api/v1/urencount", function (data) {
         if (data == 0) {
             alert("dit is mijn data: " + data);
         }
