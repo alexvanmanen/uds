@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.time.YearMonth;
@@ -36,6 +37,9 @@ public class UrenApplication  implements CommandLineRunner {
     @Autowired
     EmployeeRepository employeeRepository;
 
+    @Autowired
+    private BCryptPasswordEncoder bCryptPasswordEncoder;
+
     public static void main(String[] args) {
         SpringApplication.run(UrenApplication.class, args);
     }
@@ -48,7 +52,7 @@ public class UrenApplication  implements CommandLineRunner {
         Employee employeeA = new Employee();
         Employee employeeB = new Employee();
         customerA.setEmailadress("bartzwaagstra@live.nl");
-        customerA.setPassword("Bart01");
+        customerA.setPassword(bCryptPasswordEncoder.encode("Bart01"));
 
         Set<Project> projectsA = new HashSet<>();
         Project projectA1 = new Project("Project A1", customerA);
@@ -75,7 +79,7 @@ public class UrenApplication  implements CommandLineRunner {
         }
 
         Admin cora = new Admin();
-        cora.setPassword("Admin01");
+        cora.setPassword(bCryptPasswordEncoder.encode("Admin01"));
         cora.setEmailadress("admin@qien.nl");
         adminRepository.save(cora);
 
