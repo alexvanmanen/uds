@@ -1,8 +1,6 @@
 package nl.qien.uren.controller;
 
 import nl.qien.uren.entity.Customer;
-import nl.qien.uren.model.EntryKind;
-import nl.qien.uren.model.Project;
 import nl.qien.uren.model.SendMail;
 import nl.qien.uren.entity.Timesheet;
 import nl.qien.uren.entity.Employee;
@@ -13,13 +11,11 @@ import nl.qien.uren.repository.TimesheetRepository;
 import nl.qien.uren.repository.UserRepository;
 import org.apache.commons.lang3.RandomStringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.web.bind.annotation.*;
 
-import java.time.LocalDate;
-import java.time.YearMonth;
 import java.util.List;
+import java.util.Optional;
 
 
 @CrossOrigin(origins = "http://localhost:4200")
@@ -53,13 +49,6 @@ public class MainController {
         return userRepository.findAll();
     }
 
-    @GetMapping("/getmonthdays/{year}/{month}")
-    public int getDaysInMonth(@PathVariable int year, @PathVariable int month) {
-        Timesheet timesheet = new Timesheet(new Project(), new Employee(), YearMonth.of(year,month));
-        timesheet.addHourEntry(8,8, EntryKind.WORK);
-        timesheet.addHourEntry(8,9, EntryKind.WORK);
-        return timesheet.getTotalHours();
-    }
     @GetMapping("/checkPassword/{email}/{password}")
     @ResponseBody
     public boolean checkPassword(@PathVariable String email, @PathVariable String password) {
@@ -93,14 +82,25 @@ public class MainController {
     }
 
 
-//    @GetMapping("getTimeSheet/{employeeId}")
-//    public Timesheet getTimesheet(@PathVariable Integer employeeId){
-//        Employee employee = new Employee(1,"alex", "van Manen");
-//        Timesheet timesheet = new Timesheet(new Project(), employee, YearMonth.of(2019,8));
-//        timesheet.addHourEntry(8,14, EntryKind.LEAVE_OF_ABSENCE);
-//        timesheet.addHourEntry(8,15, EntryKind.WORK);
-//        return timesheet;
-//    }
+    @GetMapping("getTimeSheet/{id}")
+    public Optional<Timesheet> getTimesheet(@PathVariable Integer id){
+        return timesheetRepository.findById(id);
+    }
+
+    @GetMapping("getAllTimeSheetsByProject/{projectId}")
+    public List<Timesheet> getAllTimeSheetsByProject(@PathVariable Integer projectId){
+        return timesheetRepository.findAllByProjectId(projectId);
+    }
+
+    @GetMapping("getAllTimeSheetsByEmployee/{employeeId}")
+    public List<Timesheet> getAllTimeSheetsByEmployee(@PathVariable Integer employeeId){
+        return timesheetRepository.findAllByUserId(employeeId);
+    }
+
+    @GetMapping("getAllTimeSheets")
+    public List<Timesheet> getAllTimeSheets(){
+        return timesheetRepository.findAll();
+    }
 
     @PostMapping("/createCustomer")
     public boolean createCustomer(@RequestBody Customer customer) {

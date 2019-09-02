@@ -112,3 +112,11 @@ function apiPostRequest(url, json) {
     xmlhttp.setRequestHeader('Content-Type', 'application/json');
     xmlhttp.send(json);
 }
+
+$(document).ready(function(){
+        $.get("/uren/api/v1/getAllTimeSheets", function(timesheets, status){
+            for(var id in timesheets){
+                $("table").append("<tr><td>"+timesheets[id].yearMonth +"</td><td>TODO</td><td>"+timesheets[id].state +"</td></tr>");
+            }
+        });
+});
