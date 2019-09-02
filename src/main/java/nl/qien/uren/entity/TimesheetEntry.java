@@ -41,7 +41,7 @@ public class TimesheetEntry implements Serializable {
         return entryKind;
     }
 
-    public int getDayOftheMonth() {
+    public int getDayOfTheMonth() {
         return dayOfTheMonth;
     }
 
@@ -50,4 +50,7 @@ public class TimesheetEntry implements Serializable {
     }
 
 
+    public void setTimesheet(Timesheet timesheet) {
+        this.timesheet = timesheet;
+    }
 }
