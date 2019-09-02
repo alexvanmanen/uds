@@ -21,12 +21,12 @@ function timesheet(yearMonth, state, entries){
 
 function Registreer() {
     var entries = [];
-    for (var i = 1; i < 32; i++) {
-        entries.push(timesheetEntry(document.getElementById("opdracht" + i).value, 19, "WORK"));
-        entries.push(timesheetEntry(document.getElementById("verlof" + i).value, 19, "LEAVE_OF_ABSENCE"));
-        entries.push(timesheetEntry(document.getElementById("ziekte" + i).value, 19, "ILL"));
-        entries.push(timesheetEntry(document.getElementById("training" + i).value, 19, "TRAINING"));
-        entries.push(timesheetEntry(document.getElementById("overwerk" + i).value, 19, "OVERTIME"));
+    for (var dayOfTheMonth = 1; dayOfTheMonth < 32; dayOfTheMonth++) {
+        entries.push(timesheetEntry(document.getElementById("opdracht" + dayOfTheMonth).value, dayOfTheMonth, "WORK"));
+        entries.push(timesheetEntry(document.getElementById("verlof" + dayOfTheMonth).value, dayOfTheMonth, "LEAVE_OF_ABSENCE"));
+        entries.push(timesheetEntry(document.getElementById("ziekte" + dayOfTheMonth).value, dayOfTheMonth, "ILL"));
+        entries.push(timesheetEntry(document.getElementById("training" + dayOfTheMonth).value, dayOfTheMonth, "TRAINING"));
+        entries.push(timesheetEntry(document.getElementById("overwerk" + dayOfTheMonth).value, dayOfTheMonth, "OVERTIME"));
     }
     var ts1 = timesheet("2018-02", "OPEN", entries);
     var jsonTimesheet = JSON.stringify(ts1);
