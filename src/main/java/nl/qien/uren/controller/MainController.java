@@ -147,23 +147,39 @@ public class MainController {
         userRepository.delete(user);
 
     }
-    @PutMapping("/updateUser")
-    public User updateUser(@RequestBody User user) {
-       return userRepository.save(user);
-    }
 
     /*
-        RequestBody must be like this:
-        { "id": 1}
+        PUT request with url
+        http://localhost:8080/uren/api/v1/updateUser/1
+        and json
+        {
+	"firstname" : "Johnny!",
+	"lastname" : "Bravo!!!",
+	"emailadress" : "john@oneManArmy.com"
+}
      */
+    @PutMapping("/updateUser/{userId}")
+    public User updateUser(@PathVariable int userId, @RequestBody User userDetails) {
+        User user = userRepository.findById(userId)
+                .orElseThrow(() -> new RuntimeException("User not found for this id :: " + userId));
 
-    @PutMapping("/deactivateUser")
-    public User deactivateUser(@RequestBody User user) {
-        Optional<User> userOptional = userRepository.findById(user.getId());
-        user = userOptional.get();
+        user.setFirstname(userDetails.getFirstname());
+        user.setLastname(userDetails.getLastname());
+        user.setEmailadress(userDetails.getEmailadress());
+        user.setPassword(userDetails.getPassword());
+        user.setStreet(userDetails.getStreet());
+        user.setHousenumber(userDetails.getHousenumber());
+        user.setCity(userDetails.getCity());
+        user.setPhonenumber(userDetails.getPhonenumber());
+        user.setAccountnumber(userDetails.getAccountnumber());
+        return userRepository.save(user);
+    }
+
+    @PutMapping("/deactivateUser/{userId}")
+    public User deactivateUser(@PathVariable int userId) {
+        User user = userRepository.findById(userId).orElseThrow(() -> new RuntimeException("User not found for this id :: " + userId));
         user.setActive(false);
         return userRepository.save(user);
-
     }
 
 }
