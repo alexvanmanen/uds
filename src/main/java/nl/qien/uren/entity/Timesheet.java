@@ -1,10 +1,8 @@
 package nl.qien.uren.entity;
 
-import nl.qien.uren.model.EntryKind;
-import nl.qien.uren.model.Project;
+import nl.qien.uren.util.YearMonthDateAttributeConverter;
 
 import javax.persistence.*;
-import java.time.LocalDate;
 import java.time.YearMonth;
 import java.util.ArrayList;
 import java.util.List;
@@ -15,56 +13,46 @@ public class Timesheet {
 
     @ManyToOne
     @JoinColumn(name = "USER")
-    private User user;
+    private Employee user;
+
+    @ManyToOne
+    @JoinColumn(name = "PROJECT_ID")
+    private Project project;
 
     @Id
     @GeneratedValue
     private int id;
 
-//    @OneToMany(fetch = FetchType.LAZY, mappedBy = "timesheet")
-//    private List<TimesheetEntry> entries = new ArrayList<>();
-//    Project project;
-//    Employee employee;
-    YearMonth yearMonth;
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "timesheet")
+    private List<TimesheetEntry> entries = new ArrayList<>();
 
-    public Timesheet(nl.qien.uren.model.Project project, Employee employee, YearMonth yearMonth){
-//        this.project = project;
-//        this.employee = employee;
-       // this.yearMonth = yearMonth;
+    @Enumerated(EnumType.STRING)
+    private TimesheetState state;
+
+    @Convert(
+            converter = YearMonthDateAttributeConverter.class
+    )
+    private YearMonth yearMonth;
+
+    public Timesheet(){ }
+
+    public Timesheet(Project project, Employee employee, YearMonth yearMonth, TimesheetState state){
+        this.state = state;
+        this.project = project;
+        this.user = employee;
+        this.yearMonth = yearMonth;
     }
-
-    public Timesheet(){
-
-    }
-
-    public void addHourEntry(int numberOfHours, int dayOfTheMonth, EntryKind entryKind){
-       LocalDate entryDate = LocalDate.of(yearMonth.getYear(), yearMonth.getMonth(), dayOfTheMonth);
-       // Timesheet_Entry TSENTRY = new Timesheet_Entry(numberOfHours, entryDate, entryKind);
-        //entries.add(TSENTRY);
-    }
-//
-//    public List<TS_ENTRY> getEntries(){
-//        return entries;
-//    }
 
     public YearMonth getYearMonth(){
         return yearMonth;
     }
 
-    public int getTotalHours(){
-        int total = 0;
-//        for(TS_ENTRY TSENTRY : entries){
-//            total = TSENTRY.getNumberOfHours();
-//        }
-        return total;
+    public List<TimesheetEntry> getEntries(){
+        return entries;
     }
 
-    public Project getProject(){
-        return null;
-    }
-
-    public Employee getEmployee(){
-        return null;
+    public String getState(){
+        return state.toString();
     }
 
 }

@@ -1,58 +1,52 @@
 package nl.qien.uren.entity;
 
-import lombok.*;
 import nl.qien.uren.model.EntryKind;
 
 import javax.persistence.*;
 import java.io.Serializable;
-import java.sql.Time;
+import java.time.LocalDate;
 import java.util.Date;
 
 @Entity
 @Table(name = "TSEntry")
-
 public class TimesheetEntry implements Serializable {
-
-    public TimesheetEntry(){
-    }
-
-//    @ManyToOne
-//    @JoinColumn(name = "TIMESHEET_ID")
-//    private Timesheet timesheet;
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
-    private int uren;
-    private Date dag;
-//    @Enumerated(EnumType.STRING)
-//    private EntryKind entryKind;
+    @ManyToOne
+    @JoinColumn(name = "TIMESHEET_ID")
+    private Timesheet timesheet;
 
-    public TimesheetEntry(int hours) {
-        this.uren = hours;
+    private int hoursSpent;
+    private int dayOfTheMonth;
+    @Enumerated(EnumType.STRING)
+    private EntryKind entryKind;
+
+    public TimesheetEntry(){}
+
+    public TimesheetEntry(int dayOfTheMonth, int hoursSpent, EntryKind entryKind, Timesheet timesheet) {
+        this.timesheet = timesheet;
+        this.dayOfTheMonth = dayOfTheMonth;
+        this.hoursSpent = hoursSpent;
+        this.entryKind = entryKind;
     }
 
-
-
-    private int getUren() {
-        return uren;
+    public int getHoursSpent() {
+        return hoursSpent;
+    }
+    
+    public EntryKind getEntryKind(){
+        return entryKind;
     }
 
-    public Date getDag() {
-        return dag;
+    public int getDayOftheMonth() {
+        return dayOfTheMonth;
     }
 
-    private void setUren(int uren) {
-        this.uren = uren;
-    }
-
-    public void setId(int id){
-        this.id = id;
-    }
-
-    public int getId() {
-        return id;
+    public LocalDate getDate(){
+        return LocalDate.of(timesheet.getYearMonth().getYear(), timesheet.getYearMonth().getMonth(), dayOfTheMonth);
     }
 
 
