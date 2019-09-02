@@ -63,16 +63,20 @@ function getUsers() {
         for (i = 0; i < data.length; i++) {
             var email = data[i]['emailadress'];
             var firstname = data[i]['firstname'];
-
+            var id = data[i]['id'];
             tableContent = tableContent +
                 '<tr><td>' + email + '</td>' +
                 '<td>' + firstname + '</td>'+
-                '<td> <button onclick=document.getElementById("editUser").innerHTML="hallo"; class="registerbtn">Wijzig/ De-activeer</button> </td>' +
+                '<td> <button onclick="showEditUser(` ' + id + ' `);" class="registerbtn">Wijzig/ De-activeer</button> </td>' +
                 '<td><button onclick="showEmailForm()" class=registerbtn> Stuur email </button></td></tr>';
         }
         document.getElementById("ajax").innerHTML = tableContent;
 
     });
+}
+
+function showEditUser(id){
+    document.getElementById("editUser").innerHTML= " ID is "+ id  ;
 }
 
 function createUserExample(){
