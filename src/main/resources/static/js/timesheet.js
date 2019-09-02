@@ -15,4 +15,3 @@ function timesheetEntry(hoursSpent, dayOftheMonth, entryKind){
     };
     return entry;
 }
-
