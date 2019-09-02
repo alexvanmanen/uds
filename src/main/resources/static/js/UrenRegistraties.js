@@ -1,10 +1,8 @@
 
 function buildTable(month) {
-    var tabel = "<tr><td>" + month + "</td><td>Opdracht</td><td>Overwerk</td><td>Verlof</td><td>Ziek</td><td>Training</td><td>Overig</td><td>Verklaring overig</td></tr>";
-
-
+    var tabel = "<tr><td>" + getMonthName(month) + "</td><td>Opdracht</td><td>Overwerk</td><td>Verlof</td><td>Ziek</td><td>Training</td><td>Overig</td><td>Verklaring overig</td></tr>";
     for (var i = 1; i < calculateNumberOfDaysInMonth(month)+1; i++) {
-        tabel += "<tr 'month'><td>" + i + " " + month + "</><td><input id='opdracht" + i + "' type='number'></td><td><input id='overwerk" + i + "' type='number'></td><td><input id='verlof" + i + "' type='number'></td><td><input id='ziek" + i + "' type='number'></td><td><input id='training"+i+"' type='number'></td><td><input id='overig" + i + "' type='number'></td><td><input id='verklaring' type='String'></td></tr>"
+        tabel += "<tr 'month'><td>" + i + " " + getMonthName(month) + "</><td><input id='opdracht" + i + "' type='number'></td><td><input id='overwerk" + i + "' type='number'></td><td><input id='verlof" + i + "' type='number'></td><td><input id='" + i + "' type='number'></td><td><input id='training' type='number'></td><td><input id='overig" + i + "' type='number'></td><td><input id='verklaring' type='String'></td></tr>"
     }
 
     tabel+="<tr><br><tr\>";
@@ -14,8 +12,9 @@ function buildTable(month) {
 
 function Registreer(){
     var object = {
-        "uren": document.getElementById("opdracht").value,
-        "dag" : "1993-09-19"
+        "hoursSpent": document.getElementById("opdracht1").value,
+        "dayOfTheMonth" : 1,
+        "entryKind" : "WORK",
     };
     var json = JSON.stringify(object);
     apiPostRequest("/uren/api/v1/createTimesheetEntry", json);
