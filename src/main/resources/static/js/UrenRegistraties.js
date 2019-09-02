@@ -1,5 +1,6 @@
 
 function buildTable(maand) {
+<<<<<<< Updated upstream
     var tabel = "<tr><td>" + maand + "</td><td>Opdracht</td><td>Overwerk</td><td>Verlof</td><td>Ziek</td><td>Training</td><td>Overig</td><td>Verklaring overig</td></tr>";
 
         //alert("hoi");
@@ -62,6 +63,13 @@ function buildTable(maand) {
     //     for (var i = 1; i < 32; i++) {
     //         tabel += "<tr class='dagdec'><td>" + i + " " + maand + "</td><td><input id='opdracht' type='number'></td><td><input id='overwerk' type='number'></td><td><input id='verlof' type='number'></td><td><input id='ziek' type='number'></td><td><input id='training' type='number'></td><td><input id='overig' type='number'></td><td><input id='verklaring' type='String'></td></tr>"        }
     // }
+=======
+    var tabel = "<tr><td>" + maand + "</td><td>Opdracht</td><td>Overwerk</td><td>Verlof</td><td>Ziek</td><td>Training</td><td>Overig</td><td>Verklaring overig</td></tr>"
+        for (var i = 1; i < 32; i++) {
+            tabel += "<tr class='dag "+ maand +"'><td>" + i + " " + maand + "</><td><input id='opdracht"+i+"' type='number'></td><td><input id='overwerk"+i+"' type='number'></td><td><input id='verlof"+i+"' type='number'></td><td><input id='ziek"+i+"' type='number'></td><td><input id='training"+i+"' type='number'></td><td><input id='overig"+i+"' type='number'></td><td><input id='verklaring' type='String'></td></tr>"
+    }
+
+>>>>>>> Stashed changes
     tabel+="<tr><br><tr\>";
     tabel += "<button id='btn' onclick='Registreer()'>Declareer Uren</button>"
     document.getElementById("tabel").innerHTML = tabel;
