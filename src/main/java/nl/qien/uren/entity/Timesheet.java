@@ -51,4 +51,8 @@ public class Timesheet {
         return entries;
     }
 
+    public String getState(){
+        return state.toString();
+    }
+
 }

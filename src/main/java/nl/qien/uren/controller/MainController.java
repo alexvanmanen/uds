@@ -97,6 +97,11 @@ public class MainController {
         return timesheetRepository.findAllByUserId(employeeId);
     }
 
+    @GetMapping("getAllTimeSheets")
+    public List<Timesheet> getAllTimeSheets(){
+        return timesheetRepository.findAll();
+    }
+
     @PostMapping("/createCustomer")
     public boolean createCustomer(@RequestBody Customer customer) {
         customerRepository.save(customer);
