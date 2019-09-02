@@ -108,12 +108,19 @@ public class MainController {
     @PostMapping("/createTimesheet")
     public void createTimesheet(@RequestBody Timesheet timesheet) {
         timesheetRepository.save(timesheet);
+        for(TimesheetEntry timesheetEntry: timesheet.getEntries()){
+            timesheetEntry.setTimesheet(timesheet);
+            timesheetEntryRepository.save(timesheetEntry);
+        }
+
     }
 
     @PostMapping("/createTimesheetEntry")
     public TimesheetEntry createTimesheetEntry(@RequestBody TimesheetEntry timesheetEntry){
         return timesheetEntryRepository.save(timesheetEntry);
     }
+
+
 
     @GetMapping("/getcustomers")
     public List<Customer> getCustomers() {
