@@ -12,13 +12,18 @@ function buildTable(month) {
 
 function Registreer(){
     var object = {
-        "hoursSpent": document.getElementById("opdracht1").value,
-        "dayOfTheMonth" : 1,
-        "entryKind": "WORK",
-
+        "hoursSpent": 800
     };
     var json = JSON.stringify(object);
     apiPostRequest("/uren/api/v1/createTimesheetEntry", json);
+
+    var timesheet = {
+        "state" : "OPEN",
+        "yearMonth": "1993-09"
+    };
+
+    var json2 = JSON.stringify(timesheet);
+    apiPostRequest("/uren/api/v1/createTimesheet", json2)
 }
 
 function apiPostRequest(url, json) {
