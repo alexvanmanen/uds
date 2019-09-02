@@ -23,7 +23,9 @@ function Registreer(month) {
     var entries = [];
     for (var dayOfTheMonth = 1; dayOfTheMonth <= calculateNumberOfDaysInMonth(month); dayOfTheMonth++) {
         for (var category = 0; category < categories.length; category++) {
-            entries.push(timesheetEntry(document.getElementById(categories[category] + dayOfTheMonth).value, dayOfTheMonth, categories[category]));
+            if (document.getElementById(categories[category] + dayOfTheMonth).value != "") {
+                entries.push(timesheetEntry(document.getElementById(categories[category] + dayOfTheMonth).value, dayOfTheMonth, categories[category]));
+            }
         }
     }
     var ts1 = timesheet("2018-02", "OPEN", entries);
