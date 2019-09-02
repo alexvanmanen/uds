@@ -4,7 +4,7 @@ function buildTable(maand) {
 
 
     for (var i = 1; i < 32; i++) {
-        tabel += "<tr 'maand'><td>" + i + " " + maand + "</><td><input id='opdracht' type='number'></td><td><input id='overwerk' type='number'></td><td><input id='verlof' type='number'></td><td><input id='ziek' type='number'></td><td><input id='training' type='number'></td><td><input id='overig' type='number'></td><td><input id='verklaring' type='String'></td></tr>"
+        tabel += "<tr 'maand'><td>" + i + " " + maand + "</><td><input id='opdracht" + i + "' type='number'></td><td><input id='overwerk" + i + "' type='number'></td><td><input id='verlof" + i + "' type='number'></td><td><input id='" + i + "' type='number'></td><td><input id='training' type='number'></td><td><input id='overig" + i + "' type='number'></td><td><input id='verklaring' type='String'></td></tr>"
     }
 
     tabel+="<tr><br><tr\>";
