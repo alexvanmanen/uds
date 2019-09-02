@@ -97,10 +97,10 @@ public class UrenApplication  implements CommandLineRunner {
         TimesheetEntry timesheetEntry3 = new TimesheetEntry(5, 4, EntryKind.LEAVE_OF_ABSENCE, timesheetBart);
 
 
-        //SELECT UREN, ENTRY_KIND FROM USER
-        //INNER JOIN TS ON(USER.ID=TS.USER)
-        //INNER JOIN TSENTRY ON (TS.ID=TSENTRY.TIMESHEET_ID)
-        //WHERE FIRSTNAME='Alex'
+//        SELECT UREN, ENTRY_KIND FROM USER
+//        INNER JOIN TS ON(USER.ID=TS.USER)
+//        INNER JOIN TSENTRY ON (TS.ID=TSENTRY.TIMESHEET_ID)
+//        WHERE FIRSTNAME='Alex'
 
 
         timesheetEntryRepository.saveAll(Arrays.asList(timesheetEntry1,timesheetEntry2, timesheetEntry3));

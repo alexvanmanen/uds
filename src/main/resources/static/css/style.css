@@ -33,6 +33,12 @@ h1, h2 {
      color: #A34AFE;
 }
 
+div.dropdown {
+    height: 47px;
+    width: 137px;
+
+}
+
 .dropdown-content {
     display: none;
     position: absolute;
