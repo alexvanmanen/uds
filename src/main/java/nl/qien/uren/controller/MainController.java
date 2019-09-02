@@ -137,6 +137,11 @@ public class MainController {
     public List<User> getUsers() {
         return userRepository.findAll();
     }
+    @GetMapping("/getUser/{id}")
+    public Optional<User> getUser(@PathVariable int id) {
+        return userRepository.findById(id);
+    }
+
     @DeleteMapping("/deleteUser")
     public void deleteUser(@RequestBody User user) {
         userRepository.delete(user);
@@ -145,8 +150,12 @@ public class MainController {
     @PutMapping("/updateUser")
     public User updateUser(@RequestBody User user) {
        return userRepository.save(user);
-
     }
+
+    /*
+        RequestBody must be like this:
+        { "id": 1}
+     */
 
     @PutMapping("/deactivateUser")
     public User deactivateUser(@RequestBody User user) {
