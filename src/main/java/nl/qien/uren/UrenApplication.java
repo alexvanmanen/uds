@@ -19,7 +19,7 @@ import java.util.Set;
 public class UrenApplication  implements CommandLineRunner {
 
     @Autowired
-    TimeSheetEntryRepository timeSheetEntryRepository;
+    TimesheetEntryRepository timesheetEntryRepository;
 
     @Autowired
     TimesheetRepository timesheetRepository;
@@ -103,6 +103,6 @@ public class UrenApplication  implements CommandLineRunner {
         //WHERE FIRSTNAME='Alex'
 
 
-        timeSheetEntryRepository.saveAll(Arrays.asList(timesheetEntry1,timesheetEntry2, timesheetEntry3));
+        timesheetEntryRepository.saveAll(Arrays.asList(timesheetEntry1,timesheetEntry2, timesheetEntry3));
     }
 }
