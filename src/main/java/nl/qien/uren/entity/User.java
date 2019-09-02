@@ -4,7 +4,6 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-
 import javax.persistence.*;
 
 @Getter
@@ -28,4 +27,5 @@ public class User {
     private int phonenumber;
     private String accountnumber;
     private Boolean firstlogin;
+
 }

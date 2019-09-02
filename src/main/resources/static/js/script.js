@@ -50,7 +50,7 @@ function getPassword() {
             document.getElementById("login").innerHTML = "<font color='red'>Password and/or Email incorrect</font>";
         } else if (data === true) {
             setSessie(a);
-            window.location.assign("./dashboard.html");
+            window.location.assign("../dashboard.html");
         } else {
             document.getElementById("login").innerHTML = "<font color='red'>Unexpected response from server.</font>";
         }
