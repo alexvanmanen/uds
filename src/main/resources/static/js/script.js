@@ -67,7 +67,7 @@ function getUsers() {
             tableContent = tableContent +
                 '<tr><td>' + email + '</td>' +
                 '<td>' + firstname + '</td>'+
-                '<td> <button onclick="updateUser() " class="registerbtn">Wijzig/ De-activeer</button> </td>' +
+                '<td> <button onclick=document.getElementById("editUser").innerHTML="hallo"; class="registerbtn">Wijzig/ De-activeer</button> </td>' +
                 '<td><button onclick="showEmailForm()" class=registerbtn> Stuur email </button></td></tr>';
         }
         document.getElementById("ajax").innerHTML = tableContent;
