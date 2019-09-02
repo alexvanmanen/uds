@@ -1,6 +1,5 @@
 package nl.qien.uren.entity;
 
-import com.fasterxml.jackson.annotation.JsonManagedReference;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -33,7 +32,7 @@ public class User {
     private Boolean firstlogin;
 
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "user")
-    @JsonManagedReference
+    //@JsonManagedReference("value=test1")
     private Set<Timesheet> timesheets = new HashSet<>();
 
 }
