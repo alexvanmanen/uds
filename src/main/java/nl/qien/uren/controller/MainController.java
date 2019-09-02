@@ -148,6 +148,15 @@ public class MainController {
 
     }
 
+    @PutMapping("/deactivateUser")
+    public User deactivateUser(@RequestBody User user) {
+        Optional<User> userOptional = userRepository.findById(user.getId());
+        user = userOptional.get();
+        user.setActive(false);
+        return userRepository.save(user);
+
+    }
+
 }
 
 

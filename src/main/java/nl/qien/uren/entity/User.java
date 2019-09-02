@@ -20,7 +20,7 @@ public class User {
     public int id;
     public String firstname;
     public String lastname;
-    private boolean active;
+    private boolean active = true;
     private String emailadress;
     private String password;
     private String street;
