@@ -91,10 +91,10 @@ public class UrenApplication  implements CommandLineRunner {
         timesheetRepository.save(timesheetBart);
 
 
-        TimesheetEntry timesheetEntry1 = new TimesheetEntry(new Date(), 8, EntryKind.WORK, timesheetAlex);
-        TimesheetEntry timesheetEntry2 = new TimesheetEntry(new Date(), 4, EntryKind.LEAVE_OF_ABSENCE, timesheetAlex);
+        TimesheetEntry timesheetEntry1 = new TimesheetEntry(1, 8, EntryKind.WORK, timesheetAlex);
+        TimesheetEntry timesheetEntry2 = new TimesheetEntry(2, 4, EntryKind.LEAVE_OF_ABSENCE, timesheetAlex);
 
-        TimesheetEntry timesheetEntry3 = new TimesheetEntry(new Date(), 4, EntryKind.LEAVE_OF_ABSENCE, timesheetBart);
+        TimesheetEntry timesheetEntry3 = new TimesheetEntry(5, 4, EntryKind.LEAVE_OF_ABSENCE, timesheetBart);
 
 
 //        SELECT UREN, ENTRY_KIND FROM USER

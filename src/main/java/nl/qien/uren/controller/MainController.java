@@ -15,6 +15,7 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Optional;
 
 
 @CrossOrigin(origins = "http://localhost:4200")
@@ -81,14 +82,25 @@ public class MainController {
     }
 
 
-//    @GetMapping("getTimeSheet/{employeeId}")
-//    public Timesheet getTimesheet(@PathVariable Integer employeeId){
-//        Employee employee = new Employee(1,"alex", "van Manen");
-//        Timesheet timesheet = new Timesheet(new Project(), employee, YearMonth.of(2019,8));
-//        timesheet.addHourEntry(8,14, EntryKind.LEAVE_OF_ABSENCE);
-//        timesheet.addHourEntry(8,15, EntryKind.WORK);
-//        return timesheet;
-//    }
+    @GetMapping("getTimeSheet/{id}")
+    public Optional<Timesheet> getTimesheet(@PathVariable Integer id){
+        return timesheetRepository.findById(id);
+    }
+
+    @GetMapping("getAllTimeSheetsByProject/{projectId}")
+    public List<Timesheet> getAllTimeSheetsByProject(@PathVariable Integer projectId){
+        return timesheetRepository.findAllByProjectId(projectId);
+    }
+
+    @GetMapping("getAllTimeSheetsByEmployee/{employeeId}")
+    public List<Timesheet> getAllTimeSheetsByEmployee(@PathVariable Integer employeeId){
+        return timesheetRepository.findAllByUserId(employeeId);
+    }
+
+    @GetMapping("getAllTimeSheets")
+    public List<Timesheet> getAllTimeSheets(){
+        return timesheetRepository.findAll();
+    }
 
     @PostMapping("/createCustomer")
     public boolean createCustomer(@RequestBody Customer customer) {

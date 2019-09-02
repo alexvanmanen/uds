@@ -47,8 +47,12 @@ public class Timesheet {
         return yearMonth;
     }
 
-    public User getEmployee(){
-        return user;
+    public List<TimesheetEntry> getEntries(){
+        return entries;
+    }
+
+    public String getState(){
+        return state.toString();
     }
 
 }
