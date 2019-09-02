@@ -25,7 +25,7 @@ public class TimesheetEntry implements Serializable {
     private int id;
 
     private int uren;
-    //private Date dag;
+    private Date dag;
 //    @Enumerated(EnumType.STRING)
 //    private EntryKind entryKind;
 
@@ -33,16 +33,15 @@ public class TimesheetEntry implements Serializable {
         this.uren = hours;
     }
 
-   // public TimesheetEntry(){}
 
 
     private int getUren() {
         return uren;
     }
 
-//    public Date getDag() {
-//        return dag;
-//    }
+    public Date getDag() {
+        return dag;
+    }
 
     private void setUren(int uren) {
         this.uren = uren;

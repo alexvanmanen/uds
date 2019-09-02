@@ -69,7 +69,8 @@ function buildTable(maand) {
 
 function Registreer(){
     var object = {
-        "uren": document.getElementById("opdracht").value
+        "uren": document.getElementById("opdracht").value,
+        "dag" : "1993-09-19"
     };
     var json = JSON.stringify(object);
     apiPostRequest("/uren/api/v1/createTimesheetEntry", json);
@@ -114,3 +115,5 @@ function getUren(){
         }
     });
 }
+
+

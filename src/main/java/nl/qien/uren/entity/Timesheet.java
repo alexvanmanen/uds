@@ -33,7 +33,9 @@ public class Timesheet {
        // this.yearMonth = yearMonth;
     }
 
-    public Timesheet(){}
+    public Timesheet(){
+
+    }
 
     public void addHourEntry(int numberOfHours, int dayOfTheMonth, EntryKind entryKind){
        LocalDate entryDate = LocalDate.of(yearMonth.getYear(), yearMonth.getMonth(), dayOfTheMonth);
