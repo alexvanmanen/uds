@@ -32,7 +32,6 @@ public class User {
     private Boolean firstlogin;
 
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "user")
-    //@JsonManagedReference("value=test1")
     private Set<Timesheet> timesheets = new HashSet<>();
 
 }
