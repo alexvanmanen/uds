@@ -60,7 +60,7 @@ public class MainController {
 
 
     @GetMapping("/urenRegistratie/{employeeId}/{projectId}/{numberOfHours}/{datum}")
-    public int registerHours(@PathVariable Integer employeeId, @PathVariable Integer projectId, @PathVariable Integer numberOfHours, @PathVariable String datum){
+    public int registerHours(@PathVariable Integer employeeId, @PathVariable Integer projectId, @PathVariable Integer numberOfHours, @PathVariable String datum) {
         return 0;
     }
 
@@ -80,22 +80,22 @@ public class MainController {
 
 
     @GetMapping("getTimeSheet/{id}")
-    public Optional<Timesheet> getTimesheet(@PathVariable Integer id){
+    public Optional<Timesheet> getTimesheet(@PathVariable Integer id) {
         return timesheetRepository.findById(id);
     }
 
     @GetMapping("getAllTimeSheetsByProject/{projectId}")
-    public List<Timesheet> getAllTimeSheetsByProject(@PathVariable Integer projectId){
+    public List<Timesheet> getAllTimeSheetsByProject(@PathVariable Integer projectId) {
         return timesheetRepository.findAllByProjectId(projectId);
     }
 
     @GetMapping("getAllTimeSheetsByEmployee/{employeeId}")
-    public List<Timesheet> getAllTimeSheetsByEmployee(@PathVariable Integer employeeId){
+    public List<Timesheet> getAllTimeSheetsByEmployee(@PathVariable Integer employeeId) {
         return timesheetRepository.findAllByUserId(employeeId);
     }
 
     @GetMapping("getAllTimeSheets")
-    public List<Timesheet> getAllTimeSheets(){
+    public List<Timesheet> getAllTimeSheets() {
         return timesheetRepository.findAll();
     }
 
@@ -108,7 +108,7 @@ public class MainController {
     @PostMapping("/createTimesheet")
     public void createTimesheet(@RequestBody Timesheet timesheet) {
         timesheetRepository.save(timesheet);
-        for(TimesheetEntry timesheetEntry: timesheet.getEntries()){
+        for (TimesheetEntry timesheetEntry : timesheet.getEntries()) {
             timesheetEntry.setTimesheet(timesheet);
             timesheetEntryRepository.save(timesheetEntry);
         }
@@ -116,10 +116,9 @@ public class MainController {
     }
 
     @PostMapping("/createTimesheetEntry")
-    public TimesheetEntry createTimesheetEntry(@RequestBody TimesheetEntry timesheetEntry){
+    public TimesheetEntry createTimesheetEntry(@RequestBody TimesheetEntry timesheetEntry) {
         return timesheetEntryRepository.save(timesheetEntry);
     }
-
 
 
     @GetMapping("/getcustomers")
@@ -137,6 +136,7 @@ public class MainController {
     public List<User> getUsers() {
         return userRepository.findAll();
     }
+
     @GetMapping("/getUser/{id}")
     public Optional<User> getUser(@PathVariable int id) {
         return userRepository.findById(id);
@@ -162,16 +162,33 @@ public class MainController {
     public User updateUser(@PathVariable int userId, @RequestBody User userDetails) {
         User user = userRepository.findById(userId)
                 .orElseThrow(() -> new RuntimeException("User not found for this id :: " + userId));
-
-        user.setFirstname(userDetails.getFirstname());
-        user.setLastname(userDetails.getLastname());
-        user.setEmailadress(userDetails.getEmailadress());
-        user.setPassword(userDetails.getPassword());
-        user.setStreet(userDetails.getStreet());
-        user.setHousenumber(userDetails.getHousenumber());
-        user.setCity(userDetails.getCity());
-        user.setPhonenumber(userDetails.getPhonenumber());
-        user.setAccountnumber(userDetails.getAccountnumber());
+        if (userDetails.getFirstname() != null) {
+            user.setFirstname(userDetails.getFirstname());
+        }
+        if (userDetails.getFirstname() != null) {
+            user.setLastname(userDetails.getFirstname());
+        }
+        if (userDetails.getEmailadress() != null) {
+            user.setEmailadress(userDetails.getEmailadress());
+        }
+        if (userDetails.getPassword() != null) {
+            user.setPassword(userDetails.getPassword());
+        }
+        if (userDetails.getStreet() != null) {
+            user.setStreet(userDetails.getStreet());
+        }
+        if (userDetails.getHousenumber() != null) {
+            user.setHousenumber(userDetails.getHousenumber());
+        }
+        if (userDetails.getCity() != null) {
+            user.setCity(userDetails.getCity());
+        }
+        if (userDetails.getPhonenumber() != 0) {
+            user.setPhonenumber(userDetails.getPhonenumber());
+        }
+        if (userDetails.getAccountnumber() != null) {
+            user.setAccountnumber(userDetails.getAccountnumber());
+        }
         return userRepository.save(user);
     }
 

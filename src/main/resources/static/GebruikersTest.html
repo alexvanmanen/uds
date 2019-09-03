@@ -15,10 +15,11 @@
         $(document).ready(function() {
 
             $("#fetch").click(function(event){
-                $.getJSON("http://localhost:8080/uren/api/v1/getUser/1", function (user, id) {
-         for(var id in user) {
-             $('#display').append("<tr><td>" + user[id].firstname + "</td><td>TODO</td><td>" + user[id].emailadress + "</td>");
-         } });
+                var myObj = JSON.parse("http://localhost:8080/uren/api/v1/getUser/6");
+                //$.getJSON("http://localhost:8080/uren/api/v1/getUser/6", function (user, id) {
+         //for(var id in user) {
+             $('#display').append("<tr><td>" + myObj.firstname + "</td><td>TODO</td><td>" + myObj.emailadress + "</td>");
+        // } });
         });
         });
     </script>
