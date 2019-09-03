@@ -28,7 +28,10 @@ function Registreer(month) {
             }
         }
     }
-    var ts1 = timesheet("2018-02", "OPEN", entries);
+    if (month < 10) {
+        stringmonth = "0" + month;
+    }
+    var ts1 = timesheet("2019-"+ stringmonth, "OPEN", entries);
     var jsonTimesheet = JSON.stringify(ts1);
     apiPostRequest("/uren/api/v1/createTimesheet", jsonTimesheet);
 }
