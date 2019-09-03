@@ -1,5 +1,7 @@
-function getProfile() {
-    var id = document.forms["getprofile"]["id"].value;
+function getProfile(id) {
+    if (!id) {
+         id = document.forms["getprofile"]["id"].value;
+    }
     var xmlhttp = new XMLHttpRequest();
     xmlhttp.onreadystatechange = function () {
         if (this.readyState == 4 && this.status == 200) {
@@ -14,19 +16,20 @@ function getProfile() {
     xmlhttp.open("GET", "http://localhost:8080/uren/api/v1/getUser/" + id, true);
     xmlhttp.send();
 }
-function updateExample(){
+
+function updateExample() {
     var id = document.forms["updateprofile"]["id1"].value;
     var email = document.forms["updateprofile"]["email"].value;
     var password = document.forms["updateprofile"]["password"].value;
     var firstname = document.forms["updateprofile"]["firstname"].value;
     var lastname = document.forms["updateprofile"]["lastname"].value;
-        updateUser(id, email , password, firstname, lastname);
-        return alert("Personeel geupdate")
+    updateUser(id, email, password, firstname, lastname);
+    return alert("Personeel geupdate")
 }
 
-function updateUser(id, email, password, firstname, lastname){
+function updateUser(id, email, password, firstname, lastname) {
     var object = {
-        "emailadress" : email,
+        "emailadress": email,
         "password": password,
         "firstname": firstname,
         "lastname": lastname,
@@ -34,11 +37,12 @@ function updateUser(id, email, password, firstname, lastname){
     var json = JSON.stringify(object);
     apiPutRequest("/uren/api/v1/updateUser/" + id, json);
 }
+
 function apiPutRequest(url, json) {
     var xmlhttp = new XMLHttpRequest();
-    xmlhttp.open("PUT",url);
+    xmlhttp.open("PUT", url);
     var xmlDoc;
-    xmlhttp.onreadystatechange = function() {
+    xmlhttp.onreadystatechange = function () {
         if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
             xmlDoc = xmlhttp.responseXML;
             console.log(xmlDoc);

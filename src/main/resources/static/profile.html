@@ -6,6 +6,11 @@
     <link rel="stylesheet" type="text/css" href="css/style.css">
     <script src=js/script.js></script>
     <script src="js/profile.js"></script>
+    <script>let params = new URLSearchParams(location.search);
+    if(params.get('id')) {
+        getProfile(params.get('id'));
+    }
+   </script>
 </head>
 
 <body>
@@ -30,6 +35,9 @@
     id: <br>
     <input type="text" id="id" name="id" value="id">
     <input type="submit" class ="registerbtn" value="Submit"></form>
+<script>    if(params.get('id')) {
+    document.getElementById("id").value = params.get('id');
+}</script>
 <h2>Profiel</h2>
 <form name="updateprofile" onsubmit="updateExample(); return false;">
     <input type="hidden" id="id1" name="id" value="">
