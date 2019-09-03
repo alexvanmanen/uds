@@ -29,18 +29,25 @@
         <div class="dropdown-content">
             <a href="#">Bedrijf toevoegen</a>
             <a href="#">Bedrijf beheren</a>
-    <li style="float:right"><a class="active" href="login.html" >Uitloggen</a></li>
+    <li style="float:right"><a class="active" href="login.html">Uitloggen</a></li>
 </ul>
 
 <h2>Overzicht</h2>
-<div id="test"></div><table id="ajax">
+<div id="test"></div>
+<table id="ajax">
     <tr>
         <th>Maand</th>
         <th>Opdracht</th>
         <th>Status</th>
     </tr>
     <tr>
-        <td>Augustus</td>
+        <div id="augustustabel">
+            <div class="dropdown">
+                <div class="dropdown-content">
+                    <td><a href="#" onclick='buildTable2("8")'>Augustus</a></td>
+                </div>
+            </div>
+        </div>
         <td>NOS</td>
         <td><a href="#">Nog in te vullen</a></td>
     </tr>
@@ -54,7 +61,8 @@
         <td>NOS</td>
         <td><a href="#">Uitbetaald</a></td>
     </tr>
-</table></div>
+</table>
+</div>
 <br>
 <div>
     <button id='btn' onclick="window.location.href='urendeclaratieformulier.html'">Naar Urendeclaratieformulier</button>

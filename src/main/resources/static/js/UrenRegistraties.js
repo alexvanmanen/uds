@@ -9,6 +9,21 @@ function buildTable(month) {
     document.getElementById("tabel").innerHTML = tabel;
 }
 
+function buildTable2(month) {
+    if (document.getElementById("augustustabel").innerHTML != "") {
+        document.getElementById("augustustabel").innerHTML = ""
+    } else {
+        var tabel = "<tr><td>" + getMonthName(month) + "</td><td>Opdracht</td><td>Overwerk</td><td>Verlof</td><td>Ziek</td><td>Training</td><td>Overig</td><td>Verklaring overig</td></tr>";
+        for (var i = 1; i < calculateNumberOfDaysInMonth(month) + 1; i++) {
+            tabel += "<tr 'month'><td>" + i + " " + getMonthName(month) + "</><td><input id='WORK" + i + "' type='number'></td><td><input id='OVERTIME" + i + "' type='number'></td><td><input id='LEAVE_OF_ABSENCE" + i + "' type='number'></td><td><input id='ILL" + i + "' type='number'></td><td><input id='TRAINING" + i + "' type='number'></td><td><input id='OTHERS" + i + "' type='number'></td><td><input id='verklaring' type='String'></td></tr>"
+        }
+
+        tabel += "<tr><br><tr\>";
+        tabel += "<button id='btn' onclick='Registreer(" + month + ")'>Declareer Uren</button>"
+        document.getElementById("augustustabel").innerHTML = tabel;
+    }
+}
+
 function timesheet(yearMonth, state, entries) {
     var timesheet = {
         yearMonth: yearMonth,
@@ -75,5 +90,18 @@ function getUren() {
         }
     });
 }
+function getMonthName(month) {
+    var months = ["January", "February", "March", "April", "May", "June",
+        "July", "August", "September", "October", "November", "December"];
+    return months[(month-1)];
+}
 
+function calculateNumberOfDaysInMonth(month){
+    return new Date(2019, month, 0).getDate();
+}
 
+function sloopTable2() {
+    if (document.getElementById("augustustabel").innerHTML != "") {
+        document.getElementById("augustustabel").innerHTML = ""
+    }
+}
