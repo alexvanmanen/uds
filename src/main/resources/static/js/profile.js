@@ -7,6 +7,8 @@ function getProfile() {
             document.getElementById("email").value = myObj.emailadress;
             document.getElementById("id1").value = myObj.id;
             document.getElementById("password").value = myObj.password;
+            document.getElementById("firstname").value = myObj.firstname;
+            document.getElementById("lastname").value = myObj.lastname;
         }
     };
     xmlhttp.open("GET", "http://localhost:8080/uren/api/v1/getUser/" + id, true);
@@ -16,14 +18,18 @@ function updateExample(){
     var id = document.forms["updateprofile"]["id1"].value;
     var email = document.forms["updateprofile"]["email"].value;
     var password = document.forms["updateprofile"]["password"].value;
-        updateUser(id, email , password);
+    var firstname = document.forms["updateprofile"]["firstname"].value;
+    var latsname = document.forms["updateprofile"]["lastname"].value;
+        updateUser(id, email , password, firstname, lastname);
         return alert("Personeel geupdate")
 }
 
-function updateUser(id, email, password){
+function updateUser(id, email, password, firstname, lastname){
     var object = {
         "emailadress" : email,
         "password": password,
+        "firstname": firstname,
+        "lastname": lastname
     };
     var json = JSON.stringify(object);
     apiPutRequest("/uren/api/v1/updateUser/" + id, json);
