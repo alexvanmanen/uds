@@ -76,7 +76,8 @@ function getUsers() {
 }
 
 function showEditUser(id){
-    document.getElementById("editUser").innerHTML= " ID is "+ id  ;
+ //   document.getElementById("editUser").innerHTML= " ID is "+ id  ;
+    window.location.assign( "http://localhost:8080/uren/profile.html?id=" + id)
 }
 
 function createUserExample(){
