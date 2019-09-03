@@ -124,3 +124,13 @@ $(document).ready(function(){
             }
         });
 });
+
+//  $(document).ready(function () {
+//     $.getJSON("/uren/api/v1/getUser", function (user, id) {
+// //         for(var id in user){
+//              $('#display').append("<tr><td>"+user[id].firstname+"</td><td>TODO</td><td>"+user[id].emailadress+"</td>");
+//
+//
+//      });
+//
+//  });

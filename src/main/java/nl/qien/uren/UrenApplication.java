@@ -103,6 +103,6 @@ public class UrenApplication  implements CommandLineRunner {
 //        WHERE FIRSTNAME='Alex'
 
 
-        timesheetEntryRepository.saveAll(Arrays.asList(timesheetEntry1,timesheetEntry2, timesheetEntry3));
+        //timesheetEntryRepository.saveAll(Arrays.asList(timesheetEntry1,timesheetEntry2, timesheetEntry3));
     }
 }
