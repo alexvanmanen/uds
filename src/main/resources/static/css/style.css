@@ -165,8 +165,6 @@ input[type=password]:focus {
 
  }
 
-
-
 #useradd{
     padding: 20px;
     border-radius: 5px;
@@ -192,8 +190,6 @@ input[type=password], select {
     border-radius: 4px;
     box-sizing: border-box;
 }
-
-
 
 input[type=number] {
     height: 20px;

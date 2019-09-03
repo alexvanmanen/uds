@@ -20,8 +20,8 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
     private DataSource dataSource;
     @Value("${spring.queries.users-query}")
     private String usersQuery;
-    @Value("select dtype from user where emailadress=?")
-    private String rolesQuery;
+@Value("select emailadress, dtype from user where emailadress=?")
+private String rolesQuery;
 
     @Override
     protected void configure(AuthenticationManagerBuilder auth)
@@ -39,17 +39,16 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                 authorizeRequests()
                 .antMatchers("/").permitAll()
                 .antMatchers("/login").permitAll()
-                .antMatchers("/dashboard").permitAll()
-                .antMatchers("/admin/**").hasAuthority("ADMIN").anyRequest()
+               .antMatchers("/dashboard.html").hasAuthority("admin").anyRequest()
                 .authenticated().and().csrf().disable().formLogin()
                 .loginPage("/login").failureUrl("/login?error=true")
-                .defaultSuccessUrl("/dashboard.html")
+                .defaultSuccessUrl("/dashboard.html", true)
                 .usernameParameter("email")
                 .passwordParameter("password")
                 .and().logout()
                 .logoutRequestMatcher(new AntPathRequestMatcher("/logout"))
                 .logoutSuccessUrl("/").and().exceptionHandling()
-                .accessDeniedPage("/access-denied")
+                //.accessDeniedPage("/access-denied")
         ;
     }
     @Override

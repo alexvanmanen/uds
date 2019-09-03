@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="nl" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <title>Qien admin</title>
@@ -10,8 +11,7 @@
 </head>
 
 <body>
-<div id="welcome"></div>
-<script>getWelcome()</script>
+<div id="welcome"> <span th:text="${#authentication.emailadress}"/></div>
 <ul class="topnav">
     <li><a class="active" href="dashboard.html">Home </a></li>
     <li class="dropdown">
@@ -29,7 +29,8 @@
         <div class="dropdown-content">
             <a href="#">Bedrijf toevoegen</a>
             <a href="#">Bedrijf beheren</a>
-    <li style="float:right"><a class="active" href="login.html" >Uitloggen</a></li>
+    <li style="float:right"><form action="/logout">
+    <input type="submit" value="Logout"/></form></li>
 </ul>
 
 <h2>Overzicht</h2>

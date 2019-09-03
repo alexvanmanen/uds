@@ -1,37 +1,38 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml"
+<html lang="nl" xmlns="http://www.w3.org/1999/xhtml"
       xmlns:th="http://www.thymeleaf.org">
-
 <head>
-    <title>Spring Security Tutorial</title>
-    <link rel="stylesheet" type="text/css" th:href="@{/css/login.css}"/>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <meta charset="UTF-8">
+
+    <title>Qien inlog</title>
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+    <script src="js/jquery-3.4.1.min.js"></script>
+    <script src=js/script.js></script>
 </head>
-
 <body>
-<form th:action="@{/registration}" method="get">
-    <button class="btn btn-md btn-warning btn-block" type="Submit">Go To Registration Page</button>
-</form>
-
-<div class="container">
-    <img th:src="@{/images/login.jpg}" class="img-responsive center-block" width="300" height="300" alt="Logo"/>
+<div id="inlog">
+    <img src="images/Qien_logo_networkgraphics.png" alt="Qien_logo" style="border:0;width:153px;height:213px;display:block;margin-left:auto;margin-right:auto">
+    <br>
+    <p> Welkom bij de Urenregistratiepagina van Qien!</p>
+    <p> Gebruik uw e-mailadres en wachtwoord om in te loggen.</p>
+    <br>
+    <br>
+    <h2>Inloggen</h2>
+    <br>
+    <div class="container">
     <form th:action="@{/login}" method="POST" class="form-signin">
-        <h3 class="form-signin-heading" th:text="Welcome"></h3>
-        <br/>
-
-        <input type="text" id="email" name="email" th:placeholder="Email"
-               class="form-control"/> <br/>
-        <input type="password" th:placeholder="Password"
-               id="password" name="password" class="form-control"/> <br/>
-
+        E-mailadres: <br>
+        <input id="email" type="text" name="email" th:placeholder="Email" class="form-control"><br>
+        Wachtwoord: <br>
+        <input id="password" th:placeholder="Password" type="password" name="password" class="form-control"><br>
+        <br>
         <div align="center" th:if="${param.error}">
             <p style="font-size: 20; color: #FF1C19;">Email or Password invalid, please verify</p>
         </div>
-        <button class="btn btn-lg btn-primary btn-block" name="Submit" value="Login" type="Submit"
+        <button class="registerbtn" name="Submit" value="Login" type="Submit"
                 th:text="Login"></button>
     </form>
+    </div>
 </div>
 </body>
 </html>
