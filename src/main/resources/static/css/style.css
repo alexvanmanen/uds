@@ -36,7 +36,10 @@ h1, h2 {
 div.dropdown {
     height: 47px;
     width: 137px;
+}
 
+#hamburger {
+    right: 9px;
 }
 
 .dropdown-content {
