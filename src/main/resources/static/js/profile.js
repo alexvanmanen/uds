@@ -19,7 +19,7 @@ function updateExample(){
     var email = document.forms["updateprofile"]["email"].value;
     var password = document.forms["updateprofile"]["password"].value;
     var firstname = document.forms["updateprofile"]["firstname"].value;
-    var latsname = document.forms["updateprofile"]["lastname"].value;
+    var lastname = document.forms["updateprofile"]["lastname"].value;
         updateUser(id, email , password, firstname, lastname);
         return alert("Personeel geupdate")
 }
@@ -29,7 +29,7 @@ function updateUser(id, email, password, firstname, lastname){
         "emailadress" : email,
         "password": password,
         "firstname": firstname,
-        "lastname": lastname
+        "lastname": lastname,
     };
     var json = JSON.stringify(object);
     apiPutRequest("/uren/api/v1/updateUser/" + id, json);

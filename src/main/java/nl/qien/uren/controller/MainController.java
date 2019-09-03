@@ -165,8 +165,8 @@ public class MainController {
         if (userDetails.getFirstname() != null) {
             user.setFirstname(userDetails.getFirstname());
         }
-        if (userDetails.getFirstname() != null) {
-            user.setLastname(userDetails.getFirstname());
+        if (userDetails.getLastname() != null) {
+            user.setLastname(userDetails.getLastname());
         }
         if (userDetails.getEmailadress() != null) {
             user.setEmailadress(userDetails.getEmailadress());
