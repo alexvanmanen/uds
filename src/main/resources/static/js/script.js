@@ -124,3 +124,14 @@ $(document).ready(function(){
             }
         });
 });
+
+$(window).scroll(function() {
+    var winScrollTop = $(window).scrollTop();
+    var winHeight = $(window).height();
+    var floaterHeight = $('#hamburger_knop, #hamburger').outerHeight(true);
+    //true so the function takes margins into account
+    var frombottom = 20;
+
+    var top = winScrollTop + winHeight - floaterHeight - frombottom;
+    $('#hamburger_knop, #hamburger').css({'top': top + 'px'});
+});

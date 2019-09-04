@@ -38,8 +38,16 @@ div.dropdown {
     width: 137px;
 }
 
-#hamburger {
+#hamburger_knop {
+    position: absolute;
     right: 8px;
+    z-index: 1;
+}
+
+#hamburger {
+    position: fixed;
+    right: 8px;
+    z-index: 1;
 }
 
 .dropdown-content {
