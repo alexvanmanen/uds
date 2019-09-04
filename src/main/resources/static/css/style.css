@@ -40,14 +40,15 @@ div.dropdown {
 
 #hamburger_knop {
     position: absolute;
+    top: 20px;
+    height: 20px;
     right: 8px;
-    z-index: 1;
+    -webkit-transition: all 0.2s ease-in-out;
+    transition: all 0.2s ease-in-out;
 }
 
 #hamburger {
-    position: fixed;
     right: 8px;
-    z-index: 1;
 }
 
 .dropdown-content {
