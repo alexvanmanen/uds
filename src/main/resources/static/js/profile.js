@@ -14,6 +14,7 @@ function getProfile(id) {
             document.getElementById("street").value = myObj.street;
             document.getElementById("housenumber").value = myObj.housenumber;
             document.getElementById("city").value = myObj.city;
+            document.getElementById("zipcode").value = myObj.zipcode;
         }
     };
     xmlhttp.open("GET", "http://localhost:8080/uren/api/v1/getUser/" + id, true);
@@ -29,12 +30,13 @@ function updateExample() {
     var street = document.forms["updateprofile"]["street"].value;
     var housenumber = document.forms ["updateprofile"]["housenumber"].value;
     var city = document.forms ["updateprofile"]["city"].value;
+    var zipcode = document.forms ["updateprofile"]["zipcode"].value;
 
-    updateUser(id, email, password, firstname, lastname, street, housenumber, city);
+    updateUser(id, email, password, firstname, lastname, street, housenumber, city, zipcode);
     return alert("Personeel geupdate")
 }
 
-function updateUser(id, email, password, firstname, lastname, street, housenumber, city) {
+function updateUser(id, email, password, firstname, lastname, street, housenumber, city, zipcode) {
     var object = {
         "emailadress": email,
         "password": password,
@@ -43,6 +45,7 @@ function updateUser(id, email, password, firstname, lastname, street, housenumbe
         "street": street,
         "housenumber": housenumber,
         "city": city,
+        "zipcode": zipcode,
     };
     var json = JSON.stringify(object);
     apiPutRequest("/uren/api/v1/updateUser/" + id, json);

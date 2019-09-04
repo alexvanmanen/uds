@@ -189,6 +189,9 @@ public class MainController {
         if (userDetails.getAccountnumber() != null) {
             user.setAccountnumber(userDetails.getAccountnumber());
         }
+        if (userDetails.getZipcode() != null) {
+         user.setZipcode(userDetails.getZipcode());
+        }
         return userRepository.save(user);
     }
 
