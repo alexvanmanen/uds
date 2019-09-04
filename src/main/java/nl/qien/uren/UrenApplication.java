@@ -11,9 +11,10 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.time.YearMonth;
 import java.util.Arrays;
-import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
+
+import static nl.qien.uren.model.EntryKind.WORK;
 
 @SpringBootApplication
 public class UrenApplication  implements CommandLineRunner {
@@ -84,21 +85,25 @@ public class UrenApplication  implements CommandLineRunner {
         alex.setFirstname("Alex");
         Employee bart = new Employee();
         bart.setFirstname("bart");
+        Employee Voornaam = new Employee();
+        Voornaam.setFirstname("Voornaam");
 
-        employeeRepository.saveAll(Arrays.asList(alex,bart));
+        employeeRepository.saveAll(Arrays.asList(alex,bart,Voornaam));
 
 
         Timesheet timesheetAlex = new Timesheet(projectA1, alex, YearMonth.of(2019,8), TimesheetState.OPEN);
         Timesheet timesheetBart = new Timesheet(projectA1, bart, YearMonth.of(2019,1), TimesheetState.APPROVED);
+        Timesheet timesheetVoornaam = new Timesheet(projectA1, Voornaam, YearMonth.of(2019,2), TimesheetState.APPROVED);
 
         timesheetRepository.save(timesheetAlex);
         timesheetRepository.save(timesheetBart);
+        timesheetRepository.save(timesheetVoornaam);
 
 
-        TimesheetEntry timesheetEntry1 = new TimesheetEntry(1, 8, EntryKind.WORK, timesheetAlex);
+        TimesheetEntry timesheetEntry1 = new TimesheetEntry(1, 8, WORK, timesheetAlex);
         TimesheetEntry timesheetEntry2 = new TimesheetEntry(2, 4, EntryKind.LEAVE_OF_ABSENCE, timesheetAlex);
-
         TimesheetEntry timesheetEntry3 = new TimesheetEntry(5, 4, EntryKind.LEAVE_OF_ABSENCE, timesheetBart);
+        TimesheetEntry timesheetEntry4 = new TimesheetEntry(2, 8, WORK, timesheetVoornaam);
 
 
 //        SELECT UREN, ENTRY_KIND FROM USER
