@@ -11,6 +11,9 @@ function getProfile(id) {
             document.getElementById("password").value = myObj.password;
             document.getElementById("firstname").value = myObj.firstname;
             document.getElementById("lastname").value = myObj.lastname;
+            document.getElementById("street").value = myObj.street;
+            document.getElementById("housenumber").value = myObj.housenumber;
+            document.getElementById("city").value = myObj.city;
         }
     };
     xmlhttp.open("GET", "http://localhost:8080/uren/api/v1/getUser/" + id, true);
