@@ -23,16 +23,23 @@ function updateExample() {
     var password = document.forms["updateprofile"]["password"].value;
     var firstname = document.forms["updateprofile"]["firstname"].value;
     var lastname = document.forms["updateprofile"]["lastname"].value;
-    updateUser(id, email, password, firstname, lastname);
+    var street = document.forms["updateprofile"]["street"].value;
+    var housenumber = document.forms ["updateprofile"]["housenumber"].value;
+    var city = document.forms ["updateprofile"]["city"].value;
+
+    updateUser(id, email, password, firstname, lastname, street, housenumber, city);
     return alert("Personeel geupdate")
 }
 
-function updateUser(id, email, password, firstname, lastname) {
+function updateUser(id, email, password, firstname, lastname, street, housenumber, city) {
     var object = {
         "emailadress": email,
         "password": password,
         "firstname": firstname,
         "lastname": lastname,
+        "street": street,
+        "housenumber": housenumber,
+        "city": city,
     };
     var json = JSON.stringify(object);
     apiPutRequest("/uren/api/v1/updateUser/" + id, json);
