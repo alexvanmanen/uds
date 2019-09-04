@@ -118,13 +118,13 @@ function apiPostRequest(url, json) {
     xmlhttp.send(json);
 }
 
-$(document).ready(function(){
-        $.get("/uren/api/v1/getAllTimeSheets", function(timesheets, status){
-            for(var id in timesheets){
-                $("table").append("<tr><td>"+timesheets[id].yearMonth +"</td><td>TODO</td><td>"+timesheets[id].state +"</td></tr>");
-            }
-        });
-});
+// $(document).ready(function(){
+//         $.get("/uren/api/v1/getAllTimeSheets", function(timesheets, status){
+//             for(var id in timesheets){
+//                 $("table").append("<tr><td>"+timesheets[id].yearMonth +"</td><td>TODO</td><td>"+timesheets[id].state +"</td></tr>");
+//             }
+//         });
+// });
 
 //  $(document).ready(function () {
 //     $.getJSON("/uren/api/v1/getUser", function (user, id) {
