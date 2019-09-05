@@ -2,15 +2,40 @@
 <html>
 
 <head>
-    <link href="webjars/bootstrap/4.3.1/css/bootstrap.css" rel="stylesheet"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
     <script src="js/jquery-3.4.1.min.js"></script>
     <script src="js/jquerytest.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
 
 
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
     <title>Admin Dash</title>
 </head>
+
+
 <body>
+<div id="welcome"></div>
+<script>getWelcome()</script>
+<nav class = "navbar navbar-inverse">
+    <div class = "container-fluid">
+
+        <ul class="nav navbar-nav">
+            <li><a class="active" href="dashboard.html">Home </a></li>
+            <li><a class="active" href="profile.html">Profielen </a></li>
+            <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Personeel <span class="caret"></span></a>
+                <ul class="dropdown-menu">
+                    <li><a href="createuser.html">Personeel toevoegen</a></li>
+                    <li><a href="manageuser.html">Personeel beheren</a></li>
+                </ul>
+            </li>
+            <li><a href="#">Page 2</a></li>
+            <li><a href="#">Page 3</a></li>
+        </ul>
+    </div>
+</nav>
+
 <div class="container">
     <table id="tableOfUsers" class="table table-striped">
         <tr>
