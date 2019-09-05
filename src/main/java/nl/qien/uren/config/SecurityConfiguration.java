@@ -36,7 +36,10 @@ private String rolesQuery;
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http.
-                authorizeRequests()
+                csrf()
+                .ignoringAntMatchers("/login","/login**")
+                .and()
+                .authorizeRequests()
                 .antMatchers("/").permitAll()
                 .antMatchers("/login").permitAll()
                .antMatchers("/dashboard.html").hasAuthority("admin").anyRequest()

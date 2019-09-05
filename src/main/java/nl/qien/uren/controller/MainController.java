@@ -74,6 +74,7 @@ public class MainController {
     @ResponseBody
     public boolean sendMail(@RequestBody SendMail email) {
         SendMail newEmail = new SendMail(email.getReceiver(), email.getSubject(), email.getMessage());
+        System.out.println("newEmail = " + newEmail);
         boolean verstuurd = newEmail.sendMail(email.getReceiver(), email.getSubject(), email.getMessage());
         return verstuurd;
     }

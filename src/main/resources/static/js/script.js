@@ -106,7 +106,7 @@ function createUser(email, firstname, lastname){
 
 function apiPostRequest(url, json) {
     var xmlhttp = new XMLHttpRequest();
-    xmlhttp.open("POST",url);
+    xmlhttp.open("GET",url);
     var xmlDoc;
     xmlhttp.onreadystatechange = function() {
         if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
