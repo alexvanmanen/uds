@@ -87,5 +87,10 @@ public class UserController {
         return "dashboard";
     }
 
+    @GetMapping("/admin/dashboard")
+    public String admindashboard(@RequestParam(name="name", required=false, defaultValue="wereld") String name, Model model) {
+        model.addAttribute("name", name);
+        return "admin/dashboard";
+    }
 
 }
