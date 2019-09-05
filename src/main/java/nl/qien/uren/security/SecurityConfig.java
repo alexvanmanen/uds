@@ -15,10 +15,10 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Bean
     public UserDetailsService userDetailsService() {
-        System.out.println("uitgevoerd----------------------------------");
         User.UserBuilder users = User.withDefaultPasswordEncoder();
         InMemoryUserDetailsManager manager = new InMemoryUserDetailsManager();
         manager.createUser(users.username("user").password("test").roles("USER").build());
+        manager.createUser(users.username("alex").password("test").roles("USER").build());
         manager.createUser(users.username("admin").password("test").roles("USER", "ADMIN").build());
         return manager;
     }
