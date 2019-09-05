@@ -21,6 +21,7 @@ public class SendMail {
         this.message = message;
     }
     public boolean sendMail(String receiver, String subject, String message) {
+        System.out.println("\"test\" = " + "test");
         //Setting up configurations for the email connection to the Google SMTP server using TLS
         Properties props = new Properties();
         props.put("mail.smtp.host", "true");

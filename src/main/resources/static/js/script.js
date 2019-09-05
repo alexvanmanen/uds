@@ -118,20 +118,21 @@ function apiPostRequest(url, json) {
     xmlhttp.send(json);
 }
 
-// $(document).ready(function(){
-//         $.get("/uren/api/v1/getAllTimeSheets", function(timesheets, status){
-//             for(var id in timesheets){
-//                 $("table").append("<tr><td>"+timesheets[id].yearMonth +"</td><td>TODO</td><td>"+timesheets[id].state +"</td></tr>");
-//             }
-//         });
-// });
+$(document).ready(function(){
+        $.get("/uren/api/v1/getAllTimeSheets", function(timesheets, status){
+            for(var id in timesheets){
+                $("#taskOverview").append("<tr onclick='buildHourTable2(\"8\")'><td >"+timesheets[id].yearMonth +"</td><td>TODO</td><td>"+timesheets[id].state +"</td></tr>");
+            }
+        });
+});
 
-//  $(document).ready(function () {
-//     $.getJSON("/uren/api/v1/getUser", function (user, id) {
-// //         for(var id in user){
-//              $('#display').append("<tr><td>"+user[id].firstname+"</td><td>TODO</td><td>"+user[id].emailadress+"</td>");
-//
-//
-//      });
-//
-//  });
+$(window).scroll(function() {
+    var winScrollTop = $(window).scrollTop();
+    var winHeight = $(window).height();
+    var floaterHeight = $('#hamburger_knop, #hamburger').outerHeight(true);
+    //true so the function takes margins into account
+    var frombottom = 580;
+
+    var top = winScrollTop + winHeight - floaterHeight - frombottom;
+    $('#hamburger_knop, #hamburger').css({'top': top + 'px'});
+});

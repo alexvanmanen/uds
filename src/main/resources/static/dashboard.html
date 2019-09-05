@@ -2,11 +2,15 @@
 <html lang="nl" xmlns="http://www.w3.org/1999/xhtml"
       xmlns:th="http://www.thymeleaf.org">
 <head>
-
-
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+    <meta charset="UTF-8">
+    <title>Qien admin</title>
+    <link rel="stylesheet" type="text/css" href="css/style.css">
     <script src="js/jquery-3.4.1.min.js"></script>
+    <script src=js/script.js></script>
+    <script src="js/UrenRegistraties.js"></script>
+    <script src="js/timesheet.js"></script>
+
+    <!--<link href="webjars/bootstrap/4.3.1/css/bootstrap.css" rel="stylesheet" />-->
 
    <link rel="bootstrapstyle" type="text/css" href="css/bootstrapstyle.css">
     <meta charset="UTF-8">
@@ -16,6 +20,8 @@
 </head>
 
 <body>
+<div id="welcome"> <span th:text="${#authentication.emailadress}"/></div>
+
 <nav class="navbar navbar-default navbar-fixed-top">
     <div class="container-fluid">
         <div class="navbar-header">
@@ -45,6 +51,8 @@
         </div>
     </div>
 </nav>
+<li style="float:right"><form action="/uren/logout">
+    <input class="registerbtn" type="submit" value="Logout"/></form></li>
 
 
 
@@ -72,30 +80,15 @@
 
 
 <h2>Overzicht</h2>
-<div id="test"></div><table id="ajax">
-    <tr>
-        <th>Maand</th>
-        <th>Opdracht</th>
-        <th>Status</th>
-    </tr>
-    <tr>
-        <td><a href="UrenDeclaratieFormulier.html">Augustus</a></td>
-        <td>NOS</td>
-        <td><a href="#">Nog in te vullen</a></td>
-    </tr>
-    <tr>
-        <td>Juli</td>
-        <td>Qien</td>
-        <td><a href="#">Opdrachtgever akkoord</a></td>
-    </tr>
-    <tr>
-        <td>Juni</td>
-        <td>NOS</td>
-        <td><a href="#">Uitbetaald</a></td>
-    </tr>
-</table></div>
-<!--<table id="ajax">-->
 
+<table id="taskOverview">
+    <tr><th>Jaar</th><th>Maand</th><th>Opdracht</th><th>Status</th></tr>
+</table>
 
+<table class="monthTable" id="2018-8"></table>
+<br>
+<div>
+    <button id='btn' onclick="window.location.href='urendeclaratieformulier.html'">Naar Urendeclaratieformulier</button>
+</div>
 </body>
 </html>

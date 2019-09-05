@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+    <script src="js/jquery-3.4.1.min.js"></script>
+    <script src="js/jquerytest.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Admin Dashboard</title>
+</head>
+
+
+<body>
+<div id="welcome"></div>
+<script>getWelcome()</script>
+
+<nav class = "navbar navbar-inverse">
+    <div class = "container-fluid">
+
+        <ul class="nav navbar-nav">
+            <li><a class="active" href="dashboard.html">Home </a></li>
+            <li><a class="active" href="profile.html">Profielen </a></li>
+            <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Personeel <span class="caret"></span></a>
+                <ul class="dropdown-menu">
+                    <li><a href="createuser.html">Personeel toevoegen</a></li>
+                    <li><a href="manageuser.html">Personeel beheren</a></li>
+                </ul>
+            </li>
+            <li><a href="#">Bedrijven overzicht</a></li>
+        </ul>
+        <ul class="nav navbar-nav navbar-right">
+            <li><a href="#"><span class="glyphicon glyphicon-user"></span>Log uit</a></li>
+        </ul>
+    </div>
+</nav>
+
+<div class="container">
+    <select class="mdb-select md-form">
+        <option value="" disabled selected>Choose your option</option>
+        <option value="jan">January</option>
+        <option value="feb">February</option>
+        <option value="mar">March</option>
+        <option value="apr">April</option>
+        <option value="may">May</option>
+        <option value="jun">June</option>
+        <option value="jul">July</option>
+        <option value="aug">August</option>
+        <option value="sep">September</option>
+        <option value="oct">October</option>
+        <option value="nov">November</option>
+        <option value="dec">December</option>
+    </select>
+    <table id="tableOfUsers" class="table table-striped">
+        <tr>
+            <th>Id</th>
+            <th>First Name</th>
+            <th>Last Name</th>
+            <!--<th>Active</th>-->
+            <th>Email</th>
+            <th>Employer</th>
+            <th>Status Timesheet</th>
+            <!--<th>Housenumber</th>-->
+            <!--<th>Zipcode</th>-->
+            <!--<th>City</th>-->
+            <!--<th>Phonenumber</th>-->
+            <!--<th>accountnumber</th>-->
+        </tr>
+
+        <tr>
+
+        </tr>
+</div>
+</body>
+</html>

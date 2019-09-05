@@ -94,15 +94,18 @@ public class UrenApplication  implements CommandLineRunner {
         employeeRepository.saveAll(Arrays.asList(alex,bart));
 
 
-        Timesheet timesheetAlex = new Timesheet(projectA1, alex, YearMonth.of(2019,8), TimesheetState.OPEN);
+        Timesheet timesheetAlexAug = new Timesheet(projectA1, alex, YearMonth.of(2019,8), TimesheetState.OPEN);
+        Timesheet timesheetAlexJul = new Timesheet(projectA1, alex, YearMonth.of(2019,7), TimesheetState.DECLINED);
         Timesheet timesheetBart = new Timesheet(projectA1, bart, YearMonth.of(2019,1), TimesheetState.APPROVED);
 
-        timesheetRepository.save(timesheetAlex);
+        timesheetRepository.save(timesheetAlexAug);
+        timesheetRepository.save(timesheetAlexJul);
+
         timesheetRepository.save(timesheetBart);
 
 
-        TimesheetEntry timesheetEntry1 = new TimesheetEntry(1, 8, EntryKind.WORK, timesheetAlex);
-        TimesheetEntry timesheetEntry2 = new TimesheetEntry(2, 4, EntryKind.LEAVE_OF_ABSENCE, timesheetAlex);
+        TimesheetEntry timesheetEntry1 = new TimesheetEntry(1, 8, EntryKind.WORK, timesheetAlexAug);
+        TimesheetEntry timesheetEntry2 = new TimesheetEntry(2, 4, EntryKind.LEAVE_OF_ABSENCE, timesheetAlexAug);
 
         TimesheetEntry timesheetEntry3 = new TimesheetEntry(5, 4, EntryKind.LEAVE_OF_ABSENCE, timesheetBart);
 
