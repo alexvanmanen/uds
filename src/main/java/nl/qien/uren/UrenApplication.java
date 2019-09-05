@@ -47,6 +47,8 @@ public class UrenApplication  implements CommandLineRunner {
         Customer customerB = new Customer();
         Employee employeeA = new Employee();
         Employee employeeB = new Employee();
+        customerA.setEmailadress("Bartzwaagstra@live.nl");
+        customerA.setPassword("Bart01");
 
         Set<Project> projectsA = new HashSet<>();
         Project projectA1 = new Project("Project A1", customerA);
@@ -73,6 +75,8 @@ public class UrenApplication  implements CommandLineRunner {
         }
 
         Admin cora = new Admin();
+        cora.setEmailadress("admin@qien.nl");
+        cora.setPassword("Admin01");
         adminRepository.save(cora);
 
 
@@ -103,6 +107,6 @@ public class UrenApplication  implements CommandLineRunner {
 //        WHERE FIRSTNAME='Alex'
 
 
-        timesheetEntryRepository.saveAll(Arrays.asList(timesheetEntry1,timesheetEntry2, timesheetEntry3));
+        //timesheetEntryRepository.saveAll(Arrays.asList(timesheetEntry1,timesheetEntry2, timesheetEntry3));
     }
 }
