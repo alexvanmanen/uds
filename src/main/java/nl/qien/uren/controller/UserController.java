@@ -1,19 +1,13 @@
 package nl.qien.uren.controller;
-import nl.qien.uren.entity.User;
 import nl.qien.uren.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.core.Authentication;
-import org.springframework.security.core.context.SecurityContextHolder;
-import org.springframework.security.web.authentication.logout.SecurityContextLogoutHandler;
 import org.springframework.stereotype.Controller;
-import org.springframework.validation.BindingResult;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
-
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-import javax.validation.Valid;
 
 @Controller
 public class UserController {
@@ -89,5 +83,12 @@ public class UserController {
         }
         return "redirect:/login?logout";
     }*/
+
+    @GetMapping("/dashboard")
+    public String dashboard(@RequestParam(name="name", required=false, defaultValue="wereld") String name, Model model) {
+        model.addAttribute("name", name);
+        return "dashboard";
+    }
+
 
 }

@@ -1,6 +1,5 @@
 <!DOCTYPE html>
-<html lang="nl" xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <title>Qien admin</title>
@@ -14,7 +13,11 @@
 </head>
 
 <body>
-<div id="welcome"> <span th:text="${#authentication.emailadress}"/></div>
+<div id="welcome">
+    <div th:if="${#httpServletRequest.remoteUser != null}">
+        <p th:text="${#httpServletRequest.remoteUser}"></p>
+    </div>
+</div>
 <ul class="topnav">
     <li><a class="active" href="dashboard.html">Home </a></li>
     <li><a class="active" href="profile.html">Profielen </a></li>
