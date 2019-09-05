@@ -6,6 +6,7 @@ import nl.qien.uren.repository.*;
 import org.apache.commons.lang3.RandomStringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -198,6 +199,9 @@ public class MainController {
         user.setActive(false);
         return userRepository.save(user);
     }
+
+
+
 }
 
 
