@@ -6,7 +6,6 @@ import nl.qien.uren.repository.*;
 import org.apache.commons.lang3.RandomStringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -170,8 +169,8 @@ public class MainController {
         if (userDetails.getLastname() != null) {
             user.setLastname(userDetails.getLastname());
         }
-        if (userDetails.getEmailadress() != null) {
-            user.setEmailadress(userDetails.getEmailadress());
+        if (userDetails.getUsername() != null) {
+            user.setUsername(userDetails.getUsername());
         }
         if (userDetails.getPassword() != null) {
             user.setPassword(userDetails.getPassword());
