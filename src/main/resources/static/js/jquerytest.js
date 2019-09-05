@@ -31,12 +31,19 @@ $(document).ready(function(){
     }
 
     function showState2(timesheets, month, year){
-
-
+        // var month = document.getElementById("monthField").value;
+        // var year = document.getElementById("yearField").value;
+        // var yearMonth = year+month;
+        //
         if(timesheets.length == 0){
             return "-";
         }else{
-            return timesheets[0].state;
+            // for (var i = 0; i<timesheets.length; i++) {
+            //     if(yearMonth == timesheets[i].yearMonth){
+            //         return timesheets[i].state;
+            //     }
+            // }
+            return timesheets[0].state + timesheets[0].yearMonth;
         }
 
     }
