@@ -20,9 +20,11 @@ import java.util.Collection;
 
 public class Admin extends User{
 
+    public static GrantedAuthority ROLE_ADMIN = new SimpleGrantedAuthority("ROLE_ADMIN");
+
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
-        return Arrays.asList(new SimpleGrantedAuthority("ROLE_USER"), new SimpleGrantedAuthority("ROLE_ADMIN"));
+        return Arrays.asList(new SimpleGrantedAuthority("ROLE_USER"), ROLE_ADMIN);
     }
 
 }
