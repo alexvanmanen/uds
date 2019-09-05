@@ -9,7 +9,7 @@ function buildTable(month) { //
     document.getElementById("tabel").innerHTML = tabel;
 }
 
-function buildTable2(month) {
+function buildHourTable2(month) {
     var table = document.getElementById("2018-8");
     if (table.innerHTML != "") {
         table.innerHTML = ""
