@@ -10,17 +10,18 @@ function buildTable(month) {
 }
 
 function buildTable2(month) {
-    if (document.getElementById("augustustabel").innerHTML != "") {
-        document.getElementById("augustustabel").innerHTML = ""
+    var table = document.getElementById("2018-8");
+    if (table.innerHTML != "") {
+        table.innerHTML = ""
     } else {
-        var tabel = "<tr><td>" + getMonthName(month) + "</td><td>Opdracht</td><td>Overwerk</td><td>Verlof</td><td>Ziek</td><td>Training</td><td>Overig</td><td>Verklaring overig</td></tr>";
+        var tableContent = "<tr><td>" + getMonthName(month) + "</td><td>Opdracht</td><td>Overwerk</td><td>Verlof</td><td>Ziek</td><td>Training</td><td>Overig</td><td>Verklaring overig</td></tr>";
         for (var i = 1; i < calculateNumberOfDaysInMonth(month) + 1; i++) {
-            tabel += "<tr 'month'><td>" + i + " " + getMonthName(month) + "</><td><input id='WORK" + i + "' type='number'></td><td><input id='OVERTIME" + i + "' type='number'></td><td><input id='LEAVE_OF_ABSENCE" + i + "' type='number'></td><td><input id='ILL" + i + "' type='number'></td><td><input id='TRAINING" + i + "' type='number'></td><td><input id='OTHERS" + i + "' type='number'></td><td><input id='verklaring' type='String'></td></tr>"
+            tableContent += "<tr 'month'><td>" + i + " " + getMonthName(month) + "</><td><input id='WORK" + i + "' type='number'></td><td><input id='OVERTIME" + i + "' type='number'></td><td><input id='LEAVE_OF_ABSENCE" + i + "' type='number'></td><td><input id='ILL" + i + "' type='number'></td><td><input id='TRAINING" + i + "' type='number'></td><td><input id='OTHERS" + i + "' type='number'></td><td><input id='verklaring' type='String'></td></tr>"
         }
 
-        tabel += "<tr><br><tr\>";
-        tabel += "<button id='btn' onclick='Registreer(" + month + ")'>Declareer Uren</button>"
-        document.getElementById("augustustabel").innerHTML = tabel;
+        tableContent += "<tr><br><tr\>";
+        tableContent += "<button id='btn' onclick='Registreer(" + month + ")'>Declareer Uren</button>"
+        table.innerHTML = tableContent;
     }
 }
 
