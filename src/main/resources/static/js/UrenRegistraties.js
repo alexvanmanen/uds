@@ -14,12 +14,21 @@ function buildHourTable2(month) {
     if (table.innerHTML != "") {
         table.innerHTML = ""
     } else {
-        var tableContent = "<tr><td>" + getMonthName(month) + "</td><td>Opdracht</td><td>Overwerk</td><td>Verlof</td><td>Ziek</td><td>Training</td><td>Overig</td><td>Verklaring overig</td></tr>";
+        var tableContent = "<tr><th>Overzicht voor de maand " + getMonthName(month) + "</th></tr>";
+        tableContent += "<tr><th>"+ getMonthName(month) + "</th><th>Opdracht</th><th>Overwerk</th><th>Verlof</th><th>Ziek</th><th>Training</th><th>Overig</th><th>Verklaring overig</th></tr>";
         for (var i = 1; i < calculateNumberOfDaysInMonth(month) + 1; i++) {
-            tableContent += "<tr 'month'><td>" + i + " " + getMonthName(month) + "</><td><input id='WORK" + i + "' type='number'></td><td><input id='OVERTIME" + i + "' type='number'></td><td><input id='LEAVE_OF_ABSENCE" + i + "' type='number'></td><td><input id='ILL" + i + "' type='number'></td><td><input id='TRAINING" + i + "' type='number'></td><td><input id='OTHERS" + i + "' type='number'></td><td><input id='verklaring' type='String'></td></tr>"
+            tableContent += "<tr 'month'><td>" + i + " " + getMonthName(month) + "</>" +
+                "<td><input id='WORK" + i + "' type='number'></td>" +
+                "<td><input id='OVERTIME" + i + "' type='number'></td>" +
+                "<td><input id='LEAVE_OF_ABSENCE" + i + "' type='number'></td>" +
+                "<td><input id='ILL" + i + "' type='number'></td>" +
+                "<td><input id='TRAINING" + i + "' type='number'></td>" +
+                "<td><input id='OTHERS" + i + "' type='number'></td>" +
+                "<td><input id='verklaring' type='String'></td>" +
+                "</tr>";
         }
 
-        tableContent += "<tr><br><tr\>";
+        tableContent += "<br>";
         tableContent += "<button id='btn' onclick='Registreer(" + month + ")'>Declareer Uren</button>"
         table.innerHTML = tableContent;
     }
