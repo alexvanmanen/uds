@@ -30,6 +30,7 @@ public class User {
     private int phonenumber;
     private String accountnumber;
     private Boolean firstlogin;
+    private String employer;
 
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "user")
     private Set<Timesheet> timesheets = new HashSet<>();

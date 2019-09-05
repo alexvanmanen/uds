@@ -10,14 +10,15 @@ $(document).ready(function(){
             user_data += '<td>'+clean(user.id)+'</td>';
             user_data += '<td>'+clean(user.firstname)+'</td>';
             user_data += '<td>'+clean(user.lastname)+'</td>';
-            user_data += '<td>'+clean(user.active)+'</td>';
+            //user_data += '<td>'+clean(user.active)+'</td>';
             user_data += '<td>'+clean(user.emailadress)+'</td>';
-            user_data += '<td>'+clean(user.street)+'</td>';
-            user_data += '<td>'+clean(user.housenumber)+'</td>';
-            user_data += '<td>'+clean(user.zipcode)+'</td>';
-            user_data += '<td>'+clean(user.city)+'</td>';
-            user_data += '<td>'+clean(user.phonenumber)+'</td>';
-            user_data += '<td>'+clean(user.accountnumber)+'</td>';
+            user_data += '<td>'+clean(user.employer)+'</td>'
+            //user_data += '<td>'+clean(user.street)+'</td>';
+            //user_data += '<td>'+clean(user.housenumber)+'</td>';
+            //user_data += '<td>'+clean(user.zipcode)+'</td>';
+           // user_data += '<td>'+clean(user.city)+'</td>';
+           // user_data += '<td>'+clean(user.phonenumber)+'</td>';
+           // user_data += '<td>'+clean(user.accountnumber)+'</td>';
             user_data += '</tr>';
         });
             $('#tableOfUsers').append(user_data);
