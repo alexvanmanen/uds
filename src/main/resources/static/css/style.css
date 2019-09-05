@@ -4,7 +4,7 @@ ul {
     list-style-type: none;
     margin: 0;
     padding: 0;
-    overflow: hidden;
+    /*overflow: hidden;*/
     background-color: white;
 }
 
@@ -20,7 +20,9 @@ li a, .dropbtn {
     text-decoration: none;
 }
 
-li a:hover, .dropdown:hover, .dropbtn {
+
+
+.navbar, li a:hover, .dropdown:hover, .dropbtn {
     color: white;
     background-color: #A34AFE;
 }
