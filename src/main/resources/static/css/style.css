@@ -225,16 +225,10 @@ input[type=number]:focus {
     text-align: center;
 }
 
-#augustustabel{
-    border: 10px red;
-    border-collapse: collapse;
-    padding: 10px;
-    border-spacing: 10px;
+.monthTable{
     width: 80%;
-    border-collapse: collapse;
-
 }
 
-#augustustabel, tr{
-    padding: 1px;
+.monthTable td, .monthTable th {
+    padding: 0px;
 }
