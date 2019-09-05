@@ -48,6 +48,7 @@ private String rolesQuery;
                 .and().logout()
                 .logoutRequestMatcher(new AntPathRequestMatcher("/logout"))
                 .logoutSuccessUrl("/").and().exceptionHandling()
+                .and().headers().frameOptions().disable()
                 //.accessDeniedPage("/access-denied")
         ;
     }
