@@ -50,7 +50,7 @@ function getPassword() {
             document.getElementById("login").innerHTML = "<font color='red'>Password and/or Email incorrect</font>";
         } else if (data === true) {
             setSessie(a);
-            window.location.assign("./dashboard.html");
+            window.location.assign("../dashboard.html");
         } else {
             document.getElementById("login").innerHTML = "<font color='red'>Unexpected response from server.</font>";
         }
@@ -76,7 +76,8 @@ function getUsers() {
 }
 
 function showEditUser(id){
-    document.getElementById("editUser").innerHTML= " ID is "+ id  ;
+ //   document.getElementById("editUser").innerHTML= " ID is "+ id  ;
+    window.location.assign( "./profile.html?id=" + id)
 }
 
 function createUserExample(){
