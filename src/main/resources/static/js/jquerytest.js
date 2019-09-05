@@ -13,7 +13,7 @@ $(document).ready(function(){
             //user_data += '<td>'+clean(user.active)+'</td>';
             user_data += '<td>'+clean(user.emailadress)+'</td>';
             user_data += '<td>'+clean(user.employer)+'</td>';
-            user_data += '<td>'+clean(user.timesheets.status)+'</td>';
+            user_data += '<td>'+clean(showState2(user.timesheets))+'</td>';
             //user_data += '<td>'+clean(user.street)+'</td>';
             //user_data += '<td>'+clean(user.housenumber)+'</td>';
             //user_data += '<td>'+clean(user.zipcode)+'</td>';
@@ -28,5 +28,16 @@ $(document).ready(function(){
 
     function clean(string){
         return (!string || string === 0 ? "-" : string);
+    }
+
+    function showState2(timesheets, month, year){
+
+
+        if(timesheets.length == 0){
+            return "-";
+        }else{
+            return timesheets[0].state;
+        }
+
     }
 });
