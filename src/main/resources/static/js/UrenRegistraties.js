@@ -1,5 +1,5 @@
 function buildTable(month) {
-    var tabel = "<tr><td>" + getMonthName(month) + "</td><td>Opdracht</td><td>Overwerk</td><td>Verlof</td><td>Ziek</td><td>Training</td><td>Overig</td><td>Verklaring overig</td></tr>";
+    var tabel = "<table><tr><td>" + getMonthName(month) + "</td><td>Opdracht</td><td>Overwerk</td><td>Verlof</td><td>Ziek</td><td>Training</td><td>Overig</td><td>Verklaring overig</td></tr>";
     for (var i = 1; i < calculateNumberOfDaysInMonth(month) + 1; i++) {
         tabel += "<tr 'month'><td>" + i + " " + getMonthName(month) + "</><td><input id='WORK" + i + "' type='number'></td><td><input id='OVERTIME" + i + "' type='number'></td><td><input id='LEAVE_OF_ABSENCE" + i + "' type='number'></td><td><input id='ILL" + i + "' type='number'></td><td><input id='TRAINING" + i + "' type='number'></td><td><input id='OTHERS" + i + "' type='number'></td><td><input id='verklaring' type='String'></td></tr>"
     }

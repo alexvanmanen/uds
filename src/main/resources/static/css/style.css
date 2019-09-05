@@ -215,3 +215,17 @@ input[type=number]:focus {
 #inlog {
     text-align: center;
 }
+
+#augustustabel{
+    border: 10px red;
+    border-collapse: collapse;
+    padding: 10px;
+    border-spacing: 10px;
+    width: 80%;
+    border-collapse: collapse;
+
+}
+
+#augustustabel, tr{
+    padding: 1px;
+}

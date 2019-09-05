@@ -36,6 +36,7 @@
             <a href="settings.html">Instellingen</a>
             <a href="manageuser.html">Personeel beheren</a>
             <a href="login.html">Uitloggen</a>
+        </div>
 </ul>
 
 <h2>Overzicht</h2>
@@ -47,16 +48,15 @@
         <th>Status</th>
     </tr>
     <tr>
-        <div id="augustustabel">
-            <div class="dropdown">
-                <div class="dropdown-content">
-                    <td><a href="#" onclick='buildTable2("8")'>Augustus</a></td>
-                </div>
-            </div>
-        </div>
+        <td onclick='buildTable2("8")'>Augustus</td>
         <td>NOS</td>
         <td><a href="#">Nog in te vullen</a></td>
     </tr>
+</table>
+<div class="container">
+<table  id="augustustabel"></table>
+</div>
+<table>
     <tr>
         <td>Juli</td>
         <td>Qien</td>
@@ -68,11 +68,9 @@
         <td><a href="#">Uitbetaald</a></td>
     </tr>
 </table>
-</div>
 <br>
 <div>
     <button id='btn' onclick="window.location.href='urendeclaratieformulier.html'">Naar Urendeclaratieformulier</button>
 </div>
-<!--<table id="ajax">-->
 </body>
 </html>
