@@ -75,6 +75,7 @@ public class MainController {
     @ResponseBody
     public boolean sendMail(@RequestBody SendMail email) {
         SendMail newEmail = new SendMail(email.getReceiver(), email.getSubject(), email.getMessage());
+        System.out.println("newEmail = " + newEmail);
         boolean verstuurd = newEmail.sendMail(email.getReceiver(), email.getSubject(), email.getMessage());
         return verstuurd;
     }
@@ -189,6 +190,9 @@ public class MainController {
         }
         if (userDetails.getAccountnumber() != null) {
             user.setAccountnumber(userDetails.getAccountnumber());
+        }
+        if (userDetails.getZipcode() != null) {
+         user.setZipcode(userDetails.getZipcode());
         }
         return userRepository.save(user);
     }
