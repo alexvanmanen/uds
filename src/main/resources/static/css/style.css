@@ -38,6 +38,15 @@ div.dropdown {
     width: 137px;
 }
 
+#hamburger_knop {
+    position: absolute;
+    top: 20px;
+    height: 20px;
+    right: 8px;
+    -webkit-transition: all 0.2s ease-in-out;
+    transition: all 0.2s ease-in-out;
+}
+
 #hamburger {
     right: 8px;
 }
