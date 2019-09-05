@@ -12,7 +12,8 @@ $(document).ready(function(){
             user_data += '<td>'+clean(user.lastname)+'</td>';
             //user_data += '<td>'+clean(user.active)+'</td>';
             user_data += '<td>'+clean(user.emailadress)+'</td>';
-            user_data += '<td>'+clean(user.employer)+'</td>'
+            user_data += '<td>'+clean(user.employer)+'</td>';
+            user_data += '<td>'+clean(user.timesheets.status)+'</td>';
             //user_data += '<td>'+clean(user.street)+'</td>';
             //user_data += '<td>'+clean(user.housenumber)+'</td>';
             //user_data += '<td>'+clean(user.zipcode)+'</td>';
