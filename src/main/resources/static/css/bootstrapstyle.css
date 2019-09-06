@@ -4,9 +4,8 @@
     height: 100px;
 }
 
-#hamburger_knop {
-    height:30px;
-    width:30px;
+.btn {
+    background-color: #A34AFE;
 }
 
 .navbar {
@@ -42,7 +41,7 @@
 /* Dropdown */
 .open .dropdown-toggle {
     color: white ;
-    background-color: #666 !important;
+    background-color: #A34AFE !important;
 }
 
 /* Dropdown links */
