@@ -9,7 +9,9 @@ function buildTable(month) { //
     document.getElementById("tabel").innerHTML = tabel;
 }
 
-function buildHourTable2(month) {
+function buildHourTable2(id) {
+    var timesheet = retrievedTimesheets[id];
+    var month =  timesheet.yearMonth.substring(6);
     var table = document.getElementById("2018-8");
     if (table.innerHTML != "") {
         table.innerHTML = ""
@@ -18,13 +20,13 @@ function buildHourTable2(month) {
         tableContent += "<tr><th>"+ getMonthName(month) + "</th><th>Opdracht</th><th>Overwerk</th><th>Verlof</th><th>Ziek</th><th>Training</th><th>Overig</th><th>Verklaring overig</th></tr>";
         for (var i = 1; i < calculateNumberOfDaysInMonth(month) + 1; i++) {
             tableContent += "<tr 'month'><td>" + i + " " + getMonthName(month) + "</>" +
-                "<td><input id='WORK" + i + "' type='number'></td>" +
-                "<td><input id='OVERTIME" + i + "' type='number'></td>" +
-                "<td><input id='LEAVE_OF_ABSENCE" + i + "' type='number'></td>" +
-                "<td><input id='ILL" + i + "' type='number'></td>" +
-                "<td><input id='TRAINING" + i + "' type='number'></td>" +
-                "<td><input id='OTHERS" + i + "' type='number'></td>" +
-                "<td><input id='verklaring' type='String'></td>" +
+                "<td><input  id='WORK" + i + "'  type='number'></td>" +
+                "<td><input  id='OVERTIME" + i + "' type='number'></td>" +
+                "<td><input  id='LEAVE_OF_ABSENCE" + i + "' type='number'></td>" +
+                "<td><input  id='ILL" + i + "' type='number'></td>" +
+                "<td><input  id='TRAINING" + i + "' type='number'></td>" +
+                "<td><input  id='OTHERS" + i + "' type='number'></td>" +
+                "<td><input  id='verklaring' type='String'></td>" +
                 "</tr>";
         }
 
@@ -110,8 +112,4 @@ function calculateNumberOfDaysInMonth(month){
     return new Date(2019, month, 0).getDate();
 }
 
-function sloopTable2() {
-    if (document.getElementById("augustustabel").innerHTML != "") {
-        document.getElementById("augustustabel").innerHTML = ""
-    }
-}
+
