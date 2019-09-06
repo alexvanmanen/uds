@@ -40,25 +40,36 @@
         </div>
         <div class="collapse navbar-collapse" id="myNavbar">
             <ul class="nav navbar-nav navbar-right">
-                <li><a href="dashboard.html">Dashboard</a></li>
-                <li><a href="#">Bedrijven</a></li>
-                <li class="dropdown">
-                    <a class="dropdown-toggle" data-toggle="dropdown" href="#">Personeel
-                        <span class="caret"></span>
-                    </a>
-                    <ul class="dropdown-menu">
-                        <li><a href="createuser.html">Personeel toevoegen</a></li>
-                        <li><a href="manageuser.html">Personeel beheren</a></li>
+<!--                <li><a href="dashboard.html">Dashboard</a></li>-->
+<!--                <li><a href="#">Bedrijven</a></li>-->
+<!--                <li class="dropdown">-->
+<!--                    <a class="dropdown-toggle" data-toggle="dropdown" href="#">Personeel-->
+<!--                        <span class="caret"></span>-->
+<!--                    </a>-->
+<!--                    <ul class="dropdown-menu">-->
+<!--                        <li><a href="createuser.html">Personeel toevoegen</a></li>-->
+<!--                        <li><a href="manageuser.html">Personeel beheren</a></li>-->
 
-                    </ul>
+<!--                    </ul>-->
+<!--                </li>-->
+                <li><button type="button" class="btn btn-primary dropdown-toggle" data-toggle= "dropdown">
+                    <span class="glyphicon glyphicon-menu-hamburger"></span>
+                </button> <ul class = "dropdown-menu">
+                    <li><a href="dashboard.html">Home</a></li>
+                <li><a href="manageuser.html">Personeel</a></li>
+                <li><a href="#">Bedrijven</a></li>
+                <li><a href="#">Instellingen</a></li>
+                    <li><form action="/uren/logout">
+                        <input  type="submit" value="Logout"/></form></li>
+                </ul>
                 </li>
-                <li><a href="#"><span class="glyphicon glyphicon-menu-hamburger"></span></a></li>
+
             </ul>
         </div>
     </div>
 </nav>
-<li style="float:right"><form action="/uren/logout">
-    <input class="registerbtn" type="submit" value="Logout"/></form></li>
+<!--<li style="float:right"><form action="/uren/logout">-->
+<!--    <input class="registerbtn" type="submit" value="Logout"/></form></li>-->
 
 
 
