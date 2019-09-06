@@ -117,11 +117,12 @@ function apiPostRequest(url, json) {
     xmlhttp.setRequestHeader('Content-Type', 'application/json');
     xmlhttp.send(json);
 }
-
+var retrievedTimesheets = "";
 $(document).ready(function(){
         $.get("/uren/api/v1/getAllTimeSheets", function(timesheets, status){
+            retrievedTimesheets = timesheets;
             for(var id in timesheets){
-                $("#taskOverview").append("<tr onclick='buildHourTable2(\"8\")'><td >"+timesheets[id].yearMonth +"</td><td>TODO</td><td>"+timesheets[id].state +"</td></tr>");
+                $("#taskOverview").append("<tr onclick='buildHourTable2("+id+")'><td >"+timesheets[id].yearMonth +"</td><td>TODO</td><td>"+timesheets[id].state +"</td></tr>");
             }
         });
 });
