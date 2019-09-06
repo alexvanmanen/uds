@@ -51,7 +51,7 @@ public class UrenApplication  implements CommandLineRunner {
         Customer customerB = new Customer();
         Employee employeeA = new Employee();
         Employee employeeB = new Employee();
-        customerA.setEmailadress("bartzwaagstra@live.nl");
+        customerA.setUsername("bartzwaagstra@live.nl");
         customerA.setPassword(bCryptPasswordEncoder.encode("Bart01"));
         customerA.setActive(true);
 
@@ -81,7 +81,7 @@ public class UrenApplication  implements CommandLineRunner {
 
         Admin cora = new Admin();
         cora.setPassword(bCryptPasswordEncoder.encode("Admin01"));
-        cora.setEmailadress("admin@qien.nl");
+        cora.setUsername("admin@qien.nl");
         cora.setActive(true);
         adminRepository.save(cora);
 
