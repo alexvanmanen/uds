@@ -4,8 +4,9 @@ $(document).ready(function(){
 
     //users.append("<tr><th>firstname</th><th>user id</th></tr>")
     function fillTable(month){
+        $("#tableOfUsers tbody").empty();
         $.get("/uren/api/v1/users", function(users){
-            var user_data = '';
+            var user_data = '<tbody>';
             $.each(users, function (elementNumber, user) {
                 user_data += '<tr>';
                 user_data += '<td>'+clean(user.id)+'</td>';
@@ -16,8 +17,8 @@ $(document).ready(function(){
                 user_data += '<td>'+clean(showState2(user.timesheets,month))+'</td>';
                 user_data += '</tr>';
             });
-                $('#tableOfUsers').append(user_data);
-
+            user_data += "</tbody>";
+            $('#tableOfUsers').append(user_data);
         });
     }
 
@@ -27,25 +28,16 @@ $(document).ready(function(){
     }
 
     function showState2(timesheets, month, year){
-         //var month = document.getElementById("monthField").value;
-        // var year = document.getElementById("yearField").value;
-        // var yearMonth = year+month;
-        //
+
         if(timesheets.length == 0){
             return "-";
         }else{
-           //  for (var i = 0; i<timesheets.length; i++) {
-              //   if(month == timesheets[i].yearMonth.substring(5,8)){
+
             for(var i =0;i<timesheets.length;i++){
                 if(timesheets[i].yearMonth == "2019-"+month)
                 return timesheets[i].state;
             }
 
-             //   }else{
-              //       return "-";
-             //    }
-          //   }
-          //  return timesheets[0].state + timesheets[0].yearMonth;
         }
 
     }
