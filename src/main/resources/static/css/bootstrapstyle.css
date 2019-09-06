@@ -4,6 +4,11 @@
     height: 100px;
 }
 
+#hamburger_knop {
+    height:30px;
+    width:30px;
+}
+
 .navbar {
     margin-bottom: 0;
     background-color: #A34AFE;
