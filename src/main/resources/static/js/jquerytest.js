@@ -51,8 +51,9 @@ $(document).ready(function(){
     }
 
     $('#monthField').on('change',function () {
+        alert(document.getElementById("monthField").value)
         var month = $(this).text();
-        $('#tableOfUsers').append('<td>'+month+'</td>');
+       // $('#tableOfUsers').alert($(this).value);
     });
 });
 
