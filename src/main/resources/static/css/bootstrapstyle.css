@@ -1,4 +1,9 @@
 /* Add a dark background color with a little bit see-through */
+
+.container-fluid>.navbar-collapse, .container-fluid>.navbar-header, .container>.navbar-collapse, .container>.navbar-header {
+    height: 100px;
+}
+
 .navbar {
     margin-bottom: 0;
     background-color: #A34AFE;
