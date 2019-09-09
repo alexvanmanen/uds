@@ -8,8 +8,29 @@ function buildTable(month) { //
     tabel += "<button id='btn' onclick='Registreer("+month+")'>Declareer Uren</button>"
     document.getElementById("tabel").innerHTML = tabel;
 }
-
+var timesheetID;
 function buildHourTable2(id) {
+    function disabled(state) {
+        if (state == "APPROVED" || state == "PENDING") {
+            return disabled = "disabled";
+        }
+        return "";
+    }
+
+    function getEntry(dayOfTheMonth, entryKind){
+        var entries = retrievedTimesheets[id].entries;
+        for(var i = 0 ; i<entries.length ; i++){
+            if(entries[i].dayOfTheMonth == dayOfTheMonth && entryKind == entries[i].entryKind) {
+                return entries[i].hoursSpent;
+            }
+        }
+        return "";
+    }
+
+
+
+    var disabled = disabled(retrievedTimesheets[id].state);
+    timesheetID = retrievedTimesheets[id].id;
     var timesheet = retrievedTimesheets[id];
     var month =  timesheet.yearMonth.substring(6);
     var table = document.getElementById("2018-8");
@@ -18,15 +39,15 @@ function buildHourTable2(id) {
     } else {
         var tableContent = "<tr><th>Overzicht voor de maand " + getMonthName(month) + "</th></tr>";
         tableContent += "<tr><th>"+ getMonthName(month) + "</th><th>Opdracht</th><th>Overwerk</th><th>Verlof</th><th>Ziek</th><th>Training</th><th>Overig</th><th>Verklaring overig</th></tr>";
-        for (var i = 1; i < calculateNumberOfDaysInMonth(month) + 1; i++) {
-            tableContent += "<tr 'month'><td>" + i + " " + getMonthName(month) + "</>" +
-                "<td><input  id='WORK" + i + "'  type='number'></td>" +
-                "<td><input  id='OVERTIME" + i + "' type='number'></td>" +
-                "<td><input  id='LEAVE_OF_ABSENCE" + i + "' type='number'></td>" +
-                "<td><input  id='ILL" + i + "' type='number'></td>" +
-                "<td><input  id='TRAINING" + i + "' type='number'></td>" +
-                "<td><input  id='OTHERS" + i + "' type='number'></td>" +
-                "<td><input  id='verklaring' type='String'></td>" +
+        for (var day = 1; day < calculateNumberOfDaysInMonth(month) + 1; day++) {
+            tableContent += "<tr 'month'><td>" + day + " " + getMonthName(month) + "</>" +
+                "<td><input value='"+getEntry(day, "WORK")+"' "+disabled+" id='WORK" + day + "'  type='number'></td>" +
+                "<td><input value='"+getEntry(day, "OVERTIME")+"' "+disabled+" id='OVERTIME" + day + "' type='number'></td>" +
+                "<td><input value='"+getEntry(day, "LEAVE_OF_ABSENCE")+"' "+disabled+"  id='LEAVE_OF_ABSENCE" + day + "' type='number'></td>" +
+                "<td><input value='"+getEntry(day, "ILL")+"' "+disabled+" id='ILL" + day + "' type='number'></td>" +
+                "<td><input value='"+getEntry(day, "TRAINING")+"'  "+disabled+" id='TRAINING" + day + "' type='number'></td>" +
+                "<td><input value='"+getEntry(day, "OTHERS")+"' "+disabled+" id='OTHERS" + day + "' type='number'></td>" +
+                "<td><input " +disabled+" id='verklaring' type='String'></td>" +
                 "</tr>";
         }
 
@@ -36,14 +57,6 @@ function buildHourTable2(id) {
     }
 }
 
-function timesheet(yearMonth, state, entries) {
-    var timesheet = {
-        yearMonth: yearMonth,
-        state: state,
-        entries: entries
-    };
-    return timesheet;
-}
 
 function Registreer(month) {
     var categories = ["WORK", "LEAVE_OF_ABSENCE", "ILL", "TRAINING", "OVERTIME", "OTHERS"];
@@ -58,9 +71,9 @@ function Registreer(month) {
     if (month < 10) {
         stringmonth = "0" + month;
     }
-    var ts1 = timesheet("2019-"+ stringmonth, "OPEN", entries);
+    var ts1 = timesheet("2019-"+ stringmonth, "OPEN", entries, timesheetID);
     var jsonTimesheet = JSON.stringify(ts1);
-    apiPostRequest("/uren/api/v1/createTimesheet", jsonTimesheet);
+    apiPostRequest("/uren/api/v1/updateTimesheet", jsonTimesheet);
 }
 
 function apiPostRequest(url, json) {
