@@ -1,12 +1,15 @@
 package nl.qien.uren.controller;
 
+import io.swagger.annotations.ApiOperation;
+import io.swagger.annotations.ApiParam;
+import io.swagger.annotations.ApiResponse;
+import io.swagger.annotations.ApiResponses;
 import nl.qien.uren.entity.*;
 import nl.qien.uren.model.SendMail;
 import nl.qien.uren.repository.*;
 import org.apache.commons.lang3.RandomStringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -81,8 +84,15 @@ public class MainController {
     }
 
 
+    @ApiOperation(value = "Get a timesheet based on an id", response = Timesheet.class)
+    @ApiResponses(value = {
+            @ApiResponse(code = 200, message = "Successfully retrieved list"),
+            @ApiResponse(code = 401, message = "You are not authorized to view the resource"),
+            @ApiResponse(code = 403, message = "Accessing the resource you were trying to reach is forbidden"),
+            @ApiResponse(code = 404, message = "The resource you were trying to reach is not found")
+    })
     @GetMapping("getTimeSheet/{id}")
-    public Optional<Timesheet> getTimesheet(@PathVariable Integer id) {
+    public Optional<Timesheet> getTimesheet(@ApiParam(value = "Timesheet id from which timesheet object will retrieve", required = true) @PathVariable Integer id) {
         return timesheetRepository.findById(id);
     }
 
@@ -170,8 +180,8 @@ public class MainController {
         if (userDetails.getLastname() != null) {
             user.setLastname(userDetails.getLastname());
         }
-        if (userDetails.getEmailadress() != null) {
-            user.setEmailadress(userDetails.getEmailadress());
+        if (userDetails.getUsername() != null) {
+            user.setUsername(userDetails.getUsername());
         }
         if (userDetails.getPassword() != null) {
             user.setPassword(userDetails.getPassword());
