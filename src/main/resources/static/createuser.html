@@ -1,5 +1,7 @@
 <!DOCTYPE html>
+
 <html lang="nl">
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <title>Qien admin</title>
@@ -42,14 +44,16 @@
     </div>
 </nav>
 
-<div id="welcome"></div>
-<script>getWelcome()</script>
+<br>
+<br>
+<br>
+<br>
+<br>
 
-<br>
-<br>
-<br>
-<br>
-<br>
+<div id="welcome">
+    <div th:if="${#httpServletRequest.remoteUser != null}">
+        <p th:text="${#httpServletRequest.remoteUser}"></p>
+    </div>
 
 <h2>Personeel toevoegen</h2>
 <div id="test"></div><table id="ajax"></table>

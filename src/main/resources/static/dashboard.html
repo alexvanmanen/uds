@@ -23,10 +23,7 @@
 </head>
 
 <body>
-<div id="welcome">
-    <div th:if="${#httpServletRequest.remoteUser != null}">
-        <p th:text="${#httpServletRequest.remoteUser}"></p>
-    </div>
+
 <nav class="navbar navbar-default navbar-fixed-top">
     <div class="container-fluid">
         <div class="navbar-header">
@@ -61,6 +58,11 @@
 <br>
 <br>
 <br>
+
+<div id="welcome">
+    <div th:if="${#httpServletRequest.remoteUser != null}">
+        <p th:text="${#httpServletRequest.remoteUser}"></p>
+    </div>
 
 <div class="container">
 <h2>Overzicht</h2>
