@@ -14,7 +14,7 @@ $(document).ready(function(){
                 user_data += '<td>'+clean(user.lastname)+'</td>';
                 user_data += '<td>'+clean(user.emailadress)+'</td>';
                 user_data += '<td>'+clean(user.employer)+'</td>';
-                user_data += '<td>'+clean(showState2(user.timesheets,month))+'</td>';
+                user_data += '<td>'+clean(showState2(user.timesheets,month, 2018))+'</td>';
                 user_data += '</tr>';
             });
             user_data += "</tbody>";
@@ -34,7 +34,7 @@ $(document).ready(function(){
         }else{
 
             for(var i =0;i<timesheets.length;i++){
-                if(timesheets[i].yearMonth == "2019-"+month)
+                if(timesheets[i].yearMonth == year+"-"+month)
                 return timesheets[i].state;
             }
 
