@@ -17,6 +17,18 @@ function buildHourTable2(id) {
         return "";
     }
 
+    function getEntry(dayOfTheMonth, entryKind){
+        var entries = retrievedTimesheets[id].entries;
+        for(var i = 0 ; i<entries.length ; i++){
+            if(entries[i].dayOfTheMonth == dayOfTheMonth && entryKind == entries[i].entryKind) {
+                return entries[i].hoursSpent;
+            }
+        }
+        return "";
+    }
+
+
+
     var disabled = disabled(retrievedTimesheets[id].state);
 
     var timesheet = retrievedTimesheets[id];
@@ -27,14 +39,14 @@ function buildHourTable2(id) {
     } else {
         var tableContent = "<tr><th>Overzicht voor de maand " + getMonthName(month) + "</th></tr>";
         tableContent += "<tr><th>"+ getMonthName(month) + "</th><th>Opdracht</th><th>Overwerk</th><th>Verlof</th><th>Ziek</th><th>Training</th><th>Overig</th><th>Verklaring overig</th></tr>";
-        for (var i = 1; i < calculateNumberOfDaysInMonth(month) + 1; i++) {
-            tableContent += "<tr 'month'><td>" + i + " " + getMonthName(month) + "</>" +
-                "<td><input "+disabled+" id='WORK" + i + "'  type='number'></td>" +
-                "<td><input "+disabled+" id='OVERTIME" + i + "' type='number'></td>" +
-                "<td><input "+disabled+"  id='LEAVE_OF_ABSENCE" + i + "' type='number'></td>" +
-                "<td><input "+disabled+" id='ILL" + i + "' type='number'></td>" +
-                "<td><input  "+disabled+" id='TRAINING" + i + "' type='number'></td>" +
-                "<td><input  "+disabled+" id='OTHERS" + i + "' type='number'></td>" +
+        for (var day = 1; day < calculateNumberOfDaysInMonth(month) + 1; day++) {
+            tableContent += "<tr 'month'><td>" + day + " " + getMonthName(month) + "</>" +
+                "<td><input value='"+getEntry(day, "WORK")+"' "+disabled+" id='WORK" + day + "'  type='number'></td>" +
+                "<td><input value='"+getEntry(day, "OVERTIME")+"' "+disabled+" id='OVERTIME" + day + "' type='number'></td>" +
+                "<td><input value='"+getEntry(day, "LEAVE_OF_ABSENCE")+"' "+disabled+"  id='LEAVE_OF_ABSENCE" + day + "' type='number'></td>" +
+                "<td><input value='"+getEntry(day, "ILL")+"' "+disabled+" id='ILL" + day + "' type='number'></td>" +
+                "<td><input value='"+getEntry(day, "TRAINING")+"'  "+disabled+" id='TRAINING" + day + "' type='number'></td>" +
+                "<td><input value='"+getEntry(day, "OTHERS")+"' "+disabled+" id='OTHERS" + day + "' type='number'></td>" +
                 "<td><input " +disabled+" id='verklaring' type='String'></td>" +
                 "</tr>";
         }
