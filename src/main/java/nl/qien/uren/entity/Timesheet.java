@@ -26,6 +26,9 @@ public class Timesheet {
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "timesheet")
     private List<TimesheetEntry> entries = new ArrayList<>();
 
+    @OneToOne
+    private String consumerkey;
+
     @Enumerated(EnumType.STRING)
     private TimesheetState state;
 
@@ -61,6 +64,12 @@ public class Timesheet {
 
     public void setEntries(List<TimesheetEntry> entries){
         this.entries = entries;
+    }
+    public String getConsumerkey() {
+        return consumerkey;
+    }
+    public void setConsumerkey(String consumerkey){
+        this.consumerkey = consumerkey;
     }
 
 }
