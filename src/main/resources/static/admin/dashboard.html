@@ -28,10 +28,7 @@
 
 
 <body>
-<div id="welcome">
-    <div th:if="${#httpServletRequest.remoteUser != null}">
-        <p th:text="${#httpServletRequest.remoteUser}"></p>
-    </div>
+
 
 <nav class="navbar navbar-default navbar-fixed-top">
     <div class="container-fluid">
@@ -61,7 +58,14 @@
         </div>
     </div>
 </nav>
-    <article style="margin:110px">
+
+<article style="margin:110px">
+<div id="welcome">
+    <div th:if="${#httpServletRequest.remoteUser != null}">
+        <p th:text="${#httpServletRequest.remoteUser}"></p>
+    </div>
+
+
 <div class="container">
     <select id = "monthField" class="mdb-select md-form">
         <option value="" disabled selected>Choose your option</option>
