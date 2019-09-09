@@ -55,4 +55,12 @@ public class Timesheet {
         return state.toString();
     }
 
+    public int getId(){
+        return id;
+    }
+
+    public void setEntries(List<TimesheetEntry> entries){
+        this.entries = entries;
+    }
+
 }

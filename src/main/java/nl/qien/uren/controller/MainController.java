@@ -127,6 +127,19 @@ public class MainController {
 
     }
 
+    @PostMapping("/updateTimesheet")
+    public void updateTimesheet(@RequestBody Timesheet ts) {
+        Timesheet timesheet = timesheetRepository.findById(ts.getId()).orElseThrow(() -> new RuntimeException("timesheet not found for this id :: " + ts.getId()));;
+
+        for (TimesheetEntry timesheetEntry : ts.getEntries()) {
+            timesheetEntry.setTimesheet(timesheet);
+            timesheetEntryRepository.save(timesheetEntry);
+        }
+        timesheet.setEntries(ts.getEntries());
+        timesheetRepository.save(timesheet);
+
+    }
+
     @PostMapping("/createTimesheetEntry")
     public TimesheetEntry createTimesheetEntry(@RequestBody TimesheetEntry timesheetEntry) {
         return timesheetEntryRepository.save(timesheetEntry);

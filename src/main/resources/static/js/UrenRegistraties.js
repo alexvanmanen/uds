@@ -8,7 +8,7 @@ function buildTable(month) { //
     tabel += "<button id='btn' onclick='Registreer("+month+")'>Declareer Uren</button>"
     document.getElementById("tabel").innerHTML = tabel;
 }
-
+var timesheetID;
 function buildHourTable2(id) {
     function disabled(state) {
         if (state == "APPROVED" || state == "PENDING") {
@@ -30,7 +30,7 @@ function buildHourTable2(id) {
 
 
     var disabled = disabled(retrievedTimesheets[id].state);
-
+    timesheetID = retrievedTimesheets[id].id;
     var timesheet = retrievedTimesheets[id];
     var month =  timesheet.yearMonth.substring(6);
     var table = document.getElementById("2018-8");
@@ -57,14 +57,6 @@ function buildHourTable2(id) {
     }
 }
 
-function timesheet(yearMonth, state, entries) {
-    var timesheet = {
-        yearMonth: yearMonth,
-        state: state,
-        entries: entries
-    };
-    return timesheet;
-}
 
 function Registreer(month) {
     var categories = ["WORK", "LEAVE_OF_ABSENCE", "ILL", "TRAINING", "OVERTIME", "OTHERS"];
@@ -79,9 +71,9 @@ function Registreer(month) {
     if (month < 10) {
         stringmonth = "0" + month;
     }
-    var ts1 = timesheet("2019-"+ stringmonth, "OPEN", entries);
+    var ts1 = timesheet("2019-"+ stringmonth, "OPEN", entries, timesheetID);
     var jsonTimesheet = JSON.stringify(ts1);
-    apiPostRequest("/uren/api/v1/createTimesheet", jsonTimesheet);
+    apiPostRequest("/uren/api/v1/updateTimesheet", jsonTimesheet);
 }
 
 function apiPostRequest(url, json) {
