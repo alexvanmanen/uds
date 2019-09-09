@@ -6,7 +6,7 @@ function getProfile(id) {
     xmlhttp.onreadystatechange = function () {
         if (this.readyState == 4 && this.status == 200) {
             var myObj = JSON.parse(this.responseText);
-            document.getElementById("email").value = myObj.emailadress;
+            document.getElementById("email").value = myObj.username;
             document.getElementById("id1").value = myObj.id;
             document.getElementById("password").value = myObj.password;
             document.getElementById("firstname").value = myObj.firstname;
@@ -38,7 +38,7 @@ function updateExample() {
 
 function updateUser(id, email, password, firstname, lastname, street, housenumber, city, zipcode) {
     var object = {
-        "emailadress": email,
+        "username": email,
         "password": password,
         "firstname": firstname,
         "lastname": lastname,

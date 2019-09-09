@@ -10,6 +10,7 @@ import nl.qien.uren.repository.*;
 import org.apache.commons.lang3.RandomStringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -23,6 +24,8 @@ public class MainController {
 
     @Autowired
     JdbcTemplate jdbcTemplate;
+    @Autowired
+    private BCryptPasswordEncoder bCryptPasswordEncoder;
 
     @Autowired
     private EmployeeRepository employeeRepository;
@@ -197,7 +200,7 @@ public class MainController {
             user.setUsername(userDetails.getUsername());
         }
         if (userDetails.getPassword() != null) {
-            user.setPassword(userDetails.getPassword());
+            user.setPassword(bCryptPasswordEncoder.encode(userDetails.getPassword()));
         }
         if (userDetails.getStreet() != null) {
             user.setStreet(userDetails.getStreet());

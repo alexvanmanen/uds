@@ -63,6 +63,7 @@
     <div th:if="${#httpServletRequest.remoteUser != null}">
         <p th:text="${#httpServletRequest.remoteUser}"></p>
     </div>
+    <p th:text="${timesheet.getState()}"></p>
 
 <div class="container">
 <h2>Overzicht</h2>
