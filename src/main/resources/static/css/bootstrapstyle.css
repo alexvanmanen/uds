@@ -1,7 +1,7 @@
 
-
 .container-fluid>.navbar-collapse, .container-fluid>.navbar-header, .container>.navbar-collapse, .container>.navbar-header {
-    height: 100px;
+   height: 100px;
+
 }
 
 .btn {
@@ -14,41 +14,33 @@
     border: 0;
     font-size: 11px !important;
     letter-spacing: 4px;
-
 }
-
 
 .navbar li a, .navbar .navbar-brand {
     color: white !important;
 }
 
-
 .navbar-nav li a:hover {
     color: #666 !important;
 }
-
 
 .navbar-nav li.active a {
     color: #666 !important;
         background-color:#A34AFE !important;
 }
 
-
 .navbar-default .navbar-toggle {
     border-color: transparent;
 }
-
 
 .open .dropdown-toggle {
     color: white ;
     background-color: #A34AFE !important;
 }
 
-
 .dropdown-menu li a {
     color: #000 !important;
 }
-
 
 .dropdown-menu li a:hover {
     background-color: #A34AFE !important;
