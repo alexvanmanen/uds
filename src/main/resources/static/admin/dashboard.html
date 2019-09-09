@@ -3,58 +3,100 @@
 <head>
     <meta charset="UTF-8">
     <title>Qien admin</title>
-    <link rel="stylesheet" type="text/css" href="css/style.css">
+    <!--<link rel="stylesheet" type="text/css" href="css/style.css">-->
     <script src="js/jquery-3.4.1.min.js"></script>
+    <script src="js/jquerytest.js"></script>
     <script src=js/script.js></script>
     <script src="js/UrenRegistraties.js"></script>
     <script src="js/timesheet.js"></script>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/bootstrapstyle.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
 
     <!--<link href="webjars/bootstrap/4.3.1/css/bootstrap.css" rel="stylesheet" />-->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Admin Dashboard</title>
 </head>
 
+
 <body>
-<div id="welcome">
-    ADMIN PAGE
-    <div th:if="${#httpServletRequest.remoteUser != null}">
-        <p th:text="${#httpServletRequest.remoteUser}"></p>
-    </div>
-</div>
-<ul class="topnav">
-    <li><a class="active" href="dashboard.html">Home </a></li>
-    <li><a class="active" href="profile.html">Profielen </a></li>
-    <li class="dropdown">
-        <a href="javascript:void(0)" class="active">Personeel</a>
-        <div class="dropdown-content">
-            <a href="createuser.html">Personeel toevoegen</a>
-            <a href="manageuser.html">Personeel beheren</a>
-    <li class="dropdown">
-        <a href="javascript:void(0)" class="active">Bedrijven</a>
-        <div class="dropdown-content">
-            <a href="#">Bedrijf toevoegen</a>
-            <a href="#">Bedrijf beheren</a>
-    <li class="dropdown" style="float:right">
-        <a class="active" id="hamburger_knop"><img src="Hamburger_icon.svg.png" alt="Opties" style="width:30px;height:30px"></a>
-        <div class="dropdown-content" id="hamburger">
-            <a href="settings.html">Instellingen</a>
-            <a href="manageuser.html">Personeel beheren</a>
-            <a href="login.html">Uitloggen</a>
+
+
+<nav class="navbar navbar-default navbar-fixed-top">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand"><a href="dashboard.html"><img src="images/logo.svg" alt="Logo"></a>
         </div>
-    <li style="float:right"><form action="/uren/logout">
-    <input class="registerbtn" type="submit" value="Logout"/></form></li>
+        <div class="collapse navbar-collapse" id="myNavbar">
+            <ul class="nav navbar-nav navbar-right">
+                <li><button type="button" class="btn btn-lg dropdown-toggle" data-toggle= "dropdown">
+                    <span class="glyphicon glyphicon-menu-hamburger"></span>
+                </button> <ul class = "dropdown-menu">
+                    <li><a href="dashboard.html">Home</a></li>
+                    <li><a href="manageuser.html">Personeel</a></li>
+                    <li><a href="#">Bedrijven</a></li>
+                    <li><a href="#">Instellingen</a></li>
+                    <li><form action="/uren/logout">
+                        <input  type="submit" value="Logout"/></form></li>
+                </ul>
+                </li>
+
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<article style="margin:110px">
+    <div id="welcome">
+        <div th:if="${#httpServletRequest.remoteUser != null}">
+            <p th:text="${#httpServletRequest.remoteUser}"></p>
+        </div>
 
 
-</ul>
-
-<h2>Overzicht</h2>
-
-<table id="taskOverview">
-    <tr><th>Jaar</th><th>Maand</th><th>Opdracht</th><th>Status</th></tr>
-</table>
-
-<table class="monthTable" id="2018-8"></table>
-<br>
-<div>
-    <button id='btn' onclick="window.location.href='urendeclaratieformulier.html'">Naar Urendeclaratieformulier</button>
-</div>
+        <div class="container">
+            <select id = "monthField" class="mdb-select md-form">
+                <option value="" disabled selected>Choose your option</option>
+                <option value="01">January</option>
+                <option value="02">February</option>
+                <option value="03">March</option>
+                <option value="04">April</option>
+                <option value="05">May</option>
+                <option value="06">June</option>
+                <option value="07">July</option>
+                <option value="08">August</option>
+                <option value="09">September</option>
+                <option value="10">October</option>
+                <option value="11">November</option>
+                <option value="12">December</option>
+            </select>
+            <select id = "yearField" class="mdb-select md-form">
+                <option value="" disabled selected>Choose your option</option>
+                <option value="2017">2017</option>
+                <option value="2018">2018</option>
+                <option value="2019">2019</option>
+            </select>
+            <table id="tableOfUsers" class="table table-striped">
+                <thead>
+                <tr>
+                    <th>Id</th>
+                    <th>First Name</th>
+                    <th>Last Name</th>
+                    <th>Email</th>
+                    <th>Employer</th>
+                    <th>Status Timesheet</th>
+                </tr>
+                </thead>
+            </table>
+        </div>
 </body>
 </html>
