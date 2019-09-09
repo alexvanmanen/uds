@@ -28,3 +28,7 @@ function sendMail(receiver, subject, message) {
     var json = JSON.stringify(object);
     apiPostRequest("/uren/api/v1/sendmail", json);
 }
+
+function sendValidationMail(receiver, subject, message) {
+
+}

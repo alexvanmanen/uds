@@ -83,6 +83,14 @@ public class MainController {
         return verstuurd;
     }
 
+    @PostMapping("/sendTimesheetMail")
+    @ResponseBody
+    public boolean sendTimesheetMail(@RequestBody SendMail email){
+        SendMail timesheetMail = new SendMail(email.getReceiver(), email.getSubject(), email.getMessage()); //timesheet nog meegeven
+        boolean verstuurd = timesheetMail.sendMail(email.getReceiver(), email.getSubject(), email.getMessage());
+        return verstuurd;
+    }
+
 
     @ApiOperation(value = "Get a timesheet based on an id", response = Timesheet.class)
     @ApiResponses(value = {
