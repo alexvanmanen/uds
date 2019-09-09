@@ -3,38 +3,59 @@
 <head>
     <meta charset="UTF-8">
     <title>Personeel Beheren</title>
-    <link rel="stylesheet" type="text/css" href="css/style.css">
-
-    <script src=js/script.js></script>
     <script src=js/email.js></script>
+    <!--<link rel="stylesheet" type="text/css" href="css/style.css">-->
+    <script src="js/jquery-3.4.1.min.js"></script>
+    <script src=js/script.js></script>
     <script src="js/UrenRegistraties.js"></script>
+    <script src="js/timesheet.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/bootstrapstyle.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+    <!--<link href="webjars/bootstrap/4.3.1/css/bootstrap.css" rel="stylesheet" />-->
 </head>
 <body>
 
-<div id="welcome"></div>
-<script>getWelcome()</script>
-<ul class="topnav">
-    <li><a class="active" href="dashboard.html">Home </a></li>
-    <li><a class="active" href="profile.html">Profielen </a></li>
-    <li class="dropdown">
-        <a href="javascript:void(0)" class="active">Personeel</a>
-        <div class="dropdown-content">
-            <a href="createuser.html">Personeel toevoegen</a>
-            <a href="manageuser.html">Personeel beheren</a>
-    <li class="dropdown">
-        <a href="javascript:void(0)" class="active">Bedrijven</a>
-        <div class="dropdown-content">
-            <a href="#">Bedrijf toevoegen</a>
-            <a href="#">Bedrijf beheren</a>
-    <li style="float:right"><form action="/uren/logout">
-    <input class="registerbtn" type="submit" value="Logout"/></form></li>
-</ul>
+<nav class="navbar navbar-default navbar-fixed-top">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand"><a href="dashboard.html"><img src="images/logo.svg" alt="Logo"></a>
+        </div>
+        <div class="collapse navbar-collapse" id="myNavbar">
+            <ul class="nav navbar-nav navbar-right">
+                <li><button type="button" class="btn btn-lg dropdown-toggle" data-toggle= "dropdown">
+                    <span class="glyphicon glyphicon-menu-hamburger"></span>
+                </button> <ul class = "dropdown-menu">
+                    <li><a href="dashboard.html">Home</a></li>
+                    <li><a href="manageuser.html">Personeel</a></li>
+                    <li><a href="#">Bedrijven</a></li>
+                    <li><a href="#">Instellingen</a></li>
+                    <li><form action="/uren/logout">
+                        <input  type="submit" value="Logout"/></form></li>
+                </ul>
+                </li>
+
+            </ul>
+        </div>
+    </div>
+</nav>
 
 
+<br>
+<br>
+<div class="container">
 <p>
 <h2> Personeel Beheren </h2>
 <button onclick="getUsers()" class=registerbtn>Personeelsoverzicht</button>
-<table id="ajax"></table>
+<button onclick= "window.location.href='/uren/createuser.html'"class=registerbtn>Gebruiker aanmaken</button>
+<table class="table table-striped" id="ajax"></table>
 <div id="verzonden"></div>
 <div id="editUser"></div>
 <form style="display:none" action="" id="mailform" name="mailform" onsubmit="return false">
@@ -44,6 +65,7 @@
     <input type="submit" onclick="sendEmail();" class=registerbtn value="Submit">
 </form>
 </p>
+</div>
 
 </body>
 </html>
