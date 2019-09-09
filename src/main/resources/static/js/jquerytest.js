@@ -1,8 +1,5 @@
 $(document).ready(function(){
 
-    //var users = $('#users');
-
-    //users.append("<tr><th>firstname</th><th>user id</th></tr>")
     function fillTable(month){
         $("#tableOfUsers tbody").empty();
         $.get("/uren/api/v1/users", function(users){
@@ -22,7 +19,7 @@ $(document).ready(function(){
         });
     }
 
-    fillTable("08");
+    fillTable("00");
     function clean(string){
         return (!string || string === 0 ? "-" : string);
     }
@@ -48,5 +45,4 @@ $(document).ready(function(){
 
     });
 });
-
 
