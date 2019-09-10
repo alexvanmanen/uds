@@ -27,10 +27,17 @@ public class TimeSheetController {
     }
 
     @PostMapping("/approveTimesheet/{id}/{customerkey}")
-    public void approveTimesheet(@PathVariable int id, String customerkey){
+    public void approveTimesheet(@PathVariable int id, @PathVariable String customerkey){
         Timesheet timesheet = timesheetRepository.findById(id).orElseThrow(() -> new RuntimeException("timesheet not found for this id :: " + id));
         timesheet.setState(TimesheetState.APPROVED);
         timesheetRepository.save(timesheet);
         //new SendMail().sendMail(approveMail);
+    }
+    @PostMapping("/rejectTimesheet/{id}/{customerkey}")
+    public void rejectTimesheet(@PathVariable int id, @PathVariable String customerkey){
+        Timesheet timesheet = timesheetRepository.findById(id).orElseThrow(() -> new RuntimeException("timesheet not found for this id :: " + id));
+        timesheet.setState(TimesheetState.DECLINED);
+        timesheetRepository.save(timesheet);
+        new SendMail().sendSadMail(timesheet);
     }
 }

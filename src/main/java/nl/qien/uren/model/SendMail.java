@@ -38,6 +38,14 @@ public class SendMail {
                 "<a href='"+url+"'>klik hier om het in te zien</a>";
         return sendMailHTML(receiver, "Goedkeuren urenformulier Qien", contentOfMessage);
     }
+    public boolean sendSadMail(Timesheet timesheet){
+        receiver = timesheet.getCustomerEmailAddress();
+        String url = "https://media1.tenor.com/images/9413ffc5a11722a3cc456a88810750bd/tenor.gif?itemid=14193216";
+        subject = "html mail";
+        String contentOfMessage = "Beste "+timesheet.getEmployeeName()+", <p> jouw urenformulier is FOUT en daarom afgewezen door: "+timesheet.getCustomerName()+". Super vervelend natuurlijk!</p>" +
+                "<img src='"+url+"'>";
+        return sendMailHTML(receiver, "Urenformulier AFGEWEZEN!", contentOfMessage);
+    }
 
     public boolean sendMailHTML(String receiver, String subject, String message) {
         return sendMail(receiver, subject,message, "html");
