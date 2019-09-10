@@ -13,6 +13,7 @@ public interface TimesheetRepository extends JpaRepository<Timesheet, Integer> {
 
     public List<Timesheet> findAllByProjectId(int projectId);
     public List<Timesheet> findAllByUserId(int projectId);
+    public Timesheet findByCustomerKey(String customerKey);
 
 }
 

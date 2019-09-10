@@ -35,9 +35,11 @@ public class TimeSheetController {
     }
 
     @GetMapping ("/showTimesheetToCustomer/{customerkey}")
-    public void showTimesheetToCustomer (@PathVariable String customerkey){
-
+    public Timesheet showTimesheetToCustomer (@PathVariable String customerkey){
+        return timesheetRepository.findByCustomerKey(customerkey);
     }
+
+
     @PostMapping("/rejectTimesheet/{id}/{customerkey}")
     public void rejectTimesheet(@PathVariable int id, @PathVariable String customerkey){
         Timesheet timesheet = timesheetRepository.findById(id).orElseThrow(() -> new RuntimeException("timesheet not found for this id :: " + id));
