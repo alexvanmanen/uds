@@ -6,15 +6,15 @@ function getProfile(id) {
     xmlhttp.onreadystatechange = function () {
         if (this.readyState == 4 && this.status == 200) {
             var myObj = JSON.parse(this.responseText);
-            document.getElementById("email").value = myObj.emailadress;
+            document.getElementById("email").value = myObj.username;
             document.getElementById("id1").value = myObj.id;
             document.getElementById("password").value = myObj.password;
             document.getElementById("firstname").value = myObj.firstname;
             document.getElementById("lastname").value = myObj.lastname;
-            document.getElementById("street").value = myObj.street;
-            document.getElementById("housenumber").value = myObj.housenumber;
-            document.getElementById("city").value = myObj.city;
-            document.getElementById("zipcode").value = myObj.zipcode;
+           // document.getElementById("street").value = myObj.street;
+            //document.getElementById("housenumber").value = myObj.housenumber;
+            //document.getElementById("city").value = myObj.city;
+            //document.getElementById("zipcode").value = myObj.zipcode;
         }
     };
     xmlhttp.open("GET", "http://localhost:8080/uren/api/v1/getUser/" + id, true);
@@ -27,25 +27,22 @@ function updateExample() {
     var password = document.forms["updateprofile"]["password"].value;
     var firstname = document.forms["updateprofile"]["firstname"].value;
     var lastname = document.forms["updateprofile"]["lastname"].value;
-    var street = document.forms["updateprofile"]["street"].value;
-    var housenumber = document.forms ["updateprofile"]["housenumber"].value;
-    var city = document.forms ["updateprofile"]["city"].value;
-    var zipcode = document.forms ["updateprofile"]["zipcode"].value;
+    //var street = document.forms["updateprofile"]["street"].value;
+    //var housenumber = document.forms ["updateprofile"]["housenumber"].value;
+    //var city = document.forms ["updateprofile"]["city"].value;
+    //var zipcode = document.forms ["updateprofile"]["zipcode"].value;
 
-    updateUser(id, email, password, firstname, lastname, street, housenumber, city, zipcode);
+    updateUser(id, email, password, firstname, lastname);
     return alert("Personeel geupdate")
 }
 
-function updateUser(id, email, password, firstname, lastname, street, housenumber, city, zipcode) {
+function updateUser(id, email, password, firstname, lastname) {
     var object = {
-        "emailadress": email,
+        "id": id,
+        "username": email,
         "password": password,
         "firstname": firstname,
-        "lastname": lastname,
-        "street": street,
-        "housenumber": housenumber,
-        "city": city,
-        "zipcode": zipcode,
+        "lastname": lastname
     };
     var json = JSON.stringify(object);
     apiPutRequest("/uren/api/v1/updateUser/" + id, json);

@@ -10,6 +10,7 @@ import nl.qien.uren.repository.*;
 import org.apache.commons.lang3.RandomStringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -23,6 +24,8 @@ public class MainController {
 
     @Autowired
     JdbcTemplate jdbcTemplate;
+    @Autowired
+    private BCryptPasswordEncoder bCryptPasswordEncoder;
 
     @Autowired
     private EmployeeRepository employeeRepository;
@@ -152,9 +155,13 @@ public class MainController {
     }
 
     @PostMapping("/createUser")
-    public User createUser(@RequestBody User user) {
-        user.setPassword(RandomStringUtils.randomNumeric(8));
-        return userRepository.save(user);
+    public User createUser(@RequestBody User userDetails) {
+        String password = RandomStringUtils.randomNumeric(8);
+        String passencrypt = bCryptPasswordEncoder.encode(password);
+        SendMail newEmail = new SendMail(userDetails.getUsername(), "Password", "Your password for the account is \\r\\n Login : " + userDetails.getUsername() +" \\r\\n password is: " + password);
+        newEmail.sendMailText(userDetails.getUsername(), "Password", "Your password for the account is Login : " + userDetails.getUsername() +" and the password is: " + password);
+        userDetails.setPassword(passencrypt);
+        return userRepository.save(userDetails);
     }
 
     @GetMapping("/getUsers")
@@ -197,7 +204,7 @@ public class MainController {
             user.setUsername(userDetails.getUsername());
         }
         if (userDetails.getPassword() != null) {
-            user.setPassword(userDetails.getPassword());
+            user.setPassword(bCryptPasswordEncoder.encode(userDetails.getPassword()));
         }
         if (userDetails.getStreet() != null) {
             user.setStreet(userDetails.getStreet());
