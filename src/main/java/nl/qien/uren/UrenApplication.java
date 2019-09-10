@@ -119,7 +119,7 @@ public class UrenApplication  implements CommandLineRunner {
 
         SendMail sendMail = new SendMail();
 
-        timesheetAlexAug.setConsumerKey("8928308ALEX87283279");
+        timesheetAlexAug.setCustomerKey("8928308ALEX87283279");
         sendMail.sendValMail(timesheetAlexAug);
 
 //        SELECT UREN, ENTRY_KIND FROM USER

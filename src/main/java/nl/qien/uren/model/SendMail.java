@@ -33,7 +33,7 @@ public class SendMail {
 
     public boolean sendValMail(Timesheet timesheet){
         receiver = timesheet.getCustomerEmail();
-        String url = "http://localhost:8080/uren/approveTimesheet?id="+timesheet.getConsumerKey();
+        String url = "http://localhost:8080/uren/approveTimesheet?id="+timesheet.getCustomerKey();
         subject = "html mail";
         String contentOfMessage = "Beste "+timesheet.getCustomerName()+", <p> er staat een werkbriefje van "+timesheet.getEmployeeName()+" klaar om goed te keuren</p>" +
                 "<a href='"+url+"'>klik hier om het in te zien</a>";
