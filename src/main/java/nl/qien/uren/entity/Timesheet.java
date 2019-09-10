@@ -76,10 +76,10 @@ public class Timesheet {
     }
 
     public String getCustomerEmail() {
-        return "bartzwaagstra@live.nl";
+        return "alex@vanmanenit.nl";
     }
 
     public String getEmployeeName() {
-        return "Kalim";
+        return user.getFirstname() + " " + user.getLastname();
     }
 }
