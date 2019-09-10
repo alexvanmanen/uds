@@ -11,10 +11,8 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.sql.Time;
 import java.time.YearMonth;
 import java.util.Arrays;
-import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -120,7 +118,7 @@ public class UrenApplication  implements CommandLineRunner {
         SendMail sendMail = new SendMail();
 
         timesheetAlexAug.setCustomerKey("8928308ALEX87283279");
-        sendMail.sendValMail(timesheetAlexAug);
+        sendMail.sendMail(timesheetAlexAug);
 
 //        SELECT UREN, ENTRY_KIND FROM USER
 //        INNER JOIN TS ON(USER.ID=TS.USER)
