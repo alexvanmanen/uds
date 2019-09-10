@@ -34,8 +34,8 @@ public class SendMail {
     public boolean sendValMail(Timesheet timesheet){
         receiver = "bartzwaagstra@live.nl";//timesheet.getCustomerEmail();
         subject = "html mail";
-        String contentOfMessage = "<h1></h1>" +
-                "<a href=\"https://www.w3schools.com\">klik hier om html te leren</a>";
+        String contentOfMessage = "Beste Opdrachtgever, <p> er staat een werkbriefje van Alex klaar om goed te keuren</p>" +
+                "<a href=\"https://www.w3schools.com\">klik hier om het in te zien</a>";
 
 
         //Setting up configurations for the email connection to the Google SMTP server using TLS
