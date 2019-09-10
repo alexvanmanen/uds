@@ -119,7 +119,6 @@ public class UrenApplication  implements CommandLineRunner {
         SendMail sendMail = new SendMail();
 
         timesheetAlexAug.setCustomerKey("8928308ALEX87283279");
-        sendMail.sendMail(timesheetAlexAug);
 
 //        SELECT UREN, ENTRY_KIND FROM USER
 //        INNER JOIN TS ON(USER.ID=TS.USER)

@@ -55,6 +55,10 @@ public class Timesheet {
         return state.toString();
     }
 
+    public void setState(TimesheetState state){
+        this.state = state;
+    }
+
     public int getId(){
         return id;
     }
