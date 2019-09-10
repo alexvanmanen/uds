@@ -31,7 +31,7 @@ public class TimeSheetController {
         Timesheet timesheet = timesheetRepository.findById(id).orElseThrow(() -> new RuntimeException("timesheet not found for this id :: " + id));
         timesheet.setState(TimesheetState.APPROVED);
         timesheetRepository.save(timesheet);
-        //new SendMail().sendMail(approveMail);
+        new SendMail().sendApproveMail(timesheet);
     }
 
     @GetMapping ("/showTimesheetToCustomer/{customerkey}")
