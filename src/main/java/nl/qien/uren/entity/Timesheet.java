@@ -33,7 +33,7 @@ public class Timesheet {
             converter = YearMonthDateAttributeConverter.class
     )
     private YearMonth yearMonth;
-
+    private String consumerKey;
     public Timesheet(){ }
 
     public Timesheet(Project project, Employee employee, YearMonth yearMonth, TimesheetState state){
@@ -62,5 +62,11 @@ public class Timesheet {
     public void setEntries(List<TimesheetEntry> entries){
         this.entries = entries;
     }
+    public String getConsumerKey() {
+        return consumerKey;
+    }
 
+    public void setConsumerKey(String consumerKey) {
+        this.consumerKey = consumerKey;
+    }
 }
