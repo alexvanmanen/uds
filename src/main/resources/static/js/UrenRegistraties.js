@@ -53,11 +53,17 @@ function buildHourTable2(id) {
 
         tableContent += "<br>";
         tableContent += "<p><button id='btn' onclick='SaveHours(" + month + ")'>Opslaan</button></p>";
-        tableContent += "<p><button id='btn' onclick='SaveHours(" + month + ")'>Verzenden</button></p>";
+        tableContent += "<p><button id='btn' onclick='SubmitHours(" + month + ")'>Verzenden</button></p>";
         table.innerHTML = tableContent;
     }
 }
 
+function SubmitHours(month){
+ SaveHours(month);
+    $.post("/uren/submitTimeSheet/"+timesheetID, function(){
+        alert("Gelukt. Met id: " + timesheetID)}
+    );
+}
 
 function SaveHours(month) {
     var categories = ["WORK", "LEAVE_OF_ABSENCE", "ILL", "TRAINING", "OVERTIME", "OTHERS"];
