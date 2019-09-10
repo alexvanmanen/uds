@@ -54,21 +54,21 @@
 </ul>
 
 <div class="dropdown">
-    <button class="dropbtn">Selecteer Maand</button>
-    <div class="dropdown-content">
-        <a href="#" onclick=buildTable("1")>Januari</a>
-        <a href="#" onclick=buildTable("2")>Februari</a>
-        <a href="#" onclick=buildTable("3")>Maart</a>
-        <a href="#" onclick=buildTable("4")>April</a>
-        <a href="#" onclick=buildTable("5")>Mei</a>
-        <a href="#" onclick=buildTable("6")>Juni</a>
-        <a href="#" onclick=buildTable("7")>Juli</a>
-        <a href="#" onclick=buildTable("8")>Augustus</a>
-        <a href="#" onclick=buildTable("9")>September</a>
-        <a href="#" onclick=buildTable("10")>Oktober</a>
-        <a href="#" onclick=buildTable("11")>November</a>
-        <a href="#" onclick=buildTable("12")>December</a>
-    </div>
+    <button type="button" class="btn btn-lg dropdown-toggle" data-toggle= "dropdown">Selecteer Maand</button>
+    <ul class="dropdown-menu">
+        <li> <a href="#" onclick=buildTable("1")>Januari</a></li>
+        <li>  <a href="#" onclick=buildTable("2")>Februari</a></li>
+        <li>  <a href="#" onclick=buildTable("3")>Maart</a></li>
+        <li> <a href="#" onclick=buildTable("4")>April</a></li>
+        <li><a href="#" onclick=buildTable("5")>Mei</a></li>
+        <li>  <a href="#" onclick=buildTable("6")>Juni</a></li>
+        <li> <a href="#" onclick=buildTable("7")>Juli</a></li>
+        <li> <a href="#" onclick=buildTable("8")>Augustus</a></li>
+        <li><a href="#" onclick=buildTable("9")>September</a></li>
+        <li> <a href="#" onclick=buildTable("10")>Oktober</a></li>
+        <li><a href="#" onclick=buildTable("11")>November</a></li>
+        <li> <a href="#" onclick=buildTable("12")>December</a></li>
+    </ul>
 </div>
 <br>
 <table id="tabel"></table>

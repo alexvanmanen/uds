@@ -1,5 +1,7 @@
 package nl.qien.uren.model;
 
+import nl.qien.uren.entity.Timesheet;
+
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Properties;
@@ -20,7 +22,33 @@ public class SendMail {
         this.subject = subject;
         this.message = message;
     }
-    public boolean sendMail(String receiver, String subject, String message) {
+
+
+
+    public SendMail(){
+
+    }
+
+
+    public boolean sendMail(Timesheet timesheet){
+        receiver = timesheet.getCustomerEmailAddress();
+        String url = "http://localhost:8080/uren/approveTimesheet?id="+timesheet.getCustomerKey();
+        subject = "html mail";
+        String contentOfMessage = "Beste "+timesheet.getCustomerName()+", <p> er staat een werkbriefje van "+timesheet.getEmployeeName()+" klaar om goed te keuren</p>" +
+                "<a href='"+url+"'>klik hier om het in te zien</a>";
+        return sendMailHTML(receiver, "Goedkeuren urenformulier Qien", contentOfMessage);
+    }
+
+    public boolean sendMailHTML(String receiver, String subject, String message) {
+        return sendMail(receiver, subject,message, "html");
+    }
+
+    public boolean sendMailText(String receiver, String subject, String message) {
+        return sendMail(receiver, subject,message, "text");
+    }
+
+
+    public boolean sendMail(String receiver, String subject, String message, String type) {
         System.out.println("\"test\" = " + "test");
         //Setting up configurations for the email connection to the Google SMTP server using TLS
         Properties props = new Properties();
@@ -49,7 +77,11 @@ public class SendMail {
             String timeStamp = new SimpleDateFormat("yyyymmdd_hh-mm-ss").format(new Date());
             msg.setSubject(subject);
             msg.setSentDate(new Date());
-            msg.setText(message);
+            if(type.equalsIgnoreCase("text")){
+                msg.setText(message);
+            } else if(type.equalsIgnoreCase("html")){
+                msg.setContent(message,"text/html");
+            }
             msg.setHeader("XPriority", "1");
             Transport.send(msg);
             return true;

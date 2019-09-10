@@ -2,6 +2,7 @@ package nl.qien.uren;
 
 import nl.qien.uren.entity.*;
 import nl.qien.uren.model.EntryKind;
+import nl.qien.uren.model.SendMail;
 import nl.qien.uren.repository.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
@@ -12,7 +13,6 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.time.YearMonth;
 import java.util.Arrays;
-import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -47,11 +47,15 @@ public class UrenApplication  implements CommandLineRunner {
     @Override
     @Transactional
     public void run(String... strings) throws Exception {
+
+
+
         Customer customerA = new Customer();
         Customer customerB = new Customer();
         Employee employeeA = new Employee();
         Employee employeeB = new Employee();
         customerA.setUsername("bartzwaagstra@live.nl");
+        customerA.setFirstname("Bart");
         customerA.setPassword(bCryptPasswordEncoder.encode("Bart01"));
         customerA.setActive(true);
 
@@ -111,6 +115,10 @@ public class UrenApplication  implements CommandLineRunner {
 
         TimesheetEntry timesheetEntry3 = new TimesheetEntry(5, 4, EntryKind.LEAVE_OF_ABSENCE, timesheetBart);
 
+
+        SendMail sendMail = new SendMail();
+
+        timesheetAlexAug.setCustomerKey("8928308ALEX87283279");
 
 //        SELECT UREN, ENTRY_KIND FROM USER
 //        INNER JOIN TS ON(USER.ID=TS.USER)

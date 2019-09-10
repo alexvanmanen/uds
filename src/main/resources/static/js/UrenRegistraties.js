@@ -5,7 +5,7 @@ function buildTable(month) { //
     }
 
     tabel += "<tr><br><tr\>";
-    tabel += "<button id='btn' onclick='Registreer("+month+")'>Declareer Uren</button>"
+    tabel += "<button id='btn' onclick='SaveHours("+month+")'>Declareer Uren</button>"
     document.getElementById("tabel").innerHTML = tabel;
 }
 var timesheetID;
@@ -52,13 +52,20 @@ function buildHourTable2(id) {
         }
 
         tableContent += "<br>";
-        tableContent += "<button id='btn' onclick='Registreer(" + month + ")'>Declareer Uren</button>"
+        tableContent += "<p><button id='btn' onclick='SaveHours(" + month + ")'>Opslaan</button></p>";
+        tableContent += "<p><button id='btn' onclick='SubmitHours(" + month + ")'>Verzenden</button></p>";
         table.innerHTML = tableContent;
     }
 }
 
+function SubmitHours(month){
+ SaveHours(month);
+    $.post("/uren/submitTimeSheet/"+timesheetID, function(){
+        alert("Gelukt. Met id: " + timesheetID)}
+    );
+}
 
-function Registreer(month) {
+function SaveHours(month) {
     var categories = ["WORK", "LEAVE_OF_ABSENCE", "ILL", "TRAINING", "OVERTIME", "OTHERS"];
     var entries = [];
     for (var dayOfTheMonth = 1; dayOfTheMonth <= calculateNumberOfDaysInMonth(month); dayOfTheMonth++) {

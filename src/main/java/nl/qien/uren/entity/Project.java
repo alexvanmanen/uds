@@ -38,4 +38,12 @@ public class Project implements Serializable {
         this.id = id;
     }
 
+    public String getCustomerEmailAddress(){
+        return customer.getUsername();
+    }
+
+    public String getCustomerName(){
+        return customer.getFirstname();
+    }
+
 }

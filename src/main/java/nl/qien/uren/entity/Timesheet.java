@@ -33,7 +33,7 @@ public class Timesheet {
             converter = YearMonthDateAttributeConverter.class
     )
     private YearMonth yearMonth;
-
+    private String customerKey;
     public Timesheet(){ }
 
     public Timesheet(Project project, Employee employee, YearMonth yearMonth, TimesheetState state){
@@ -55,11 +55,35 @@ public class Timesheet {
         return state.toString();
     }
 
+    public void setState(TimesheetState state){
+        this.state = state;
+    }
+
     public int getId(){
         return id;
     }
 
     public void setEntries(List<TimesheetEntry> entries){
         this.entries = entries;
+    }
+
+    public String getCustomerName() {
+        return project.getCustomerName();
+    }
+
+    public String getCustomerEmailAddress() {
+        return project.getCustomerEmailAddress();
+    }
+
+    public String getEmployeeName() {
+        return user.getFirstname() + " " + user.getLastname();
+    }
+
+    public String getCustomerKey() {
+        return customerKey;
+    }
+
+    public void setCustomerKey(String customerKey) {
+        this.customerKey = customerKey;
     }
 }
