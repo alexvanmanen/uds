@@ -33,7 +33,7 @@ public class Timesheet {
             converter = YearMonthDateAttributeConverter.class
     )
     private YearMonth yearMonth;
-    private String consumerKey;
+    private String customerKey;
     public Timesheet(){ }
 
     public Timesheet(Project project, Employee employee, YearMonth yearMonth, TimesheetState state){
@@ -62,14 +62,6 @@ public class Timesheet {
     public void setEntries(List<TimesheetEntry> entries){
         this.entries = entries;
     }
-    public String getConsumerKey() {
-        return consumerKey;
-    }
-
-    public void setConsumerKey(String consumerKey) {
-        this.consumerKey = consumerKey;
-    }
-
 
     public String getCustomerName() {
         return "Bart Zwaagstra";
@@ -81,5 +73,13 @@ public class Timesheet {
 
     public String getEmployeeName() {
         return user.getFirstname() + " " + user.getLastname();
+    }
+
+    public String getCustomerKey() {
+        return customerKey;
+    }
+
+    public void setCustomerKey(String customerKey) {
+        this.customerKey = customerKey;
     }
 }
