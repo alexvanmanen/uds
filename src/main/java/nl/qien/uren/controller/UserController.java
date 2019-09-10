@@ -16,7 +16,8 @@ public class UserController {
     @RequestMapping(value={ "/showTimesheetToCustomer"}, method = RequestMethod.GET)
     public ModelAndView showTimesheetToCustomer(){
         ModelAndView modelAndView = new ModelAndView();
-        modelAndView.setViewName("dashboard");
+        modelAndView.setViewName("showTimesheetToCustomer");
+        modelAndView.addObject("message", "Baeldung");
         return modelAndView;
     }
 
