@@ -32,7 +32,7 @@ public class SendMail {
 
 
     public boolean sendValMail(Timesheet timesheet){
-        receiver = "kalim.r1989@gmail.com";//timesheet.getCustomerEmail();
+        receiver = "bartzwaagstra@live.nl";//timesheet.getCustomerEmail();
         subject = "html mail";
         String contentOfMessage = "<h1></h1>" +
                 "<a href=\"https://www.w3schools.com\">klik hier om html te leren</a>";
