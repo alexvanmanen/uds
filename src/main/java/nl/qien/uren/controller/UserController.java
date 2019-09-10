@@ -21,7 +21,7 @@ public class UserController {
         ModelAndView modelAndView = new ModelAndView();
         modelAndView.setViewName("showTimesheetToCustomer");
         Timesheet ts = timesheetRepository.findByCustomerKey(customerkey);
-        modelAndView.addObject("message", ts);
+        modelAndView.addObject("timesheet", ts);
         return modelAndView;
     }
 
