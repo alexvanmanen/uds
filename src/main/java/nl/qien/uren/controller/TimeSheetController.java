@@ -11,6 +11,8 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import javax.websocket.server.PathParam;
+
 @RestController
 public class TimeSheetController {
 
@@ -32,5 +34,10 @@ public class TimeSheetController {
         timesheet.setState(TimesheetState.APPROVED);
         timesheetRepository.save(timesheet);
         //new SendMail().sendMail(approveMail);
+    }
+
+    @GetMapping ("/showTimesheetToCustomer/{customerkey}")
+    public void showTimesheetToCustomer (@PathVariable String customerkey){
+
     }
 }
