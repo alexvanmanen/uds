@@ -155,9 +155,13 @@ public class MainController {
     }
 
     @PostMapping("/createUser")
-    public User createUser(@RequestBody User user) {
-        user.setPassword(RandomStringUtils.randomNumeric(8));
-        return userRepository.save(user);
+    public User createUser(@RequestBody User userDetails) {
+        String password = RandomStringUtils.randomNumeric(8);
+        String passencrypt = bCryptPasswordEncoder.encode(password);
+        SendMail newEmail = new SendMail(userDetails.getUsername(), "Password", "Your password for the account is \\r\\n Login : " + userDetails.getUsername() +" \\r\\n password is: " + password);
+        newEmail.sendMail(userDetails.getUsername(), "Password", "Your password for the account is Login : " + userDetails.getUsername() +" and the password is: " + password);
+        userDetails.setPassword(passencrypt);
+        return userRepository.save(userDetails);
     }
 
     @GetMapping("/getUsers")
