@@ -54,6 +54,8 @@ function buildHourTable2(id) {
         tableContent += "<br>";
         tableContent += "<p><button id='btn' onclick='SaveHours(" + month + ")'>Opslaan</button></p>";
         tableContent += "<p><button id='btn' onclick='SubmitHours(" + month + ")'>Verzenden</button></p>";
+        tableContent += "<p><button id='btn' style='text-align:right;' onclick='approveTimesheet(8, \"8928308ALEX87283279\")'>Akkoord</button></p>";
+        tableContent += "<p><button id='btn' style='text-align:right;' onclick='declineTimesheet(" + month + ")'>Niet Akkoord</button></p>";
         table.innerHTML = tableContent;
     }
 }
@@ -132,4 +134,20 @@ function calculateNumberOfDaysInMonth(month){
     return new Date(2019, month, 0).getDate();
 }
 
+
+
+
+
+
+
+
+function approveTimesheet(id, customerkey) {
+    alert("Hoi");
+    alert(id);
+    alert(customerkey);
+    $.post("/uren/approveTimesheet/"+id+"/"+customerkey, function(){
+        alert("Timesheet van medewerker-id: " + id + " is geaccodeerd.")}
+    );
+
+}
 
