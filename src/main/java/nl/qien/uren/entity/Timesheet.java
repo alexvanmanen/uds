@@ -71,4 +71,15 @@ public class Timesheet {
     }
 
 
+    public String getCustomerName() {
+        return "Bart Zwaagstra";
+    }
+
+    public String getCustomerEmail() {
+        return "bartzwaagstra@live.nl";
+    }
+
+    public String getEmployeeName() {
+        return "Kalim";
+    }
 }

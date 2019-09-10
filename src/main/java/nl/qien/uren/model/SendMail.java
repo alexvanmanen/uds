@@ -32,10 +32,11 @@ public class SendMail {
 
 
     public boolean sendValMail(Timesheet timesheet){
-        receiver = "bartzwaagstra@live.nl";//timesheet.getCustomerEmail();
+        receiver = timesheet.getCustomerEmail();
+        String url = "http://localhost:8080/uren/approveTimesheet?id="+timesheet.getConsumerKey();
         subject = "html mail";
-        String contentOfMessage = "Beste Opdrachtgever, <p> er staat een werkbriefje van Alex klaar om goed te keuren</p>" +
-                "<a href=\"https://www.w3schools.com\">klik hier om het in te zien</a>";
+        String contentOfMessage = "Beste "+timesheet.getCustomerName()+", <p> er staat een werkbriefje van "+timesheet.getEmployeeName()+" klaar om goed te keuren</p>" +
+                "<a href='"+url+"'>klik hier om het in te zien</a>";
 
 
         //Setting up configurations for the email connection to the Google SMTP server using TLS
