@@ -6,7 +6,6 @@ import nl.qien.uren.entity.TimesheetState;
 import nl.qien.uren.model.SendMail;
 import nl.qien.uren.repository.TimesheetRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -35,11 +34,10 @@ public class TimeSheetController {
         new SendMail().sendApproveMail(timesheet);
     }
 
-    @GetMapping ("/showTimesheetToCustomer/{customerkey}")
-    public Timesheet showTimesheetToCustomer (@PathVariable String customerkey, Model model){
-        model.addAttribute("id", timesheetRepository.findByCustomerKey(customerkey).getId());
-        return timesheetRepository.findByCustomerKey(customerkey);
-    }
+//    @GetMapping ("/showTimesheetToCustomer/{customerkey}")
+//    public Timesheet showTimesheetToCustomer (@PathVariable String customerkey){
+//        return timesheetRepository.findByCustomerKey(customerkey);
+//    }
 
 
     @PostMapping("/rejectTimesheet/{id}/{customerkey}")
