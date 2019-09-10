@@ -64,7 +64,7 @@ public class Timesheet {
     }
 
     public String getCustomerName() {
-        return "Bart Zwaagstra";
+        return project.getCustomerName();
     }
 
     public String getCustomerEmailAddress() {
