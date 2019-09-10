@@ -31,7 +31,7 @@ public class SendMail {
 
 
     public boolean sendMail(Timesheet timesheet){
-        receiver = timesheet.getCustomerEmail();
+        receiver = timesheet.getCustomerEmailAddress();
         String url = "http://localhost:8080/uren/approveTimesheet?id="+timesheet.getCustomerKey();
         subject = "html mail";
         String contentOfMessage = "Beste "+timesheet.getCustomerName()+", <p> er staat een werkbriefje van "+timesheet.getEmployeeName()+" klaar om goed te keuren</p>" +

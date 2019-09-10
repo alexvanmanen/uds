@@ -67,8 +67,8 @@ public class Timesheet {
         return "Bart Zwaagstra";
     }
 
-    public String getCustomerEmail() {
-        return "alex@vanmanenit.nl";
+    public String getCustomerEmailAddress() {
+        return project.getCustomerEmailAddress();
     }
 
     public String getEmployeeName() {
