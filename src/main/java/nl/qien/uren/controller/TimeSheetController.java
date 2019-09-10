@@ -6,6 +6,7 @@ import nl.qien.uren.entity.TimesheetState;
 import nl.qien.uren.model.SendMail;
 import nl.qien.uren.repository.TimesheetRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -23,5 +24,13 @@ public class TimeSheetController {
         timesheet.setCustomerKey(KeyGenerator.generateKey());
         timesheetRepository.save(timesheet);
         new SendMail().sendMail(timesheet);
+    }
+
+    @PostMapping("/approveTimesheet/{id}/{customerkey}")
+    public void approveTimesheet(@PathVariable int id, String customerkey){
+        Timesheet timesheet = timesheetRepository.findById(id).orElseThrow(() -> new RuntimeException("timesheet not found for this id :: " + id));
+        timesheet.setState(TimesheetState.APPROVED);
+        timesheetRepository.save(timesheet);
+        //new SendMail().sendMail(approveMail);
     }
 }
