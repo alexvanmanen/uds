@@ -1,11 +1,12 @@
 <!DOCTYPE html>
-<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <title>Personeel Beheren</title>
     <script src=../js/email.js></script>
     <!--<link rel="stylesheet" type="text/css" href="css/style.css">-->
     <script src="../js/jquery-3.4.1.min.js"></script>
+    <script src="../js/jquerycreateuser.js"></script>
     <script src=../js/script.js></script>
     <script src="../js/UrenRegistraties.js"></script>
     <script src="../js/timesheet.js"></script>
@@ -54,18 +55,88 @@
 <div class="container">
 <p>
 <h2> Personeel Beheren </h2>
-<button onclick= "window.location.href='/uren/createuser.html'"class=registerbtn>Gebruiker aanmaken</button>
+    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#addModal" >Voeg toe</button>
 <table class="table table-striped" id="usertable"></table>
 
 <div id="verzonden"></div>
 <div id="editUser"></div>
-<form style="display:none" action="" id="mailform" name="mailform" onsubmit="return false">
-    Naar (email): <br> <input id="receiver" type="text" name="receiver" required><br>
-    Onderwerp: <br> <input id="subject" type="text" name="subject" required value="Urenkaart Augustus" required><br>
-    Bericht: <br> <textarea id="message" name="message" rows="10" cols="60"></textarea><br>
-    <input type="submit" onclick="sendEmail();" class=registerbtn value="Submit">
-</form>
 </p>
+</div>
+<div class="modal fade" id="addModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <form action="" name="createuserform" id="useradd" onsubmit="return false" >
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Nieuwe gebruiker</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+
+                    <div class="form-group">
+                        <label class="col-form-label">Voornaam:</label>
+                        <input type="text" class="form-control" id="firstname" name="firstname">
+                    </div>
+
+                    <div class="form-group">
+                        <label class="col-form-label">Achternaam:</label>
+                        <input type="text" class="form-control" id="lastname" name="lastname">
+                    </div>
+
+                    <div class="form-group">
+                        <label class="col-form-label">Email:</label>
+                        <input type="text" class="form-control" id="email" name="email">
+                    </div>
+
+                    <div class="form-group">
+                        <label class="col-form-label">Email bevestigen:</label>
+                        <input type="text" class="form-control" id="email1" name="email1">
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" onclick="getUsers()" data-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-primary" id="saveuser" data-dismiss="modal">Opslaan</button>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+
+<div class="modal fade" id="mailfade" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <form action="" id="mailform" name="mailform" onsubmit="return false" >
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel1">Stuur e-mail</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+
+                    <div class="form-group">
+                        <label class="col-form-label">E-mail adres:</label>
+                        <input type="text" class="form-control" id="receiver" name="receiver">
+                    </div>
+
+                    <div class="form-group">
+                        <label class="col-form-label">Onderwerp:</label>
+                        <input type="text" class="form-control" id="subject" name="subject">
+                    </div>
+
+                    <div class="form-group">
+                        <label class="col-form-label">Bericht:</label>
+                        <textarea type="text" class="form-control" id="message" name="message"></textarea>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Sluit</button>
+                    <button type="submit" class="btn btn-primary" onclick="sendEmail()" data-dismiss="modal">Verstuur</button>
+                </div>
+            </div>
+        </div>
+    </form>
 </div>
 
 </body>

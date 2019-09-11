@@ -16,47 +16,6 @@ function ajax_get(url, callback) {
     xmlhttp.send();
 }
 
-function setSessie(email) {
-    var id = 0;
-    if(typeof(Storage) !== "undefined") {
-        ajax_get('/uren/api/v1/users', function(data) {
-            for (var i = 0; i < data.length; i++) {
-                if(data[i]['emailAdress'] === email) {
-                    id = data[i]['id'];
-                }
-            }
-        });
-        if (!sessionStorage.email) {
-            sessionStorage.email = email;
-        }
-        if (!sessionStorage.id) {
-                sessionStorage.id = id;
-
-        }
-    } else {
-        document.getElementById("result").innerHTML = "Sorry, your browser does not support web storage...";
-    }
-}
-
-function getWelcome() {
-    document.getElementById("welcome").innerHTML = "Welkom " + sessionStorage.email + " " + sessionStorage.id;
-}
-
-function getPassword() {
-    var a = document.forms["loginform"]["email"].value;
-    var b = document.forms["loginform"]["password"].value;
-    ajax_get("/uren/api/v1/checkPassword/" + a + "/" + b, function (data) {
-        if (data === false) {
-            document.getElementById("login").innerHTML = "<font color='red'>Password and/or Email incorrect</font>";
-        } else if (data === true) {
-            setSessie(a);
-            window.location.assign("../dashboard.html");
-        } else {
-            document.getElementById("login").innerHTML = "<font color='red'>Unexpected response from server.</font>";
-        }
-    });
-}
-
 function getUsers() {
     ajax_get('/uren/api/v1/users', function (data) {
         var tableContent = "<tr><th>Email</th><th>Voornaam</th><th>Wijzigen/ De-activeren</th><th>Contact</th></tr>";
@@ -67,8 +26,8 @@ function getUsers() {
             tableContent = tableContent +
                 '<tr><td>' + email + '</td>' +
                 '<td>' + firstname + '</td>'+
-                '<td> <button onclick="showEditUser(` ' + id + ' `);" class="registerbtn">Wijzig/ De-activeer</button> </td>' +
-                '<td><button onclick="showEmailForm()" class=registerbtn> Stuur email </button></td></tr>';
+                '<td><button type="button" class="btn btn-outline-secondary" onclick="showEditUser(`' + id + '`);">Wijzig/ De-activeer</button> </td>' +
+                '<td><button type="button" onclick="setEmailAddress(`' + email + '`);" class="btn btn-outline-secondary" data-toggle="modal" data-target="#mailfade">Stuur email</button></td></tr>';
         }
         document.getElementById("usertable").innerHTML = tableContent;
 
@@ -78,30 +37,6 @@ function getUsers() {
 function showEditUser(id){
  //   document.getElementById("editUser").innerHTML= " ID is "+ id  ;
     window.location.assign( "./profile.html?id=" + id)
-}
-
-function createUserExample(){
-    var email = document.forms["createuserform"]["email"].value;
-    var email1 = document.forms["createuserform"]["email1"].value;
-    var firstname = document.forms["createuserform"]["firstname"].value;
-    var lastname = document.forms["createuserform"]["lastname"].value;
-    if(email === email1 && email !="" && email1 != "" && firstname != "" && lastname != "") {
-        createUser(email, firstname, lastname);
-        return alert("Personeel toegevoegd")
-    } else{
-        return alert("ongeldige invoer");
-    }
-}
-
-function createUser(email, firstname, lastname){
-    var object = {
-        "firstname" : firstname,
-        "lastname": lastname,
-        "username": email,
-        "active" : true,
-    };
-    var json = JSON.stringify(object);
-    apiPostRequest("/uren/api/v1/createUser", json);
 }
 
 function apiPostRequest(url, json) {
