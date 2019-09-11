@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="https://www.thymeleaf.org"
+      xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
 <head>
     <meta charset="UTF-8">
     <title>Qien admin</title>
@@ -39,11 +40,11 @@
         </div>
         <div class="collapse navbar-collapse" id="myNavbar">
             <ul class="nav navbar-nav navbar-right">
-                <li><button type="button" class="btn btn-lg dropdown-toggle" data-toggle= "dropdown">
+                <li><button type="button" class="btnhamburger btn btn-lg dropdown-toggle" data-toggle= "dropdown">
                     <span class="glyphicon glyphicon-menu-hamburger"></span>
                 </button> <ul class = "dropdown-menu">
                     <li><a href="dashboard">Home</a></li>
-                    <li><a href="manageuser.html">Personeel</a></li>
+                    <li><a href="admin/manageuser.html">Personeel</a></li>
                     <li><a href="#">Bedrijven</a></li>
                     <li><a href="#">Instellingen</a></li>
                     <li><form action="/uren/logout">
@@ -61,8 +62,6 @@
         <div th:if="${#httpServletRequest.remoteUser != null}">
             <p th:text="${#httpServletRequest.remoteUser}"></p>
         </div>
-
-
         <div class="container">
             <select id = "monthField" class="mdb-select md-form">
                 <option value="" disabled selected>Choose your option</option>

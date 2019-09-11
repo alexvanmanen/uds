@@ -233,11 +233,12 @@ public class MainController {
         user.setActive(false);
         return userRepository.save(user);
     }
-
-
-
-
-
+    @PutMapping("/activateUser/{userId}")
+    public User activateUser(@PathVariable int userId) {
+        User user = userRepository.findById(userId).orElseThrow(() -> new RuntimeException("User not found for this id :: " + userId));
+        user.setActive(true);
+        return userRepository.save(user);
+    }
 }
 
 

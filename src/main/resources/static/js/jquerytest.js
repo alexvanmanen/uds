@@ -9,7 +9,7 @@ $(document).ready(function(){
                 user_data += '<td>'+clean(user.id)+'</td>';
                 user_data += '<td>'+clean(user.firstname)+'</td>';
                 user_data += '<td>'+clean(user.lastname)+'</td>';
-                user_data += '<td>'+clean(user.emailadress)+'</td>';
+                user_data += '<td>'+clean(user.username)+'</td>';
                 user_data += '<td>'+clean(user.employer)+'</td>';
                 user_data += '<td>'+clean(showState2(user.timesheets,yearMonth))+'</td>';
                 user_data += '</tr>';

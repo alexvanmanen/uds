@@ -70,7 +70,7 @@ function getUsers() {
                 '<td> <button onclick="showEditUser(` ' + id + ' `);" class="registerbtn">Wijzig/ De-activeer</button> </td>' +
                 '<td><button onclick="showEmailForm()" class=registerbtn> Stuur email </button></td></tr>';
         }
-        document.getElementById("ajax").innerHTML = tableContent;
+        document.getElementById("usertable").innerHTML = tableContent;
 
     });
 }
