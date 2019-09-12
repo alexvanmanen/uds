@@ -58,6 +58,10 @@ public class UrenApplication  implements CommandLineRunner {
         customerA.setFirstname("Alex");
         customerA.setPassword(bCryptPasswordEncoder.encode("Bart01"));
         customerA.setActive(true);
+        customerB.setUsername("bartzwaagstra@live.nl");
+        customerB.setFirstname("Bart");
+        customerB.setPassword(bCryptPasswordEncoder.encode("Bart01"));
+        customerB.setActive(true);
 
         Set<Project> projectsA = new HashSet<>();
         Project projectA1 = new Project("Project A1", customerA);
