@@ -9,6 +9,7 @@
         var customerKey = "[[${timesheet.getCustomerKey()}]]";
         getMonth(timesheetId);
         var timesheetState = "[[${timesheet.getState()}]]";
+        getMonth(timesheetId);
         getState(timesheetId)
     </script>
     <meta charset="UTF-8">
@@ -23,6 +24,8 @@ Dit is YearMonth via Javascript: <p style="display:inline" id="yearMonth"></p>
 Urenoverzicht van jaar <p style="display:inline" id="year"></p> en maand <p style="display:inline" id="month"></p> voor medewerker: <p style="display:inline" id="user"></p>.
 
 Get state timesheet: <p id="state"></p>
+
+Urenoverzicht van Augustus 2018 voor medewerker: Ben V.
 
 <table id="timesheetTable">
     <tr>
