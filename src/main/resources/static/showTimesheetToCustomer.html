@@ -3,13 +3,12 @@
 
 <head>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-    <script src="./js/showTimesheetToCostumer.js"></script>
+    <script src="../js/showTimesheetToCostumer.js"></script>
     <script>
         var timesheetId = [[${timesheet.getId()}]];
-        var customerKey = [[${timesheet.getCustomerKey()}]];
-        getMonth(timesheetId)
-        var timesheetState = "[[${timesheet.getState()}]]";
+        var customerKey = "[[${timesheet.getCustomerKey()}]]";
         getMonth(timesheetId);
+        var timesheetState = "[[${timesheet.getState()}]]";
         getState(timesheetId)
     </script>
     <meta charset="UTF-8">
@@ -21,10 +20,9 @@ Dit is YearMonth via Thymeleaf: <p style="display:inline" th:text="${timesheet.g
 <br>
 Dit is YearMonth via Javascript: <p style="display:inline" id="yearMonth"></p>
 <br>
+Urenoverzicht van jaar <p style="display:inline" id="year"></p> en maand <p style="display:inline" id="month"></p> voor medewerker: <p style="display:inline" id="user"></p>.
 
 Get state timesheet: <p id="state"></p>
-
-Urenoverzicht van Augustus 2018 voor medewerker: Ben V.
 
 <table id="timesheetTable">
     <tr>
