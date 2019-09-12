@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Timesheet</title>
+</head>
+<body>
+
+Urenoverzicht van Augustus 2018 voor medewerker: Ben V.
+
+
+<table id="timesheetTable">
+    <tr>
+        <th></th>
+        <th>Opdracht</th>
+        <th>Overwerk</th>
+        <th>Verlof</th>
+        <th>Ziek</th>
+        <th>Training</th>
+        <th>Overig</th>
+        <th>Verklaring overig</th>
+    </tr>
+    <tr>
+        <td>1</td>
+        <td><input></td>
+        <td><input></td>
+        <td><input></td>
+        <td><input></td>
+        <td><input></td>
+        <td><input></td>
+        <td><input></td>
+    </tr>
+</table>
+
+<!--
+Endpoint moet worden aangesproken
+Knoppen moeten alleen enabled zijn als de status van de timesheet "PENDING" is.
+ -->
+<button>Akkoord</button>
+<button>Niet akkoord</button>
+
+<p th:text="${timesheet}"></p>
+
+
+</body>
+</html>
