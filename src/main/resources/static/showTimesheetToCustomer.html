@@ -3,12 +3,21 @@
 
 <head>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="../js/timesheet.js"></script>
     <script src="../js/showTimesheetToCostumer.js"></script>
     <script>
         var timesheetId = [[${timesheet.getId()}]];
         var customerKey = "[[${timesheet.getCustomerKey()}]]";
         getMonth(timesheetId);
         var timesheetState = "[[${timesheet.getState()}]]";
+        getState(timesheetId);
+
+        function approve(){
+            approveTimesheet(timesheetId, customerKey);
+        }
+        function reject(){
+            rejectTimesheet(timesheetId, customerKey);
+        }
         getState(timesheetId);
 
         getUser(7);
@@ -28,35 +37,25 @@ Urenoverzicht van jaar <p style="display:inline" id="year"></p> en maand <p styl
 Get state timesheet: <p id="state"></p>
 
 <table id="timesheetTable">
-    <tr>
-        <th></th>
-        <th>Opdracht</th>
-        <th>Overwerk</th>
-        <th>Verlof</th>
-        <th>Ziek</th>
-        <th>Training</th>
-        <th>Overig</th>
-        <th>Verklaring overig</th>
-    </tr>
-    <tr>
-        <td>1</td>
-        <td><input></td>
-        <td><input></td>
-        <td><input></td>
-        <td><input></td>
-        <td><input></td>
-        <td><input></td>
-        <td><input></td>
-    </tr>
-</table>
+        <thead>
+        <tr>
+            <th>Werk</th>
+            <th>Verlof</th>
+            <th>Ziek</th>
+            <th>Training</th>
+            <th>Overwerk</th>
+            <th>Overig</th>
+        </tr>
+        </thead>
+    </table>
 
 <!--
 Endpoint moet worden aangesproken
 Knoppen moeten alleen enabled zijn als de status van de timesheet "PENDING" is.
  -->
 <div id="tsbuttons">
-<button onclick='approveTimesheet("8" ,"U4DWKM3VGz!Ot^rc\t")'>Akkoord</button>
-<button onclick='rejectTimesheet("8")'>Niet akkoord</button>
+<button onclick='approve()'>Akkoord</button>
+<button onclick='reject()'>Niet akkoord</button>
 </div>
 
 <p th:text="${timesheet}"></p>

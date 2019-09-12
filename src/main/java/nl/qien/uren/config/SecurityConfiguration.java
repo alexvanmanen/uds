@@ -45,6 +45,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .antMatchers("/approveTimesheet/**").permitAll()
                 .antMatchers("/api/v1/getTimeSheet/**").permitAll()
                 .antMatchers("/api/v1/getUser/**").permitAll()
+                .antMatchers("/getTimeSheet/**").permitAll()
                 .antMatchers("/showTimesheetToCustomer/**").permitAll()
                 .antMatchers("/rejectTimesheet/**").permitAll()
                 .antMatchers("/login").permitAll()
