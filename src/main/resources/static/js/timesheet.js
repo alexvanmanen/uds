@@ -38,5 +38,5 @@ function getHours(timesheet, day, type){
             return entry.hoursSpent;
         }
     }
-    return "";
+    return "-";
 }

@@ -25,7 +25,10 @@ $(document).ready(function(){
     $.get("/uren/api/v1/getTimeSheet/8", function (timesheet){
 
         var table_data = '<tbody>';
-           table_data += getRow(timesheet, 1);
+        //forloop t/m lengte van de maand (we beginnen met 31) ;) van 1 tot en met 31 (dus tot en met 31 en niet tot en met 30)
+        for(var x = 0; x<32; x++){
+           table_data += getRow(timesheet, x);
+        }
         table_data += "</tbody>";
 
         $('#timesheetTable').append(table_data);
