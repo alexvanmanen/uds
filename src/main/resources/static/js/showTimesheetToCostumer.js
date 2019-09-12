@@ -25,3 +25,14 @@ function rejectTimesheet(id, customerkey) {
     );
 
 }
+
+function getState(timesheetId) {
+    $.get("/uren/api/v1/getTimeSheet/" + timesheetId, function (timesheet, status) {
+        $(document).ready(function () {
+            alert("timesheet state = "+ timesheet.state)
+            $("#state").text(timesheet.state);
+            $("#tsbuttons").hide();
+        });
+
+    });
+}

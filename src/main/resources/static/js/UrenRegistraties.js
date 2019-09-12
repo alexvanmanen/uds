@@ -33,7 +33,7 @@ function buildHourTable2(id) {
     timesheetID = retrievedTimesheets[id].id;
     var timesheet = retrievedTimesheets[id];
     var month =  timesheet.yearMonth.substring(6);
-    var table = document.getElementById("2018-8");
+    var table = document.getElementById("timesheetoverview");
     if (table.innerHTML != "") {
         table.innerHTML = ""
     } else {
@@ -41,13 +41,13 @@ function buildHourTable2(id) {
         tableContent += "<tr><th>"+ getMonthName(month) + "</th><th>Opdracht</th><th>Overwerk</th><th>Verlof</th><th>Ziek</th><th>Training</th><th>Overig</th><th>Verklaring overig</th></tr>";
         for (var day = 1; day < calculateNumberOfDaysInMonth(month) + 1; day++) {
             tableContent += "<tr 'month'><td>" + day + " " + getMonthName(month) + "</>" +
-                "<td><input value='"+getEntry(day, "WORK")+"' "+disabled+" id='WORK" + day + "'  type='number'></td>" +
-                "<td><input value='"+getEntry(day, "OVERTIME")+"' "+disabled+" id='OVERTIME" + day + "' type='number'></td>" +
-                "<td><input value='"+getEntry(day, "LEAVE_OF_ABSENCE")+"' "+disabled+"  id='LEAVE_OF_ABSENCE" + day + "' type='number'></td>" +
-                "<td><input value='"+getEntry(day, "ILL")+"' "+disabled+" id='ILL" + day + "' type='number'></td>" +
-                "<td><input value='"+getEntry(day, "TRAINING")+"'  "+disabled+" id='TRAINING" + day + "' type='number'></td>" +
-                "<td><input value='"+getEntry(day, "OTHERS")+"' "+disabled+" id='OTHERS" + day + "' type='number'></td>" +
-                "<td><input " +disabled+" id='verklaring' type='String'></td>" +
+                "<td><input class='form-control input-sm' value='"+getEntry(day, "WORK")+"' "+disabled+" id='WORK" + day + "'  type='number'></td>" +
+                "<td><input class='form-control input-sm' value='"+getEntry(day, "OVERTIME")+"' "+disabled+" id='OVERTIME" + day + "' type='number'></td>" +
+                "<td><input class='form-control input-sm' value='"+getEntry(day, "LEAVE_OF_ABSENCE")+"' "+disabled+"  id='LEAVE_OF_ABSENCE" + day + "' type='number'></td>" +
+                "<td><input class='form-control input-sm' value='"+getEntry(day, "ILL")+"' "+disabled+" id='ILL" + day + "' type='number'></td>" +
+                "<td><input class='form-control input-sm' value='"+getEntry(day, "TRAINING")+"'  "+disabled+" id='TRAINING" + day + "' type='number'></td>" +
+                "<td><input class='form-control input-sm' value='"+getEntry(day, "OTHERS")+"' "+disabled+" id='OTHERS" + day + "' type='number'></td>" +
+                "<td><input class='form-control input-sm' " +disabled+" id='verklaring' type='String'></td>" +
                 "</tr>";
         }
 
