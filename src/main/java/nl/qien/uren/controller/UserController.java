@@ -42,8 +42,10 @@ public class UserController {
 
         System.out.println(SecurityContextHolder.getContext().getAuthentication().getName());
         if(SecurityContextHolder.getContext().getAuthentication().getAuthorities().contains(Admin.ROLE_ADMIN)){
-            return "admin/dashboard";
+            System.out.println("admin");
+            return "redirect:/admin/dashboard";
         }
+        System.out.println("test");
         return "dashboard";
     }
 
@@ -51,6 +53,11 @@ public class UserController {
     public String admindashboard(@RequestParam(name="name", required=false, defaultValue="wereld") String name, Model model) {
         model.addAttribute("name", name);
         return "admin/dashboard";
+    }
+    @GetMapping("/admin/manageuser")
+    public String manageuser(@RequestParam(name="name", required=false, defaultValue="wereld") String name, Model model) {
+        model.addAttribute("name", name);
+        return "admin/manageuser";
     }
 
 }
