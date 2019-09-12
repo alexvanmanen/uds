@@ -31,10 +31,8 @@
 <h1>Urenoverzicht</h1>
 Urenoverzicht van jaar <p style="display:inline" id="year"></p> en maand <p style="display:inline" id="month"></p> voor medewerker: <p style="display:inline" id="user"></p>.
 
-Get state timesheet: <p id="state"></p>
-
 <table id="timesheetTable">
-        <thead>
+    <thead>
         <tr>
             <th>Dag</th>
             <th>Werk</th>
@@ -44,19 +42,13 @@ Get state timesheet: <p id="state"></p>
             <th>Overwerk</th>
             <th>Overig</th>
         </tr>
-        </thead>
-    </table>
+    </thead>
+</table>
 
-<!--
-Endpoint moet worden aangesproken
-Knoppen moeten alleen enabled zijn als de status van de timesheet "PENDING" is.
- -->
 <div id="tsbuttons">
-<button onclick='approve()'>Akkoord</button>
-<button onclick='reject()'>Niet akkoord</button>
+    <button onclick='approve()'>Akkoord</button>
+    <button onclick='reject()'>Niet akkoord</button>
 </div>
-
-<p th:text="${timesheet}"></p>
 </body>
 </html>
 
