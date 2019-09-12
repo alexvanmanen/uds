@@ -18,14 +18,14 @@ function timesheetEntry(hoursSpent, dayOftheMonth, entryKind){
 }
 
 
-function getTimesheetDay(timesheetEntries){
+function getTimesheetDay(timesheet, day){
     var entriesPerDay = {
-        WORK: 1,
-        LEAVE_OF_ABSENCE: 2,
-        ILL: 3,
-        TRAINING: 4,
-        OVERTIME: 5,
-        OTHERS: 6
+        work: 1,
+        leaveOfAbsence: 2,
+        ill: 3,
+        training: 4,
+        overtime: 5,
+        others: 6
     }
     return entriesPerDay;
 }
