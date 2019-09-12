@@ -6,7 +6,9 @@
     <script src="../js/showTimesheetToCostumer.js"></script>
     <script>
         var timesheetId = [[${timesheet.getId()}]];
-        getMonth(timesheetId)
+        var timesheetState = "[[${timesheet.getState()}]]";
+        getMonth(timesheetId);
+        getState(timesheetId)
     </script>
     <meta charset="UTF-8">
     <title>Timesheet</title>
@@ -17,6 +19,9 @@ Dit is YearMonth via Thymeleaf: <p style="display:inline" th:text="${timesheet.g
 <br>
 Dit is YearMonth via Javascript: <p style="display:inline" id="yearMonth"></p>
 <br>
+
+Get state timesheet: <p id="state"></p>
+
 Urenoverzicht van Augustus 2018 voor medewerker: Ben V.
 
 <table id="timesheetTable">
@@ -46,8 +51,10 @@ Urenoverzicht van Augustus 2018 voor medewerker: Ben V.
 Endpoint moet worden aangesproken
 Knoppen moeten alleen enabled zijn als de status van de timesheet "PENDING" is.
  -->
-<button>Akkoord</button>
-<button>Niet akkoord</button>
+<div id="tsbuttons">
+<button id="akkoord">Akkoord</button>
+<button id="nietakkoord">Niet akkoord</button>
+</div>
 
 <p th:text="${timesheet}"></p>
 </body>
