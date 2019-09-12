@@ -3,14 +3,17 @@
 
 <head>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-    <script src="js/showTimesheetToCostumer.js"></script>
+    <script src="../js/showTimesheetToCostumer.js"></script>
     <meta charset="UTF-8">
     <title>Timesheet</title>
 </head>
 <body>
 
+Dit is YearMonth via thymeleaf: <p th:text="${timesheet.getMonth()}"></p>
+
 Urenoverzicht van Augustus 2018 voor medewerker: Ben V.
 
+Dit is YearMonth via javascript: <div id="yearMonth"></div>
 
 <table id="timesheetTable">
     <tr>

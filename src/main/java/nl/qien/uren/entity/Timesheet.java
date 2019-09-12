@@ -86,4 +86,8 @@ public class Timesheet {
     public void setCustomerKey(String customerKey) {
         this.customerKey = customerKey;
     }
+
+    public String getMonth(){
+        return yearMonth.toString().substring(5);
+    }
 }
