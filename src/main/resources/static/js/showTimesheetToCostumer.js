@@ -33,7 +33,7 @@ function getState(timesheetId) {
             alert("timesheet state = "+ timesheet.state)
             $("#state").text(timesheet.state);
             if (timesheet.state != "PENDING"){
-                $("#tsbuttons").hide();
+                //$("#tsbuttons").hide();
             }
         });
 

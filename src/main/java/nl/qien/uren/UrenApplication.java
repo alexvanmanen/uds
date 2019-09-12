@@ -54,7 +54,7 @@ public class UrenApplication  implements CommandLineRunner {
         Customer customerB = new Customer();
         Employee employeeA = new Employee();
         Employee employeeB = new Employee();
-        customerA.setUsername("alex@vanmanenit.nl");
+        customerA.setUsername("sigma_fi19@yahoo.com");
         customerA.setFirstname("Alex");
         customerA.setPassword(bCryptPasswordEncoder.encode("Bart01"));
         customerA.setActive(true);

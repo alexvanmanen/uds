@@ -9,7 +9,14 @@
         var customerKey = "[[${timesheet.getCustomerKey()}]]";
         getMonth(timesheetId);
         var timesheetState = "[[${timesheet.getState()}]]";
-        getState(timesheetId)
+        getState(timesheetId);
+
+        function dd(){
+            approveTimesheet([[${timesheet.getId()}]], "[[${timesheet.getCustomerKey()}]]");
+        }
+        function ee(){
+            rejectTimesheet([[${timesheet.getId()}]], "[[${timesheet.getCustomerKey()}]]");
+        }
     </script>
     <meta charset="UTF-8">
     <title>Timesheet</title>
@@ -52,8 +59,8 @@ Endpoint moet worden aangesproken
 Knoppen moeten alleen enabled zijn als de status van de timesheet "PENDING" is.
  -->
 <div id="tsbuttons">
-<button onclick='approveTimesheet("8" ,"U4DWKM3VGz!Ot^rc\t")'>Akkoord</button>
-<button onclick='rejectTimesheet("8")'>Niet akkoord</button>
+<button onclick='dd()'>Akkoord</button>
+<button onclick='ee()'>Niet akkoord</button>
 </div>
 
 <p th:text="${timesheet}"></p>
