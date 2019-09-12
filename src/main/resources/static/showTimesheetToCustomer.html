@@ -4,17 +4,20 @@
 <head>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script src="../js/showTimesheetToCostumer.js"></script>
-    <script>getMonth(8)</script>
+    <script>
+        var timesheetId = [[${timesheet.getId()}]];
+        getMonth(timesheetId)
+    </script>
     <meta charset="UTF-8">
     <title>Timesheet</title>
 </head>
 <body>
 
-Dit is YearMonth via thymeleaf: <p th:text="${timesheet.getMonth()}"></p>
-
+Dit is YearMonth via Thymeleaf: <p style="display:inline" th:text="${timesheet.getMonth()}"></p>
+<br>
+Dit is YearMonth via Javascript: <p style="display:inline" id="yearMonth"></p>
+<br>
 Urenoverzicht van Augustus 2018 voor medewerker: Ben V.
-
-Dit is YearMonth via javascript: <div id="yearMonth"></div>
 
 <table id="timesheetTable">
     <tr>
