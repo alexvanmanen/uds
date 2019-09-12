@@ -3,9 +3,10 @@
 
 <head>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-    <script src="../js/showTimesheetToCostumer.js"></script>
+    <script src="./js/showTimesheetToCostumer.js"></script>
     <script>
         var timesheetId = [[${timesheet.getId()}]];
+        var customerKey = [[${timesheet.getCustomerKey()}]];
         getMonth(timesheetId)
     </script>
     <meta charset="UTF-8">
@@ -46,8 +47,9 @@ Urenoverzicht van Augustus 2018 voor medewerker: Ben V.
 Endpoint moet worden aangesproken
 Knoppen moeten alleen enabled zijn als de status van de timesheet "PENDING" is.
  -->
-<button>Akkoord</button>
-<button>Niet akkoord</button>
+<button onclick='approveTimesheet("8" ,"U4DWKM3VGz!Ot^rc\t")'>Akkoord</button>
+<button onclick='rejectTimesheet("8")'>Niet akkoord</button>
+
 
 <p th:text="${timesheet}"></p>
 </body>
