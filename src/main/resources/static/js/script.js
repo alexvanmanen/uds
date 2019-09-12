@@ -72,3 +72,16 @@ $(window).scroll(function() {
     var top = winScrollTop + winHeight - floaterHeight - frombottom;
     $('#hamburger_knop, #hamburger').css({'top': top + 'px'});
 });
+function apiPutRequest(url, json) {
+    var xmlhttp = new XMLHttpRequest();
+    xmlhttp.open("PUT", url);
+    var xmlDoc;
+    xmlhttp.onreadystatechange = function () {
+        if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+            xmlDoc = xmlhttp.responseXML;
+            console.log(xmlDoc);
+        }
+    };
+    xmlhttp.setRequestHeader('Content-Type', 'application/json');
+    xmlhttp.send(json);
+}
