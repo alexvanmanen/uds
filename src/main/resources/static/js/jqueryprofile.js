@@ -7,8 +7,8 @@ function getprofile(id) {
     var housenumber;
     var zipcode;
     var city;
-    var avatar;
-    var avatarcolor;
+    var avatar = "giraffe_lg.png"
+    var avatarcolor = "#A34AFE";
     $.get("/uren/api/v1/getUser/" + id, function (user) {
         var url = "https://ssl.gstatic.com/docs/common/profile/";
         var avatarwidth = "width:80px; background-color: ";
@@ -20,8 +20,12 @@ function getprofile(id) {
             street = user.street;
             housenumber = user.housenumber;
             city = user.city;
-            avatar = user.avatar;
-            avatarcolor = avatarwidth.concat(user.avatarcolor);
+            if(user.avatar != null) {
+                avatar = user.avatar;
+            }
+            if(user.avatarcolor != null) {
+                avatarcolor = user.avatarcolor;
+            }
 
             $("#email").val(email);
             $("#firstname").val(firstname);
@@ -33,7 +37,7 @@ function getprofile(id) {
             $("#city").val(city);
             $("#avatar").attr({
                 "src": url.concat(avatar),
-                "style": avatarcolor,
+                "style": avatarwidth.concat(avatarcolor),
             });
             $("#avatarcolor").text(avatarcolor);
 

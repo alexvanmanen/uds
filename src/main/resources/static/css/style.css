@@ -19,7 +19,7 @@ li {
 
 li a, .dropbtn {
     display: inline-block;
-    color: #666;
+    color: #ffffff;
     text-align: center;
     padding: 14px 16px;
     text-decoration: none;
@@ -73,7 +73,7 @@ div.dropdown {
     text-align: left;
 }
 #btn {
-    color: #666;
+    color: #fff;
     padding: 14px 16px;
 }
 #btn:hover {
