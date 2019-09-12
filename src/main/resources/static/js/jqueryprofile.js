@@ -3,6 +3,10 @@ function getprofile(id) {
     var firstname;
     var lastname;
     var active;
+    var street;
+    var housenumber;
+    var zipcode;
+    var city;
     var avatar;
     var avatarcolor;
     $.get("/uren/api/v1/getUser/" + id, function (user) {
@@ -12,13 +16,21 @@ function getprofile(id) {
             email = user.username;
             lastname = user.lastname;
             active = user.active;
+            zipcode = user.zipcode;
+            street = user.street;
+            housenumber = user.housenumber;
+            city = user.city;
             avatar = user.avatar;
             avatarcolor = avatarwidth.concat(user.avatarcolor);
 
-            $("#email").text(email);
-            $("#firstname").text(firstname);
-            $("#lastname").text(lastname);
-            $("#active").text(active);
+            $("#email").val(email);
+            $("#firstname").val(firstname);
+            $("#lastname").val(lastname);
+            $("#active").val(active);
+            $("#street").val(street);
+            $("#housenumber").val(housenumber);
+            $("#zipcode").val(zipcode);
+            $("#city").val(city);
             $("#avatar").attr({
                 "src": url.concat(avatar),
                 "style": avatarcolor,
@@ -27,7 +39,6 @@ function getprofile(id) {
 
             if (active == true) {
                 document.getElementById("activebtn").innerHTML = '<a class="btn btn-danger" onclick="activateuser(false, ' + id + ')" role="button">Deactiveer</a>';
-
             }
             if (active == false) {
                 document.getElementById("activebtn").innerHTML = '<a class="btn btn-success" onclick="activateuser(true, ' + id + ')" role="button">activeer</a>';
@@ -56,7 +67,7 @@ function activateuser(setuser, id) {
         contentType: 'application/json',
         success: function (result) {
             document.getElementById("activebtn").innerHTML = action;
-            document.getElementById("active").innerHTML = active;
+            $("#active").val(active);
         },
         error: function (request, msg, error) {
             alert('strond aan de knikker');
