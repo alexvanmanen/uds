@@ -3,7 +3,9 @@
 
 <head>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="../js/timesheet.js"></script>
     <script src="../js/showTimesheetToCostumer.js"></script>
+
     <script>
         var timesheetId = [[${timesheet.getId()}]];
         var customerKey = "[[${timesheet.getCustomerKey()}]]";
@@ -31,30 +33,18 @@ Urenoverzicht van jaar <p style="display:inline" id="year"></p> en maand <p styl
 
 Get state timesheet: <p id="state"></p>
 
-Urenoverzicht van Augustus 2018 voor medewerker: Ben V.
-
 <table id="timesheetTable">
-    <tr>
-        <th></th>
-        <th>Opdracht</th>
-        <th>Overwerk</th>
-        <th>Verlof</th>
-        <th>Ziek</th>
-        <th>Training</th>
-        <th>Overig</th>
-        <th>Verklaring overig</th>
-    </tr>
-    <tr>
-        <td>1</td>
-        <td><input></td>
-        <td><input></td>
-        <td><input></td>
-        <td><input></td>
-        <td><input></td>
-        <td><input></td>
-        <td><input></td>
-    </tr>
-</table>
+        <thead>
+        <tr>
+            <th>Werk</th>
+            <th>Verlof</th>
+            <th>Ziek</th>
+            <th>Training</th>
+            <th>Overwerk</th>
+            <th>Overig</th>
+        </tr>
+        </thead>
+    </table>
 
 <!--
 Endpoint moet worden aangesproken
