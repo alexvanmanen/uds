@@ -6,6 +6,53 @@ function getMonth(timesheetId){
     });
 }
 
+$(document).ready(function(){
+     $("#timesheetTable tbody").empty();
+
+    $.get("/uren/api/v1/getTimeSheet/8", function (timesheet){
+
+        var table_data = '<tbody>';
+           table_data += getRow();
+        table_data += "</tbody>";
+
+        $('#timesheetTable').append(table_data);
+        // var table_data = '<tbody>';
+        // $.each(timesheet, function (elementnumber, timesheet) {
+        //     table_data += '<trgit>';
+        //
+        //
+        //     table_data += '<td>'+timesheet.id+'</td>';
+        //     table_data += '</tr>';
+        // });
+       // var entriesPerDay = getTimesheetDay(timesheet);
+
+
+
+        //$.each(timesheets, function (timesheet) {
+
+
+        //});
+
+       // $('#timesheetTable').append(table_data);
+
+    });
+
+
+});
+
+function getRow(){
+   var table_data = '<tr>'
+        table_data += '<td>Werk</td>';
+        table_data += '<td>Verlof</td>';
+        table_data += '<td>Ziek</td>';
+        table_data += '<td>Training</td>';
+        table_data += '<td>Overwerk</td>';
+        table_data += '<td>Overig</td>';
+        table_data += '</tr>';
+        return table_data;
+
+}
+
 function approveTimesheet(id, customerkey) {
     /*alert("Hoi");
     alert(id);

@@ -5,7 +5,7 @@ $(document).ready(function(){
         $.get("/uren/api/v1/users", function(users){
             var user_data = '<tbody>';
             $.each(users, function (elementNumber, user) {
-                user_data += '<tr>';
+                user_data += '<trgit>';
                 user_data += '<td>'+clean(user.id)+'</td>';
                 user_data += '<td>'+clean(user.firstname)+'</td>';
                 user_data += '<td>'+clean(user.lastname)+'</td>';
