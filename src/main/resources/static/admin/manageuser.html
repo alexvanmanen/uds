@@ -50,17 +50,17 @@
 </nav>
 
 
-<br>
-<br>
+<article style="margin:110px">
+    <div id="welcome">
+        <div th:if="${#httpServletRequest.remoteUser != null}">
+            <p th:text="${#httpServletRequest.remoteUser}"></p>
+        </div>
 <div class="container">
-<p>
 <h2> Personeel Beheren </h2>
     <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#addModal" >Voeg toe</button>
 <table class="table table-striped" id="usertable"></table>
-
-<div id="verzonden"></div>
+    <div id="verzonden"></div>
 <div id="editUser"></div>
-</p>
 </div>
 <div class="modal fade" id="addModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <form action="" name="createuserform" id="useradd" onsubmit="return false" >
