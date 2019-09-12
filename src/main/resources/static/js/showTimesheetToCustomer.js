@@ -32,7 +32,7 @@ $.get("/uren/api/v1/getTimeSheet/"+timesheetId, function (timesheet){
 
 function getTimesheetTable(timesheet){
     var table_data = '<tbody>';
-    for(var dayNumber = 1; dayNumber<32; dayNumber++){
+    for(var dayNumber = 1; dayNumber<=calculateNumberOfDaysInMonth(timesheet.month); dayNumber++){
         table_data += getTimesheetRow(timesheet, dayNumber);
     }
     return table_data += "</tbody>";
