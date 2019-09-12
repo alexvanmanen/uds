@@ -25,7 +25,7 @@ $(document).ready(function(){
     $.get("/uren/api/v1/getTimeSheet/8", function (timesheet){
 
         var table_data = '<tbody>';
-           table_data += getRow();
+           table_data += getRow(timesheet, 1);
         table_data += "</tbody>";
 
         $('#timesheetTable').append(table_data);
@@ -54,7 +54,7 @@ $(document).ready(function(){
 });
 
 function getRow(timesheet, day){
-   var timesheetDay =  getTimesheetDay(1,1);
+   var timesheetDay =  getTimesheetDay(timesheet,day);
    var table_data = '<tr>'
         table_data += '<td>'+timesheetDay.work+'</td>';
         table_data += '<td>'+timesheetDay.leaveOfAbsence+'</td>';
