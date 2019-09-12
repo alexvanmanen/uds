@@ -36,6 +36,8 @@ public class User implements UserDetails {
     private String accountnumber;
     private Boolean firstlogin;
     private String employer;
+    private String avatar;
+    private String avatarcolor;
 
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "user")
     private Set<Timesheet> timesheets = new HashSet<>();

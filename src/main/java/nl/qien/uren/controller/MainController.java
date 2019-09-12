@@ -224,6 +224,12 @@ public class MainController {
         if (userDetails.getZipcode() != null) {
          user.setZipcode(userDetails.getZipcode());
         }
+        if (userDetails.getAvatar() != null) {
+            user.setAvatar(userDetails.getAvatar());
+        }
+        if (userDetails.getAvatarcolor() != null) {
+            user.setAvatarcolor(userDetails.getAvatarcolor());
+        }
         return userRepository.save(user);
     }
 
