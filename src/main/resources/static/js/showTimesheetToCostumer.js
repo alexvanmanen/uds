@@ -41,9 +41,8 @@ $(document).ready(function(){
 
 });
 
-function getRow(){
+function getRow(timesheet, day){
    var timesheetDay =  getTimesheetDay(1,1);
-   var ikbeneenvariabele = 8;
    var table_data = '<tr>'
         table_data += '<td>'+timesheetDay.work+'</td>';
         table_data += '<td>'+timesheetDay.leaveOfAbsence+'</td>';

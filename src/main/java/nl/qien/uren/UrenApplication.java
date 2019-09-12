@@ -115,7 +115,7 @@ public class UrenApplication  implements CommandLineRunner {
 
 
         TimesheetEntry timesheetEntry1 = new TimesheetEntry(1, 8, EntryKind.WORK, timesheetAlexAug);
-        TimesheetEntry timesheetEntry2 = new TimesheetEntry(2, 4, EntryKind.LEAVE_OF_ABSENCE, timesheetAlexAug);
+        TimesheetEntry timesheetEntry2 = new TimesheetEntry(1, 4, EntryKind.LEAVE_OF_ABSENCE, timesheetAlexAug);
 
         TimesheetEntry timesheetEntry3 = new TimesheetEntry(5, 4, EntryKind.LEAVE_OF_ABSENCE, timesheetBart);
 

@@ -19,13 +19,24 @@ function timesheetEntry(hoursSpent, dayOftheMonth, entryKind){
 
 
 function getTimesheetDay(timesheet, day){
+
     var entriesPerDay = {
-        work: 1,
-        leaveOfAbsence: 2,
-        ill: 3,
-        training: 4,
-        overtime: 5,
-        others: 6
+        work: getHours(timesheet, day, "WORK"),
+        leaveOfAbsence: getHours(timesheet, day, "LEAVE_OF_ABSENCE"),
+        ill: getHours(timesheet, day, "ILL"),
+        training: getHours(timesheet, day, "TRAINING"),
+        overtime: getHours(timesheet, day, "OVERTIME"),
+        others: getHours(timesheet, day, "OTHERS")
     }
     return entriesPerDay;
+}
+
+function getHours(timesheet, day, type){
+    for(var i = 0; i<timesheet.entries.length; i++){
+        var entry = timesheet.entries[i];
+        if(entry.dayOfTheMonth == day && entry.entryKind == type){
+            return entry.hoursSpent;
+        }
+    }
+    return "";
 }
