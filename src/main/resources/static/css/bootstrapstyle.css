@@ -45,3 +45,8 @@
 .dropdown-menu li a:hover {
     background-color: #A34AFE !important;
 }
+tr.table-purple {
+    color: #fff;
+    background-color: #A34AFE;
+}
+.table-purple,.table-purple>td,.table-purple>th{background-color:#A34AFE;color: #fff;}.table-hover .table-purple:hover{background-color:#A34AFE;color: #fff;}.table-purple .table-purple:hover>td,.table-hover .table-purple:hover>th{background-color:#A34AFE;color: #fff;}

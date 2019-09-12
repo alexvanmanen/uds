@@ -32,7 +32,7 @@ $.get("/uren/api/v1/getTimeSheet/"+timesheetId, function (timesheet){
 
 function getTimesheetTable(timesheet){
     var table_data = '<tbody>';
-    for(var dayNumber = 1; dayNumber<=calculateNumberOfDaysInMonth(timesheet.month); dayNumber++){
+    for(var dayNumber = 1; dayNumber<=calculateNumberOfDaysInMonth(timesheet.month, timesheet.year); dayNumber++){
         table_data += getTimesheetRow(timesheet, dayNumber);
     }
     return table_data += "</tbody>";
@@ -40,8 +40,18 @@ function getTimesheetTable(timesheet){
 
 
 function getTimesheetRow(timesheet, day){
+    var dayname = timesheet.month.toString().concat("/", day.toString(), "/", timesheet.year.toString());
+    var dayname1 = getDayName(dayname, "nl-NL")
+    //alert(dayname1);
    var timesheetDay =  getTimesheetDay(timesheet,day);
-   var table_data = '<tr>'
+    if(dayname1 == "zaterdag") {
+        var table_data = '<tr class="table-purple">'
+    } else if(dayname1 == "zondag") {
+        var table_data = '<tr class="table-purple">'
+    } else {
+        var table_data = '<tr>'
+    }
+
         table_data += '<td>'+day+'</td>';
         table_data += '<td>'+timesheetDay.work+'</td>';
         table_data += '<td>'+timesheetDay.leaveOfAbsence+'</td>';
