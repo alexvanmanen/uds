@@ -19,8 +19,8 @@
             rejectTimesheet(timesheetId, customerKey);
         }
         getState(timesheetId);
-
-        getUser(7);
+        var userId = [[${timesheet.getEmployeeId()}]];
+        getUser(userId);
 
     </script>
     <meta charset="UTF-8">
