@@ -90,8 +90,4 @@ public class Timesheet {
     public String getMonth(){
         return yearMonth.toString().substring(5);
     }
-
-    public int getEmployeeId(){
-        return user.getId();
-    }
 }
