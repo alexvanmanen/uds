@@ -25,21 +25,21 @@ function fillTimesheetTable(timesheetId){
 $.get("/uren/api/v1/getTimeSheet/"+timesheetId, function (timesheet){
     $(document).ready(function(){
         $("#timesheetTable tbody").empty();
-        var table_data = '<tbody>';
-        //forloop t/m lengte van de maand (we beginnen met 31) ;) van 1 tot en met 31 (dus tot en met 31 en niet tot en met 30)
-        for(var x = 1; x<32; x++){
-           table_data += getRow(timesheet, x);
-        }
-        table_data += "</tbody>";
-        $('#timesheetTable').append(table_data);
+        $('#timesheetTable').append(getTimesheetTable(timesheet));
         });
     });
 }
 
+function getTimesheetTable(timesheet){
+    var table_data = '<tbody>';
+    for(var dayNumber = 1; dayNumber<32; dayNumber++){
+        table_data += getTimesheetRow(timesheet, dayNumber);
+    }
+    return table_data += "</tbody>";
+}
 
 
-
-function getRow(timesheet, day){
+function getTimesheetRow(timesheet, day){
    var timesheetDay =  getTimesheetDay(timesheet,day);
    var table_data = '<tr>'
         table_data += '<td>'+day+'</td>';
@@ -55,9 +55,6 @@ function getRow(timesheet, day){
 }
 
 function approveTimesheet(id, customerkey) {
-    /*alert("Hoi");
-    alert(id);
-    alert(customerkey);*/
     $.post("/uren/approveTimesheet/"+id+"/"+customerkey, function(){
         alert("Timesheet van medewerker-id: " + id + " is geaccordeerd.")}
     );
@@ -65,9 +62,6 @@ function approveTimesheet(id, customerkey) {
 }
 
 function rejectTimesheet(id, customerkey) {
-    /*alert("Hoi");
-    alert(id);
-    alert(customerkey);*/
     $.post("/uren/rejectTimesheet/"+id+"/"+customerkey, function(){
         alert("Timesheet van medewerker-id: " + id + " is afgekeurd.")}
     );
@@ -77,7 +71,6 @@ function rejectTimesheet(id, customerkey) {
 function getState(timesheetId) {
     $.get("/uren/api/v1/getTimeSheet/" + timesheetId, function (timesheet, status) {
         $(document).ready(function () {
-            alert("timesheet state = "+ timesheet.state)
             $("#state").text(timesheet.state);
             if (timesheet.state != "PENDING") {
                 $("#tsbuttons").hide();

@@ -4,7 +4,7 @@
 <head>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script src="../js/timesheet.js"></script>
-    <script src="../js/showTimesheetToCostumer.js"></script>
+    <script src="../js/showTimesheetToCustomer.js"></script>
     <script>
         var timesheetId = [[${timesheet.getId()}]];
         var customerKey = "[[${timesheet.getCustomerKey()}]]";
@@ -28,10 +28,7 @@
 </head>
 <body>
 
-Dit is YearMonth via Thymeleaf: <p style="display:inline" th:text="${timesheet.getMonth()}"></p>
-<br>
-Dit is YearMonth via Javascript: <p style="display:inline" id="yearMonth"></p>
-<br>
+<h1>Urenoverzicht</h1>
 Urenoverzicht van jaar <p style="display:inline" id="year"></p> en maand <p style="display:inline" id="month"></p> voor medewerker: <p style="display:inline" id="user"></p>.
 
 Get state timesheet: <p id="state"></p>
