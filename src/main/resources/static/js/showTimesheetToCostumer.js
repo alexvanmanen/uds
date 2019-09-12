@@ -42,13 +42,15 @@ $(document).ready(function(){
 });
 
 function getRow(){
+   var timesheetDay =  getTimesheetDay(1,1);
+   var ikbeneenvariabele = 8;
    var table_data = '<tr>'
-        table_data += '<td>Werk</td>';
-        table_data += '<td>Verlof</td>';
-        table_data += '<td>Ziek</td>';
-        table_data += '<td>Training</td>';
-        table_data += '<td>Overwerk</td>';
-        table_data += '<td>Overig</td>';
+        table_data += '<td>'+timesheetDay.work+'</td>';
+        table_data += '<td>'+timesheetDay.leaveOfAbsence+'</td>';
+        table_data += '<td>'+timesheetDay.ill+'</td>';
+        table_data += '<td>'+timesheetDay.training+'</td>';
+        table_data += '<td>'+timesheetDay.overtime+'</td>';
+        table_data += '<td>'+timesheetDay.others+'</td>';
         table_data += '</tr>';
         return table_data;
 
