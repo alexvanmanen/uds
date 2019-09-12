@@ -11,11 +11,11 @@
         var timesheetState = "[[${timesheet.getState()}]]";
         getState(timesheetId);
 
-        function dd(){
-            approveTimesheet([[${timesheet.getId()}]], "[[${timesheet.getCustomerKey()}]]");
+        function approve(){
+            approveTimesheet(timesheetId, customerKey);
         }
-        function ee(){
-            rejectTimesheet([[${timesheet.getId()}]], "[[${timesheet.getCustomerKey()}]]");
+        function reject(){
+            rejectTimesheet(timesheetId, customerKey);
         }
     </script>
     <meta charset="UTF-8">
@@ -30,6 +30,8 @@ Dit is YearMonth via Javascript: <p style="display:inline" id="yearMonth"></p>
 Urenoverzicht van jaar <p style="display:inline" id="year"></p> en maand <p style="display:inline" id="month"></p> voor medewerker: <p style="display:inline" id="user"></p>.
 
 Get state timesheet: <p id="state"></p>
+
+Urenoverzicht van Augustus 2018 voor medewerker: Ben V.
 
 <table id="timesheetTable">
     <tr>
@@ -59,8 +61,8 @@ Endpoint moet worden aangesproken
 Knoppen moeten alleen enabled zijn als de status van de timesheet "PENDING" is.
  -->
 <div id="tsbuttons">
-<button onclick='dd()'>Akkoord</button>
-<button onclick='ee()'>Niet akkoord</button>
+<button onclick='approve()'>Akkoord</button>
+<button onclick='reject()'>Niet akkoord</button>
 </div>
 
 <p th:text="${timesheet}"></p>
