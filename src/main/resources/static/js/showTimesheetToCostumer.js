@@ -19,46 +19,30 @@ function getUser(id) {
     });
 }
 
-$(document).ready(function(){
-     $("#timesheetTable tbody").empty();
 
-    $.get("/uren/api/v1/getTimeSheet/8", function (timesheet){
 
+function fillTimesheetTable(timesheetId){
+$.get("/uren/api/v1/getTimeSheet/"+timesheetId, function (timesheet){
+    $(document).ready(function(){
+        $("#timesheetTable tbody").empty();
         var table_data = '<tbody>';
         //forloop t/m lengte van de maand (we beginnen met 31) ;) van 1 tot en met 31 (dus tot en met 31 en niet tot en met 30)
-        for(var x = 0; x<32; x++){
+        for(var x = 1; x<32; x++){
            table_data += getRow(timesheet, x);
         }
         table_data += "</tbody>";
-
         $('#timesheetTable').append(table_data);
-        // var table_data = '<tbody>';
-        // $.each(timesheet, function (elementnumber, timesheet) {
-        //     table_data += '<trgit>';
-        //
-        //
-        //     table_data += '<td>'+timesheet.id+'</td>';
-        //     table_data += '</tr>';
-        // });
-       // var entriesPerDay = getTimesheetDay(timesheet);
-
-
-
-        //$.each(timesheets, function (timesheet) {
-
-
-        //});
-
-       // $('#timesheetTable').append(table_data);
-
+        });
     });
+}
 
 
-});
+
 
 function getRow(timesheet, day){
    var timesheetDay =  getTimesheetDay(timesheet,day);
    var table_data = '<tr>'
+        table_data += '<td>'+day+'</td>';
         table_data += '<td>'+timesheetDay.work+'</td>';
         table_data += '<td>'+timesheetDay.leaveOfAbsence+'</td>';
         table_data += '<td>'+timesheetDay.ill+'</td>';

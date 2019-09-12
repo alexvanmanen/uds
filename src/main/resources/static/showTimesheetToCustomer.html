@@ -21,7 +21,7 @@
         getState(timesheetId);
         var userId = [[${timesheet.getEmployeeId()}]];
         getUser(userId);
-
+        fillTimesheetTable(timesheetId);
     </script>
     <meta charset="UTF-8">
     <title>Timesheet</title>
@@ -39,6 +39,7 @@ Get state timesheet: <p id="state"></p>
 <table id="timesheetTable">
         <thead>
         <tr>
+            <th>Dag</th>
             <th>Werk</th>
             <th>Verlof</th>
             <th>Ziek</th>
