@@ -10,8 +10,11 @@ function getMonth(timesheetId){
 function getUser(id) {
     $.get("/uren/api/v1/getUser/" + id, function (user) {
         $(document).ready(function () {
-            alert("user = " + user.firstname);
-            $("#user").text(user.firstname + " " + user.lastname);
+            if (user != null) {
+                var firstname = user.firstname == null ? "" : user.firstname;
+                var lastname = user.lastname == null ? "" : user.lastname;
+                $("#user").text(firstname + " " + lastname);
+            }
         });
     });
 }
