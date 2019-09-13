@@ -2,7 +2,6 @@ package nl.qien.uren;
 
 import nl.qien.uren.entity.*;
 import nl.qien.uren.model.EntryKind;
-import nl.qien.uren.model.SendMail;
 import nl.qien.uren.repository.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
@@ -74,8 +73,9 @@ public class UrenApplication  implements CommandLineRunner {
         Timesheet timesheetAlexJul = new Timesheet(projectVanCustomerRobin, employeeAlex, YearMonth.of(2019,7), TimesheetState.DECLINED);
         Timesheet timesheetBenAug = new Timesheet(projectVanCustomerRobin, employeeBen, YearMonth.of(2019,8), TimesheetState.APPROVED);
         Timesheet timesheetBenJul = new Timesheet(projectVanCustomerRobin, employeeBen, YearMonth.of(2019,7), TimesheetState.APPROVED);
+        Timesheet timesheetBenSep = new Timesheet(projectVanCustomerRobin, employeeBen, YearMonth.of(2019,9), TimesheetState.OPEN);
 
-        timesheetRepository.saveAll(Arrays.asList(timesheetAlexAug, timesheetAlexJul, timesheetBenAug, timesheetBenJul));
+        timesheetRepository.saveAll(Arrays.asList(timesheetAlexAug, timesheetAlexJul, timesheetBenAug, timesheetBenJul, timesheetBenSep));
 
         TimesheetEntry timesheetEntry1 = new TimesheetEntry(1, 8, EntryKind.WORK, timesheetAlexAug);
         TimesheetEntry timesheetEntry2 = new TimesheetEntry(1, 4, EntryKind.LEAVE_OF_ABSENCE, timesheetAlexAug);
