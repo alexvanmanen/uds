@@ -47,89 +47,43 @@ public class UrenApplication  implements CommandLineRunner {
     @Override
     @Transactional
     public void run(String... strings) throws Exception {
+        Customer customerRobin = new Customer("Robin", "Coes", "sigma_fi19@yahoo.com", "Robin01");
+        Customer customerBart = new Customer("Bart", "Zwaagstra", "bartzwaagstra@live.nl", "Bart01");
+        customerRepository.saveAll(Arrays.asList(customerRobin, customerBart));
 
+        Employee employeeAlex = new Employee("Alex", "van Manen", "alex@vanmanenit.nl", "Alex01");
+        Employee employeeBen = new Employee("Ben", "Vosse", "benvosse@hotmail.com", "Ben01");
+        employeeRepository.saveAll(Arrays.asList(employeeAlex,employeeBen));
 
-
-        Customer customerA = new Customer();
-        Customer customerB = new Customer();
-        Employee employeeA = new Employee();
-        Employee employeeB = new Employee();
-        customerA.setUsername("sigma_fi19@yahoo.com");
-        customerA.setFirstname("Alex");
-        customerA.setPassword(bCryptPasswordEncoder.encode("Bart01"));
-        customerA.setActive(true);
-        customerB.setUsername("bartzwaagstra@live.nl");
-        customerB.setFirstname("Bart");
-        customerB.setPassword(bCryptPasswordEncoder.encode("Bart01"));
-        customerB.setActive(true);
-
-        Set<Project> projectsA = new HashSet<>();
-        Project projectA1 = new Project("Project A1", customerA);
-        projectsA.add(projectA1);
-        customerA.setProjects(projectsA);
-
-
-        Set<Project> projectsB = new HashSet<>();
-        projectsB.add(new Project("Project B3", customerB));
-        projectsB.add(new Project("Project B4", customerB));
-        customerB.setProjects(projectsB);
-
-
-        customerRepository.saveAll(Arrays.asList(customerA, customerB));
-        projectRepository.saveAll(projectsA);
-        projectRepository.saveAll(projectsB);
-        employeeRepository.save(employeeA);
-        employeeRepository.save(employeeB);
-
-
-        //show the info
-        for (Customer customer : customerRepository.findAll()) {
-            System.out.println(customer);
-        }
-
-        Admin cora = new Admin();
-        cora.setPassword(bCryptPasswordEncoder.encode("Admin01"));
-        cora.setUsername("admin@qien.nl");
-        cora.setActive(true);
+        Admin cora = new Admin("Cora", "de Lima-Roos", "admin@qien.nl", "Admin01");
         adminRepository.save(cora);
 
+        Set<Project> projectsA = new HashSet<>();
+        Project projectVanCustomerRobin = new Project("Project van customer Robin", customerRobin);
+        projectsA.add(projectVanCustomerRobin);
+        customerRobin.setProjects(projectsA);
+        projectRepository.saveAll(projectsA);
 
-        Employee alex = new Employee();
-        alex.setFirstname("Alex");
-        Employee bart = new Employee();
-        bart.setFirstname("bart");
-
-        employeeRepository.saveAll(Arrays.asList(alex,bart));
+        Set<Project> projectsVanCustomerBart = new HashSet<>();
+        projectsVanCustomerBart.add(new Project("Project van customer Bart", customerBart));
+        customerBart.setProjects(projectsVanCustomerBart);
+        projectRepository.saveAll(projectsVanCustomerBart);
 
 
-        Timesheet timesheetAlexAug = new Timesheet(projectA1, alex, YearMonth.of(2019,8), TimesheetState.PENDING);
-        Timesheet timesheetAlexJul = new Timesheet(projectA1, alex, YearMonth.of(2019,7), TimesheetState.DECLINED);
-        Timesheet timesheetBart = new Timesheet(projectA1, bart, YearMonth.of(2019,1), TimesheetState.APPROVED);
-        Timesheet timesheetBart2018 = new Timesheet(projectA1, bart, YearMonth.of(2018,2), TimesheetState.APPROVED);
+        Timesheet timesheetAlexAug = new Timesheet(projectVanCustomerRobin, employeeAlex, YearMonth.of(2019,8), TimesheetState.PENDING);
+        Timesheet timesheetAlexJul = new Timesheet(projectVanCustomerRobin, employeeAlex, YearMonth.of(2019,7), TimesheetState.DECLINED);
+        Timesheet timesheetBenAug = new Timesheet(projectVanCustomerRobin, employeeBen, YearMonth.of(2019,8), TimesheetState.APPROVED);
+        Timesheet timesheetBenJul = new Timesheet(projectVanCustomerRobin, employeeBen, YearMonth.of(2019,7), TimesheetState.APPROVED);
 
-        timesheetRepository.save(timesheetAlexAug);
-        timesheetRepository.save(timesheetAlexJul);
-
-        timesheetRepository.save(timesheetBart);
-        timesheetRepository.save(timesheetBart2018);
-
+        timesheetRepository.saveAll(Arrays.asList(timesheetAlexAug, timesheetAlexJul, timesheetBenAug, timesheetBenJul));
 
         TimesheetEntry timesheetEntry1 = new TimesheetEntry(1, 8, EntryKind.WORK, timesheetAlexAug);
         TimesheetEntry timesheetEntry2 = new TimesheetEntry(1, 4, EntryKind.LEAVE_OF_ABSENCE, timesheetAlexAug);
 
-        TimesheetEntry timesheetEntry3 = new TimesheetEntry(5, 4, EntryKind.LEAVE_OF_ABSENCE, timesheetBart);
-
-
-        SendMail sendMail = new SendMail();
-
+        TimesheetEntry timesheetEntry3 = new TimesheetEntry(5, 4, EntryKind.LEAVE_OF_ABSENCE, timesheetBenAug);
         timesheetAlexAug.setCustomerKey("8928308ALEX87283279");
-
-//        SELECT UREN, ENTRY_KIND FROM USER
-//        INNER JOIN TS ON(USER.ID=TS.USER)
-//        INNER JOIN TSENTRY ON (TS.ID=TSENTRY.TIMESHEET_ID)
-//        WHERE FIRSTNAME='Alex'
-
-
         timesheetEntryRepository.saveAll(Arrays.asList(timesheetEntry1,timesheetEntry2, timesheetEntry3));
     }
+
+
 }

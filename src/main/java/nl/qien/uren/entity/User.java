@@ -4,9 +4,11 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 import javax.persistence.*;
 import java.util.Arrays;
@@ -39,6 +41,10 @@ public class User implements UserDetails {
     private String avatar;
     private String avatarcolor;
 
+
+    @Autowired
+    private BCryptPasswordEncoder bCryptPasswordEncoder;
+
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "user")
     private Set<Timesheet> timesheets = new HashSet<>();
 
@@ -46,6 +52,15 @@ public class User implements UserDetails {
     public Collection<? extends GrantedAuthority> getAuthorities() {
         return Arrays.asList(new SimpleGrantedAuthority("ROLE_USER"));
     }
+
+    public User(String firstname, String lastname, String username, String password){
+        this.firstname = firstname;
+        this.lastname = lastname;
+        this.setUsername(username);
+        this.setPassword(bCryptPasswordEncoder.encode(password));
+        this.setActive(true);
+    }
+
     @Override
     public boolean isAccountNonExpired() {
         return true;

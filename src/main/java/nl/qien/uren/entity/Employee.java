@@ -13,4 +13,8 @@ import javax.persistence.*;
 @NoArgsConstructor
 @DiscriminatorValue(value = "employee")
 public class Employee extends User{
+
+    public Employee(String firstname, String lastname, String username, String password){
+        super(firstname, lastname, username, password);
+    }
 }

@@ -22,9 +22,14 @@ public class Admin extends User{
 
     public static GrantedAuthority ROLE_ADMIN = new SimpleGrantedAuthority("ROLE_ADMIN");
 
+    public Admin(String firstname, String lastname, String username, String password){
+        super(firstname, lastname, username, password);
+    }
+
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
         return Arrays.asList(new SimpleGrantedAuthority("ROLE_USER"), ROLE_ADMIN);
     }
+
 
 }
