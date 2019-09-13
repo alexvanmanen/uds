@@ -4,6 +4,11 @@
     <meta charset="UTF-8">
     <title>Qien admin</title>
     <!--<link rel="stylesheet" type="text/css" href="css/style.css">-->
+    <script>
+        function getEmployeeId(){
+            return "[[${userId}]]";
+        }
+    </script>
     <script src="js/jquery-3.4.1.min.js"></script>
     <script src=js/script.js></script>
     <script src="js/UrenRegistraties.js"></script>
@@ -63,6 +68,8 @@
     <div th:if="${#httpServletRequest.remoteUser != null}">
         <p th:text="${#httpServletRequest.remoteUser}"></p>
     </div>
+DIt is mijn userID:
+    <p th:text="${userId}"></p>
 
 <div class="container">
 <h2>Overzicht</h2>
