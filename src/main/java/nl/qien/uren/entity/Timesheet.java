@@ -32,19 +32,19 @@ public class Timesheet {
     @Convert(
             converter = YearMonthDateAttributeConverter.class
     )
-    private YearMonth yearMonth;
+    private YearMonth yearAndMonth;
     private String customerKey;
     public Timesheet(){ }
 
-    public Timesheet(Project project, Employee employee, YearMonth yearMonth, TimesheetState state){
+    public Timesheet(Project project, Employee employee, YearMonth yearAndMonth, TimesheetState state){
         this.state = state;
         this.project = project;
         this.user = employee;
-        this.yearMonth = yearMonth;
+        this.yearAndMonth = yearAndMonth;
     }
 
-    public YearMonth getYearMonth(){
-        return yearMonth;
+    public YearMonth getYearAndMonth(){
+        return yearAndMonth;
     }
 
     public List<TimesheetEntry> getEntries(){
@@ -88,6 +88,6 @@ public class Timesheet {
     }
 
     public String getMonth(){
-        return yearMonth.toString().substring(5);
+        return yearAndMonth.toString().substring(5);
     }
 }

@@ -32,7 +32,7 @@ function buildHourTable2(id) {
     var disabled = disabled(retrievedTimesheets[id].state);
     timesheetID = retrievedTimesheets[id].id;
     var timesheet = retrievedTimesheets[id];
-    var month =  timesheet.yearMonth.substring(6);
+    var month =  timesheet.yearAndMonth.substring(6);
     var table = document.getElementById("timesheetoverview");
     if (table.innerHTML != "") {
         table.innerHTML = ""

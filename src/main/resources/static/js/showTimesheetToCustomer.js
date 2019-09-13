@@ -1,8 +1,8 @@
 function getMonth(timesheetId){
     $.get("/uren/api/v1/getTimeSheet/"+timesheetId, function(timesheet, status){
         $(document).ready(function(){
-            $("#month").text(timesheet.yearMonth.substring(5));
-            $("#year").text(timesheet.yearMonth.substring(0,4));
+            $("#month").text(timesheet.yearAndMonth.substring(5));
+            $("#year").text(timesheet.yearAndMonth.substring(0,4));
         });
     });
 }

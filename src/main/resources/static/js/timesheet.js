@@ -1,7 +1,7 @@
-function timesheet(yearMonth, state, entries, id){
+function timesheet(yearAndMonth, state, entries, id){
     var timesheet = {
         id: id,
-        yearMonth : yearMonth,
+        yearAndMonth : yearAndMonth,
         state  : state,
         entries: entries
     };

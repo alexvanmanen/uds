@@ -5,7 +5,6 @@ import nl.qien.uren.model.EntryKind;
 import javax.persistence.*;
 import java.io.Serializable;
 import java.time.LocalDate;
-import java.util.Date;
 
 @Entity
 @Table(name = "TSEntry")
@@ -46,7 +45,7 @@ public class TimesheetEntry implements Serializable {
     }
 
     public LocalDate getDate(){
-        return LocalDate.of(timesheet.getYearMonth().getYear(), timesheet.getYearMonth().getMonth(), dayOfTheMonth);
+        return LocalDate.of(timesheet.getYearAndMonth().getYear(), timesheet.getYearAndMonth().getMonth(), dayOfTheMonth);
     }
 
 
