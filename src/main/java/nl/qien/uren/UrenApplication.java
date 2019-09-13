@@ -55,7 +55,7 @@ public class UrenApplication  implements CommandLineRunner {
         Employee employeeBen = new Employee("Ben", "Vosse", "benvosse@hotmail.com", bCryptPasswordEncoder.encode("Ben01"));
         employeeRepository.saveAll(Arrays.asList(employeeAlex,employeeBen));
 
-        Admin cora = new Admin("Cora", "de Lima-Roos", "admin@qien.nl", "Admin01");
+        Admin cora = new Admin("Cora", "de Lima-Roos", "admin@qien.nl", bCryptPasswordEncoder.encode("Admin01"));
         adminRepository.save(cora);
 
         Set<Project> projectsA = new HashSet<>();
