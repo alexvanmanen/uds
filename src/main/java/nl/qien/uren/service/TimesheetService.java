@@ -23,7 +23,7 @@ public class TimesheetService {
     /*
     3. employeeHasNoTimesheet. Controle methode die controleert of een employee al een timesheet heeft voor deze jaar + maand.
      */
-    private boolean employeeHasNoTimesheet(Employee employee, YearMonth yearMonth){
+    public boolean employeeHasNoTimesheet(Employee employee, YearMonth yearMonth){
         return false;
     }
 
