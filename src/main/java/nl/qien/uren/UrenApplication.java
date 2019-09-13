@@ -47,12 +47,12 @@ public class UrenApplication  implements CommandLineRunner {
     @Override
     @Transactional
     public void run(String... strings) throws Exception {
-        Customer customerRobin = new Customer("Robin", "Coes", "sigma_fi19@yahoo.com", "Robin01");
-        Customer customerBart = new Customer("Bart", "Zwaagstra", "bartzwaagstra@live.nl", "Bart01");
+        Customer customerRobin = new Customer("Robin", "Coes", "sigma_fi19@yahoo.com", bCryptPasswordEncoder.encode("Robin01"));
+        Customer customerBart = new Customer("Bart", "Zwaagstra", "bartzwaagstra@live.nl", bCryptPasswordEncoder.encode("Bart01"));
         customerRepository.saveAll(Arrays.asList(customerRobin, customerBart));
 
-        Employee employeeAlex = new Employee("Alex", "van Manen", "alex@vanmanenit.nl", "Alex01");
-        Employee employeeBen = new Employee("Ben", "Vosse", "benvosse@hotmail.com", "Ben01");
+        Employee employeeAlex = new Employee("Alex", "van Manen", "alex@vanmanenit.nl", bCryptPasswordEncoder.encode("Alex01"));
+        Employee employeeBen = new Employee("Ben", "Vosse", "benvosse@hotmail.com", bCryptPasswordEncoder.encode("Ben01"));
         employeeRepository.saveAll(Arrays.asList(employeeAlex,employeeBen));
 
         Admin cora = new Admin("Cora", "de Lima-Roos", "admin@qien.nl", "Admin01");

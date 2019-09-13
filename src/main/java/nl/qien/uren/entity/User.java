@@ -42,8 +42,6 @@ public class User implements UserDetails {
     private String avatarcolor;
 
 
-    @Autowired
-    private BCryptPasswordEncoder bCryptPasswordEncoder;
 
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "user")
     private Set<Timesheet> timesheets = new HashSet<>();
@@ -57,7 +55,7 @@ public class User implements UserDetails {
         this.firstname = firstname;
         this.lastname = lastname;
         this.setUsername(username);
-        this.setPassword(bCryptPasswordEncoder.encode(password));
+        this.setPassword(password);
         this.setActive(true);
     }
 
