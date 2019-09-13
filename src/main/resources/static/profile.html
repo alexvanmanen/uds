@@ -10,10 +10,8 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.0/js/bootstrap.min.js"></script>
     <script src=js/script.js></script>
     <script src="js/profile.js"></script>
-    <script>let params = new URLSearchParams(location.search);
-    if(params.get('id')) {
-        getprofile(params.get('id'));
-    }
+    <script>
+        getprofile("[[${userId}]]");
     </script>
 </head>
 
@@ -35,7 +33,7 @@
                     <span class="glyphicon glyphicon-menu-hamburger"></span>
                 </button> <ul class = "dropdown-menu">
                     <li><a href="dashboard">Home</a></li>
-                    <li><a href="manageuser">Personeel</a></li>
+                    <li><a href="profile">Profiel</a></li>
                     <li><a href="#">Bedrijven</a></li>
                     <li><a href="#">Instellingen</a></li>
                     <li><form action="/uren/logout">
