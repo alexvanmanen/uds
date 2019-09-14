@@ -1,13 +1,21 @@
 package nl.qien.uren.service;
 
 import nl.qien.uren.entity.Employee;
+import nl.qien.uren.entity.Timesheet;
 import nl.qien.uren.entity.TimesheetState;
+import nl.qien.uren.repository.TimesheetRepository;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.time.YearMonth;
 import java.util.ArrayList;
 import java.util.List;
 
+@Service
 public class TimesheetService {
+
+    @Autowired
+    private TimesheetRepository timesheetRepository;
 
 
     /*
@@ -24,7 +32,11 @@ public class TimesheetService {
     3. employeeHasNoTimesheet. Controle methode die controleert of een employee al een timesheet heeft voor deze jaar + maand.
      */
     public boolean employeeHasNoTimesheet(Employee employee, YearMonth yearMonth){
-        return false;
+        boolean hasTimesheet = false;
+
+        List<Timesheet> timesheets = timesheetRepository.findAllByUserId(employee.getId());
+        //hier moet wat logica komen om de methode soms true en soms false terug te laten geven.
+        return hasTimesheet;
     }
 
     /*
