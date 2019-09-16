@@ -73,6 +73,13 @@ public class UserController {
         model.addAttribute("name", name);
         return "profile";
     }
+    @GetMapping("/viewprofile")
+    public String viewprofile(@RequestParam(name="name", required=false, defaultValue="wereld") String name, Model model) {
+        User user = userRepository.findByUsername(SecurityContextHolder.getContext().getAuthentication().getName());
+        model.addAttribute("userId", user.getId());
+        model.addAttribute("name", name);
+        return "viewprofile";
+    }
 
     @RequestMapping(value={"/changePassword/{passwordKey}"}, method = RequestMethod.GET)
     public ModelAndView changePassword(@PathVariable String passwordKey){

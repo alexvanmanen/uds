@@ -57,8 +57,8 @@
     </div>
     <div class="col-md-4">
         <p><h2>&nbsp;&nbsp;Profiel</h2></p>
-    </div>
-    <form style="width: 40%" name="updateprofile" onsubmit="return false;">
+    </div> <br><br><br><br><br><br>
+    <form style="width: 50%" name="updateprofile" onsubmit="return false;">
         <div class="form-row">
             <div class="col-md-4 mb-3">
                 <label>First name</label>
@@ -87,12 +87,14 @@
                 <label>Postcode</label>
                 <input type="text" class="form-control" id="zipcode" placeholder="Postcode" required>
             </div>
-            <div class="col-md-3 mb-3">
+        </div>
+        <div class="form-row">
+            <div class="col-md-6 mb-3">
                 <label>Stad</label>
                 <input type="text" class="form-control" id="city" placeholder="Stad" required>
             </div>
             <div class="col-md-3 mb-3">
-                <label>Avatar</label>
+                <label for="avatar">Avatar</label>
                 <select id="avatar" class="form-control" required>
                     <option value="crow_lg.png">Crow</option>
                     <option value="kraken_lg.png">Kraken</option>
@@ -109,10 +111,10 @@
                 <label>Avater kleur</label>
                 <input type="color" id="avatarcolor"class="form-control" name="avatarcolor" value="#A34AFE" required>
             </div>
-        </div>
-        <p>
-            <a class="btn btn-primary" href="manageuser" role="button">Terug naar overzicht</a>
-            <button type="submit" class="btn btn-primary" id="saveprofile">Opslaan</button></p>
+        </div><br><div>
+            <button type="submit" class="btn btn-primary" id="saveprofile" role="button">Opslaan</button>
+        <a class="btn btn-primary" href="viewprofile" role="button">bekijk profiel</a></div>
+
     </form>
 </div>
 </body>

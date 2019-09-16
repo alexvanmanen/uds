@@ -19,7 +19,13 @@ function getprofile(id) {
             housenumber = user.housenumber;
             city = user.city;
             avatar = user.avatar;
+            if (avatar == null) {
+                avatar = "giraffe_lg.png";
+            }
             avatarcolor = user.avatarcolor;
+            if (avatarcolor == null) {
+                avatarcolor = "#A34AFE";
+            }
             $("#email").val(email);
             $("#id1").val(id1);
             $("#firstname").val(firstname);
@@ -34,8 +40,9 @@ function getprofile(id) {
     )
     ;
 }
-$(document).ready(function(){
-    $("#saveprofile").click(function(){
+
+$(document).ready(function () {
+    $("#saveprofile").click(function () {
         var data = {
             firstname: document.forms["updateprofile"]["firstname"].value,
             id: document.forms["updateprofile"]["id1"].value,
@@ -49,7 +56,7 @@ $(document).ready(function(){
             avatarcolor: document.forms["updateprofile"]["avatarcolor"].value,
         };
         $.ajax({
-            url: '/uren/api/v1/updateUser/'+ document.forms["updateprofile"]["id1"].value,
+            url: '/uren/api/v1/updateUser/' + document.forms["updateprofile"]["id1"].value,
             type: 'put',
             dataType: 'json',
             contentType: 'application/json',
