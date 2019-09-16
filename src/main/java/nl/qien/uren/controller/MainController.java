@@ -7,12 +7,16 @@ import io.swagger.annotations.ApiResponses;
 import nl.qien.uren.entity.*;
 import nl.qien.uren.model.SendMail;
 import nl.qien.uren.repository.*;
+import nl.qien.uren.service.TimesheetService;
 import org.apache.commons.lang3.RandomStringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.web.bind.annotation.*;
 
+import java.time.LocalDate;
+import java.time.ZoneId;
+import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 
@@ -42,6 +46,9 @@ public class MainController {
 
     @Autowired
     private TimesheetEntryRepository timesheetEntryRepository;
+
+    @Autowired
+    TimesheetService timesheetService;
 
     @GetMapping("/employees")
     public List<Employee> findAll() {
@@ -161,6 +168,14 @@ public class MainController {
         SendMail newEmail = new SendMail(userDetails.getUsername(), "Password", "Your password for the account is \\r\\n Login : " + userDetails.getUsername() +" \\r\\n password is: " + password);
         newEmail.sendMailText(userDetails.getUsername(), "Password", "Your password for the account is Login : " + userDetails.getUsername() +" and the password is: " + password);
         userDetails.setPassword(passencrypt);
+        User newUser = userRepository.save(userDetails);
+        ZoneId z = ZoneId.of("Europe/Paris");
+        LocalDate today = LocalDate.now(z);
+        System.out.println(today);
+        String yearToday = today.toString().substring(0,4);
+        String monthToday = today.toString().substring(5,7);
+        System.out.println("yearToday =" +yearToday);
+        System.out.println("monthToday =" + monthToday);
         return userRepository.save(userDetails);
     }
 
