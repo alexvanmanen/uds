@@ -173,7 +173,7 @@ public class MainController {
         Employee newUser = userRepository.save(userDetails);
         String yearToday = today.toString().substring(0,4);
         String monthToday = today.toString().substring(5,7);
-        timesheetService.createTimesheetForEmployee(newUser, YearMonth.of(Integer.parseInt(yearToday), Integer.parseInt(monthToday)), "OPEN");
+        timesheetService.createTimesheetForEmployee(newUser, YearMonth.of(Integer.parseInt(yearToday), Integer.parseInt(monthToday)), TimesheetState.OPEN);
         return newUser;
     }
 
