@@ -83,6 +83,8 @@ public class UrenApplication  implements CommandLineRunner {
         TimesheetEntry timesheetEntry3 = new TimesheetEntry(5, 4, EntryKind.LEAVE_OF_ABSENCE, timesheetBenAug);
         timesheetAlexAug.setCustomerKey("8928308ALEX87283279");
         timesheetEntryRepository.saveAll(Arrays.asList(timesheetEntry1,timesheetEntry2, timesheetEntry3));
+
+
     }
 
 

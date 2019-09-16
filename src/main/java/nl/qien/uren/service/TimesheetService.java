@@ -51,7 +51,7 @@ public class TimesheetService {
     /*
     4. getActiveEmployees. Methode aanmaken die lijst van actieve employees ophaalt.
      */
-    private List<Employee> getActiveEmployees() {
+    public List<Employee> getActiveEmployees() {
         List<Employee> allEmployees = employeeRepository.findAll();
         List<Employee> activeEmployees = new ArrayList<>();
         for (Employee emp : allEmployees) {
