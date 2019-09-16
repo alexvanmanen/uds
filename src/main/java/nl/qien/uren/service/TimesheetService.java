@@ -69,9 +69,8 @@ public class TimesheetService {
     Maand + jaar = huidige jaar en maand, employee = aangemaakt employee en status = open.
      */
     public void createTimesheets() {
-
         for (Employee employee : getActiveEmployees()) {
-            if (employeeHasNoTimesheet(employee, YearMonth.now())) {
+            if (!employeeHasNoTimesheet(employee, YearMonth.now())) {
                 createTimesheetForEmployee(employee, YearMonth.now(), TimesheetState.OPEN);
             }
         }

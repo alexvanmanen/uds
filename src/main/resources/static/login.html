@@ -8,6 +8,7 @@
     <link rel="stylesheet" type="text/css" href="css/style.css">
     <script src="js/jquery-3.4.1.min.js"></script>
     <script src=js/script.js></script>
+    <script src=js/passwordforget.js></script>
     <script src=js/email.js></script>
     <style>
         body {font-family: Arial, Helvetica, sans-serif;}
@@ -112,10 +113,9 @@
 <div class="form-popup" id="emailResetForm">
     <form id="emailResetForm1" name="emailResetForm1" class="form-container" action="#">
         <h1>Email vergeten</h1>
-
         <label for="email"><b>Email</b></label>
         <input type="text" id="email1" placeholder="Enter Email" name="email1" required/>
-        <button type="submit" class="registerbtn" onclick="sendResetMail(); closeForm();">Stuur e-mail</button>
+        <button type="submit" class="registerbtn" id="forgetpassword" onclick="closeForm()">Stuur e-mail</button>
         <button type="button" class="registerbtn" onclick="closeForm()">Sluit formulier</button>
     </form>
 </div>

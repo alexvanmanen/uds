@@ -1,8 +1,7 @@
 package nl.qien.uren.controller;
 
-import nl.qien.uren.entity.Admin;
-import nl.qien.uren.entity.Timesheet;
-import nl.qien.uren.entity.User;
+import nl.qien.uren.entity.*;
+import nl.qien.uren.model.SendMail;
 import nl.qien.uren.repository.TimesheetRepository;
 import nl.qien.uren.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,6 +10,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 @Controller
 public class UserController {
@@ -20,6 +20,10 @@ public class UserController {
 
     @Autowired
     private UserRepository userRepository;
+
+    @Autowired
+    private BCryptPasswordEncoder bCryptPasswordEncoder;
+
 
     @RequestMapping(value={ "/showTimesheetToCustomer/{customerkey}"}, method = RequestMethod.GET)
     public ModelAndView showTimesheetToCustomer(@PathVariable String customerkey){
@@ -74,5 +78,23 @@ public class UserController {
         model.addAttribute("name", name);
         return "profile";
     }
-
+    @PostMapping("/forgotPassword")
+    public void forgotPassword(@RequestBody User userDetails) {
+        System.out.println("userDetails = " + userDetails.getUsername());
+        User user = userRepository.findByUsername(userDetails.getUsername());
+        user.setPasswordKey(KeyGenerator.generateKey());
+        userRepository.save(user);
+        new SendMail().sendMail(user);
+    }
+    @PostMapping("/changePassword/{passwordKey}")
+    public User createUser(@RequestBody User userDetails, @PathVariable String passwordKey) {
+        User user = userRepository.findByPasswordKey(passwordKey);
+        String password = userDetails.getPassword();
+        String passencrypt = bCryptPasswordEncoder.encode(password);
+        SendMail newEmail = new SendMail(user.getUsername(), "Password", "Your password for the account is \\r\\n Login : " + userDetails.getUsername() +" \\r\\n password is: " + password);
+        newEmail.sendMailText(user.getUsername(), "Password", "Your password for the account is Login : " + userDetails.getUsername() +" and the password is: " + password);
+        userDetails.setPassword(passencrypt);
+        User newUser = userRepository.save(userDetails);
+        return newUser;
+    }
 }

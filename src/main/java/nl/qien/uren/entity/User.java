@@ -40,6 +40,7 @@ public class User implements UserDetails {
     private String employer;
     private String avatar;
     private String avatarcolor;
+    private String passwordKey;
 
 
 

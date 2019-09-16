@@ -60,13 +60,6 @@ public class MainController {
         return userRepository.findAll();
     }
 
-    @GetMapping("/checkPassword/{email}/{password}")
-    @ResponseBody
-    public boolean checkPassword(@PathVariable String email, @PathVariable String password) {
-        //return userRepository.validateUser(email, password);
-        return true;
-    }
-
     @GetMapping("/count")
     public long getNumberOfEmployees() {
         return employeeRepository.count() + 1;
