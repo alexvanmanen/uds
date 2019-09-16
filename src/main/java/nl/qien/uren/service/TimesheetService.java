@@ -1,12 +1,14 @@
 package nl.qien.uren.service;
 
 import nl.qien.uren.entity.Employee;
+import nl.qien.uren.entity.Project;
 import nl.qien.uren.entity.Timesheet;
 import nl.qien.uren.entity.TimesheetState;
 import nl.qien.uren.repository.TimesheetRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDate;
 import java.time.YearMonth;
 import java.util.ArrayList;
 import java.util.List;
@@ -24,8 +26,11 @@ public class TimesheetService {
     Employee = aangemaakte gebruiker, status = OPEN.
      */
 
-    public void createTimesheetForEmployee(Employee employee, YearMonth yearMonth, TimesheetState state){
-
+    public void createTimesheetForEmployee(Project project, Employee employee, YearMonth yearMonth, TimesheetState state){
+        Timesheet timesheet = new Timesheet(project, employee, yearMonth, state);
+        timesheet.setState(TimesheetState.OPEN);
+        timesheet.getYearMonth(LocalDate.now());
+        timesheetRepository.save(timesheet);
     }
 
     /*
