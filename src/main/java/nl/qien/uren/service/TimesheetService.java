@@ -53,13 +53,13 @@ public class TimesheetService {
      */
     private List<Employee> getActiveEmployees() {
         List<Employee> allEmployees = employeeRepository.findAll();
-        for(Employee emp : allEmployees){
-            if (emp.isActive() == true){
-
+        List<Employee> activeEmployees = new ArrayList<>();
+        for (Employee emp : allEmployees) {
+            if (emp.isActive() == true) {
+                activeEmployees.add(emp);
             }
         }
-
-        return new ArrayList<Employee>();
+        return activeEmployees;
     }
 
     /*
