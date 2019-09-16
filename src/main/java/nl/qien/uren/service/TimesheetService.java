@@ -30,22 +30,12 @@ public class TimesheetService {
     @Autowired
     private ProjectRepository projectRepository;
 
-    /*
-    2. Aanroepen van CreateTimesheetForEmployee. Aanroepen van bovenstaande methode wanneer
-    er een nieuwe gebruiker wordt aangemaakt. De maand = huidige jaar + maand.
-    Employee = aangemaakte gebruiker, status = OPEN.
-     */
-
     public void createTimesheetForEmployee(Employee employee, YearMonth yearMonth, TimesheetState state) {
         Project project = new Project("Ellende", customerRepository.findById(1));
         projectRepository.save(project);
         Timesheet newTimesheet = new Timesheet(project, employee, yearMonth, state);
         timesheetRepository.save(newTimesheet);
     }
-
-    /*
-    3. employeeHasNoTimesheet. Controle methode die controleert of een employee al een timesheet heeft voor deze jaar + maand.
-     */
     public boolean employeeHasNoTimesheet(Employee employee, YearMonth yearMonth) {
         boolean hasTimesheet = false;
         List<Timesheet> timesheets = timesheetRepository.findAllByUserId(employee.getId());
@@ -53,13 +43,9 @@ public class TimesheetService {
             if (ts.getYearMonth().equals(yearMonth.now())) {
                 hasTimesheet = true;
                 return hasTimesheet;
-            } else {
-                hasTimesheet = false;
             }
         }
-
-        //hier moet wat logica komen om de methode soms true en soms false terug te laten geven.
-        return hasTimesheet;
+       return hasTimesheet;
     }
 
     /*
