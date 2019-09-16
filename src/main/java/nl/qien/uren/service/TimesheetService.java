@@ -5,6 +5,7 @@ import nl.qien.uren.entity.Project;
 import nl.qien.uren.entity.Timesheet;
 import nl.qien.uren.entity.TimesheetState;
 import nl.qien.uren.repository.CustomerRepository;
+import nl.qien.uren.repository.EmployeeRepository;
 import nl.qien.uren.repository.ProjectRepository;
 import nl.qien.uren.repository.TimesheetRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,6 +25,9 @@ public class TimesheetService {
     private CustomerRepository customerRepository;
 
     @Autowired
+    private EmployeeRepository employeeRepository;
+
+    @Autowired
     private ProjectRepository projectRepository;
 
     /*
@@ -35,6 +39,7 @@ public class TimesheetService {
     public void createTimesheetForEmployee(Employee employee, YearMonth yearMonth, TimesheetState state) {
         Project project = new Project("Ellende", customerRepository.findById(1));
         projectRepository.save(project);
+        System.out.println("employeeHasNoTimesheet(employee, yearMonth) = " + employeeHasNoTimesheet(employeeRepository.findById(4), yearMonth));
         Timesheet newTimesheet = new Timesheet(project, employee, yearMonth, state);
         timesheetRepository.save(newTimesheet);
     }
@@ -44,7 +49,6 @@ public class TimesheetService {
      */
     public boolean employeeHasNoTimesheet(Employee employee, YearMonth yearMonth) {
         boolean hasTimesheet = false;
-
         List<Timesheet> timesheets = timesheetRepository.findAllByUserId(employee.getId());
         for (Timesheet ts : timesheets) {
             if (ts.getYearMonth() == yearMonth.now()) {

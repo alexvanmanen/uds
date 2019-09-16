@@ -168,12 +168,8 @@ public class MainController {
         SendMail newEmail = new SendMail(userDetails.getUsername(), "Password", "Your password for the account is \\r\\n Login : " + userDetails.getUsername() +" \\r\\n password is: " + password);
         newEmail.sendMailText(userDetails.getUsername(), "Password", "Your password for the account is Login : " + userDetails.getUsername() +" and the password is: " + password);
         userDetails.setPassword(passencrypt);
-        ZoneId z = ZoneId.of("Europe/Paris");
-        LocalDate today = LocalDate.now(z);
         Employee newUser = userRepository.save(userDetails);
-        String yearToday = today.toString().substring(0,4);
-        String monthToday = today.toString().substring(5,7);
-        timesheetService.createTimesheetForEmployee(newUser, YearMonth.of(Integer.parseInt(yearToday), Integer.parseInt(monthToday)), TimesheetState.OPEN);
+        timesheetService.createTimesheetForEmployee(newUser, YearMonth.now(), TimesheetState.OPEN);
         return newUser;
     }
 
