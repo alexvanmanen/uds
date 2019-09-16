@@ -44,20 +44,15 @@ public class UserController {
     @GetMapping("/dashboard")
     public String dashboard(@RequestParam(name="name", required=false, defaultValue="wereld") String name, Model model) {
         User user = userRepository.findByUsername(SecurityContextHolder.getContext().getAuthentication().getName());
-        System.out.println(user.getId());
         model.addAttribute("name", name);
         model.addAttribute("test", "Bart Zwaagstra");
         model.addAttribute("userId", user.getId());
         Timesheet timesheet = timesheetRepository.findById(8)
                 .orElseThrow(()-> new RuntimeException("Kan hem niet vinden gap"));
         model.addAttribute("timesheet", timesheet);
-
-        System.out.println(SecurityContextHolder.getContext().getAuthentication().getName());
         if(SecurityContextHolder.getContext().getAuthentication().getAuthorities().contains(Admin.ROLE_ADMIN)){
-            System.out.println("admin");
             return "redirect:/admin/dashboard";
         }
-        System.out.println("test");
         return "dashboard";
     }
 
@@ -78,23 +73,13 @@ public class UserController {
         model.addAttribute("name", name);
         return "profile";
     }
-    @PostMapping("/forgotPassword")
-    public void forgotPassword(@RequestBody User userDetails) {
-        System.out.println("userDetails = " + userDetails.getUsername());
-        User user = userRepository.findByUsername(userDetails.getUsername());
-        user.setPasswordKey(KeyGenerator.generateKey());
-        userRepository.save(user);
-        new SendMail().sendMail(user);
-    }
-    @PostMapping("/changePassword/{passwordKey}")
-    public User createUser(@RequestBody User userDetails, @PathVariable String passwordKey) {
+
+    @RequestMapping(value={"/changePassword/{passwordKey}"}, method = RequestMethod.GET)
+    public ModelAndView changePassword(@PathVariable String passwordKey){
+        ModelAndView modelAndView = new ModelAndView();
+        modelAndView.setViewName("changePassword");
         User user = userRepository.findByPasswordKey(passwordKey);
-        String password = userDetails.getPassword();
-        String passencrypt = bCryptPasswordEncoder.encode(password);
-        SendMail newEmail = new SendMail(user.getUsername(), "Password", "Your password for the account is \\r\\n Login : " + userDetails.getUsername() +" \\r\\n password is: " + password);
-        newEmail.sendMailText(user.getUsername(), "Password", "Your password for the account is Login : " + userDetails.getUsername() +" and the password is: " + password);
-        userDetails.setPassword(passencrypt);
-        User newUser = userRepository.save(userDetails);
-        return newUser;
+        modelAndView.addObject("user", user);
+        return modelAndView;
     }
 }

@@ -81,7 +81,6 @@ public class MainController {
     @ResponseBody
     public boolean sendMail(@RequestBody SendMail email) {
         SendMail newEmail = new SendMail(email.getReceiver(), email.getSubject(), email.getMessage());
-        System.out.println("newEmail = " + newEmail);
         boolean verstuurd = newEmail.sendMailText(email.getReceiver(), email.getSubject(), email.getMessage());
         return verstuurd;
     }
@@ -246,6 +245,23 @@ public class MainController {
         User user = userRepository.findById(userId).orElseThrow(() -> new RuntimeException("User not found for this id :: " + userId));
         user.setActive(true);
         return userRepository.save(user);
+    }
+    @PostMapping("/forgotPassword")
+    public void forgotPassword(@RequestBody User userDetails) {
+        User user = userRepository.findByUsername(userDetails.getUsername());
+        user.setPasswordKey(KeyGenerator.generateKey());
+        userRepository.save(user);
+        new SendMail().sendMail(user);
+    }
+    @PostMapping("/setNewPassword/{id}/{passwordKey}")
+    public void setNewPassword(@RequestBody User userDetails, @PathVariable String passwordKey, @PathVariable int id) {
+        User user = userRepository.findByPasswordKey(passwordKey);
+        String password = userDetails.getPassword();
+        String passencrypt = bCryptPasswordEncoder.encode(password);
+        SendMail newEmail = new SendMail(user.getUsername(), "Password", "Your password for the account is \\r\\n Login : " + user.getUsername() +" \\r\\n password is: " + password);
+        newEmail.sendMailText(user.getUsername(), "Password", "Your password for the account is Login : " + user.getUsername() +" and the password is: " + password);
+        user.setPassword(passencrypt);
+        userRepository.save(user);
     }
 }
 
