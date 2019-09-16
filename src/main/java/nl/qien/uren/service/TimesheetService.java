@@ -47,8 +47,9 @@ public class TimesheetService {
 
         List<Timesheet> timesheets = timesheetRepository.findAllByUserId(employee.getId());
         for (Timesheet ts : timesheets) {
-            if (ts.getYearMonth() == yearMonth.now()) {
+            if (ts.getYearMonth().equals(yearMonth.now())) {
                 hasTimesheet = true;
+                return hasTimesheet;
             } else {
                 hasTimesheet = false;
             }
