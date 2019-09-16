@@ -1,8 +1,11 @@
 package nl.qien.uren.service;
 
 import nl.qien.uren.entity.Employee;
+import nl.qien.uren.entity.Project;
 import nl.qien.uren.entity.Timesheet;
 import nl.qien.uren.entity.TimesheetState;
+import nl.qien.uren.repository.CustomerRepository;
+import nl.qien.uren.repository.ProjectRepository;
 import nl.qien.uren.repository.TimesheetRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -17,6 +20,11 @@ public class TimesheetService {
     @Autowired
     private TimesheetRepository timesheetRepository;
 
+    @Autowired
+    private CustomerRepository customerRepository;
+
+    @Autowired
+    private ProjectRepository projectRepository;
 
     /*
     2. Aanroepen van CreateTimesheetForEmployee. Aanroepen van bovenstaande methode wanneer
@@ -25,11 +33,10 @@ public class TimesheetService {
      */
 
     public void createTimesheetForEmployee(Employee employee, YearMonth yearMonth, TimesheetState state){
-        Timesheet newTimesheet = new Timesheet(employee, yearMonth, state);
-        System.out.println("employee.getId() = " + employee.getId());
-        System.out.println("yearmonth" + yearMonth);
-        System.out.println("state = " + state);
-
+        Project project = new Project("Ellende", customerRepository.findById(1));
+        projectRepository.save(project);
+        Timesheet newTimesheet = new Timesheet(project, employee, yearMonth, state);
+        timesheetRepository.save(newTimesheet);
     }
 
     /*
