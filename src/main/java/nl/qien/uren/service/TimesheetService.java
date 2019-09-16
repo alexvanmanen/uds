@@ -24,8 +24,11 @@ public class TimesheetService {
     Employee = aangemaakte gebruiker, status = OPEN.
      */
 
-    public void createTimesheetForEmployee(Employee employee, YearMonth yearMonth, String state){
-
+    public void createTimesheetForEmployee(Employee employee, YearMonth yearMonth, TimesheetState state){
+        Timesheet newTimesheet = new Timesheet(employee, yearMonth, state);
+        System.out.println("employee.getId() = " + employee.getId());
+        System.out.println("yearmonth" + yearMonth);
+        System.out.println("state = " + state);
 
     }
 
