@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
 import java.time.YearMonth;
+import java.time.ZoneId;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -26,10 +27,12 @@ public class TimesheetService {
     Employee = aangemaakte gebruiker, status = OPEN.
      */
 
-    public void createTimesheetForEmployee(Project project, Employee employee, YearMonth yearMonth, TimesheetState state){
-        Timesheet timesheet = new Timesheet(project, employee, yearMonth, state);
+    public void createTimesheetForEmployee(Employee employee, YearMonth yearMonth, TimesheetState state){
+        Timesheet timesheet = new Timesheet(employee, yearMonth, state);
         timesheet.setState(TimesheetState.OPEN);
-        timesheet.getYearMonth(LocalDate.now());
+        ZoneId z = ZoneId.of("Europe/Paris");
+        LocalDate today = LocalDate.now(z);
+
         timesheetRepository.save(timesheet);
     }
 

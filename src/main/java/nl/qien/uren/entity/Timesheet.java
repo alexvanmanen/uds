@@ -36,9 +36,8 @@ public class Timesheet {
     private String customerKey;
     public Timesheet(){ }
 
-    public Timesheet(Project project, Employee employee, YearMonth yearMonth, TimesheetState state){
+    public Timesheet(Employee employee, YearMonth yearMonth, TimesheetState state){
         this.state = state;
-        this.project = project;
         this.user = employee;
         this.yearMonth = yearMonth;
     }
