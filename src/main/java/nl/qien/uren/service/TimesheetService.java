@@ -24,7 +24,7 @@ public class TimesheetService {
     Employee = aangemaakte gebruiker, status = OPEN.
      */
 
-    public void createTimesheetForEmployee(Employee employee, YearMonth yearMonth, TimesheetState state){
+    public void createTimesheetForEmployee(Employee employee, YearMonth yearMonth, String state){
 
 
     }
