@@ -3,6 +3,7 @@ package nl.qien.uren;
 import nl.qien.uren.entity.*;
 import nl.qien.uren.model.EntryKind;
 import nl.qien.uren.repository.*;
+import nl.qien.uren.service.TimesheetService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
@@ -17,6 +18,9 @@ import java.util.Set;
 
 @SpringBootApplication
 public class UrenApplication  implements CommandLineRunner {
+
+    @Autowired
+    TimesheetService timesheetService;
 
     @Autowired
     TimesheetEntryRepository timesheetEntryRepository;
@@ -84,7 +88,7 @@ public class UrenApplication  implements CommandLineRunner {
         timesheetAlexAug.setCustomerKey("8928308ALEX87283279");
         timesheetEntryRepository.saveAll(Arrays.asList(timesheetEntry1,timesheetEntry2, timesheetEntry3));
 
-
+        //System.out.println(timesheetService.getActiveEmployees());
     }
 
 
