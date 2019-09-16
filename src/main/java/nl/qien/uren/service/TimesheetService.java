@@ -1,7 +1,6 @@
 package nl.qien.uren.service;
 
 import nl.qien.uren.entity.Employee;
-import nl.qien.uren.entity.Project;
 import nl.qien.uren.entity.Timesheet;
 import nl.qien.uren.entity.TimesheetState;
 import nl.qien.uren.repository.TimesheetRepository;
@@ -29,10 +28,11 @@ public class TimesheetService {
 
     public void createTimesheetForEmployee(Employee employee, YearMonth yearMonth, TimesheetState state){
         Timesheet timesheet = new Timesheet(employee, yearMonth, state);
-        timesheet.setState(TimesheetState.OPEN);
+
         ZoneId z = ZoneId.of("Europe/Paris");
         LocalDate today = LocalDate.now(z);
-
+        timesheet.setYearMonth(today);
+        timesheet.setState(TimesheetState.OPEN);
         timesheetRepository.save(timesheet);
     }
 
