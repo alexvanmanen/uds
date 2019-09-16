@@ -11,6 +11,7 @@ import nl.qien.uren.repository.TimesheetRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.time.Year;
 import java.time.YearMonth;
 import java.util.ArrayList;
 import java.util.List;
@@ -68,9 +69,10 @@ public class TimesheetService {
     Maand + jaar = huidige jaar en maand, employee = aangemaakt employee en status = open.
      */
     public void createTimesheets() {
+
         for (Employee employee : getActiveEmployees()) {
-            if (employeeHasNoTimesheet(null, null)) {
-                createTimesheetForEmployee(null, null, null);
+            if (employeeHasNoTimesheet(employee, YearMonth.now())) {
+                createTimesheetForEmployee(employee, YearMonth.now(), TimesheetState.OPEN);
             }
         }
     }
