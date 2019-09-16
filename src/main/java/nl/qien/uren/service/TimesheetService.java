@@ -39,7 +39,6 @@ public class TimesheetService {
     public void createTimesheetForEmployee(Employee employee, YearMonth yearMonth, TimesheetState state) {
         Project project = new Project("Ellende", customerRepository.findById(1));
         projectRepository.save(project);
-        System.out.println("employeeHasNoTimesheet(employee, yearMonth) = " + employeeHasNoTimesheet(employeeRepository.findById(4), yearMonth));
         Timesheet newTimesheet = new Timesheet(project, employee, yearMonth, state);
         timesheetRepository.save(newTimesheet);
     }
@@ -51,8 +50,9 @@ public class TimesheetService {
         boolean hasTimesheet = false;
         List<Timesheet> timesheets = timesheetRepository.findAllByUserId(employee.getId());
         for (Timesheet ts : timesheets) {
-            if (ts.getYearMonth() == yearMonth.now()) {
+            if (ts.getYearMonth().equals(yearMonth.now())) {
                 hasTimesheet = true;
+                return hasTimesheet;
             } else {
                 hasTimesheet = false;
             }
