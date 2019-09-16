@@ -39,7 +39,6 @@ public class TimesheetService {
     public void createTimesheetForEmployee(Employee employee, YearMonth yearMonth, TimesheetState state) {
         Project project = new Project("Ellende", customerRepository.findById(1));
         projectRepository.save(project);
-        System.out.println("employeeHasNoTimesheet(employee, yearMonth) = " + employeeHasNoTimesheet(employeeRepository.findById(4), yearMonth));
         Timesheet newTimesheet = new Timesheet(project, employee, yearMonth, state);
         timesheetRepository.save(newTimesheet);
     }
