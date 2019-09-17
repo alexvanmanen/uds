@@ -30,7 +30,11 @@ public class UserController {
         ModelAndView modelAndView = new ModelAndView();
         modelAndView.setViewName("showTimesheetToCustomer");
         Timesheet ts = timesheetRepository.findByCustomerKey(customerkey);
-        modelAndView.addObject("timesheet", ts);
+        try {
+            modelAndView.addObject("timesheet", ts);
+        } catch (NullPointerException e) {
+            throw new RuntimeException("No valid timesheet found");
+        }
         return modelAndView;
     }
 
