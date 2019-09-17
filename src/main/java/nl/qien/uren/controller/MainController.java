@@ -261,6 +261,7 @@ public class MainController {
         SendMail newEmail = new SendMail(user.getUsername(), "Password", "Your password for the account is \\r\\n Login : " + user.getUsername() +" \\r\\n password is: " + password);
         newEmail.sendMailText(user.getUsername(), "Password", "Your password for the account is Login : " + user.getUsername() +" and the password is: " + password);
         user.setPassword(passencrypt);
+        user.setPasswordKey(null);
         userRepository.save(user);
     }
 }

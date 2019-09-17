@@ -35,7 +35,7 @@ public class SendMail {
         String url = "http://localhost:8080/uren/changePassword/"+ user.getPasswordKey();
         subject = "html mail";
         String contentOfMessage = "Beste "+user.getFirstname()+" " + user.getLastname()+", <p> Klik op de onderstaande link om je wachtwoord te resetten.</p>" +
-                "<a href='"+url+"'>klik hier om het in te zien</a>";
+                "<a href='"+url+"'>klik hier om het wachtwoord te wijzigen</a>";
         return sendMailHTML(receiver, "Qien wachtwoord vergeten :( ", contentOfMessage);
     }
 
