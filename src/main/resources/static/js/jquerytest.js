@@ -2,17 +2,19 @@ $(document).ready(function(){
 
     function fillTable(yearMonth){
         $("#tableOfUsers tbody").empty();
-        $.get("/uren/api/v1/users", function(users){
+        $.get("/uren/api/v1/employees", function(users){
             var user_data = '<tbody>';
             $.each(users, function (elementNumber, user) {
-                user_data += '<trgit>';
-                user_data += '<td>'+clean(user.id)+'</td>';
-                user_data += '<td>'+clean(user.firstname)+'</td>';
-                user_data += '<td>'+clean(user.lastname)+'</td>';
-                user_data += '<td>'+clean(user.username)+'</td>';
-                user_data += '<td>'+clean(user.employer)+'</td>';
-                user_data += '<td>'+clean(showState2(user.timesheets,yearMonth))+'</td>';
-                user_data += '</tr>';
+                if(user.active == true) {
+                    user_data += '<trgit>';
+                    user_data += '<td>' + clean(user.id) + '</td>';
+                    user_data += '<td>' + clean(user.firstname) + '</td>';
+                    user_data += '<td>' + clean(user.lastname) + '</td>';
+                    user_data += '<td>' + clean(user.username) + '</td>';
+                    user_data += '<td>' + clean(user.employer) + '</td>';
+                    user_data += '<td>' + clean(showState2(user.timesheets, yearMonth)) + '</td>';
+                    user_data += '</tr>';
+                }
             });
             user_data += "</tbody>";
             $('#tableOfUsers').append(user_data);
