@@ -29,9 +29,6 @@ public class UrenApplication  implements CommandLineRunner {
     TimesheetRepository timesheetRepository;
 
     @Autowired
-    CustomerRepository customerRepository;
-
-    @Autowired
     ProjectRepository projectRepository;
 
     @Autowired
@@ -50,9 +47,6 @@ public class UrenApplication  implements CommandLineRunner {
     @Override
     @Transactional
     public void run(String... strings) throws Exception {
-        Customer customerRobin = new Customer("Robin", "Coes", "sigma_fi19@yahoo.com", bCryptPasswordEncoder.encode("Robin01"));
-        Customer customerBart = new Customer("Bart", "Zwaagstra", "bartzwaagstra@live.nl", bCryptPasswordEncoder.encode("Bart01"));
-        customerRepository.saveAll(Arrays.asList(customerRobin, customerBart));
 
         Employee employeeAlex = new Employee("Alex", "van Manen", "alex@vanmanenit.nl", bCryptPasswordEncoder.encode("Alex01"));
         Employee employeeBen = new Employee("Ben", "Vosse", "benvosse@hotmail.com", bCryptPasswordEncoder.encode("Ben01"));
@@ -62,14 +56,12 @@ public class UrenApplication  implements CommandLineRunner {
         adminRepository.save(cora);
 
         Set<Project> projectsA = new HashSet<>();
-        Project projectVanCustomerRobin = new Project("Project van customer Robin", customerRobin);
+        Project projectVanCustomerRobin = new Project("Project van customer Robin", "sigma_fi19@yahoo.com");
         projectsA.add(projectVanCustomerRobin);
-        customerRobin.setProjects(projectsA);
         projectRepository.saveAll(projectsA);
 
         Set<Project> projectsVanCustomerBart = new HashSet<>();
-        projectsVanCustomerBart.add(new Project("Project van customer Bart", customerBart));
-        customerBart.setProjects(projectsVanCustomerBart);
+        projectsVanCustomerBart.add(new Project("Project van customer Bart", "bartzwaagstra@live.nl"));
         projectRepository.saveAll(projectsVanCustomerBart);
 
 

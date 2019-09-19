@@ -4,14 +4,12 @@ import nl.qien.uren.entity.Employee;
 import nl.qien.uren.entity.Project;
 import nl.qien.uren.entity.Timesheet;
 import nl.qien.uren.entity.TimesheetState;
-import nl.qien.uren.repository.CustomerRepository;
 import nl.qien.uren.repository.EmployeeRepository;
 import nl.qien.uren.repository.ProjectRepository;
 import nl.qien.uren.repository.TimesheetRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.time.Year;
 import java.time.YearMonth;
 import java.util.ArrayList;
 import java.util.List;
@@ -23,16 +21,13 @@ public class TimesheetService {
     private TimesheetRepository timesheetRepository;
 
     @Autowired
-    private CustomerRepository customerRepository;
-
-    @Autowired
     private EmployeeRepository employeeRepository;
 
     @Autowired
     private ProjectRepository projectRepository;
 
     public void createTimesheetForEmployee(Employee employee, YearMonth yearMonth, TimesheetState state) {
-        Project project = new Project("Ellende", customerRepository.findById(1));
+        Project project = projectRepository.getOne(1);
         projectRepository.save(project);
         Timesheet newTimesheet = new Timesheet(project, employee, yearMonth, state);
         timesheetRepository.save(newTimesheet);

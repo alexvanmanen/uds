@@ -4,6 +4,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.HashSet;
 import java.util.Set;
 
 @Entity
@@ -13,17 +14,17 @@ public class Project implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
-    @ManyToOne
-    @JoinColumn(name = "CUSTOMER_ID")
-    private Customer customer;
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "project")
+    private Set<Employee> employees = new HashSet<>();
 
     private String name;
+    private String email;
 
     public Project(){}
 
-    public Project(String name, Customer customer){
+    public Project(String name, String email){
         this.name = name;
-        this.customer = customer;
+        this.email = email;
     }
 
     public String getName(){
@@ -39,11 +40,16 @@ public class Project implements Serializable {
     }
 
     public String getCustomerEmailAddress(){
-        return customer.getUsername();
+        return email;
     }
 
     public String getCustomerName(){
-        return customer.getFirstname();
+        return name;
     }
+
+    public void setEmployees(Set<Employee> employees){
+        this.employees = employees;
+    }
+
 
 }

@@ -35,9 +35,6 @@ public class MainController {
     private EmployeeRepository employeeRepository;
 
     @Autowired
-    private CustomerRepository customerRepository;
-
-    @Autowired
     private UserRepository userRepository;
 
     @Autowired
@@ -46,6 +43,9 @@ public class MainController {
 
     @Autowired
     private TimesheetEntryRepository timesheetEntryRepository;
+
+    @Autowired
+    private ProjectRepository projectRepository;
 
     @Autowired
     TimesheetService timesheetService;
@@ -113,9 +113,9 @@ public class MainController {
         return timesheetRepository.findAll();
     }
 
-    @PostMapping("/createCustomer")
-    public boolean createCustomer(@RequestBody Customer customer) {
-        customerRepository.save(customer);
+    @PostMapping("/createProject")
+    public boolean createProject(@RequestBody Project project) {
+        projectRepository.save(project);
         return false;
     }
 
@@ -148,9 +148,9 @@ public class MainController {
     }
 
 
-    @GetMapping("/getcustomers")
-    public List<Customer> getCustomers() {
-        return customerRepository.findAll();
+    @GetMapping("/getprojects")
+    public List<Project> getCustomers() {
+        return projectRepository.findAll();
     }
 
     @PostMapping("/createUser")

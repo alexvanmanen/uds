@@ -14,6 +14,11 @@ import javax.persistence.*;
 @DiscriminatorValue(value = "employee")
 public class Employee extends User{
 
+    @ManyToOne
+    @JoinColumn(name = "PROJECT_ID")
+    private Project project;
+
+
     public Employee(String firstname, String lastname, String username, String password){
         super(firstname, lastname, username, password);
     }
