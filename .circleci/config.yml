@@ -39,7 +39,3 @@ jobs:
 
       # run tests!
       - run: mvn clean install -DskipTests
-      - run:
-          name: CF Deploy
-          command: |
-          cf h
