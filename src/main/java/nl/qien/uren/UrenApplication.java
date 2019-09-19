@@ -56,12 +56,12 @@ public class UrenApplication  implements CommandLineRunner {
         adminRepository.save(cora);
 
         Set<Project> projectsA = new HashSet<>();
-        Project projectVanCustomerRobin = new Project("Project van customer Robin", "sigma_fi19@yahoo.com");
+        Project projectVanCustomerRobin = new Project("Robin's Dojo", "sigma_fi19@yahoo.com");
         projectsA.add(projectVanCustomerRobin);
         projectRepository.saveAll(projectsA);
 
         Set<Project> projectsVanCustomerBart = new HashSet<>();
-        projectsVanCustomerBart.add(new Project("Project van customer Bart", "bartzwaagstra@live.nl"));
+        projectsVanCustomerBart.add(new Project("Bart's Bingo Paleis", "bartzwaagstra@live.nl"));
         projectRepository.saveAll(projectsVanCustomerBart);
 
 

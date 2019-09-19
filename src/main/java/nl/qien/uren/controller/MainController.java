@@ -149,7 +149,7 @@ public class MainController {
 
 
     @GetMapping("/getprojects")
-    public List<Project> getCustomers() {
+    public List<Project> getProjects() {
         return projectRepository.findAll();
     }
 

@@ -30,6 +30,9 @@ public class Project implements Serializable {
     public String getName(){
         return name;
     }
+    public void setName(String name){
+         this.name = name;
+    }
 
     public int getId(){
         return id;
@@ -39,8 +42,11 @@ public class Project implements Serializable {
         this.id = id;
     }
 
-    public String getCustomerEmailAddress(){
+    public String getEmail(){
         return email;
+    }
+    public void setEmail(String email){
+        this.email = email;
     }
 
     public String getCustomerName(){

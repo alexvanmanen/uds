@@ -72,7 +72,7 @@ public class Timesheet {
     }
 
     public String getCustomerEmailAddress() {
-        return project.getCustomerEmailAddress();
+        return project.getEmail();
     }
 
     public String getEmployeeName() {
