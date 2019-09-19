@@ -31,10 +31,7 @@ public class TimeSheetController {
         Timesheet timesheet = timesheetRepository.findById(id).orElseThrow(() -> new RuntimeException("timesheet not found for this id :: " + id));
         if (timesheet.getCustomerKey() == customerkey) {
             timesheet.setState(TimesheetState.APPROVED);
-            timesheet.setCustomerKey(null);
-            timesheetRepository.save(timesheet);
-            new SendMail().sendApproveMail(timesheet);
-        }
+
         else {
             new RuntimeException("No timesheet eligable for rejection/approval");
         }
