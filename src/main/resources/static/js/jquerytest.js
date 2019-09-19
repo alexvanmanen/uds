@@ -11,7 +11,7 @@ $(document).ready(function(){
                     user_data += '<td>' + clean(user.firstname) + '</td>';
                     user_data += '<td>' + clean(user.lastname) + '</td>';
                     user_data += '<td>' + clean(user.username) + '</td>';
-                    user_data += '<td>' + clean(user.employer) + '</td>';
+                    user_data += '<td>' + clean(showProjectName(user.timesheets, yearMonth)) + '</td>';
                     user_data += '<td>' + clean(showState2(user.timesheets, yearMonth)) + '</td>';
                     user_data += '</tr>';
                 }
@@ -35,6 +35,20 @@ $(document).ready(function(){
             for(var i =0;i<timesheets.length;i++){
                 if(timesheets[i].yearMonth === yearMonth)
                     return timesheets[i].state;
+            }
+
+        }
+
+    }
+    function showProjectName(timesheets, yearMonth){
+
+        if(timesheets.length === 0){
+            return "-";
+        }else{
+
+            for(var i =0;i<timesheets.length;i++){
+                if(timesheets[i].yearMonth === yearMonth)
+                    return timesheets[i].customerName;
             }
 
         }

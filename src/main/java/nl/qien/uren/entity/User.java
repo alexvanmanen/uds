@@ -37,7 +37,6 @@ public class User implements UserDetails {
     private int phonenumber;
     private String accountnumber;
     private Boolean firstlogin;
-    private String employer;
     private String avatar;
     private String avatarcolor;
     private String passwordKey;
