@@ -160,7 +160,9 @@ public class MainController {
         SendMail newEmail = new SendMail(userDetails.getUsername(), "Password", "Your password for the account is \\r\\n Login : " + userDetails.getUsername() +" \\r\\n password is: " + password);
         newEmail.sendMailText(userDetails.getUsername(), "Password", "Your password for the account is Login : " + userDetails.getUsername() +" and the password is: " + password);
         userDetails.setPassword(passencrypt);
-        userDetails.setProject(projectRepository.findById(3));
+        int projectid =userDetails.getProject().getId();
+        //SUPER SMELLY CODE :)
+        userDetails.setProject(projectRepository.findById(projectid));
         Employee newUser = userRepository.save(userDetails);
         timesheetService.createTimesheetForEmployee(projectRepository.findById(3), newUser, YearMonth.now(), TimesheetState.OPEN);
         return newUser;

@@ -4,6 +4,9 @@ $(document).ready(function(){
             firstname: document.forms["createuserform"]["firstname"].value,
             lastname: document.forms["createuserform"]["lastname"].value,
             username: document.forms["createuserform"]["email"].value,
+            project: {
+                id: document.forms["createuserform"]["dropdownprojects"].value,
+            },
             active: true,
         };
         $.ajax({

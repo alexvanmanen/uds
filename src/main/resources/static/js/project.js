@@ -22,7 +22,7 @@ function dropDownProjects() {
             var name = data[i]['name'];
             var id = data[i]['id'];
             tableContent = tableContent +
-                "<option value='"+id+"'>" + name + "</option>";
+                "<option id='project' value='"+id+"'>" + name + "</option>";
 
         }
         document.getElementById("dropdownprojects").innerHTML = tableContent;
