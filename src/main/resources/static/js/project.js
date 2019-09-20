@@ -15,6 +15,10 @@ function getProjects() {
     });
 }
 
+function showEditProject(id){
+    window.location.assign( "./projectprofile.html?id=" + id)
+}
+
 function dropDownProjects() {
     ajax_get('/uren/api/v1/getprojects', function (data) {
         var tableContent;

@@ -12,11 +12,11 @@ function getprojectprofile(id) {
             email = project.email;
             active = project.active;
 
-            if(user.avatar != null) {
-                avatar = user.avatar;
+            if(project.avatar != null) {
+                avatar = project.avatar;
             }
-            if(user.avatarcolor != null) {
-                avatarcolor = user.avatarcolor;
+            if(project.avatarcolor != null) {
+                avatarcolor = project.avatarcolor;
             }
 
             $("#email").val(email);
