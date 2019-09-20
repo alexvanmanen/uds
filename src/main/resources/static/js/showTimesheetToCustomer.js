@@ -66,14 +66,14 @@ function getTimesheetRow(timesheet, day){
 
 function approveTimesheet(id, customerkey) {
     $.post("/uren/approveTimesheet/"+id+"/"+customerkey, function(){
-        alert("Timesheet van medewerker-id: " + id + " is geaccordeerd.")}
+        alert("Timesheet is geaccordeerd.")}
     );
 
 }
 
 function rejectTimesheet(id, customerkey) {
     $.post("/uren/rejectTimesheet/"+id+"/"+customerkey, function(){
-        alert("Timesheet van medewerker-id: " + id + " is afgekeurd.")}
+        alert("Timesheet is afgekeurd.")}
     );
 
 }
