@@ -8,12 +8,10 @@
     <link rel="stylesheet" href="../css/bootstrapstyle.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.0/js/bootstrap.min.js"></script>
-    <script src=js/script.js></script>
-    <script src="js/profile.js"></script>
-    <script src="js/projectprofile.js"></script>
-    <script>
-        getprojectprofile("[[${projectId}]]");
-    </script>
+    <script src=../js/script.js></script>
+    <script src="../js/profile.js"></script>
+    <script src="../js/projectprofile.js"></script>
+
 </head>
 
 <body>
@@ -107,5 +105,10 @@
 
     </form>
 </div>
+<script>
+    let params = new URLSearchParams(location.search);
+    if(params.get('id')) {
+        getprojectprofile(params.get('id'));}
+</script>
 </body>
 </html>
