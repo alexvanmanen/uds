@@ -48,13 +48,6 @@ public class UrenApplication  implements CommandLineRunner {
     @Transactional
     public void run(String... strings) throws Exception {
 
-        Employee employeeAlex = new Employee("Alex", "van Manen", "alex@vanmanenit.nl", bCryptPasswordEncoder.encode("Alex01"));
-        Employee employeeBen = new Employee("Ben", "Vosse", "benvosse@hotmail.com", bCryptPasswordEncoder.encode("Ben01"));
-        employeeRepository.saveAll(Arrays.asList(employeeAlex,employeeBen));
-
-        Admin cora = new Admin("Cora", "de Lima-Roos", "admin@qien.nl", bCryptPasswordEncoder.encode("Admin01"));
-        adminRepository.save(cora);
-
         Set<Project> projectsQien = new HashSet<>();
         Project projectVanCustomerQien = new Project("Qien", "admin@qien.nl");
         projectsQien.add(projectVanCustomerQien);
@@ -69,6 +62,15 @@ public class UrenApplication  implements CommandLineRunner {
         projectsVanCustomerBart.add(new Project("Bart's Bingo Paleis", "bartzwaagstra@live.nl"));
         projectRepository.saveAll(projectsVanCustomerBart);
 
+
+        Employee employeeAlex = new Employee("Alex", "van Manen", "alex@vanmanenit.nl", bCryptPasswordEncoder.encode("Alex01"));
+        employeeAlex.setProject(projectRepository.findById(1));
+        Employee employeeBen = new Employee("Ben", "Vosse", "benvosse@hotmail.com", bCryptPasswordEncoder.encode("Ben01"));
+        employeeBen.setProject(projectRepository.findById(2));
+        employeeRepository.saveAll(Arrays.asList(employeeAlex,employeeBen));
+
+        Admin cora = new Admin("Cora", "de Lima-Roos", "admin@qien.nl", bCryptPasswordEncoder.encode("Admin01"));
+        adminRepository.save(cora);
 
         Timesheet timesheetAlexAug = new Timesheet(projectVanCustomerRobin, employeeAlex, YearMonth.of(2019,8), TimesheetState.PENDING);
         Timesheet timesheetAlexJul = new Timesheet(projectVanCustomerRobin, employeeAlex, YearMonth.of(2019,7), TimesheetState.DECLINED);

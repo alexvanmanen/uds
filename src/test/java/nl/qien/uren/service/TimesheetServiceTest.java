@@ -1,6 +1,7 @@
 package nl.qien.uren.service;
 
 import nl.qien.uren.entity.Employee;
+import nl.qien.uren.repository.ProjectRepository;
 import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -16,6 +17,9 @@ public class TimesheetServiceTest {
     @Autowired
     TimesheetService timesheetService;
 
+    @Autowired
+    ProjectRepository projectRepository;
+
     @Test
     public void employeeHasNoTimesheetTest() {
         //No arrange for this test (except of the autowired timesheetService)
@@ -26,6 +30,7 @@ public class TimesheetServiceTest {
     @Test
     public void employeeHasNoTimesheetTestWithValidEmployee() {
         Employee employee = new Employee("Alex", "van Manen", "alex@alex.nl", "bcrypt wachtwoordje"); //Arrange
+        employee.setProject(projectRepository.findById(1));
         boolean result = timesheetService.employeeHasNoTimesheet(employee, YearMonth.of(2019,01)); //Act
         Assert.assertEquals(false, result); //Assert
     }
