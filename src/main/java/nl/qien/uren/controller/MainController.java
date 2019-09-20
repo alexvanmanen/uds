@@ -164,7 +164,7 @@ public class MainController {
         //SUPER SMELLY CODE :)
         userDetails.setProject(projectRepository.findById(projectid));
         Employee newUser = userRepository.save(userDetails);
-        timesheetService.createTimesheetForEmployee(projectRepository.findById(3), newUser, YearMonth.now(), TimesheetState.OPEN);
+        timesheetService.createTimesheetForEmployee(projectRepository.findById(projectid), newUser, YearMonth.now(), TimesheetState.OPEN);
         return newUser;
     }
 
