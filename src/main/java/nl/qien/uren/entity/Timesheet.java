@@ -79,6 +79,8 @@ public class Timesheet {
         return user.getFirstname() + " " + user.getLastname();
     }
 
+    public String getEmployeeEmail() { return user.getUsername(); }
+
     public String getCustomerKey() {
         return customerKey;
     }

@@ -49,7 +49,7 @@ public class SendMail {
     }
 
     public boolean sendApproveMail(Timesheet timesheet){
-        receiver = timesheet.getCustomerEmailAddress();
+        receiver = timesheet.getEmployeeEmail();
         subject = "html mail";
         String contentOfMessage = "Beste "+timesheet.getEmployeeName()+", <p> jouw urenformulier is goedgekeurd door: "+timesheet.getCustomerName();
 
@@ -58,7 +58,7 @@ public class SendMail {
     }
 
     public boolean sendSadMail(Timesheet timesheet){
-        receiver = timesheet.getCustomerEmailAddress();
+        receiver = timesheet.getEmployeeEmail();
         String url = "https://media1.tenor.com/images/9413ffc5a11722a3cc456a88810750bd/tenor.gif?itemid=14193216";
         subject = "html mail";
         String contentOfMessage = "Beste "+timesheet.getEmployeeName()+", <p> jouw urenformulier is FOUT en daarom afgewezen door: "+timesheet.getCustomerName()+". Super vervelend natuurlijk!</p>" +
