@@ -14,6 +14,23 @@ function getProjects() {
 
     });
 }
+
+function dropDownProjects() {
+    ajax_get('/uren/api/v1/getprojects', function (data) {
+        var tableContent;
+        for (i = 0; i < data.length; i++) {
+            var email = data[i]['email'];
+            var name = data[i]['name'];
+            var id = data[i]['id'];
+            tableContent += "<option>" + name + "</option>";
+
+        }
+        document.getElementById("robin").innmerHtml = tableContent;
+
+    });
+}
+
+
 function ajax_get(url, callback) {
     var xmlhttp = new XMLHttpRequest();
     xmlhttp.onreadystatechange = function () {

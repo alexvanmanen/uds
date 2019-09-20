@@ -10,6 +10,7 @@
     <script src=../js/script.js></script>
     <script src="../js/UrenRegistraties.js"></script>
     <script src="../js/timesheet.js"></script>
+    <script src="../js/project.js"></script>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
     <link rel="stylesheet" href="../css/bootstrapstyle.css">
@@ -93,6 +94,15 @@
                         <label class="col-form-label">Email bevestigen:</label>
                         <input type="text" class="form-control" id="email1" name="email1">
                     </div>
+
+                    <div class="form-group">
+                        <label class="col-form-label">Kies Project:</label>
+                            <select onclick="dropDownProjects()" id="robin" class="form-control">
+                                <option>Voorbeeld</option>
+                            </select>
+                    </div>
+
+
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" onclick="getUsers()" data-dismiss="modal">Close</button>
