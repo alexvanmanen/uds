@@ -44,13 +44,13 @@ function activateproject(setproject, id) {
     var url;
     var action;
     var active;
-    if (setuser === true) {
-        url = '/uren/api/v1/activateUser/' + id;
+    if (setproject === true) {
+        url = '/uren/api/v1/activateProject/' + id;
         action = '<a class="btn btn-danger" onclick="activateproject(false, ' + id + ')" role="button">Deactiveer</a>';
         active = true;
-    } else if (setuser === false) {
-        url = '/uren/api/v1/deactivateUser/' + id;
-        action = '<a class="btn btn-success" onclick="activateproject(true, ' + id + ')" role="button">activeer</a>';
+    } else if (setproject === false) {
+        url = '/uren/api/v1/deactivateProject/' + id;
+        action = '<a class="btn btn-success" onclick="activateproject(true, ' + id + ')" role="button">Activeer</a>';
         active = false;
     }
     $.ajax({

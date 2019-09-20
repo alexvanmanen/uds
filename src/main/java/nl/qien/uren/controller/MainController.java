@@ -247,6 +247,15 @@ public class MainController {
         User user = userRepository.findById(userId).orElseThrow(() -> new RuntimeException("User not found for this id :: " + userId));
         user.setActive(false);
         return userRepository.save(user);
+
+
+        }
+
+    @PutMapping("/deactivateProject/{projectId}")
+    public Project deactivateProject(@PathVariable int projectId){
+        Project project= projectRepository.findById(projectId);
+        project.setActive(false);
+        return projectRepository.save(project);
     }
     @PutMapping("/activateUser/{userId}")
     public User activateUser(@PathVariable int userId) {

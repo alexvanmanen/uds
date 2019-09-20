@@ -19,6 +19,8 @@ public class Project implements Serializable {
 
     private String name;
     private String email;
+    private boolean active= true;
+
 
     public Project(){}
 
@@ -58,4 +60,8 @@ public class Project implements Serializable {
     }
 
 
+    public void setActive(boolean active) {
+        this.active=active;
+
+    }
 }
