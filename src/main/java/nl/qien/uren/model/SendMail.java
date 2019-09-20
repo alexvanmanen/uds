@@ -52,7 +52,9 @@ public class SendMail {
         receiver = timesheet.getCustomerEmailAddress();
         subject = "html mail";
         String contentOfMessage = "Beste "+timesheet.getEmployeeName()+", <p> jouw urenformulier is goedgekeurd door: "+timesheet.getCustomerName();
+
         return sendMailHTML(receiver, "Urenformulier goedgekeurd!", contentOfMessage);
+
     }
 
     public boolean sendSadMail(Timesheet timesheet){
