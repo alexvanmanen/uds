@@ -184,6 +184,11 @@ public class MainController {
 
     }
 
+    @GetMapping("/getProject/{id}")
+    public Project getProject(@PathVariable int id) {
+        return projectRepository.findById(id);
+    }
+
     /*
         PUT request with url
         http://localhost:8080/uren/api/v1/updateUser/1

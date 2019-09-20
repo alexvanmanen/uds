@@ -8,7 +8,7 @@ function getProjects() {
             tableContent = tableContent +
                 '<tr><td>' + email + '</td>' +
                 '<td>' + name + '</td>'+
-                '<td><button type="button" class="btn btn-outline-secondary" onclick="showEditUser(`' + id + '`);">Wijzig/ De-activeer</button> </td></tr>';
+                '<td><button type="button" class="btn btn-outline-secondary" onclick="showEditProject(`' + id + '`);">Wijzig/ De-activeer</button> </td></tr>';
         }
         document.getElementById("projecttable").innerHTML = tableContent;
 
