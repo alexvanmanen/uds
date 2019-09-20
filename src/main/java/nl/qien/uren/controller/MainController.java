@@ -14,9 +14,7 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.web.bind.annotation.*;
 
-import java.time.LocalDate;
 import java.time.YearMonth;
-import java.time.ZoneId;
 import java.util.List;
 import java.util.Optional;
 
@@ -257,6 +255,14 @@ public class MainController {
         project.setActive(false);
         return projectRepository.save(project);
     }
+
+    @PutMapping("/activateProject/{projectId}")
+    public Project activateProject(@PathVariable int projectId) {
+        Project project = projectRepository.findById(projectId);
+        project.setActive(true);
+        return projectRepository.save(project);
+    }
+
     @PutMapping("/activateUser/{userId}")
     public User activateUser(@PathVariable int userId) {
         User user = userRepository.findById(userId).orElseThrow(() -> new RuntimeException("User not found for this id :: " + userId));
