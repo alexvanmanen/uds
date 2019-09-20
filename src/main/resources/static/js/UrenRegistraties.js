@@ -1,13 +1,3 @@
-function buildTable(month) { //
-    var tabel = "<table><tr><td>" + getMonthName(month) + "</td><td>Opdracht</td><td>Overwerk</td><td>Verlof</td><td>Ziek</td><td>Training</td><td>Overig</td><td>Verklaring overig</td></tr>";
-    for (var i = 1; i < calculateNumberOfDaysInMonth(month) + 1; i++) {
-        tabel += "<tr 'month'><td>" + i + " " + getMonthName(month) + "</><td><input id='WORK" + i + "' type='number'></td><td><input id='OVERTIME" + i + "' type='number'></td><td><input id='LEAVE_OF_ABSENCE" + i + "' type='number'></td><td><input id='ILL" + i + "' type='number'></td><td><input id='TRAINING" + i + "' type='number'></td><td><input id='OTHERS" + i + "' type='number'></td><td><input id='verklaring' type='String'></td></tr>"
-    }
-
-    tabel += "<tr><br><tr\>";
-    tabel += "<button id='btn' onclick='SaveHours("+month+")'>Declareer Uren</button>"
-    document.getElementById("tabel").innerHTML = tabel;
-}
 var timesheetID;
 function buildHourTable2(id) {
     function disabled(state) {
@@ -16,7 +6,6 @@ function buildHourTable2(id) {
         }
         return "";
     }
-
     function getEntry(dayOfTheMonth, entryKind){
         var entries = retrievedTimesheets[id].entries;
         for(var i = 0 ; i<entries.length ; i++){
@@ -26,8 +15,6 @@ function buildHourTable2(id) {
         }
         return "";
     }
-
-
 
     var disabled = disabled(retrievedTimesheets[id].state);
     timesheetID = retrievedTimesheets[id].id;
