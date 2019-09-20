@@ -7,7 +7,7 @@ function getProjects() {
             var id = data[i]['id'];
             tableContent = tableContent +
                 '<tr><td>' + email + '</td>' +
-                '<td>' + name + '</td>'+
+                '<td>' + name + '</td>' +
                 '<td><button type="button" class="btn btn-outline-secondary" onclick="showEditProject(`' + id + '`);">Wijzig/ De-activeer</button> </td></tr>';
         }
         document.getElementById("projecttable").innerHTML = tableContent;
@@ -22,7 +22,7 @@ function dropDownProjects() {
             var name = data[i]['name'];
             var id = data[i]['id'];
             tableContent = tableContent +
-                "<option id='project' value='"+id+"'>" + name + "</option>";
+                "<option id='project' value='" + id + "'>" + name + "</option>";
 
         }
         document.getElementById("dropdownprojects").innerHTML = tableContent;
@@ -49,8 +49,8 @@ function ajax_get(url, callback) {
     xmlhttp.send();
 }
 
-$(document).ready(function(){
-    $("#saveproject").click(function(){
+$(document).ready(function () {
+    $("#saveproject").click(function () {
         var data = {
             name: document.forms["createprojectform"]["projectname"].value,
             email: document.forms["createprojectform"]["email"].value
@@ -67,3 +67,22 @@ $(document).ready(function(){
         });
     });
 });
+
+function saveProject(id) {
+    var data = {
+        id: id,
+        project: {
+            id: document.forms["useradmin"]["dropdownprojects"].value
+        },
+    };
+    $.ajax({
+        url: '/uren/api/v1/editProject',
+        type: 'put',
+        dataType: 'json',
+        contentType: 'application/json',
+        success: function (data) {
+            alert("Project aangepast");
+        },
+        data: JSON.stringify(data)
+    });
+}

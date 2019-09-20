@@ -6,6 +6,7 @@ function getprofile(id) {
     var street;
     var housenumber;
     var zipcode;
+    var project;
     var city;
     var avatar = "giraffe_lg.png"
     var avatarcolor = "#A34AFE";
@@ -19,6 +20,7 @@ function getprofile(id) {
             zipcode = user.zipcode;
             street = user.street;
             housenumber = user.housenumber;
+            project = user.project.id;
             city = user.city;
             if(user.avatar != null) {
                 avatar = user.avatar;
@@ -35,6 +37,7 @@ function getprofile(id) {
             $("#housenumber").val(housenumber);
             $("#zipcode").val(zipcode);
             $("#city").val(city);
+            $("#dropdownprojects").val(project);
             $("#avatar").attr({
                 "src": url.concat(avatar),
                 "style": avatarwidth.concat(avatarcolor),

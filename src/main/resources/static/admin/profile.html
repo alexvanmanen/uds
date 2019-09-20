@@ -10,11 +10,7 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.0/js/bootstrap.min.js"></script>
     <script src=../js/script.js></script>
     <script src="../js/jqueryprofile.js"></script>
-    <script>let params = new URLSearchParams(location.search);
-    if(params.get('id')) {
-        getprofile(params.get('id'));
-    }
-   </script>
+    <script src="../js/project.js"></script>
 </head>
 
 <body>
@@ -63,49 +59,59 @@
         <p><h2>&nbsp;&nbsp;Profiel</h2></p>
     </div>
 <br><br><br><br><br><br>
-    <form style="width: 75%">
-        <fieldset disabled>
+    <form id="useradmin" style="width: 75%">
         <div class="form-row">
             <div class="col-md-4 mb-3">
                 <label>First name</label>
-                <input type="text" class="form-control" id="firstname" placeholder="Voornaam" value="Mark" required>
+                <input type="text" class="form-control" id="firstname" placeholder="Voornaam" value="Mark" disabled>
             </div>
             <div class="col-md-4 mb-3">
                 <label>Last name</label>
-                <input type="text" class="form-control" id="lastname" placeholder="Achternaam" value="" required>
+                <input type="text" class="form-control" id="lastname" placeholder="Achternaam" value="" disabled>
             </div>
             <div class="col-md-4 mb-3">
                 <label>Username</label>
-                <input type="text" class="form-control" id="email" placeholder="Email" value="" required>
+                <input type="text" class="form-control" id="email" placeholder="Email" value="" disabled>
             </div>
         </div>
         <div class="form-row">
             <div class="col-md-6 mb-3">
                 <label>Straat</label>
-                <input type="text" class="form-control" id="street" placeholder="Straat" required>
+                <input type="text" class="form-control" id="street" placeholder="Straat" disabled>
             </div>
             <div class="col-md-3 mb-3">
                 <label>Huisnummer</label>
-                <input type="text" class="form-control" id="housenumber" placeholder="Huisnummer" required>
+                <input type="text" class="form-control" id="housenumber" placeholder="Huisnummer" disabled>
             </div>
             <div class="col-md-3 mb-3">
                 <label>Postcode</label>
-                <input type="text" class="form-control" id="zipcode" placeholder="Postcode" required>
+                <input type="text" class="form-control" id="zipcode" placeholder="Postcode" disabled>
             </div>
             <div class="col-md-3 mb-3">
                 <label>Stad</label>
-                <input type="text" class="form-control" id="city" placeholder="Stad" required>
+                <input type="text" class="form-control" id="city" placeholder="Stad" disabled>
             </div>
             <div class="col-md-3 mb-3">
                 <label>Active</label>
-                <input type="text" class="form-control is-valid" id="active" placeholder="Actief" required>
+                <input type="text" class="form-control is-valid" id="active" placeholder="Actief" disabled>
+            </div>
+            <div class="col-md-6 mb-3">
+                <label class="col-form-label">Project</label>
+                <select  id="dropdownprojects" class="form-control" onchange="saveProject(params.get('id'));">
+
+                </select>
             </div>
 
         </div>
-        </fieldset><br>
+        <br>
         <a class="btn btn-primary" href="manageuser" role="button">Terug naar overzicht</a>
         <a id="activebtn"></a>
 
     </form>
+    <script>dropDownProjects();
+    let params = new URLSearchParams(location.search);
+    if(params.get('id')) {
+        getprofile(params.get('id'));
+    }</script>
 </body>
 </html>

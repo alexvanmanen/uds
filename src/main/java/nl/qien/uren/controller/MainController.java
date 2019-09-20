@@ -129,7 +129,8 @@ public class MainController {
 
     @PostMapping("/updateTimesheet")
     public void updateTimesheet(@RequestBody Timesheet ts) {
-        Timesheet timesheet = timesheetRepository.findById(ts.getId()).orElseThrow(() -> new RuntimeException("timesheet not found for this id :: " + ts.getId()));;
+        Timesheet timesheet = timesheetRepository.findById(ts.getId()).orElseThrow(() -> new RuntimeException("timesheet not found for this id :: " + ts.getId()));
+        ;
 
         for (TimesheetEntry timesheetEntry : ts.getEntries()) {
             timesheetEntry.setTimesheet(timesheet);
@@ -155,15 +156,24 @@ public class MainController {
     public User createUser(@RequestBody Employee userDetails) {
         String password = RandomStringUtils.randomNumeric(8);
         String passencrypt = bCryptPasswordEncoder.encode(password);
-        SendMail newEmail = new SendMail(userDetails.getUsername(), "Password", "Your password for the account is \\r\\n Login : " + userDetails.getUsername() +" \\r\\n password is: " + password);
-        newEmail.sendMailText(userDetails.getUsername(), "Password", "Your password for the account is Login : " + userDetails.getUsername() +" and the password is: " + password);
+        SendMail newEmail = new SendMail(userDetails.getUsername(), "Password", "Your password for the account is \\r\\n Login : " + userDetails.getUsername() + " \\r\\n password is: " + password);
+        newEmail.sendMailText(userDetails.getUsername(), "Password", "Your password for the account is Login : " + userDetails.getUsername() + " and the password is: " + password);
         userDetails.setPassword(passencrypt);
-        int projectid =userDetails.getProject().getId();
+        int projectid = userDetails.getProject().getId();
         //SUPER SMELLY CODE :)
         userDetails.setProject(projectRepository.findById(projectid));
         Employee newUser = userRepository.save(userDetails);
         timesheetService.createTimesheetForEmployee(projectRepository.findById(projectid), newUser, YearMonth.now(), TimesheetState.OPEN);
         return newUser;
+    }
+    @PutMapping("/editProject")
+    public User editProject(@RequestBody Employee userDetails) {
+        Employee emp = employeeRepository.findById(userDetails.id);
+        int projectid = userDetails.getProject().getId();
+        //SUPER SMELLY CODE :)
+        emp.setProject(projectRepository.findById(projectid));
+         userRepository.save(emp);
+       return emp;
     }
 
     @GetMapping("/getUsers")
@@ -197,6 +207,7 @@ public class MainController {
 	"emailadress" : "john@oneManArmy.com"
 }
      */
+
     @PutMapping("/updateUser/{userId}")
     public User updateUser(@PathVariable int userId, @RequestBody User userDetails) {
         User user = userRepository.findById(userId)
@@ -229,7 +240,7 @@ public class MainController {
             user.setAccountnumber(userDetails.getAccountnumber());
         }
         if (userDetails.getZipcode() != null) {
-         user.setZipcode(userDetails.getZipcode());
+            user.setZipcode(userDetails.getZipcode());
         }
         if (userDetails.getAvatar() != null) {
             user.setAvatar(userDetails.getAvatar());
@@ -256,6 +267,7 @@ public class MainController {
         return projectRepository.save(project);
     }
 
+
     @PutMapping("/activateProject/{projectId}")
     public Project activateProject(@PathVariable int projectId) {
         Project project = projectRepository.findById(projectId);
@@ -269,6 +281,7 @@ public class MainController {
         user.setActive(true);
         return userRepository.save(user);
     }
+
     @PostMapping("/forgotPassword")
     public void forgotPassword(@RequestBody User userDetails) {
         User user = userRepository.findByUsername(userDetails.getUsername());
@@ -276,13 +289,14 @@ public class MainController {
         userRepository.save(user);
         new SendMail().sendMail(user);
     }
+
     @PostMapping("/setNewPassword/{id}/{passwordKey}")
     public void setNewPassword(@RequestBody User userDetails, @PathVariable String passwordKey, @PathVariable int id) {
         User user = userRepository.findByPasswordKey(passwordKey);
         String password = userDetails.getPassword();
         String passencrypt = bCryptPasswordEncoder.encode(password);
-        SendMail newEmail = new SendMail(user.getUsername(), "Password", "Your password for the account is \\r\\n Login : " + user.getUsername() +" \\r\\n password is: " + password);
-        newEmail.sendMailText(user.getUsername(), "Password", "Your password for the account is Login : " + user.getUsername() +" and the password is: " + password);
+        SendMail newEmail = new SendMail(user.getUsername(), "Password", "Your password for the account is \\r\\n Login : " + user.getUsername() + " \\r\\n password is: " + password);
+        newEmail.sendMailText(user.getUsername(), "Password", "Your password for the account is Login : " + user.getUsername() + " and the password is: " + password);
         user.setPassword(passencrypt);
         user.setPasswordKey(null);
         userRepository.save(user);
