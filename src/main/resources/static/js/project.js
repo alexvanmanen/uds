@@ -17,15 +17,15 @@ function getProjects() {
 
 function dropDownProjects() {
     ajax_get('/uren/api/v1/getprojects', function (data) {
-        var tableContent;
+        var tableContent = '<select  id="dropdownprojects" class="form-control">';
         for (i = 0; i < data.length; i++) {
-            var email = data[i]['email'];
             var name = data[i]['name'];
             var id = data[i]['id'];
-            tableContent += "<option>" + name + "</option>";
+            tableContent = tableContent +
+                "<option value='"+id+"'>" + name + "</option>";
 
         }
-        document.getElementById("robin").innmerHtml = tableContent;
+        document.getElementById("dropdownprojects").innerHTML = tableContent;
 
     });
 }
