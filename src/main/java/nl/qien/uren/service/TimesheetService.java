@@ -26,8 +26,10 @@ public class TimesheetService {
     @Autowired
     private ProjectRepository projectRepository;
 
-    public void createTimesheetForEmployee(Employee employee, YearMonth yearMonth, TimesheetState state) {
-        Project project = projectRepository.getOne(1);
+    public void createTimesheetForEmployee(Project project, Employee employee, YearMonth yearMonth, TimesheetState state) {
+        if (project == null) {
+            project = projectRepository.getOne(1);
+        }
         projectRepository.save(project);
         Timesheet newTimesheet = new Timesheet(project, employee, yearMonth, state);
         timesheetRepository.save(newTimesheet);
@@ -66,7 +68,7 @@ public class TimesheetService {
     public void createTimesheets() {
         for (Employee employee : getActiveEmployees()) {
             if (!employeeHasNoTimesheet(employee, YearMonth.now())) {
-                createTimesheetForEmployee(employee, YearMonth.now(), TimesheetState.OPEN);
+                createTimesheetForEmployee(employee.getProject(), employee, YearMonth.now(), TimesheetState.OPEN);
             }
         }
     }

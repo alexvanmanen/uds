@@ -162,7 +162,7 @@ public class MainController {
         userDetails.setPassword(passencrypt);
         userDetails.setProject(projectRepository.findById(3));
         Employee newUser = userRepository.save(userDetails);
-        timesheetService.createTimesheetForEmployee(newUser, YearMonth.now(), TimesheetState.OPEN);
+        timesheetService.createTimesheetForEmployee(projectRepository.findById(3), newUser, YearMonth.now(), TimesheetState.OPEN);
         return newUser;
     }
 

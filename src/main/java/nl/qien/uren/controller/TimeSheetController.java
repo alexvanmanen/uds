@@ -29,7 +29,7 @@ public class TimeSheetController {
     @PostMapping("/approveTimesheet/{id}/{customerkey}")
     public void approveTimesheet(@PathVariable int id, @PathVariable String customerkey) {
         Timesheet timesheet = timesheetRepository.findById(id).orElseThrow(() -> new RuntimeException("timesheet not found for this id :: " + id));
-        if (timesheet.getCustomerKey() == customerkey) {
+        if (timesheet.getCustomerKey().equals(customerkey)) {
             timesheet.setState(TimesheetState.APPROVED);
             timesheet.setCustomerKey(null);
             timesheetRepository.save(timesheet);
