@@ -17,7 +17,7 @@ function getProjects() {
 
 function dropDownProjects() {
     ajax_get('/uren/api/v1/getprojects', function (data) {
-        var tableContent = '<select  id="dropdownprojects" class="form-control">';
+        var tableContent;
         for (i = 0; i < data.length; i++) {
             var name = data[i]['name'];
             var id = data[i]['id'];
