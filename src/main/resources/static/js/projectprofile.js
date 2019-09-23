@@ -72,10 +72,8 @@ function activateproject(setproject, id) {
 
 $(document).ready(function () {
     $("#updateproject").click(function () {
-        alert("je bent nu hier");
-        alert(document.forms["updateproject1"]["id"].value);
         var data = {
-            name: document.forms["updateproject1"]["name"].value,
+            name: document.forms["updateproject1"]["projectname"].value,
             email: document.forms["updateproject1"]["email"].value,
             phonenumber: document.forms["updateproject1"]["phonenumber"].value,
             avatar: document.forms["updateproject1"]["avatar"].value,
