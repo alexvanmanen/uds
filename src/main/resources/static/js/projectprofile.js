@@ -69,3 +69,29 @@ function activateproject(setproject, id) {
         }
     });
 }
+
+$(document).ready(function () {
+    $("#updateproject").click(function () {
+        alert("je bent nu hier");
+        var data = {
+            name: document.forms["updateproject"]["name"].value,
+            email: document.forms["updateproject"]["email"].value,
+            phonenumber: document.forms["updateproject"]["phonenumber"].value,
+            avatar: document.forms["updateproject"]["avatar"].value,
+            avatarcolor: document.forms["updateproject"]["avatarcolor"].value,
+
+
+        };
+        $.ajax({
+            url: '/uren/api/v1/updateProject/' + document.forms["updateproject"]["id"].value,
+            type: 'put',
+            dataType: 'json',
+            contentType: 'application/json',
+            success: function (data) {
+                alert("project opgeslagen");
+                getprojectprofile(document.forms["updateproject"]["id"].value);
+            },
+            data: JSON.stringify(data)
+        });
+    });
+});
