@@ -24,8 +24,6 @@ public class SendMail {
         this.message = message;
     }
 
-
-
     public SendMail(){
 
     }
@@ -35,8 +33,8 @@ public class SendMail {
         String url = "http://localhost:8080/uren/changePassword/"+ user.getPasswordKey();
         subject = "html mail";
         String contentOfMessage = "Beste "+user.getFirstname()+" " + user.getLastname()+", <p> Klik op de onderstaande link om je wachtwoord te resetten.</p>" +
-                "<a href='"+url+"'>klik hier om het wachtwoord te wijzigen</a>";
-        return sendMailHTML(receiver, "Qien wachtwoord vergeten :( ", contentOfMessage);
+                "<a href='"+url+"'>klik hier om het wachtwoord te wijzigen.</a>";
+        return sendMailHTML(receiver, "Qien wachtwoord vergeten :(", contentOfMessage);
     }
 
     public boolean sendMail(Timesheet timesheet){
@@ -44,15 +42,16 @@ public class SendMail {
         String url = "http://localhost:8080/uren/showTimesheetToCustomer/"+ timesheet.getCustomerKey();
         subject = "html mail";
         String contentOfMessage = "Beste "+timesheet.getCustomerName()+", <p> er staat een werkbriefje van "+timesheet.getEmployeeName()+" klaar om goed te keuren</p>" +
-                "<a href='"+url+"'>klik hier om het in te zien</a>";
+                "<a href='"+url+"'>klik hier om het in te zien.</a>";
         return sendMailHTML(receiver, "Goedkeuren urenformulier Qien", contentOfMessage);
     }
 
     public boolean sendApproveMail(Timesheet timesheet){
         receiver = timesheet.getEmployeeEmail();
+        String url = "https://media1.tenor.com/images/305dd88cc6ad71068b776e0646d3f460/tenor.gif?itemid=3555043";
         subject = "html mail";
-        String contentOfMessage = "Beste "+timesheet.getEmployeeName()+", <p> jouw urenformulier is goedgekeurd door: "+timesheet.getCustomerName();
-
+        String contentOfMessage = "Beste "+timesheet.getEmployeeName()+", <p> jouw urenformulier is goedgekeurd door: "+timesheet.getCustomerName() +
+                "</p><p>Gefeliciteerd!</p><img src='"+url+"'>";
         return sendMailHTML(receiver, "Urenformulier goedgekeurd!", contentOfMessage);
 
     }

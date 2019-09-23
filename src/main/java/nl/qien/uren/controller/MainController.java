@@ -156,8 +156,8 @@ public class MainController {
     public User createUser(@RequestBody Employee userDetails) {
         String password = RandomStringUtils.randomNumeric(8);
         String passencrypt = bCryptPasswordEncoder.encode(password);
-        SendMail newEmail = new SendMail(userDetails.getUsername(), "Password", "Your password for the account is \\r\\n Login : " + userDetails.getUsername() + " \\r\\n password is: " + password);
-        newEmail.sendMailText(userDetails.getUsername(), "Password", "Your password for the account is Login : " + userDetails.getUsername() + " and the password is: " + password);
+        SendMail newEmail = new SendMail(userDetails.getUsername(), "Nieuw wachtwoord Qien", "Welkom! Het wachtwoord voor: gebruikersnaam : " + userDetails.getUsername() + " is: " + password);
+        newEmail.sendMailText(userDetails.getUsername(),"Nieuw wachtwoord Qien", "Welkom! Het wachtwoord voor: gebruikersnaam : " + userDetails.getUsername() + " is: " + password);
         userDetails.setPassword(passencrypt);
         int projectid = userDetails.getProject().getId();
         //SUPER SMELLY CODE :)
@@ -309,8 +309,8 @@ public class MainController {
         User user = userRepository.findByPasswordKey(passwordKey);
         String password = userDetails.getPassword();
         String passencrypt = bCryptPasswordEncoder.encode(password);
-        SendMail newEmail = new SendMail(user.getUsername(), "Password", "Your password for the account is \\r\\n Login : " + user.getUsername() + " \\r\\n password is: " + password);
-        newEmail.sendMailText(user.getUsername(), "Password", "Your password for the account is Login : " + user.getUsername() + " and the password is: " + password);
+        SendMail newEmail = new SendMail(user.getUsername(), "Wachtwoord veranderd", "Beste " + user.getUsername() + ", het wachtwoord is gewijzigd!");
+        newEmail.sendMailText(user.getUsername(), "Wachtwoord veranderd", "Beste " + user.getUsername() + ", het wachtwoord is gewijzigd!");
         user.setPassword(passencrypt);
         user.setPasswordKey(null);
         userRepository.save(user);
