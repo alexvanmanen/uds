@@ -33,7 +33,7 @@
                     <span class="glyphicon glyphicon-menu-hamburger"></span>
                 </button> <ul class = "dropdown-menu">
                     <li><a href="dashboard">Home</a></li>
-                    <li><a href="profile">Profiel</a></li>
+                    <li><a href="viewprofile">Profiel</a></li>
                     <li><a href="#">Instellingen</a></li>
                     <li><form action="/uren/logout">
                         <input  type="submit" value="Logout"/></form></li>
@@ -123,10 +123,13 @@
                 <label>Avatar kleur</label>
                 <input type="color" id="avatarcolor"class="form-control" name="avatarcolor" value="#A34AFE" required>
             </div>
-        </div><br><div>
+            <div class="form-row">
+                <div class="col-sm-10">
+                    <br>
             <button type="submit" class="btn btn-primary" id="saveprofile" role="button">Opslaan</button>
         <a class="btn btn-primary" href="viewprofile" role="button">bekijk profiel</a></div>
-
+            </div>
+        </div>
     </form>
 </div>
 </body>
