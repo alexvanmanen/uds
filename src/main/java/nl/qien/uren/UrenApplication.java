@@ -49,17 +49,17 @@ public class UrenApplication  implements CommandLineRunner {
     public void run(String... strings) throws Exception {
 
         Set<Project> projectsQien = new HashSet<>();
-        Project projectVanCustomerQien = new Project("Qien", "admin@qien.nl");
+        Project projectVanCustomerQien = new Project("Qien", "admin@qien.nl", 0345123456);
         projectsQien.add(projectVanCustomerQien);
         projectRepository.saveAll(projectsQien);
 
         Set<Project> projectsA = new HashSet<>();
-        Project projectVanCustomerRobin = new Project("Robin's Dojo", "sigma_fi19@yahoo.com");
+        Project projectVanCustomerRobin = new Project("Robin's Dojo", "sigma_fi19@yahoo.com", 68867654);
         projectsA.add(projectVanCustomerRobin);
         projectRepository.saveAll(projectsA);
 
         Set<Project> projectsVanCustomerBart = new HashSet<>();
-        projectsVanCustomerBart.add(new Project("Bart's Bingo Paleis", "bartzwaagstra@live.nl"));
+        projectsVanCustomerBart.add(new Project("Bart's Bingo Paleis", "bartzwaagstra@live.nl", 953847429));
         projectRepository.saveAll(projectsVanCustomerBart);
 
 

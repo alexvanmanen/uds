@@ -1,12 +1,14 @@
 function getProjects() {
     ajax_get('/uren/api/v1/getprojects', function (data) {
-        var tableContent = "<tr><th>Email</th><th>Projectnaam</th><th>Wijzigen/ De-activeren</th></tr>";
+        var tableContent = "<tr><th>Email</th><th>Telefoonnummer</th><th>Projectnaam</th><th>Wijzigen/ De-activeren</th></tr>";
         for (i = 0; i < data.length; i++) {
             var email = data[i]['email'];
+            var phonenumber = data[i]['phonenumber'];
             var name = data[i]['name'];
             var id = data[i]['id'];
             tableContent = tableContent +
                 '<tr><td>' + email + '</td>' +
+                '<td>' + phonenumber + '</td>' +
                 '<td>' + name + '</td>' +
                 '<td><button type="button" class="btn btn-outline-secondary" onclick="showEditProject(`' + id + '`);">Wijzig/ De-activeer</button> </td></tr>';
         }
@@ -57,7 +59,8 @@ $(document).ready(function () {
     $("#saveproject").click(function () {
         var data = {
             name: document.forms["createprojectform"]["projectname"].value,
-            email: document.forms["createprojectform"]["email"].value
+            email: document.forms["createprojectform"]["email"].value,
+            phonenumber: document.forms["createprojectform"]["phonenumber"].value
         };
         $.ajax({
             url: '/uren/api/v1/createProject',

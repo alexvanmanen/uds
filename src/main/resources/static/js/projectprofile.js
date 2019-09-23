@@ -2,6 +2,7 @@ function getprojectprofile(id) {
     var email;
     var active;
     var projectname;
+    var phonenumber;
     var avatar = "giraffe_lg.png"
     var avatarcolor = "#A34AFE";
 
@@ -10,6 +11,7 @@ function getprojectprofile(id) {
             var avatarwidth = "width:80px; background-color: ";
             projectname = project.name;
             email = project.email;
+            phonenumber = project.phonenumber;
             active = project.active;
 
             if(project.avatar != null) {
@@ -20,6 +22,7 @@ function getprojectprofile(id) {
             }
 
             $("#email").val(email);
+            $("#phonenumber").val(phonenumber);
             $("#projectname").val(projectname);
             $("#active").val(active);
 

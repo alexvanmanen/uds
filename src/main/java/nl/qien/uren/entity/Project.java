@@ -1,7 +1,5 @@
 package nl.qien.uren.entity;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.HashSet;
@@ -19,14 +17,16 @@ public class Project implements Serializable {
 
     private String name;
     private String email;
+    private int phonenumber;
     private boolean active= true;
 
 
     public Project(){}
 
-    public Project(String name, String email){
+    public Project(String name, String email, int phonenumber){
         this.name = name;
         this.email = email;
+        this.phonenumber = phonenumber;
     }
 
     public String getName(){
@@ -39,7 +39,6 @@ public class Project implements Serializable {
     public int getId(){
         return id;
     }
-
     public void setId(int id){
         this.id = id;
     }
@@ -50,6 +49,9 @@ public class Project implements Serializable {
     public void setEmail(String email){
         this.email = email;
     }
+
+    public int getPhonenumber() {return phonenumber; }
+    public void setPhonenumber() { this.phonenumber = phonenumber; }
 
     public String getCustomerName(){
         return name;
