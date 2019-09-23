@@ -6,6 +6,7 @@ function getProjects() {
             var phonenumber = data[i]['phonenumber'];
             var name = data[i]['name'];
             var id = data[i]['id'];
+            var active = data[i]['active'];
             tableContent = tableContent +
                 '<tr><td>' + email + '</td>' +
                 '<td>' + phonenumber + '</td>' +

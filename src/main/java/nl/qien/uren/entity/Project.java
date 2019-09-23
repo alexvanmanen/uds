@@ -64,6 +64,8 @@ public class Project implements Serializable {
 
     public void setActive(boolean active) {
         this.active=active;
-
+    }
+    public boolean isActive() {
+        return active;
     }
 }
