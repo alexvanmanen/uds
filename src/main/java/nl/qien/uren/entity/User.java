@@ -11,10 +11,7 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 import javax.persistence.*;
-import java.util.Arrays;
-import java.util.Collection;
-import java.util.HashSet;
-import java.util.Set;
+import java.util.*;
 
 @Getter
 @Setter
@@ -34,12 +31,13 @@ public class User implements UserDetails {
     private String housenumber;
     private String zipcode;
     private String city;
-    private int phonenumber;
+    private String phonenumber;
     private String accountnumber;
     private Boolean firstlogin;
     private String avatar;
     private String avatarcolor;
     private String passwordKey;
+    private String dateofbirth;
 
 
 

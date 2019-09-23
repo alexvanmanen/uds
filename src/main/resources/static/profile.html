@@ -60,22 +60,26 @@
     </div> <br><br><br><br><br><br>
     <form style="width: 50%" name="updateprofile" onsubmit="return false;">
         <div class="form-row">
-            <div class="col-md-4 mb-3">
+            <div class="col-md-3 mb-3">
                 <label>Voornaam</label>
                 <input type="text" class="form-control" id="firstname" placeholder="Voornaam" value="Mark" required>
                 <input type="hidden" class="form-control" id="id1" value="" required>
             </div>
-            <div class="col-md-4 mb-3">
+            <div class="col-md-3 mb-3">
                 <label>Achternaam</label>
                 <input type="text" class="form-control" id="lastname" placeholder="Achternaam" value="" required>
             </div>
-            <div class="col-md-4 mb-3">
+            <div class="col-md-3 mb-3">
                 <label>E-mail</label>
                 <input type="text" class="form-control" id="email" placeholder="Email" value="" disabled>
             </div>
+            <div class="col-md-3 mb-3">
+                <label>Telefoonnummer</label>
+                <input type="text" class="form-control" id="phonenumber" placeholder="Telefoonnummer" value="">
+            </div>
         </div>
         <div class="form-row">
-            <div class="col-md-6 mb-3">
+            <div class="col-md-3 mb-3">
                 <label>Straat</label>
                 <input type="text" class="form-control" id="street" placeholder="Straat" required>
             </div>
@@ -89,9 +93,17 @@
             </div>
         </div>
         <div class="form-row">
-            <div class="col-md-6 mb-3">
+            <div class="col-md-3 mb-3">
                 <label>Stad</label>
                 <input type="text" class="form-control" id="city" placeholder="Stad" required>
+            </div>
+            <div class="col-md-3 mb-3">
+                <label>Geboortedatum</label>
+                <input type="date" class="form-control" id="dateofbirth" placeholder="Geboortedatum" required>
+            </div>
+            <div class="col-md-3 mb-3">
+                <label>Rekeningnummer</label>
+                <input type="text" class="form-control" id="accountnumber" placeholder="Rekeningnummer" required>
             </div>
             <div class="col-md-3 mb-3">
                 <label for="avatar">Avatar</label>

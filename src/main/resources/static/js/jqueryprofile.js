@@ -7,7 +7,11 @@ function getprofile(id) {
     var housenumber;
     var zipcode;
     var project;
+    var project1;
     var city;
+    var accountnumber;
+    var phonenumber;
+    var birthdate;
     var avatar = "giraffe_lg.png"
     var avatarcolor = "#A34AFE";
     $.get("/uren/api/v1/getUser/" + id, function (user) {
@@ -21,7 +25,12 @@ function getprofile(id) {
             street = user.street;
             housenumber = user.housenumber;
             project = user.project.id;
+            project1 = user.project.name;
             city = user.city;
+            accountnumber = user.accountnumber;
+            phonenumber = user.phonenumber;
+            birthdate = user.dateofbirth;
+
             if(user.avatar != null) {
                 avatar = user.avatar;
             }
@@ -37,6 +46,10 @@ function getprofile(id) {
             $("#housenumber").val(housenumber);
             $("#zipcode").val(zipcode);
             $("#city").val(city);
+        $("#project").val(project1);
+            $("#phonenumber").val(phonenumber);
+            $("#accountnumber").val(accountnumber);
+            $("#dateofbirth").val(birthdate);
             $("#dropdownprojects").val(project);
             $("#avatar").attr({
                 "src": url.concat(avatar),

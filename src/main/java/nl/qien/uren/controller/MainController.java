@@ -233,7 +233,7 @@ public class MainController {
         if (userDetails.getCity() != null) {
             user.setCity(userDetails.getCity());
         }
-        if (userDetails.getPhonenumber() != 0) {
+        if (userDetails.getPhonenumber() != null) {
             user.setPhonenumber(userDetails.getPhonenumber());
         }
         if (userDetails.getAccountnumber() != null) {
@@ -247,6 +247,15 @@ public class MainController {
         }
         if (userDetails.getAvatarcolor() != null) {
             user.setAvatarcolor(userDetails.getAvatarcolor());
+        }
+        if (userDetails.getPhonenumber() != null) {
+            user.setPhonenumber(userDetails.getPhonenumber());
+        }
+        if (userDetails.getAccountnumber() != null) {
+            user.setAccountnumber(userDetails.getAccountnumber());
+        }
+        if (userDetails.getDateofbirth() != null) {
+            user.setDateofbirth(userDetails.getDateofbirth());
         }
         return userRepository.save(user);
     }

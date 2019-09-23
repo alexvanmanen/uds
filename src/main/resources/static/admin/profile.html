@@ -27,16 +27,20 @@
         </div>
         <div class="collapse navbar-collapse" id="myNavbar">
             <ul class="nav navbar-nav navbar-right">
-                <li><button type="button" class="btnhamburger btn btn-lg dropdown-toggle" data-toggle= "dropdown">
-                    <span class="glyphicon glyphicon-menu-hamburger"></span>
-                </button> <ul class = "dropdown-menu">
-                    <li><a href="dashboard">Home</a></li>
-                    <li><a href="manageuser">Personeel</a></li>
-                    <li><a href="manageproject">Projecten</a></li>
-                    <li><a href="#">Instellingen</a></li>
-                    <li><form action="/uren/logout">
-                        <input  type="submit" value="Logout"/></form></li>
-                </ul>
+                <li>
+                    <button type="button" class="btnhamburger btn btn-lg dropdown-toggle" data-toggle="dropdown">
+                        <span class="glyphicon glyphicon-menu-hamburger"></span>
+                    </button>
+                    <ul class="dropdown-menu">
+                        <li><a href="dashboard">Home</a></li>
+                        <li><a href="manageuser">Personeel</a></li>
+                        <li><a href="manageproject">Projecten</a></li>
+                        <li><a href="#">Instellingen</a></li>
+                        <li>
+                            <form action="/uren/logout">
+                                <input type="submit" value="Logout"/></form>
+                        </li>
+                    </ul>
                 </li>
 
             </ul>
@@ -55,27 +59,34 @@
         <p th:text="${#httpServletRequest.remoteUser}"></p>
     </div>
     <div class="col-md-4">
-        <p style="float: left"><img id="avatar" style="width:80px; background-color: #A34AFE;" class="img-circle img-thumbnail isTooltip" src="https://ssl.gstatic.com/docs/common/profile/crow_lg.png"></p>
-        <p><h2>&nbsp;&nbsp;Profiel</h2></p>
+        <p style="float: left"><img id="avatar" style="width:80px; background-color: #A34AFE;"
+                                    class="img-circle img-thumbnail isTooltip"
+                                    src="https://ssl.gstatic.com/docs/common/profile/crow_lg.png"></p>
+        <p>
+        <h2>&nbsp;&nbsp;Profiel</h2></p>
     </div>
-<br><br><br><br><br><br>
+    <br><br><br><br><br><br>
     <form id="useradmin" style="width: 75%">
         <div class="form-row">
-            <div class="col-md-4 mb-3">
+            <div class="col-md-3 mb-3">
                 <label>Voornaam</label>
                 <input type="text" class="form-control" id="firstname" placeholder="Voornaam" value="Mark" disabled>
             </div>
-            <div class="col-md-4 mb-3">
+            <div class="col-md-3 mb-3">
                 <label>Achternaam</label>
                 <input type="text" class="form-control" id="lastname" placeholder="Achternaam" value="" disabled>
             </div>
-            <div class="col-md-4 mb-3">
+            <div class="col-md-3 mb-3">
                 <label>E-mail</label>
                 <input type="text" class="form-control" id="email" placeholder="Email" value="" disabled>
             </div>
+            <div class="col-md-3 mb-3">
+                <label>Telefoonnummer</label>
+                <input type="text" class="form-control" id="phonenumber" placeholder="Telefoonnummer" value="" disabled>
+            </div>
         </div>
         <div class="form-row">
-            <div class="col-md-6 mb-3">
+            <div class="col-md-3 mb-3">
                 <label>Straat</label>
                 <input type="text" class="form-control" id="street" placeholder="Straat" disabled>
             </div>
@@ -92,25 +103,37 @@
                 <input type="text" class="form-control" id="city" placeholder="Stad" disabled>
             </div>
             <div class="col-md-3 mb-3">
+                <label>Geboortedatum</label>
+                <input type="date" class="form-control" id="dateofbirth" placeholder="Geboortedatum" disabled>
+            </div>
+            <div class="col-md-3 mb-3">
+                <label>Rekeningnummer</label>
+                <input type="text" class="form-control" id="accountnumber" placeholder="Rekeningnummer" disabled>
+            </div>
+            <div class="col-md-3 mb-3">
                 <label>Actief</label>
                 <input type="text" class="form-control is-valid" id="active" placeholder="Actief" disabled>
             </div>
-            <div class="col-md-6 mb-3">
+            <div class="col-md-3 mb-3">
                 <label class="col-form-label">Project</label>
-                <select  id="dropdownprojects" class="form-control" onchange="saveProject(params.get('id'));">
-
+                <select id="dropdownprojects" class="form-control" onchange="saveProject(params.get('id'));">
                 </select>
             </div>
+            <div class="form-row">
+                <div class="col-sm-10">
+                    <br>
+                    <a class="btn btn-primary" href="manageuser" role="button">Terug naar overzicht</a>
+                    <a id="activebtn"></a>
+                </div>
+            </div>
+
 
         </div>
-        <br>
-        <a class="btn btn-primary" href="manageuser" role="button">Terug naar overzicht</a>
-        <a id="activebtn"></a>
-
     </form>
+
     <script>dropDownProjects();
     let params = new URLSearchParams(location.search);
-    if(params.get('id')) {
+    if (params.get('id')) {
         getprofile(params.get('id'));
     }</script>
 </body>

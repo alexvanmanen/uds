@@ -9,6 +9,10 @@ function getprofile(id) {
     var city;
     var avatar;
     var avatarcolor;
+    var accountnumber;
+    var phonenumber;
+    var birthdate;
+    var project;
     $.get("/uren/api/v1/getUser/" + id, function (user) {
             id1 = user.id
             firstname = user.firstname;
@@ -26,12 +30,18 @@ function getprofile(id) {
             if (avatarcolor == null) {
                 avatarcolor = "#A34AFE";
             }
+            accountnumber = user.accountnumber;
+            phonenumber = user.phonenumber;
+            birthdate = user.dateofbirth;
             $("#email").val(email);
             $("#id1").val(id1);
             $("#firstname").val(firstname);
             $("#lastname").val(lastname);
             $("#street").val(street);
             $("#housenumber").val(housenumber);
+            $("#phonenumber").val(phonenumber);
+            $("#accountnumber").val(accountnumber);
+            $("#dateofbirth").val(birthdate);
             $("#zipcode").val(zipcode);
             $("#city").val(city);
             $("#avatar").val(avatar);
@@ -54,6 +64,9 @@ $(document).ready(function () {
             city: document.forms["updateprofile"]["city"].value,
             avatar: document.forms["updateprofile"]["avatar"].value,
             avatarcolor: document.forms["updateprofile"]["avatarcolor"].value,
+            dateofbirth: document.forms["updateprofile"]["dateofbirth"].value,
+            accountnumber: document.forms["updateprofile"]["accountnumber"].value,
+            phonenumber: document.forms["updateprofile"]["phonenumber"].value,
         };
         $.ajax({
             url: '/uren/api/v1/updateUser/' + document.forms["updateprofile"]["id1"].value,
