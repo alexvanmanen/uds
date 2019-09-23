@@ -18,7 +18,7 @@ function ajax_get(url, callback) {
 
 function  getUsers() {
     ajax_get('/uren/api/v1/users', function (data) {
-        var tableContent = "<tr><th>Email</th><th>Voornaam</th><th>Wijzigen/ De-activeren</th><th>Contact</th></tr>";
+        var tableContent = "<tr><th>Email</th><th>Naam</th><th>Wijzigen/ De-activeren</th><th>Contact</th></tr>";
         for (i = 0; i < data.length; i++) {
             var email = data[i]['username'];
             var firstname = data[i]['firstname'];
