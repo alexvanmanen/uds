@@ -53,9 +53,7 @@
 
 <article style="margin:110px">
     <div id="welcome">
-        <div th:if="${#httpServletRequest.remoteUser != null}">
-            <p th:text="${#httpServletRequest.remoteUser}"></p>
-        </div>
+        <span th:text="'Welkom, ' + ${name}"></span>
 <div class="container">
 <h2> Personeel Beheren </h2>
     <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#addModal" >Voeg toe</button>

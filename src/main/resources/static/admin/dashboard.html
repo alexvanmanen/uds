@@ -59,9 +59,7 @@
 
 <article style="margin:110px">
     <div id="welcome">
-        <div th:if="${#httpServletRequest.remoteUser != null}">
-            <p th:text="${#httpServletRequest.remoteUser}"></p>
-        </div>
+        <span th:text="'Welkom, ' + ${name}"></span>
         <div class="container">
             <select id = "monthField" class="mdb-select md-form">
                 <option value="" disabled selected>Selecteer maand</option>

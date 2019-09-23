@@ -48,8 +48,7 @@ public class UserController {
     @GetMapping("/dashboard")
     public String dashboard(@RequestParam(name="name", required=false, defaultValue="wereld") String name, Model model) {
         User user = userRepository.findByUsername(SecurityContextHolder.getContext().getAuthentication().getName());
-        model.addAttribute("name", name);
-        model.addAttribute("test", "Bart Zwaagstra");
+        model.addAttribute("name", user.getFirstname());
         model.addAttribute("userId", user.getId());
         Timesheet timesheet = timesheetRepository.findById(8)
                 .orElseThrow(()-> new RuntimeException("Kan hem niet vinden gap"));
@@ -62,26 +61,28 @@ public class UserController {
 
     @GetMapping("/admin/dashboard")
     public String admindashboard(@RequestParam(name="name", required=false, defaultValue="wereld") String name, Model model) {
-        model.addAttribute("name", name);
+        User user = userRepository.findByUsername(SecurityContextHolder.getContext().getAuthentication().getName());
+        model.addAttribute("name", user.getFirstname());
         return "admin/dashboard";
     }
     @GetMapping("/admin/manageuser")
     public String manageuser(@RequestParam(name="name", required=false, defaultValue="wereld") String name, Model model) {
-        model.addAttribute("name", name);
+    User user = userRepository.findByUsername(SecurityContextHolder.getContext().getAuthentication().getName());
+        model.addAttribute("name", user.getFirstname());
         return "admin/manageuser";
     }
     @GetMapping("/profile")
     public String profile(@RequestParam(name="name", required=false, defaultValue="wereld") String name, Model model) {
         User user = userRepository.findByUsername(SecurityContextHolder.getContext().getAuthentication().getName());
         model.addAttribute("userId", user.getId());
-        model.addAttribute("name", name);
+        model.addAttribute("name", user.getFirstname());
         return "profile";
     }
     @GetMapping("/viewprofile")
     public String viewprofile(@RequestParam(name="name", required=false, defaultValue="wereld") String name, Model model) {
         User user = userRepository.findByUsername(SecurityContextHolder.getContext().getAuthentication().getName());
         model.addAttribute("userId", user.getId());
-        model.addAttribute("name", name);
+        model.addAttribute("name", user.getFirstname());
         return "viewprofile";
     }
 

@@ -51,9 +51,7 @@
 <br>
 
 <div id="welcome">
-    <div th:if="${#httpServletRequest.remoteUser != null}">
-        <p th:text="${#httpServletRequest.remoteUser}"></p>
-    </div>
+    <span th:text="'Welkom, ' + ${name}"></span>
 
 <h2>Personeel toevoegen</h2>
 <div id="test"></div><table id="ajax"></table>

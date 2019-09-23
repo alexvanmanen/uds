@@ -56,9 +56,7 @@
 <br>
 
 <div id="welcome">
-    <div th:if="${#httpServletRequest.remoteUser != null}">
-        <p th:text="${#httpServletRequest.remoteUser}"></p>
-    </div>
+    <span th:text="'Welkom, ' + ${name}"></span>
     <div class="col-md-4">
         <p style="float: left"><img id="avatar" style="width:80px; background-color: #A34AFE;"
                                     class="img-circle img-thumbnail isTooltip"

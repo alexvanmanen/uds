@@ -50,10 +50,8 @@
 <br>
 <br>
 <br>
-
 <div id="welcome">
-    <div th:if="${#httpServletRequest.remoteUser != null}">
-        <p th:text="${#httpServletRequest.remoteUser}"></p>
+    <span th:text="'Welkom, ' + ${name}"></span>
     </div>
     <div class="col-md-4">
         <p><h2>&nbsp;&nbsp;Profiel</h2></p>
