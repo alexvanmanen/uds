@@ -7,7 +7,6 @@ $(document).ready(function(){
             $.each(users, function (elementNumber, user) {
                 if(user.active == true) {
                     user_data += '<trgit>';
-                    user_data += '<td>' + clean(user.id) + '</td>';
                     user_data += '<td>' + clean(user.firstname) + '</td>';
                     user_data += '<td>' + clean(user.lastname) + '</td>';
                     user_data += '<td>' + clean(user.username) + '</td>';

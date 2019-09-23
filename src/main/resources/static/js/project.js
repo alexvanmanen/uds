@@ -1,6 +1,6 @@
 function getProjects() {
     ajax_get('/uren/api/v1/getprojects', function (data) {
-        var tableContent = "<tr><th>Email</th><th>Telefoonnummer</th><th>Projectnaam</th><th>Wijzigen/ De-activeren</th></tr>";
+        var tableContent = "<tr><th>E-mail</th><th>Telefoonnummer</th><th>Projectnaam</th><th>Wijzigen/ De-activeren</th></tr>";
         for (i = 0; i < data.length; i++) {
             var email = data[i]['email'];
             var phonenumber = data[i]['phonenumber'];

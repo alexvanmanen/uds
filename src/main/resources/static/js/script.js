@@ -27,7 +27,7 @@ function  getUsers() {
                 '<tr><td>' + email + '</td>' +
                 '<td>' + firstname + '</td>'+
                 '<td><button type="button" class="btn btn-outline-secondary" onclick="showEditUser(`' + id + '`);">Wijzig/ De-activeer</button> </td>' +
-                '<td><button type="button" onclick="setEmailAddress(`' + email + '`);" class="btn btn-outline-secondary" data-toggle="modal" data-target="#mailfade">Stuur email</button></td></tr>';
+                '<td><button type="button" onclick="setEmailAddress(`' + email + '`);" class="btn btn-outline-secondary" data-toggle="modal" data-target="#mailfade">Stuur E-mail</button></td></tr>';
         }
         document.getElementById("usertable").innerHTML = tableContent;
 

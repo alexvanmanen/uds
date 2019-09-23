@@ -65,7 +65,7 @@ function activateuser(setuser, id) {
         active = true;
     } else if (setuser === false) {
         url = '/uren/api/v1/deactivateUser/' + id;
-        action = '<a class="btn btn-success" onclick="activateuser(true, ' + id + ')" role="button">activeer</a>';
+        action = '<a class="btn btn-success" onclick="activateuser(true, ' + id + ')" role="button">Activeer</a>';
         active = false;
     }
     $.ajax({
