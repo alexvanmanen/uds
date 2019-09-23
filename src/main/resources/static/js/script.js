@@ -16,7 +16,7 @@ function ajax_get(url, callback) {
     xmlhttp.send();
 }
 
-function getUsers() {
+function  getUsers() {
     ajax_get('/uren/api/v1/users', function (data) {
         var tableContent = "<tr><th>Email</th><th>Voornaam</th><th>Wijzigen/ De-activeren</th><th>Contact</th></tr>";
         for (i = 0; i < data.length; i++) {
