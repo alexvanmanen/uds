@@ -73,23 +73,22 @@ function activateproject(setproject, id) {
 $(document).ready(function () {
     $("#updateproject").click(function () {
         alert("je bent nu hier");
+        alert(document.forms["updateproject1"]["id"].value);
         var data = {
-            name: document.forms["updateproject"]["name"].value,
-            email: document.forms["updateproject"]["email"].value,
-            phonenumber: document.forms["updateproject"]["phonenumber"].value,
-            avatar: document.forms["updateproject"]["avatar"].value,
-            avatarcolor: document.forms["updateproject"]["avatarcolor"].value,
-
-
+            name: document.forms["updateproject1"]["name"].value,
+            email: document.forms["updateproject1"]["email"].value,
+            phonenumber: document.forms["updateproject1"]["phonenumber"].value,
+            avatar: document.forms["updateproject1"]["avatar"].value,
+            avatarcolor: document.forms["updateproject1"]["avatarcolor"].value,
         };
         $.ajax({
-            url: '/uren/api/v1/updateProject/' + document.forms["updateproject"]["id"].value,
+            url: '/uren/api/v1/updateProject/' + document.forms["updateproject1"]["id"].value,
             type: 'put',
             dataType: 'json',
             contentType: 'application/json',
             success: function (data) {
                 alert("project opgeslagen");
-                getprojectprofile(document.forms["updateproject"]["id"].value);
+                getprojectprofile(document.forms["updateproject1"]["id"].value);
             },
             data: JSON.stringify(data)
         });

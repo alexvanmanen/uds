@@ -197,16 +197,6 @@ public class MainController {
         return projectRepository.findById(id);
     }
 
-    /*
-        PUT request with url
-        http://localhost:8080/uren/api/v1/updateUser/1
-        and json
-        {
-	"firstname" : "Johnny!",
-	"lastname" : "Bravo!!!",
-	"emailadress" : "john@oneManArmy.com"
-}
-     */
 
     @PutMapping("/updateProject/{id}")
     public Project updateProject(@PathVariable int id, @RequestBody Project projectDetails){

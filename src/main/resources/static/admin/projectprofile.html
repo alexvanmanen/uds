@@ -57,12 +57,12 @@
         <p><h2>&nbsp;&nbsp;Project Profiel</h2></p>
     </div> <br><br><br><br><br><br>
 
-    <form style="width: 50%" name="updateproject" onsubmit="return false;">
+    <form style="width: 50%" name="updateproject" id="updateproject1" onsubmit="return false;">
         <div class="form-row">
             <div class="col-md-4 mb-3">
                 <label>Projectnaam</label>
                 <input type="text" class="form-control" id="projectname" placeholder="Project naam" value="" required>
-                <input type="hidden" class="form-control" id="id1" value="" required>
+                <input type="hidden" class="form-control" id="id" value="" required>
             </div>
             <div class="col-md-4 mb-3">
                 <label>E-mail </label>
@@ -110,7 +110,9 @@
 <script>
     let params = new URLSearchParams(location.search);
     if(params.get('id')) {
-        getprojectprofile(params.get('id'));}
+        getprojectprofile(params.get('id'));
+        document.getElementById('id').value = params.get('id');
+    }
 </script>
 </body>
 </html>
