@@ -7,40 +7,34 @@ function getprojectprofile(id) {
     var avatarcolor = "#A34AFE";
 
     $.get("/uren/api/v1/getProject/" + id, function (project) {
-            var url = "https://ssl.gstatic.com/docs/common/profile/";
-            var avatarwidth = "width:80px; background-color: ";
-            projectname = project.name;
-            email = project.email;
-            phonenumber = project.phonenumber;
-            active = project.active;
+        var url = "https://ssl.gstatic.com/docs/common/profile/";
+        var avatarwidth = "width:80px; background-color: ";
+        projectname = project.name;
+        email = project.email;
+        phonenumber = project.phonenumber;
+        active = project.active;
 
-            if(project.avatar != null) {
-                avatar = project.avatar;
-            }
-            if(project.avatarcolor != null) {
-                avatarcolor = project.avatarcolor;
-            }
-
-            $("#email").val(email);
-            $("#phonenumber").val(phonenumber);
-            $("#projectname").val(projectname);
-            $("#active").val(active);
-
-            $("#avatar").attr({
-                "src": url.concat(avatar),
-                "style": avatarwidth.concat(avatarcolor),
-            });
-            $("#avatarcolor").text(avatarcolor);
-
-            if (active == true) {
-                document.getElementById("activebtn").innerHTML = '<a class="btn btn-danger" onclick="activateproject(false, ' + id + ')" role="button">Deactiveer</a>';
-            }
-            if (active == false) {
-                document.getElementById("activebtn").innerHTML = '<a class="btn btn-success" onclick="activateproject(true, ' + id + ')" role="button">activeer</a>';
-            }
+        if (project.avatar != null) {
+            avatar = project.avatar;
         }
-    )
-    ;
+        if (project.avatarcolor != null) {
+            avatarcolor = project.avatarcolor;
+        }
+
+        $("#email").val(email);
+        $("#phonenumber").val(phonenumber);
+        $("#projectname").val(projectname);
+        $("#avatar").val(avatar);
+        $("#active").val(active);
+    });
+    $("#avatarcolor").text(avatarcolor);
+
+    if (active == true) {
+        document.getElementById("activebtn").innerHTML = '<a class="btn btn-danger" onclick="activateproject(false, ' + id + ')" role="button">Deactiveer</a>';
+    }
+    if (active == false) {
+        document.getElementById("activebtn").innerHTML = '<a class="btn btn-success" onclick="activateproject(true, ' + id + ')" role="button">activeer</a>';
+    }
 }
 
 function activateproject(setproject, id) {

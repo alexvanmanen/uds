@@ -72,9 +72,10 @@
                 <label>Telefoonnummer</label>
                 <input type="text" class="form-control" id="phonenumber" placeholder="Telefoon" value="" required>
             </div>
+            <div class="form-row">
             <div class="col-md-3 mb-3">
                 <label>Actief</label>
-                <input type="text" class="form-control is-valid" id="active" placeholder="Actief" required>
+                <input type="text" class="form-control" id="active" placeholder="Actief" disabled>
             </div>
             <div class="col-md-3 mb-3">
                 <label for="avatar">Avatar</label>
@@ -94,16 +95,15 @@
                 <label>Avatar kleur</label>
                 <input type="color" id="avatarcolor"class="form-control" name="avatarcolor" value="#A34AFE" required>
             </div>
+                <div class="form-row">
+                    <div class="col-sm-10">
+                        <br>
+                        <a type="submit" class="btn btn-primary" id="updateproject" role="button">Opslaan</a>
+                        <a id="activebtn"></a>
+                    </div>
+                </div>
+            </div>
         </div>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-
-        <a type="submit" class="btn btn-primary" id="updateproject" role="button">Opslaan</a>
-        <a id="activebtn"></a>
 
     </form>
 </div>
