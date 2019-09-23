@@ -10,9 +10,9 @@
         }
     </script>
     <script src="js/jquery-3.4.1.min.js"></script>
-    <script src=js/script.js></script>
-    <script src="js/UrenRegistraties.js"></script>
+    <script src=js/date.js></script>
     <script src="js/timesheet.js"></script>
+    <script src="js/operatieurenkaart.js"></script>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
@@ -73,11 +73,25 @@
 <h2>Urenformulier</h2>
 
 <table class="table table-striped" id="taskOverview">
-    <tr><th>Periode</th><th>Project</th><th>Status</th></tr>
+    <thead><tr><th>Periode</th><th>Project</th><th>Status</th></tr></thead>
 </table>
 
-<table  class="table table-striped table-sm" id="timesheetoverview"></table>
-<br>
+
+
+    <table id="timesheetTable" class="table-striped table-condensed" style="width: 100%">
+        <thead>
+        <tr>
+            <th>Dag</th>
+            <th>Werk</th>
+            <th>Verlof</th>
+            <th>Ziek</th>
+            <th>Training</th>
+            <th>Overwerk</th>
+            <th>Overig</th>
+        </tr>
+        </thead>
+    </table>
+    <a id="tsbuttons1"></a>
 <div>
 
 </div>

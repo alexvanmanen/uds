@@ -52,16 +52,6 @@ function apiPostRequest(url, json) {
     xmlhttp.setRequestHeader('Content-Type', 'application/json');
     xmlhttp.send(json);
 }
-var retrievedTimesheets = "";
-$(document).ready(function(){
-        $.get("/uren/api/v1/getAllTimeSheetsByEmployee/"+getEmployeeId(), function(timesheets, status){
-            retrievedTimesheets = timesheets;
-            for(var id in timesheets){
-                $("#taskOverview").append("<tr onclick='buildHourTable2("+id+")'><td >"+timesheets[id].yearMonth +"</td><td>"+timesheets[id].customerName+"</td><td>"+timesheets[id].state +"</td></tr>");
-            }
-        });
-});
-
 $(window).scroll(function() {
     var winScrollTop = $(window).scrollTop();
     var winHeight = $(window).height();

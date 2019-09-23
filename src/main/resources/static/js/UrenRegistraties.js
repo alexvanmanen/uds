@@ -21,9 +21,6 @@ function buildHourTable2(id) {
     var timesheet = retrievedTimesheets[id];
     var month =  timesheet.yearMonth.substring(6);
     var table = document.getElementById("timesheetoverview");
-    if (table.innerHTML != "") {
-        table.innerHTML = ""
-    } else {
         var tableContent= "";
         tableContent += "<tr><th>"+ getMonthName(month) + "</th><th>Project</th><th>Overwerk</th><th>Verlof</th><th>Ziek</th><th>Training</th><th>Overig</th><th>Verklaring overig</th></tr>";
         for (var day = 1; day < calculateNumberOfDaysInMonth(month) + 1; day++) {
@@ -42,14 +39,13 @@ function buildHourTable2(id) {
         tableContent += "<p><button id='btn' class='btn btn-primary' onclick='SaveHours(" + month + ")'>Opslaan</button></p>";
         tableContent += "<p><button id='btn' class='btn btn-primary' onclick='SubmitHours(" + month + ")'>Verzenden</button></p>";
         table.innerHTML = tableContent;
-    }
 }
 
 function SubmitHours(month){
- SaveHours(month);
     $.post("/uren/submitTimeSheet/"+timesheetID, function(){
         alert("Gelukt. Met id: " + timesheetID)}
     );
+    SaveHours(month);
 }
 
 function SaveHours(month) {
@@ -102,16 +98,9 @@ function ajax_get(url, callback) {
     xmlhttp.send();
 }
 
-function getUren() {
-    ajax_get("/uren/api/v1/urencount", function (data) {
-        if (data == 0) {
-            alert("dit is mijn data: " + data);
-        }
-    });
-}
 function getMonthName(month) {
-    var months = ["January", "February", "March", "April", "May", "June",
-        "July", "August", "September", "October", "November", "December"];
+    var months = ["Januari", "Februari", "Maart", "April", "Mei", "Juni",
+        "Juli", "Augustus", "September", "October", "November", "December"];
     return months[(month-1)];
 }
 
