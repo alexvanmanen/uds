@@ -25,7 +25,7 @@ function buildHourTable2(id) {
         table.innerHTML = ""
     } else {
         var tableContent = "<tr><th>Overzicht voor de maand " + getMonthName(month) + "</th></tr>";
-        tableContent += "<tr><th>"+ getMonthName(month) + "</th><th>Opdracht</th><th>Overwerk</th><th>Verlof</th><th>Ziek</th><th>Training</th><th>Overig</th><th>Verklaring overig</th></tr>";
+        tableContent += "<tr><th>"+ getMonthName(month) + "</th><th>Project</th><th>Overwerk</th><th>Verlof</th><th>Ziek</th><th>Training</th><th>Overig</th><th>Verklaring overig</th></tr>";
         for (var day = 1; day < calculateNumberOfDaysInMonth(month) + 1; day++) {
             tableContent += "<tr 'month'><td>" + day + " " + getMonthName(month) + "</>" +
                 "<td><input class='form-control input-sm' value='"+getEntry(day, "WORK")+"' "+disabled+" id='WORK" + day + "'  type='number'></td>" +
