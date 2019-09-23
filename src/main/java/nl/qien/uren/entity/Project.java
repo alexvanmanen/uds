@@ -17,13 +17,13 @@ public class Project implements Serializable {
 
     private String name;
     private String email;
-    private int phonenumber;
+    private String phonenumber;
     private boolean active= true;
 
 
     public Project(){}
 
-    public Project(String name, String email, int phonenumber){
+    public Project(String name, String email, String phonenumber){
         this.name = name;
         this.email = email;
         this.phonenumber = phonenumber;
@@ -50,8 +50,8 @@ public class Project implements Serializable {
         this.email = email;
     }
 
-    public int getPhonenumber() {return phonenumber; }
-    public void setPhonenumber(int phonenumber) { this.phonenumber = phonenumber; }
+    public String getPhonenumber() {return phonenumber; }
+    public void setPhonenumber(String phonenumber) { this.phonenumber = phonenumber; }
 
     public String getCustomerName(){
         return name;

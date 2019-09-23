@@ -217,7 +217,7 @@ public class MainController {
         if (projectDetails.getEmail()!=null) {
             project.setEmail(projectDetails.getEmail());
         }
-        if (projectDetails.getPhonenumber()!=0) {
+        if (projectDetails.getPhonenumber()!=null) {
             project.setPhonenumber(projectDetails.getPhonenumber());
         }
         return projectRepository.save(project);
