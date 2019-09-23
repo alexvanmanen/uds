@@ -15,8 +15,8 @@ function getprofile(id) {
     var avatar = "giraffe_lg.png"
     var avatarcolor = "#A34AFE";
     $.get("/uren/api/v1/getUser/" + id, function (user) {
-        var url = "https://ssl.gstatic.com/docs/common/profile/";
-        var avatarwidth = "width:80px; background-color: ";
+            var url = "https://ssl.gstatic.com/docs/common/profile/";
+            var avatarwidth = "width:80px; background-color: ";
             firstname = user.firstname;
             email = user.username;
             lastname = user.lastname;
@@ -31,10 +31,10 @@ function getprofile(id) {
             phonenumber = user.phonenumber;
             birthdate = user.dateofbirth;
 
-            if(user.avatar != null) {
+            if (user.avatar != null) {
                 avatar = user.avatar;
             }
-            if(user.avatarcolor != null) {
+            if (user.avatarcolor != null) {
                 avatarcolor = user.avatarcolor;
             }
 
@@ -46,7 +46,7 @@ function getprofile(id) {
             $("#housenumber").val(housenumber);
             $("#zipcode").val(zipcode);
             $("#city").val(city);
-        $("#project").val(project1);
+            $("#projectuser").val(project1);
             $("#phonenumber").val(phonenumber);
             $("#accountnumber").val(accountnumber);
             $("#dateofbirth").val(birthdate);
