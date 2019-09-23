@@ -39,8 +39,8 @@ function buildHourTable2(id) {
         }
 
         tableContent += "<br>";
-        tableContent += "<p><button id='btn' onclick='SaveHours(" + month + ")'>Opslaan</button></p>";
-        tableContent += "<p><button id='btn' onclick='SubmitHours(" + month + ")'>Verzenden</button></p>";
+        tableContent += "<p><button id='btn' class='btn btn-primary' onclick='SaveHours(" + month + ")'>Opslaan</button></p>";
+        tableContent += "<p><button id='btn' class='btn btn-primary' onclick='SubmitHours(" + month + ")'>Verzenden</button></p>";
         table.innerHTML = tableContent;
     }
 }
