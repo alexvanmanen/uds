@@ -51,7 +51,7 @@ public class Project implements Serializable {
     }
 
     public int getPhonenumber() {return phonenumber; }
-    public void setPhonenumber() { this.phonenumber = phonenumber; }
+    public void setPhonenumber(int phonenumber) { this.phonenumber = phonenumber; }
 
     public String getCustomerName(){
         return name;

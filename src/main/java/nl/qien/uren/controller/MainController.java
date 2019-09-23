@@ -208,6 +208,21 @@ public class MainController {
 }
      */
 
+    @PutMapping("/updateProject/{id}")
+    public Project updateProject(@PathVariable int id, @RequestBody Project projectDetails){
+        Project project = projectRepository.findById(id);
+        if (projectDetails.getName()!=null){
+            project.setName(projectDetails.getName());
+        }
+        if (projectDetails.getEmail()!=null) {
+            project.setEmail(projectDetails.getEmail());
+        }
+        if (projectDetails.getPhonenumber()!=0) {
+            project.setPhonenumber(projectDetails.getPhonenumber());
+        }
+        return projectRepository.save(project);
+    }
+
     @PutMapping("/updateUser/{userId}")
     public User updateUser(@PathVariable int userId, @RequestBody User userDetails) {
         User user = userRepository.findById(userId)
