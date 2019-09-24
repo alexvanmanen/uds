@@ -51,7 +51,7 @@ public class SendMail {
         String url = "https://media1.tenor.com/images/305dd88cc6ad71068b776e0646d3f460/tenor.gif?itemid=3555043";
         subject = "html mail";
         String contentOfMessage = "Beste "+timesheet.getEmployeeName()+", <p> jouw urenformulier is goedgekeurd door: "+timesheet.getCustomerName() +
-                "</p><p>Gefeliciteerd!</p><img src='"+url+"'>";
+                "</p><p>Gefeliciteerd!</p><p>JoeeJoee Cora </p><img src='"+url+"'>";
         return sendMailHTML(receiver, "Urenformulier goedgekeurd!", contentOfMessage);
 
     }
@@ -60,7 +60,7 @@ public class SendMail {
         receiver = timesheet.getEmployeeEmail();
         String url = "https://media1.tenor.com/images/9413ffc5a11722a3cc456a88810750bd/tenor.gif?itemid=14193216";
         subject = "html mail";
-        String contentOfMessage = "Beste "+timesheet.getEmployeeName()+", <p> jouw urenformulier is FOUT en daarom afgewezen door: "+timesheet.getCustomerName()+". Super vervelend natuurlijk!</p>" +
+        String contentOfMessage = "Beste "+timesheet.getEmployeeName()+", <p> jouw urenformulier is FOUT en daarom afgewezen door: "+timesheet.getCustomerName()+".</p><p> Zou je het urenformulier willen nakijken en opnieuw opsturen?</p><p> Groetjes Cora!</p>" +
                 "<img src='"+url+"'>";
         return sendMailHTML(receiver, "Urenformulier AFGEWEZEN!", contentOfMessage);
     }
