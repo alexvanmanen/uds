@@ -102,4 +102,10 @@ public class UserController {
         model.addAttribute("name", user.getFirstname());
         return modelAndView;
     }
+    @GetMapping("/admin/passwordChange")
+    public String passwordChange1(@RequestParam(name="name", required=false, defaultValue="wereld") String name, Model model) {
+        User user = userRepository.findByUsername(SecurityContextHolder.getContext().getAuthentication().getName());
+        model.addAttribute("name", user.getFirstname());
+        return "admin/passwordChange";
+    }
 }
