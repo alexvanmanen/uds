@@ -1,7 +1,7 @@
 var timesheetID;
 function buildHourTable2(id) {
     function disabled(state) {
-        if (state == "GOEDGEKEURD" || state == "AFWACHTEND") {
+        if (state == "GOEDGEKEURD" || state == "VERZONDEN") {
             return disabled = "disabled";
         }
         return "";

@@ -72,7 +72,7 @@ public class UrenApplication  implements CommandLineRunner {
         Admin cora = new Admin("Cora", "de Lima-Roos", "admin@qien.nl", bCryptPasswordEncoder.encode("Admin01"));
         adminRepository.save(cora);
 
-        Timesheet timesheetAlexAug = new Timesheet(projectVanCustomerRobin, employeeAlex, YearMonth.of(2019,8), TimesheetState.AFWACHTEND);
+        Timesheet timesheetAlexAug = new Timesheet(projectVanCustomerRobin, employeeAlex, YearMonth.of(2019,8), TimesheetState.VERZONDEN);
         Timesheet timesheetAlexJul = new Timesheet(projectVanCustomerRobin, employeeAlex, YearMonth.of(2019,7), TimesheetState.AFGEKEURD);
         Timesheet timesheetBenAug = new Timesheet(projectVanCustomerRobin, employeeBen, YearMonth.of(2019,8), TimesheetState.GOEDGEKEURD);
         Timesheet timesheetBenJul = new Timesheet(projectVanCustomerRobin, employeeBen, YearMonth.of(2019,7), TimesheetState.GOEDGEKEURD);

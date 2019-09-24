@@ -14,7 +14,7 @@ function maketimesheetoverview() {
 }
 
 function tsdisabled(state) {
-    if (state == "GOEDGEKEURD" || state == "AFWACHTEND") {
+    if (state == "GOEDGEKEURD" || state == "VERZONDEN") {
         return "disabled";
     }
     return "";
