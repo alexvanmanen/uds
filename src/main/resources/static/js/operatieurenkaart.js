@@ -1,25 +1,42 @@
 $(document).ready(function () {
-maketimesheetoverview();
+    maketimesheetoverview();
 });
+
 function maketimesheetoverview() {
     $.get("/uren/api/v1/getAllTimeSheetsByEmployee/" + getEmployeeId(), function (timesheets, status) {
         $("#taskOverview tbody").empty();
         $("#taskOverview").append("<tbody>");
         for (var i = 0; i < timesheets.length; i++) {
-            $("#taskOverview").append("<tr onclick='fillTimesheetTable(" + timesheets[i].id + ")'><td >" + timesheets[i].yearMonth + "</td><td>" + timesheets[i].customerName + "</td><td>" + timesheets[i].state + "</td></tr>");
+            $("#taskOverview").append("<tr onclick='showtimesheettable(" + timesheets[i].id + ")'><td >" + timesheets[i].yearMonth + "</td><td>" + timesheets[i].customerName + "</td><td>" + timesheets[i].state + "</td></tr>");
         }
         $("#taskOverview").append("</tbody>");
     });
 }
+
 function tsdisabled(state) {
     if (state == "GOEDGEKEURD" || state == "AFWACHTEND") {
         return "disabled";
     }
     return "";
 }
-var showtimesheet = true;
-function showtimesheettable(id) {
 
+var showtimesheet = true;
+
+function showtimesheettable(id) {
+    if (showtimesheet === true) {
+        alert(showtimesheet);
+        fillTimesheetTable(id);
+        showtimesheet = false;
+        return;
+    }
+    if (showtimesheet === false) {
+        alert(showtimesheet);
+        $("#timesheetTable tbody").empty();
+        $("#timesheetTable thead").empty();
+        $('#tsbuttons1').empty();
+        showtimesheet = true;
+        return;
+    }
 }
 
 function fillTimesheetTable(timesheetId) {
