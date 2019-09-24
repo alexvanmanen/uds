@@ -5,6 +5,7 @@ import io.swagger.annotations.ApiParam;
 import io.swagger.annotations.ApiResponse;
 import io.swagger.annotations.ApiResponses;
 import nl.qien.uren.entity.*;
+import nl.qien.uren.model.EntryKind;
 import nl.qien.uren.model.SendMail;
 import nl.qien.uren.repository.*;
 import nl.qien.uren.service.TimesheetService;
@@ -131,17 +132,18 @@ public class MainController {
     @PostMapping("/updateTimesheet")
     public void updateTimesheet(@RequestBody Timesheet ts) {
         Timesheet timesheet = timesheetRepository.findById(ts.getId()).orElseThrow(() -> new RuntimeException("timesheet not found for this id :: " + ts.getId()));
-        ;
-
         for (TimesheetEntry timesheetEntry : ts.getEntries()) {
-            timesheetEntry.setTimesheet(timesheet);
-            timesheetEntryRepository.save(timesheetEntry);
+            TimesheetEntry tsEntry = timesheetEntryRepository.findByTimesheetIdAndDayOfTheMonthAndEntryKind(ts.getId(), timesheetEntry.getDayOfTheMonth(), timesheetEntry.getEntryKind());
+            if (tsEntry != null) {
+                tsEntry.setHoursSpent(timesheetEntry.getHoursSpent());
+            } else {
+                timesheetEntry.setTimesheet(timesheet);
+                timesheetEntryRepository.save(timesheetEntry);
+            }
         }
         timesheet.setEntries(ts.getEntries());
         timesheetRepository.save(timesheet);
-
     }
-
     @PostMapping("/createTimesheetEntry")
     public TimesheetEntry createTimesheetEntry(@RequestBody TimesheetEntry timesheetEntry) {
         return timesheetEntryRepository.save(timesheetEntry);
@@ -158,7 +160,7 @@ public class MainController {
         String password = RandomStringUtils.randomNumeric(8);
         String passencrypt = bCryptPasswordEncoder.encode(password);
         SendMail newEmail = new SendMail(userDetails.getUsername(), "Nieuw wachtwoord Qien", "Welkom! Het wachtwoord voor: gebruikersnaam : " + userDetails.getUsername() + " is: " + password);
-        newEmail.sendMailText(userDetails.getUsername(),"Nieuw wachtwoord Qien", "Welkom! Het wachtwoord voor: gebruikersnaam : " + userDetails.getUsername() + " is: " + password);
+        newEmail.sendMailText(userDetails.getUsername(), "Nieuw wachtwoord Qien", "Welkom! Het wachtwoord voor: gebruikersnaam : " + userDetails.getUsername() + " is: " + password);
         userDetails.setPassword(passencrypt);
         int projectid = userDetails.getProject().getId();
         //SUPER SMELLY CODE :)
@@ -167,14 +169,15 @@ public class MainController {
         timesheetService.createTimesheetForEmployee(projectRepository.findById(projectid), newUser, YearMonth.now(), TimesheetState.OPEN);
         return newUser;
     }
+
     @PutMapping("/editProject")
     public User editProject(@RequestBody Employee userDetails) {
         Employee emp = employeeRepository.findById(userDetails.id);
         int projectid = userDetails.getProject().getId();
         //SUPER SMELLY CODE :)
         emp.setProject(projectRepository.findById(projectid));
-         userRepository.save(emp);
-       return emp;
+        userRepository.save(emp);
+        return emp;
     }
 
     @GetMapping("/getUsers")
@@ -200,15 +203,15 @@ public class MainController {
 
 
     @PutMapping("/updateProject/{id}")
-    public Project updateProject(@PathVariable int id, @RequestBody Project projectDetails){
+    public Project updateProject(@PathVariable int id, @RequestBody Project projectDetails) {
         Project project = projectRepository.findById(id);
-        if (projectDetails.getName()!=null){
+        if (projectDetails.getName() != null) {
             project.setName(projectDetails.getName());
         }
-        if (projectDetails.getEmail()!=null) {
+        if (projectDetails.getEmail() != null) {
             project.setEmail(projectDetails.getEmail());
         }
-        if (projectDetails.getPhonenumber()!=null) {
+        if (projectDetails.getPhonenumber() != null) {
             project.setPhonenumber(projectDetails.getPhonenumber());
         }
         return projectRepository.save(project);
@@ -273,11 +276,11 @@ public class MainController {
         return userRepository.save(user);
 
 
-        }
+    }
 
     @PutMapping("/deactivateProject/{projectId}")
-    public Project deactivateProject(@PathVariable int projectId){
-        Project project= projectRepository.findById(projectId);
+    public Project deactivateProject(@PathVariable int projectId) {
+        Project project = projectRepository.findById(projectId);
         project.setActive(false);
         return projectRepository.save(project);
     }
@@ -316,6 +319,7 @@ public class MainController {
         user.setPasswordKey(null);
         userRepository.save(user);
     }
+
     @PostMapping("/setNewPassword/")
     public void setNewPassword(@RequestBody User userDetails) {
         User user = userRepository.findByUsername(SecurityContextHolder.getContext().getAuthentication().getName());

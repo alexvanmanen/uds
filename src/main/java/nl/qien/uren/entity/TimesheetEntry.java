@@ -45,11 +45,17 @@ public class TimesheetEntry implements Serializable {
         return dayOfTheMonth;
     }
 
+    public int getTimesheet() {
+        return timesheet.getId();
+    }
+
     public LocalDate getDate(){
         return LocalDate.of(timesheet.getYearMonth().getYear(), timesheet.getYearMonth().getMonth(), dayOfTheMonth);
     }
 
-
+    public void setHoursSpent(int hoursSpent) {
+        this.hoursSpent = hoursSpent;
+    }
     public void setTimesheet(Timesheet timesheet) {
         this.timesheet = timesheet;
     }
