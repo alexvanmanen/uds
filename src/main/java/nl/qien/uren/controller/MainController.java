@@ -11,6 +11,7 @@ import nl.qien.uren.service.TimesheetService;
 import org.apache.commons.lang3.RandomStringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.web.bind.annotation.*;
 
@@ -307,6 +308,17 @@ public class MainController {
     @PostMapping("/setNewPassword/{id}/{passwordKey}")
     public void setNewPassword(@RequestBody User userDetails, @PathVariable String passwordKey, @PathVariable int id) {
         User user = userRepository.findByPasswordKey(passwordKey);
+        String password = userDetails.getPassword();
+        String passencrypt = bCryptPasswordEncoder.encode(password);
+        SendMail newEmail = new SendMail(user.getUsername(), "Wachtwoord veranderd", "Beste " + user.getUsername() + ", het wachtwoord is gewijzigd!");
+        newEmail.sendMailText(user.getUsername(), "Wachtwoord veranderd", "Beste " + user.getUsername() + ", het wachtwoord is gewijzigd!");
+        user.setPassword(passencrypt);
+        user.setPasswordKey(null);
+        userRepository.save(user);
+    }
+    @PostMapping("/setNewPassword/")
+    public void setNewPassword(@RequestBody User userDetails) {
+        User user = userRepository.findByUsername(SecurityContextHolder.getContext().getAuthentication().getName());
         String password = userDetails.getPassword();
         String passencrypt = bCryptPasswordEncoder.encode(password);
         SendMail newEmail = new SendMail(user.getUsername(), "Wachtwoord veranderd", "Beste " + user.getUsername() + ", het wachtwoord is gewijzigd!");

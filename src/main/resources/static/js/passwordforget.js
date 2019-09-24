@@ -44,3 +44,26 @@ $(document).ready(function(){
         }
     });
 });
+$(document).ready(function(){
+    $("#passwordchange").click(function(){
+        var password = document.forms["changepasswordform"]["password"].value;
+        var passwordvalid = document.forms["changepasswordform"]["password1"].value;
+        if(password == passwordvalid) {
+            var data = {
+                password: password
+            };
+            $.ajax({
+                url: '/uren/api/v1/setNewPassword/',
+                type: 'post',
+                dataType: 'json',
+                contentType: 'application/json',
+                success: function (data) {
+                    alert("Wachtwoord gewijzigd");
+                },
+                data: JSON.stringify(data)
+            });
+        } else {
+            alert("Passwords komen niet overeen.");
+        }
+    });
+});

@@ -94,4 +94,12 @@ public class UserController {
         modelAndView.addObject("user", user);
         return modelAndView;
     }
+    @RequestMapping(value={"/passwordChange"}, method = RequestMethod.GET)
+    public ModelAndView passwordChange(){
+        User user = userRepository.findByUsername(SecurityContextHolder.getContext().getAuthentication().getName());
+        ModelAndView modelAndView = new ModelAndView();
+        modelAndView.setViewName("passwordChange");
+        modelAndView.addObject("user", user);
+        return modelAndView;
+    }
 }
