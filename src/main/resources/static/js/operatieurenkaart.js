@@ -24,13 +24,11 @@ var showtimesheet = true;
 
 function showtimesheettable(id) {
     if (showtimesheet === true) {
-        alert(showtimesheet);
         fillTimesheetTable(id);
         showtimesheet = false;
         return;
     }
     if (showtimesheet === false) {
-        alert(showtimesheet);
         $("#timesheetTable tbody").empty();
         $("#timesheetTable thead").empty();
         $('#tsbuttons1').empty();
