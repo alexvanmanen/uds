@@ -17,6 +17,10 @@ function tsdisabled(state) {
     }
     return "";
 }
+var showtimesheet = true;
+function showtimesheettable(id) {
+
+}
 
 function fillTimesheetTable(timesheetId) {
     $.get("/uren/api/v1/getTimeSheet/" + timesheetId, function (timesheet) {

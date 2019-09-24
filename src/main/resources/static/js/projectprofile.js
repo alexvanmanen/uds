@@ -13,7 +13,6 @@ function getprojectprofile(id) {
         email = project.email;
         phonenumber = project.phonenumber;
         active = project.active;
-
         if (project.avatar != null) {
             avatar = project.avatar;
         }
@@ -26,7 +25,7 @@ function getprojectprofile(id) {
         $("#projectname").val(projectname);
         $("#avatar").val(avatar);
         $("#active").val(active);
-    });
+
     $("#avatarcolor").text(avatarcolor);
 
     if (active == true) {
@@ -35,6 +34,7 @@ function getprojectprofile(id) {
     if (active == false) {
         document.getElementById("activebtn").innerHTML = '<a class="btn btn-success" onclick="activateproject(true, ' + id + ')" role="button">activeer</a>';
     }
+    });
 }
 
 function activateproject(setproject, id) {
