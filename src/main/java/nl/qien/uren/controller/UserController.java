@@ -95,11 +95,11 @@ public class UserController {
         return modelAndView;
     }
     @RequestMapping(value={"/passwordChange"}, method = RequestMethod.GET)
-    public ModelAndView passwordChange(){
+    public ModelAndView passwordChange(@RequestParam(name="name", required=false, defaultValue="wereld") String name, Model model){
         User user = userRepository.findByUsername(SecurityContextHolder.getContext().getAuthentication().getName());
         ModelAndView modelAndView = new ModelAndView();
         modelAndView.setViewName("passwordChange");
-        modelAndView.addObject("user", user);
+        model.addAttribute("name", user.getFirstname());
         return modelAndView;
     }
 }
