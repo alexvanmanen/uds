@@ -22,6 +22,8 @@ function fillTimesheetTable(timesheetId) {
     $.get("/uren/api/v1/getTimeSheet/" + timesheetId, function (timesheet) {
         $(document).ready(function () {
             $("#timesheetTable tbody").empty();
+            $("#timesheetTable thead").empty();
+            $("#timesheetTable").append('<thead><tr><th>Dag</th><th>Werk</th><th>Verlof</th><th>Ziek</th><th>Training</th><th>Overwerk</th> <th>Overig</th> </tr> </thead>');
             $('#timesheetTable').append(getTimesheetTable(timesheet));
             if (tsdisabled(timesheet.state) == "disabled") {
                 $('#tsbuttons1').html('<a class="btn btn-primary" onclick="" role="button" disabled>Opslaan</a>&nbsp;<a class="btn btn-primary" onclick="" role="button" disabled>Verstuur</a>');
