@@ -58,9 +58,7 @@ function activateproject(setproject, id) {
             document.getElementById("activebtn").innerHTML = action;
             $("#active").val(active);
         },
-        error: function (request, msg, error) {
-            alert('stront aan de knikker');
-        }
+
     });
 }
 
