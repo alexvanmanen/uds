@@ -3,30 +3,18 @@ function getprojectprofile(id) {
     var active;
     var projectname;
     var phonenumber;
-    var avatar = "giraffe_lg.png"
-    var avatarcolor = "#A34AFE";
 
     $.get("/uren/api/v1/getProject/" + id, function (project) {
-        var url = "https://ssl.gstatic.com/docs/common/profile/";
-        var avatarwidth = "width:80px; background-color: ";
         projectname = project.name;
         email = project.email;
         phonenumber = project.phonenumber;
         active = project.active;
-        if (project.avatar != null) {
-            avatar = project.avatar;
-        }
-        if (project.avatarcolor != null) {
-            avatarcolor = project.avatarcolor;
-        }
 
         $("#email").val(email);
         $("#phonenumber").val(phonenumber);
         $("#projectname").val(projectname);
-        $("#avatar").val(avatar);
+       /* $("#avatar").val(avatar);*/
         $("#active").val(active);
-
-    $("#avatarcolor").text(avatarcolor);
 
     if (active == true) {
         document.getElementById("activebtn").innerHTML = '<a class="btn btn-danger" onclick="activateproject(false, ' + id + ')" role="button">Deactiveer</a>';
@@ -68,8 +56,6 @@ $(document).ready(function () {
             name: document.forms["updateproject1"]["projectname"].value,
             email: document.forms["updateproject1"]["email"].value,
             phonenumber: document.forms["updateproject1"]["phonenumber"].value,
-            avatar: document.forms["updateproject1"]["avatar"].value,
-            avatarcolor: document.forms["updateproject1"]["avatarcolor"].value,
         };
         $.ajax({
             url: '/uren/api/v1/updateProject/' + document.forms["updateproject1"]["id"].value,
