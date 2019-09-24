@@ -1,15 +1,16 @@
 var timesheetID;
 function buildHourTable2(id) {
     function disabled(state) {
-        if (state == "GOEDGEKEURD" || state == "VERZONDEN") {
+        if (state == "GOEDGEKEURD" || state == "AFWACHTEND") {
             return disabled = "disabled";
         }
         return "";
     }
-    function getEntry(dayOfTheMonth, entryKind){
+
+    function getEntry(dayOfTheMonth, entryKind) {
         var entries = retrievedTimesheets[id].entries;
-        for(var i = 0 ; i<entries.length ; i++){
-            if(entries[i].dayOfTheMonth == dayOfTheMonth && entryKind == entries[i].entryKind) {
+        for (var i = 0; i < entries.length; i++) {
+            if (entries[i].dayOfTheMonth == dayOfTheMonth && entryKind == entries[i].entryKind) {
                 return entries[i].hoursSpent;
             }
         }
@@ -19,19 +20,22 @@ function buildHourTable2(id) {
     var disabled = disabled(retrievedTimesheets[id].state);
     timesheetID = retrievedTimesheets[id].id;
     var timesheet = retrievedTimesheets[id];
-    var month =  timesheet.yearMonth.substring(6);
+    var month = timesheet.yearMonth.substring(6);
     var table = document.getElementById("timesheetoverview");
-        var tableContent= "";
-        tableContent += "<tr><th>"+ getMonthName(month) + "</th><th>Project</th><th>Overwerk</th><th>Verlof</th><th>Ziek</th><th>Training</th><th>Overig</th><th>Verklaring overig</th></tr>";
+    if (table.innerHTML != "") {
+        table.innerHTML = ""
+    } else {
+        var tableContent = "";
+        tableContent += "<tr><th>" + getMonthName(month) + "</th><th>Project</th><th>Overwerk</th><th>Verlof</th><th>Ziek</th><th>Training</th><th>Overig</th><th>Verklaring overig</th></tr>";
         for (var day = 1; day < calculateNumberOfDaysInMonth(month) + 1; day++) {
             tableContent += "<tr 'month'><td>" + day + " " + getMonthName(month) + "</>" +
-                "<td><input class='form-control input-sm' value='"+getEntry(day, "WORK")+"' "+disabled+" id='WORK" + day + "'  type='number'></td>" +
-                "<td><input class='form-control input-sm' value='"+getEntry(day, "OVERTIME")+"' "+disabled+" id='OVERTIME" + day + "' type='number'></td>" +
-                "<td><input class='form-control input-sm' value='"+getEntry(day, "LEAVE_OF_ABSENCE")+"' "+disabled+"  id='LEAVE_OF_ABSENCE" + day + "' type='number'></td>" +
-                "<td><input class='form-control input-sm' value='"+getEntry(day, "ILL")+"' "+disabled+" id='ILL" + day + "' type='number'></td>" +
-                "<td><input class='form-control input-sm' value='"+getEntry(day, "TRAINING")+"'  "+disabled+" id='TRAINING" + day + "' type='number'></td>" +
-                "<td><input class='form-control input-sm' value='"+getEntry(day, "OTHERS")+"' "+disabled+" id='OTHERS" + day + "' type='number'></td>" +
-                "<td><input class='form-control input-sm' " +disabled+" id='verklaring' type='String'></td>" +
+                "<td><input class='form-control input-sm' value='" + getEntry(day, "WORK") + "' " + disabled + " id='WORK" + day + "'  type='number'></td>" +
+                "<td><input class='form-control input-sm' value='" + getEntry(day, "OVERTIME") + "' " + disabled + " id='OVERTIME" + day + "' type='number'></td>" +
+                "<td><input class='form-control input-sm' value='" + getEntry(day, "LEAVE_OF_ABSENCE") + "' " + disabled + "  id='LEAVE_OF_ABSENCE" + day + "' type='number'></td>" +
+                "<td><input class='form-control input-sm' value='" + getEntry(day, "ILL") + "' " + disabled + " id='ILL" + day + "' type='number'></td>" +
+                "<td><input class='form-control input-sm' value='" + getEntry(day, "TRAINING") + "'  " + disabled + " id='TRAINING" + day + "' type='number'></td>" +
+                "<td><input class='form-control input-sm' value='" + getEntry(day, "OTHERS") + "' " + disabled + " id='OTHERS" + day + "' type='number'></td>" +
+                "<td><input class='form-control input-sm' " + disabled + " id='verklaring' type='String'></td>" +
                 "</tr>";
         }
 
@@ -39,6 +43,7 @@ function buildHourTable2(id) {
         tableContent += "<p><button id='btn' class='btn btn-primary' onclick='SaveHours(" + month + ")'>Opslaan</button></p>";
         tableContent += "<p><button id='btn' class='btn btn-primary' onclick='SubmitHours(" + month + ")'>Verzenden</button></p>";
         table.innerHTML = tableContent;
+    }
 }
 
 function SubmitHours(month){
