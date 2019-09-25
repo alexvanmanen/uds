@@ -49,6 +49,7 @@ $(document).ready(function(){
         var password = document.forms["changepasswordform"]["password"].value;
         var passwordvalid = document.forms["changepasswordform"]["password1"].value;
         if(password == passwordvalid) {
+            $("#firstlogin").modal('hide');
             var data = {
                 password: password
             };

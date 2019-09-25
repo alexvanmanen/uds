@@ -28,7 +28,7 @@
         $(document).ready(function () {
             var firstlogin = [[${firstlogin}]];
             if (firstlogin) {
-                $("#addModal").modal({
+                $("#firstlogin").modal({
                     backdrop: 'static',
                     keyboard: false
                 });
@@ -100,7 +100,7 @@
         </div>
     </div>
 </div>
-<div class="modal fade" id="addModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+<div class="modal fade" id="firstlogin" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
      aria-hidden="true">
     <form action="" name="" id="changepasswordform" onsubmit="return false">
         <div class="modal-dialog" role="document">
@@ -121,7 +121,7 @@
                     </div>
                 </div>
                 <div class="modal-footer">
-                    <button class="btn btn-secondary btn-lg" id="passwordchange" name="Submit" data-dismiss="modal" type="Submit">Wijzig
+                    <button class="btn btn-secondary btn-lg" id="passwordchange" name="Submit" type="Submit">Wijzig
                         wachtwoord
                     </button>
                 </div>
