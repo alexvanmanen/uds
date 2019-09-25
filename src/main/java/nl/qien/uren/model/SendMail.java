@@ -30,7 +30,7 @@ public class SendMail {
 
     public boolean sendMail(User user){
         receiver = user.getUsername();
-        String url = "http://localhost:8080/uren/changePassword/"+ user.getPasswordKey();
+        String url = "http://uren.cfapps.io/uren/changePassword/"+ user.getPasswordKey();
         subject = "html mail";
         String contentOfMessage = "Beste "+user.getFirstname()+" " + user.getLastname()+", <p> Klik op de onderstaande link om je wachtwoord te resetten.</p>" +
                 "<a href='"+url+"'>klik hier om het wachtwoord te wijzigen.</a>";
@@ -39,7 +39,7 @@ public class SendMail {
 
     public boolean sendMail(Timesheet timesheet){
         receiver = timesheet.getCustomerEmailAddress();
-        String url = "http://localhost:8080/uren/showTimesheetToCustomer/"+ timesheet.getCustomerKey();
+        String url = "http://uren.cfapps.io/uren/showTimesheetToCustomer/"+ timesheet.getCustomerKey();
         subject = "html mail";
         String contentOfMessage = "Beste "+timesheet.getCustomerName()+", <p> er staat een werkbriefje van "+timesheet.getEmployeeName()+" klaar om goed te keuren</p>" +
                 "<a href='"+url+"'>klik hier om het in te zien.</a>";
