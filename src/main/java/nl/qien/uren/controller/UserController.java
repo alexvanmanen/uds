@@ -50,6 +50,7 @@ public class UserController {
         User user = userRepository.findByUsername(SecurityContextHolder.getContext().getAuthentication().getName());
         model.addAttribute("name", user.getFirstname());
         model.addAttribute("userId", user.getId());
+        model.addAttribute("firstlogin", user.getFirstlogin());
         Timesheet timesheet = timesheetRepository.findById(8)
                 .orElseThrow(()-> new RuntimeException("Kan hem niet vinden gap"));
         model.addAttribute("timesheet", timesheet);

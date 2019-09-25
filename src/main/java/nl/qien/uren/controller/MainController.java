@@ -162,6 +162,7 @@ public class MainController {
         SendMail newEmail = new SendMail(userDetails.getUsername(), "Nieuw wachtwoord Qien", "Welkom! Het wachtwoord voor: gebruikersnaam : " + userDetails.getUsername() + " is: " + password);
         newEmail.sendMailText(userDetails.getUsername(), "Nieuw wachtwoord Qien", "Welkom! Het wachtwoord voor: gebruikersnaam : " + userDetails.getUsername() + " is: " + password);
         userDetails.setPassword(passencrypt);
+        userDetails.setFirstlogin(true);
         int projectid = userDetails.getProject().getId();
         //SUPER SMELLY CODE :)
         userDetails.setProject(projectRepository.findById(projectid));
@@ -323,6 +324,9 @@ public class MainController {
     @PostMapping("/setNewPassword/")
     public void setNewPassword(@RequestBody User userDetails) {
         User user = userRepository.findByUsername(SecurityContextHolder.getContext().getAuthentication().getName());
+        if(user.getFirstlogin()) {
+            user.setFirstlogin(false);
+        }
         String password = userDetails.getPassword();
         String passencrypt = bCryptPasswordEncoder.encode(password);
         SendMail newEmail = new SendMail(user.getUsername(), "Wachtwoord veranderd", "Beste " + user.getUsername() + ", het wachtwoord is gewijzigd!");

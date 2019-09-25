@@ -5,7 +5,7 @@
     <title>Dashboard Gebruikers</title>
     <!--<link rel="stylesheet" type="text/css" href="css/style.css">-->
     <script>
-        function getEmployeeId(){
+        function getEmployeeId() {
             return "[[${userId}]]";
         }
     </script>
@@ -13,25 +13,32 @@
     <script src=js/date.js></script>
     <script src="js/timesheet.js"></script>
     <script src="js/operatieurenkaart.js"></script>
+    <script src="js/passwordforget.js"></script>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
     <link rel="stylesheet" href="css/bootstrapstyle.css">
+
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
-    <link rel="icon" href="https://www.qien.nl/wp-content/uploads/2018/07/cropped-Qien-logo-32x32.png" sizes="32x32" />
-    <link rel="icon" href="https://www.qien.nl/wp-content/uploads/2018/07/cropped-Qien-logo-192x192.png" sizes="192x192" />
-
-
-    <!--<link href="webjars/bootstrap/4.3.1/css/bootstrap.css" rel="stylesheet" />-->
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-
+    <link rel="icon" href="https://www.qien.nl/wp-content/uploads/2018/07/cropped-Qien-logo-32x32.png" sizes="32x32"/>
+    <link rel="icon" href="https://www.qien.nl/wp-content/uploads/2018/07/cropped-Qien-logo-192x192.png"
+          sizes="192x192"/>
+    <script>
+        $(document).ready(function () {
+            var firstlogin = [[${firstlogin}]];
+            if (firstlogin) {
+                $("#addModal").modal({
+                    backdrop: 'static',
+                    keyboard: false
+                });
+            }
+        });
+    </script>
     <title>User Dashboard</title>
 </head>
 
 <body>
-
 <nav class="navbar navbar-default navbar-fixed-top">
     <div class="container-fluid">
         <div class="navbar-header">
@@ -40,21 +47,25 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-                <a class="navbar-brand"><a href="dashboard"><img src="images/Untitled-3.png" width="67"></a>
+            <a class="navbar-brand"><a href="dashboard"><img src="images/Untitled-3.png" width="67"></a>
         </div>
 
         <div class="collapse navbar-collapse" id="myNavbar">
             <ul class="nav navbar-nav navbar-right">
 
-                <li><button type="button" class="btnhamburger btn btn-lg dropdown-toggle" data-toggle= "dropdown">
-                    <span class="glyphicon glyphicon-menu-hamburger"></span>
-                </button> <ul class = "dropdown-menu">
-                    <li><a href="dashboard">Home</a></li>
-                <li><a href="viewprofile">Profiel</a></li>
-                <li><a href="passwordChange">Instellingen</a></li>
-                    <li><form action="/uren/logout">
-                        <input class="btn btn-outline-secondary" type="submit" value="Logout"/></form></li>
-                </ul>
+                <li>
+                    <button type="button" class="btnhamburger btn btn-lg dropdown-toggle" data-toggle="dropdown">
+                        <span class="glyphicon glyphicon-menu-hamburger"></span>
+                    </button>
+                    <ul class="dropdown-menu">
+                        <li><a href="dashboard">Home</a></li>
+                        <li><a href="viewprofile">Profiel</a></li>
+                        <li><a href="passwordChange">Instellingen</a></li>
+                        <li>
+                            <form action="/uren/logout">
+                                <input class="btn btn-outline-secondary" type="submit" value="Logout"/></form>
+                        </li>
+                    </ul>
                 </li>
 
             </ul>
@@ -71,17 +82,52 @@
 <div id="welcome">
     <span th:text="'Welkom, ' + ${name}"></span>
 
-<div class="container">
-<h2>Urenformulier</h2>
-
-<table class="table table-striped" id="taskOverview">
-    <thead><tr><th>Periode</th><th>Project</th><th>Status</th></tr></thead>
-</table>
-<div id="timesheetdiv">
-    <table id="timesheetTable" class="table-striped table-condensed" style="width: 100%">
-    </table>
-    <a id="tsbuttons1"></a>
+    <div class="container">
+        <h2>Urenformulier</h2>
+        <table class="table table-striped" id="taskOverview">
+            <thead>
+            <tr>
+                <th>Periode</th>
+                <th>Project</th>
+                <th>Status</th>
+            </tr>
+            </thead>
+        </table>
+        <div id="timesheetdiv">
+            <table id="timesheetTable" class="table-striped table-condensed" style="width: 100%">
+            </table>
+            <a id="tsbuttons1"></a>
+        </div>
+    </div>
 </div>
+<div class="modal fade" id="addModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+     aria-hidden="true">
+    <form action="" name="" id="changepasswordform" onsubmit="return false">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title" id="exampleModalLabel">Wachtwoord wijzigen</h4>
+                    <h5 class="modal-title" id="exampleModalLabel1">Bij de eerste keer inloggen moet het wachtwoord worden gewijzigd.</h5>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="form-group">
+                        <label class="col-form-label">Wachtwoord</label>
+                        <input type="password" class="form-control" id="password" name="wachtwoord">
+                    </div>
+                    <div class="form-group">
+                        <label class="col-form-label">Wachtwoord bevestigien</label>
+                        <input type="password" class="form-control" id="password1" name="wachtwoord">
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button class="btn btn-secondary btn-lg" id="passwordchange" name="Submit" data-dismiss="modal" type="Submit">Wijzig
+                        wachtwoord
+                    </button>
+                </div>
+            </div>
+        </div>
+    </form>
 </div>
 </body>
 </html>
