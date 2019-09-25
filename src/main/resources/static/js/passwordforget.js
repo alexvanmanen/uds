@@ -64,7 +64,7 @@ $(document).ready(function(){
                 data: JSON.stringify(data)
             });
         } else {
-            alert("Passwords komen niet overeen.");
+            alert("Wachtwoorden komen niet overeen.");
         }
     });
 });
