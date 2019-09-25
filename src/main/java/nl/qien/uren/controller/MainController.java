@@ -132,6 +132,9 @@ public class MainController {
     @PostMapping("/updateTimesheet")
     public void updateTimesheet(@RequestBody Timesheet ts) {
         Timesheet timesheet = timesheetRepository.findById(ts.getId()).orElseThrow(() -> new RuntimeException("timesheet not found for this id :: " + ts.getId()));
+        for (TimesheetEntry timesheetEntry : timesheet.getEntries()) {
+            timesheetEntryRepository.delete(timesheetEntry);
+        }
         for (TimesheetEntry timesheetEntry : ts.getEntries()) {
             TimesheetEntry tsEntry = timesheetEntryRepository.findByTimesheetIdAndDayOfTheMonthAndEntryKind(ts.getId(), timesheetEntry.getDayOfTheMonth(), timesheetEntry.getEntryKind());
             if (tsEntry != null) {
